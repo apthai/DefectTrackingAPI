@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json; 
 using Newtonsoft.Json.Linq;
-using com.apthai.DefectAPI.Model.DefectAPI; 
+using com.apthai.DefectAPI.Model.DefectAPI;   
 using com.apthai.DefectAPI.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
 
