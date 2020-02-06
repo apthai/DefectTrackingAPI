@@ -10,7 +10,7 @@ using com.apthai.DefectAPI.HttpRestModel;
 using com.apthai.DefectAPI.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using Newtonsoft.Json; 
 using Newtonsoft.Json.Linq;
 using com.apthai.DefectAPI.Model.DefectAPI;
 using com.apthai.DefectAPI.Repositories;
