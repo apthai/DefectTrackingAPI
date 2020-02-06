@@ -1,0 +1,53 @@
+{
+  "SessionId" : "3008b827-8b0e-4a62-8925-ca157dcd89d7",
+  "SessionDate" : "2019-06-11T10:27:15.398+07:00",
+  "ClientDeviceId" : "46f1651ec721ff42",
+  "ClientUserId" : "5269",
+  "ClientName" : "APQIS",
+  "ClientVersion" : "1.0.0.0",
+  "SessionDataType" : "QISUnitAndPublicData",
+  "SessionUserRole" : "SE",
+  "SessionDataPath" : "205",
+  "Data" : [ {
+    "HEADER" : {
+      "BU" : "1",
+      "JsonData" : "{\n  \"ProjectID\" : 205,\n  \"ProjectCode\" : \"4/045\",\n  \"ProjectName\" : \"The City ไทรม้า\",\n  \"ProjectCRMCode\" : \"40045\",\n  \"ProjectType\" : null,\n  \"Plant\" : \"4045\",\n  \"Status\" : \"Active\",\n  \"PM\" : 5267,\n  \"BU\" : \"1\",\n  \"RefID\" : null,\n  \"CreatedDate\" : null,\n  \"ModifiedDate\" : \"2018-10-18T15:14:33.143+07:00\",\n  \"DeletedDate\" : null,\n  \"ProjectFullName\" : \"4/045 - The City ไทรม้า\",\n  \"ProjectCRMFullName\" : \"40045\",\n  \"BUName\" : \"BG 1\",\n  \"StatusName\" : \"อยู่ระหว่างก่อสร้าง\",\n  \"PMCode\" : \"Test_PM\",\n  \"PMName\" : \"คุณPM PM\",\n  \"CanRedeem\" : null,\n  \"SERedeem\" : null,\n  \"QARedeem\" : null,\n  \"RedeemModelID\" : null,\n  \"SurveyModelID\" : null,\n  \"CanRedeemName\" : \"ยังไม่ตรวจ Pre ไถ่ถอน\",\n  \"SERedeemName\" : null,\n  \"QARedeemName\" : null,\n  \"RedeemModelName\" : null,\n  \"SurveyModelName\" : null,\n  \"CanSurvey\" : null,\n  \"QASurvey\" : null\n}",
+      "ProjectCode" : "4/045",
+      "ProjectID" : 205,
+      "ProjectName" : "The City ไทรม้า",
+      "ProjectType" : null
+    },
+    "DETAILS" : [ {
+      "DataOwnerUserId" : 5269,
+      "LastSyncDate" : "2019-06-11T10:27:15.273+07:00",
+      "LastSyncUserId" : 5269,
+      "MaxDetailID" : 69874,
+      "MaxHeaderID" : 16670,
+      "MaxPhaseID" : 1250,
+      "ModelID" : 247,
+      "ModelName" : "",
+      "ModelUnitDataId" : "62750.247_UID5269",
+      "ModifiedDate" : "2019-06-11T10:27:15.273+07:00",
+      "ModifiedUserId" : 0,
+      "ProjectID" : 205,
+      "ProjectName" : "",
+      "RowState" : "Modified",
+      "UDefectDetails" : "[]",
+      "UDetails" : "[{\"DetailID\":69763,\"VersionNumber\":1,\"HeaderID\":16350,\"ScoreID\":0,\"SubjectID\":null,\"GroupName\":\"5\",\"DetailName\":\"16ตำแหน่งหมุดพ่นสีแยกตามขนาดเข็มถูกต้องแข็งแรง\",\"Seq\":16,\"Status\":null,\"Remark\":null,\"CreatedBy\":5269,\"CreatedDate\":\"2019-06-10T16:37:57.845+07:00\",\"ModifiedBy\":5269,\"ModifiedDate\":\"2019-06-10T16:37:57.846+07:00\",\"DeletedBy\":null,\"DeletedDate\":null,\"RefID\":null,\"HelpMStorageServerId\":null,\"HelpMFilePath\":null,\"HelpMMineType\":null,\"HelpMFileLength\":null,\"HelpMUpdateDate\":null,\"UDetailID\":0,\"UnitID\":62750,\"UPhaseID\":0,\"UHeaderID\":0,\"DetailVersionID\":null,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2019-06-10T16:37:57.844+07:00\",\"QAPass\":null,\"QAScore\":0,\"QADate\":null,\"RowClientId\":\"U62750UDT69763-Y-46f1651e-20190610163757\",\"RowState\":\"AddNew\",\"RowVersion\":0,\"RowSyncDate\":\"2019-06-11T10:27:15.221+07:00\",\"CreateDeviceId\":\"46f1651ec721ff42\",\"CreateUserId\":5269,\"ModifiedDeviceId\":\"46f1651ec721ff42\",\"ModifiedUserId\":5269,\"IsMandatoryCapture\":null,\"IsMandatoryPDF\":null,\"IsApproveLock\":null,\"DetailDesc\":null,\"DetailDescId\":null,\"ModelID\":247,\"ProjectID\":205,\"UPhase_RowClientId\":\"U62750P1237-T-46f1651e-20190610163733\",\"UHeader_RowClientId\":\"U62750UHD16350-T-46f1651e-20190610163755\"}]",
+      "UFADefectDetails" : null,
+      "UFADetails" : null,
+      "UFAHeaders" : null,
+      "UFAPhases" : null,
+      "UFAZones" : null,
+      "UHeaders" : "[{\"ModelID\":247,\"ModelCode\":null,\"ModelName\":\"[2016]_BG1_SH2_City_Centro_Flab Slab\",\"ModelType\":\"U\",\"ModelTypeName\":\"บ้าน\",\"PhaseID\":1237,\"PhaseName\":\"00\",\"PhaseSeq\":0,\"PhaseType\":\"1\",\"Progress\":\"0.00\",\"HeaderID\":16350,\"HeaderVersionNumber\":16,\"HeaderName\":\"แบบฟอร์มขออนุมัติตอกเสาเข็ม (REQ01)\",\"HeaderType\":\"REQ\",\"HeaderSeq\":1,\"ForSe\":true,\"ForQA\":false,\"HeaderRemark\":null,\"AreaID\":0,\"AreaName\":\"\",\"CreatedBy\":5269,\"CreatedByName\":\"นางสาวอาวีศรี แจ่มศิริ\",\"CreatedDate\":\"2019-06-10T16:37:57.847+07:00\",\"ModifiedBy\":5269,\"ModifiedByName\":\"นางสาวอาวีศรี แจ่มศิริ\",\"ModifiedDate\":\"2019-06-10T16:37:57.848+07:00\",\"DeletedBy\":null,\"DeletedDate\":null,\"UHeaderID\":0,\"SEComplete\":\"Y\",\"QAComplete\":null,\"UFHeaderID\":0,\"RowClientId\":\"U62750UHD16350-T-46f1651e-20190610163755\",\"RowState\":\"AddNew\",\"IsNewModelChange\":null,\"IsMandatoryCapture\":\"N\",\"UnitID\":62750,\"ProjectID\":205,\"UPhase_RowClientId\":\"U62750P1237-T-46f1651e-20190610163733\",\"RowSyncDate\":\"2019-06-11T10:27:15.221+07:00\",\"CreateDeviceId\":\"46f1651ec721ff42\",\"CreateUserId\":5269,\"ModifiedDeviceId\":\"46f1651ec721ff42\",\"ModifiedUserId\":5269}]",
+      "UPhases" : "[{\"Complete\":null,\"IsEndProduct\":false,\"IsReq\":null,\"JobPending\":0,\"ProcessNo\":0,\"QAComplete\":null,\"RowState\":\"AddNew\",\"RowSyncDate\":\"2019-06-11T10:27:15.221+07:00\",\"SEComplete\":\"N\",\"Seleted\":false,\"UFPhaseID\":0,\"UPhaseID\":0,\"CreatedBy\":5269,\"CreatedByName\":\"นางสาวอาวีศรี แจ่มศิริ\",\"CreatedDate\":\"2019-06-10T16:37:57.848+07:00\",\"DeletedBy\":null,\"DeletedDate\":null,\"ModelCode\":null,\"ModelID\":247,\"ModelName\":\"[2016]_BG1_SH2_City_Centro_Flab Slab\",\"ModelType\":\"U\",\"ModelTypeName\":\"บ้าน\",\"ModifiedBy\":5269,\"ModifiedByName\":\"นางสาวอาวีศรี แจ่มศิริ\",\"ModifiedDate\":\"2019-06-10T16:37:57.849+07:00\",\"PhaseID\":1237,\"PhaseName\":\"00\",\"PhaseSeq\":0,\"PhaseType\":\"1\",\"Progress\":0,\"UseOnFinish\":null,\"UseOnFinishProgress\":null,\"UseOnStartProgress\":null,\"UnitID\":62750,\"ProjectID\":205,\"RowClientId\":\"U62750P1237-T-46f1651e-20190610163733\",\"CreateDeviceId\":\"46f1651ec721ff42\",\"CreateUserId\":5269,\"ModifiedDeviceId\":\"46f1651ec721ff42\",\"ModifiedUserId\":5269,\"SE\":5269,\"SECompleteDate\":null,\"StartDate\":\"10/06/2019\",\"OfflineDetailIDs\":null,\"OfflineDetailCount\":0}]",
+      "UPlanPointImages" : "[]",
+      "UnitID" : 62750,
+      "UnitNumber" : "",
+      "UnitPublicAreaID" : 0,
+      "UnitWBS" : ""
+    } ],
+    "RESOURCES" : [ ],
+    "DETAILS_FA" : null
+  } ]
+}

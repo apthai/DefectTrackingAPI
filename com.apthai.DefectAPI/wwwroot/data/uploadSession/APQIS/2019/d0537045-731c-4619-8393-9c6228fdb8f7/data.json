@@ -1,0 +1,97 @@
+﻿{
+  "SessionId": "d0537045-731c-4619-8393-9c6228fdb8f7",
+  "SessionDate": "2018-08-04T14:52:01.9950134+07:00",
+  "ClientDeviceId": "A1SH83M00T9",
+  "ClientUserId": "7226",
+  "ClientName": "APQIS",
+  "ClientVersion": "1.0.0.0",
+  "SessionDataType": "QisUnitDataAndPO",
+  "SessionUserRole": "QA",
+  "SessionDataPath": "219",
+  "Data": [
+    {
+      "HEADER": {
+        "ProjectID": 219,
+        "ProjectCode": "4/029",
+        "ProjectName": "บ้านกลางเมือง THE EDITION พระราม9 - พัฒนาการ",
+        "ProjectCRMCode": "40029",
+        "JsonData": "{\"ProjectID\":219,\"ProjectCode\":\"4/029\",\"ProjectName\":\"บ้านกลางเมือง THE EDITION พระราม9 - พัฒนาการ\",\"ProjectCRMCode\":\"40029\",\"ProjectType\":null,\"Plant\":\"\",\"Status\":\"Active\",\"PM\":2236,\"BU\":\"2\",\"RefID\":null,\"CreatedDate\":null,\"ModifiedDate\":\"2018-04-11T16:41:21.267\",\"DeletedDate\":null,\"ProjectFullName\":\"4/029 - บ้านกลางเมือง THE EDITION พระราม9 - พัฒนาการ\",\"ProjectCRMFullName\":\"40029\",\"BUName\":\"BG 2\",\"StatusName\":\"อยู่ระหว่างก่อสร้าง\",\"PMCode\":\"AP002662\",\"PMName\":\"นายบัณฑิต คงสมคิด\",\"CanRedeem\":null,\"SERedeem\":null,\"QARedeem\":null,\"RedeemModelID\":161,\"SurveyModelID\":162,\"CanRedeemName\":\"ยังไม่ตรวจ Pre ไถ่ถอน\",\"SERedeemName\":null,\"QARedeemName\":null,\"RedeemModelName\":\"Pre ไถ่ถอน\",\"SurveyModelName\":\"Survey\",\"CanSurvey\":null,\"QASurvey\":null}",
+        "BU": "2"
+      },
+      "DETAILS_PO": [
+        {
+          "UPK": "121058.7226",
+          "POID": 121058,
+          "DataOwnerUserId": 7226,
+          "ProjectID": 219,
+          "WBS": "4/029-AC-DD-002",
+          "SE": 8328,
+          "QA": 7226,
+          "POType": "F",
+          "LastSyncDate": "2018-08-04T14:52:01.9950134+07:00",
+          "JsonData": "{\"POID\":121058,\"PONumber\":\"4046058078\",\"Item\":\"00010\",\"POType\":\"F\",\"ProjectID\":219,\"PhaseSeq\":33,\"Block\":\"4/029-AC-DD-002\",\"WBS\":\"4/029-AC-DD-002\",\"ItemDescription\":\"ค่าภูมิสถาปัตยกรรม\",\"MaterialNumber\":\"20114-400033\",\"MaterialText\":\"Softscape Model House (Sale + Twinhouse)\",\"FacilityCode\":\"DD\",\"VendorID\":718,\"Quantity\":1.0,\"SE\":8328,\"QA\":7226,\"IsDelete\":\"N\",\"RefID\":66492,\"RowClientId\":null,\"RowState\":\"Modified\",\"RowVersion\":0,\"RowSyncDate\":null,\"CreateDeviceId\":null,\"CreateUserId\":null,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:51:33.8256712+07:00\",\"ModifiedDate\":\"2018-08-04T14:51:33.8256712+07:00\",\"PhaseName\":\"33\",\"ProjectCode\":\"4/029\",\"ProjectName\":\"บ้านกลางเมือง THE EDITION พระราม9 - พัฒนาการ\",\"Plant\":\"\",\"PMCode\":\"AP002662\",\"PMName\":\"นายบัณฑิต คงสมคิด\",\"ConstructorID\":718,\"ConstructorCode\":\"0000101176\",\"ConstructorName\":\"บริษัท อัลไพน์กอล์ฟ แอนด์\",\"SECode\":\"AP004088\",\"SEName\":\"นายสหรัตน์ เดชะคุปต์\",\"QACode\":\"AP003580\",\"QAName\":\"นางสาวกุสุมา ดวงจรัสแสง\",\"PrevProgress\":0.3,\"PrevProgress_QAPassed\":0.1,\"PrevGRID\":145048,\"PrevGRID_QAPassed\":145047,\"NextSEProgress\":0.0,\"NextSEProgressDate\":null,\"NextQAApprove\":\"Y\",\"NextQAProgress\":0.3,\"NextQAProgressDate\":\"2018-08-04T14:51:33.8246735+07:00\",\"ProgressLog\":\"0.100,0.300\",\"ProgressLog_QAPassed\":\"0.100,0.300\",\"Progress\":0.3,\"Progress_QAPassed\":0.4,\"Complete\":\"N\",\"ProjectFullName\":\"4/029 - บ้านกลางเมือง THE EDITION พระราม9 - พัฒนาการ\",\"FacilityName\":\"Landscape AC-DD\",\"GRStepParallelValues\":\"\",\"FacilityPO\":{\"ProjectID\":219,\"POID\":121058,\"FacilityModelID\":171,\"MaterialCode\":\"20114-400033\",\"ModelID\":236,\"SendProgress1\":10.0,\"SendProgress2\":30.0,\"SendProgress3\":55.0,\"SendProgress4\":5.0,\"SendProgress5\":null},\"GRStepType\":\"S\",\"GRStepTypeList\":\"[{ \\\"GRID\\\":145047,\\\"Quantity\\\":\\\"0.100\\\",\\\"QAApprove\\\":\\\"P\\\",\\\"PMApprove\\\":\\\"N\\\"},{ \\\"GRID\\\":145048,\\\"Quantity\\\":\\\"0.300\\\",\\\"QAApprove\\\":\\\"N\\\",\\\"PMApprove\\\":\\\"N\\\"}]\",\"GRStepTypeListItems\":null}",
+          "RowState": "Modified"
+        }
+      ],
+      "DETAILS": [],
+      "RESOURCES": [
+        {
+          "RowClientId": "Q$RES$P219$A1SH83M00T9$20180804145131963",
+          "ResourceId": 0,
+          "ResourceType": 110,
+          "ResourceTagCode": "U-QA",
+          "ResourceTagSubCode": "H",
+          "ResourceGroupSet": "d301ee40f8734f168bc808f4bf412153",
+          "ResourceGroupOrder": 1,
+          "ResourceMineType": "image/jpeg",
+          "ProjectId": 219,
+          "UnitId": 0,
+          "FilePath": "P_219\\Camera\\Camera_A1SH83M00T9_20180804145131.jpg",
+          "Description": "",
+          "IsActive": true,
+          "PhaseId": 0,
+          "HeaderId": 15741,
+          "DetailId": 0,
+          "UHeader_RowClientId": "",
+          "UDetail_RowClientId": "",
+          "UFHeader_RowClientId": "Q$PH$219$A1SH83M00T9$20180804143926139",
+          "UFDetail_RowClientId": "",
+          "RowState": "AddNew",
+          "RowSyncDate": "2018-08-04T14:52:01.9950134+07:00",
+          "FileLength": 17020,
+          "CreateDeviceId": "A1SH83M00T9",
+          "CreateUserId": 7226,
+          "ModifiedDeviceId": "A1SH83M00T9",
+          "ModifiedUserId": 7226,
+          "CreatedDate": "2018-08-04T14:51:31",
+          "ModifiedDate": "2018-08-04T14:51:31"
+        }
+      ],
+      "DETAILS_PROJ": [
+        {
+          "MaxPhaseID": 1188,
+          "MaxHeaderID": 15743,
+          "MaxDetailID": 65672,
+          "ModelProjectDataId": "219.F.236_UID7226_121058",
+          "DataOwnerUserId": 7226,
+          "ProjectID": 219,
+          "ProjectName": "",
+          "ModelID": 236,
+          "ModelName": "",
+          "UFFacility": "[{\"UFFacilityID\":6355,\"POID\":121058,\"ProjectID\":219,\"Quantity\":1.0,\"SE\":8328,\"SEComplete\":\"N\",\"SECompleteDate\":null,\"QA\":7226,\"QAComplete\":null,\"QACompleteDate\":null,\"StartDate\":\"2018-08-04T14:18:50.873\",\"FinishDate\":null,\"IsReq\":true,\"FacilityType\":\"F\",\"Remark\":null,\"IsGRParallel\":false,\"GRParallelIndex\":null,\"GRParallelValue\":null,\"RowClientId\":\"Q$UFF$219$A1SH83M00T9$20180804141850874\",\"RowState\":\"Modified\",\"RowVersion\":3,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"IssueDocNo\":\"\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:18:50.873\",\"ModifiedDate\":\"2018-08-04T14:51:41.3817278+07:00\"}]",
+          "UFPhases": "[{\"UFPhaseID\":13912,\"UFFacilityID\":6355,\"ProjectID\":219,\"PhaseID\":1186,\"ModelID\":236,\"SE\":8328,\"SEComplete\":\"Y\",\"SECompleteDate\":\"2018-08-04T14:39:30.507\",\"QA\":7226,\"QAComplete\":\"N\",\"QACompleteDate\":null,\"Complete\":\"N\",\"RowClientId\":\"Q$UFH$219$A1SH83M00T9$20180804143926139\",\"RowState\":\"Modified\",\"RowVersion\":2,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.137\",\"ModifiedDate\":\"2018-08-04T14:51:41.3817278+07:00\"}]",
+          "UFHeaders": "[{\"UFHeaderID\":14422,\"UFFacilityID\":6355,\"ProjectID\":219,\"UFPhaseID\":13912,\"HeaderVersionID\":76861,\"HeaderID\":15741,\"PhaseID\":1186,\"SEComplete\":\"Y\",\"QAComplete\":\"N\",\"RowClientId\":\"Q$PH$219$A1SH83M00T9$20180804143926139\",\"RowState\":\"Modified\",\"RowVersion\":2,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.137\",\"ModifiedDate\":\"2018-08-04T14:51:41.3817278+07:00\",\"VersionNumber\":null}]",
+          "UFDetails": "[{\"UFDetailID\":117210,\"UFFacilityID\":6355,\"ProjectID\":219,\"UFPhaseID\":13912,\"UFHeaderID\":14422,\"DetailVersionID\":99166,\"DetailID\":65655,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-04T14:39:30.42\",\"QAPass\":\"N\",\"QAScore\":null,\"QADate\":\"2018-08-04T14:51:36.3990002+07:00\",\"RowClientId\":\"Q$PD$219$A1SH83M00T9$2018080414392614\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.137\",\"ModifiedDate\":\"2018-08-04T14:51:36.3999989+07:00\",\"VersionNumber\":null,\"IsRequestQA\":null},{\"UFDetailID\":117211,\"UFFacilityID\":6355,\"ProjectID\":219,\"UFPhaseID\":13912,\"UFHeaderID\":14422,\"DetailVersionID\":99167,\"DetailID\":65656,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-04T14:39:30.447\",\"QAPass\":\"N\",\"QAScore\":null,\"QADate\":\"2018-08-04T14:51:33.7947502+07:00\",\"RowClientId\":\"Q$PD$219$A1SH83M00T9$20180804143926209\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.21\",\"ModifiedDate\":\"2018-08-04T14:51:33.8077168+07:00\",\"VersionNumber\":null,\"IsRequestQA\":null},{\"UFDetailID\":117212,\"UFFacilityID\":6355,\"ProjectID\":219,\"UFPhaseID\":13912,\"UFHeaderID\":14422,\"DetailVersionID\":99168,\"DetailID\":65657,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-04T14:39:30.463\",\"QAPass\":\"N\",\"QAScore\":null,\"QADate\":\"2018-08-04T14:51:40.1923539+07:00\",\"RowClientId\":\"Q$PD$219$A1SH83M00T9$20180804143926243\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.243\",\"ModifiedDate\":\"2018-08-04T14:51:40.1933489+07:00\",\"VersionNumber\":null,\"IsRequestQA\":null},{\"UFDetailID\":117213,\"UFFacilityID\":6355,\"ProjectID\":219,\"UFPhaseID\":13912,\"UFHeaderID\":14422,\"DetailVersionID\":99169,\"DetailID\":65658,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-04T14:39:30.483\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-04T14:51:40.9626572+07:00\",\"RowClientId\":\"Q$PD$219$A1SH83M00T9$20180804143926276\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.277\",\"ModifiedDate\":\"2018-08-04T14:51:40.9636556+07:00\",\"VersionNumber\":null,\"IsRequestQA\":null},{\"UFDetailID\":117214,\"UFFacilityID\":6355,\"ProjectID\":219,\"UFPhaseID\":13912,\"UFHeaderID\":14422,\"DetailVersionID\":99170,\"DetailID\":65659,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-04T14:39:30.503\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-04T14:51:41.3817278+07:00\",\"RowClientId\":\"Q$PD$219$A1SH83M00T9$20180804143926311\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-04T14:52:01.9950134+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-04T14:39:26.313\",\"ModifiedDate\":\"2018-08-04T14:51:41.3817278+07:00\",\"VersionNumber\":null,\"IsRequestQA\":null}]",
+          "FacilityType": "F",
+          "LastSyncDate": "2018-08-04T14:52:01.9950134+07:00",
+          "LastSyncUserId": 7226,
+          "ModifiedDate": "2018-08-04T14:51:41",
+          "ModifiedUserId": 7226,
+          "POID": 121058,
+          "RowState": "Modified",
+          "IssueDocNo": ""
+        }
+      ]
+    }
+  ]
+}

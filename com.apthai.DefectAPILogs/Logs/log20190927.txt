@@ -1,0 +1,63 @@
+2019-09-27 13:27:56.715 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 13:27:57.601 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 13:27:57.921 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 13:27:57.971 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 13:27:57.972 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 13:27:57.972 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 13:27:58.525 +07:00 [INF] Server apn-5cd6115wq9:27568:608034ed successfully announced in 348.0583 ms
+2019-09-27 13:27:58.591 +07:00 [INF] Server apn-5cd6115wq9:27568:608034ed is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 13:27:59.733 +07:00 [INF] Server apn-5cd6115wq9:27568:608034ed all the dispatchers started
+2019-09-27 13:28:01.338 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 13:28:01.592 +07:00 [INF] Executing endpoint 'com.apthai.QISAPINETCore.Controllers.ValuesController.Get (com.apthai.QISAPINETCore)'
+2019-09-27 13:28:01.614 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.QISAPINETCore.Controllers.ValuesController.Get (com.apthai.QISAPINETCore)
+2019-09-27 13:28:01.756 +07:00 [INF] Executing action method com.apthai.QISAPINETCore.Controllers.ValuesController.Get (com.apthai.QISAPINETCore) - Validation state: "Valid"
+2019-09-27 13:28:01.770 +07:00 [INF] Executed action method com.apthai.QISAPINETCore.Controllers.ValuesController.Get (com.apthai.QISAPINETCore), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 7.9104ms.
+2019-09-27 13:28:01.783 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 13:28:01.845 +07:00 [INF] Executed action com.apthai.QISAPINETCore.Controllers.ValuesController.Get (com.apthai.QISAPINETCore) in 222.4368ms
+2019-09-27 13:28:01.846 +07:00 [INF] Executed endpoint 'com.apthai.QISAPINETCore.Controllers.ValuesController.Get (com.apthai.QISAPINETCore)'
+2019-09-27 13:28:01.850 +07:00 [INF] Request finished in 515.092ms 200 application/json; charset=utf-8
+2019-09-27 13:28:02.050 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 13:28:02.058 +07:00 [INF] Request finished in 7.6226ms 404 
+2019-09-27 13:28:06.185 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 13:28:06.190 +07:00 [INF] Request finished in 5.2725ms 301 
+2019-09-27 13:28:06.203 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 13:28:06.326 +07:00 [INF] Request finished in 123.4025ms 200 text/html
+2019-09-27 13:28:06.456 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 13:28:06.466 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 13:28:06.737 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 13:28:06.774 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 13:28:06.774 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 13:28:06.774 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 13:28:06.785 +07:00 [INF] Request finished in 319.5314ms 200 application/javascript
+2019-09-27 13:28:06.785 +07:00 [INF] Request finished in 329.0325ms 200 text/css
+2019-09-27 13:28:06.785 +07:00 [INF] Request finished in 48.1368ms 200 application/javascript
+2019-09-27 13:28:07.972 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-27 13:28:08.052 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-27 13:28:08.053 +07:00 [INF] Request finished in 80.7167ms 200 text/plain
+2019-09-27 13:28:09.671 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-27 13:28:09.703 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-27 13:28:09.703 +07:00 [INF] Request finished in 32.3079ms 200 text/plain
+2019-09-27 13:28:10.250 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-27 13:28:10.889 +07:00 [INF] Request finished in 638.8494ms 200 application/json;charset=utf-8
+2019-09-27 13:28:53.704 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/UnitMaster/GetUHeader application/json-patch+json 81
+2019-09-27 13:28:53.708 +07:00 [INF] Executing endpoint 'com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore)'
+2019-09-27 13:28:53.742 +07:00 [INF] Route matched with {action = "GetUHeader", controller = "UnitMaster"}. Executing action com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore)
+2019-09-27 13:28:53.830 +07:00 [INF] Executing action method com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore) with arguments (["com.apthai.QISAPINETCore.HttpRestModel.CreateHeader"]) - Validation state: "Valid"
+2019-09-27 13:28:55.953 +07:00 [INF] ------ Get Header -----
+2019-09-27 13:28:55.954 +07:00 [INF] ------TRY------------------------------------
+2019-09-27 13:28:56.205 +07:00 [INF] Executed action method com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2375.5201ms.
+2019-09-27 13:28:56.206 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.QISAPINETCore.CustomModel.GetUHeaderResult, com.apthai.QISAPINETCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-27 13:28:56.271 +07:00 [INF] Executed action com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore) in 2528.5411ms
+2019-09-27 13:28:56.287 +07:00 [INF] Executed endpoint 'com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore)'
+2019-09-27 13:28:56.287 +07:00 [INF] Request finished in 2604.9438ms 200 application/json; charset=utf-8
+2019-09-27 13:29:34.737 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/UnitMaster/GetUHeader application/json-patch+json 81
+2019-09-27 13:29:34.747 +07:00 [INF] Executing endpoint 'com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore)'
+2019-09-27 13:29:34.747 +07:00 [INF] Route matched with {action = "GetUHeader", controller = "UnitMaster"}. Executing action com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore)
+2019-09-27 13:29:34.831 +07:00 [INF] Executing action method com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore) with arguments (["com.apthai.QISAPINETCore.HttpRestModel.CreateHeader"]) - Validation state: "Valid"
+2019-09-27 13:29:36.827 +07:00 [INF] ------ Get Header -----
+2019-09-27 13:29:36.827 +07:00 [INF] ------TRY------------------------------------
+2019-09-27 13:29:36.923 +07:00 [INF] Executed action method com.apthai.QISAPINETCore.Controllers.UnitMasterController.GetUHeader (com.apthai.QISAPINETCore), returned result Microsoft

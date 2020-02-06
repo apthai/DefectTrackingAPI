@@ -1,0 +1,755 @@
+2019-09-27 15:53:56.747 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 15:53:58.484 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 15:53:59.165 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 15:53:59.215 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 15:53:59.216 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 15:53:59.216 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 15:54:00.490 +07:00 [INF] Server apn-5cd6115wq9:27120:e66b3d3c successfully announced in 651.6424 ms
+2019-09-27 15:54:00.564 +07:00 [INF] Server apn-5cd6115wq9:27120:e66b3d3c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 15:54:01.804 +07:00 [INF] Server apn-5cd6115wq9:27120:e66b3d3c all the dispatchers started
+2019-09-27 15:54:03.528 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 15:54:03.792 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:54:03.825 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-27 15:54:03.958 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-27 15:54:03.974 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.4767ms.
+2019-09-27 15:54:03.988 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 15:54:04.040 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 212.0344ms
+2019-09-27 15:54:04.041 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:54:04.044 +07:00 [INF] Request finished in 519.4224ms 200 application/json; charset=utf-8
+2019-09-27 15:54:04.280 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 15:54:04.288 +07:00 [INF] Request finished in 8.6083ms 404 
+2019-09-27 15:54:07.978 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 15:54:07.979 +07:00 [INF] Request finished in 1.6949ms 301 
+2019-09-27 15:54:07.991 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 15:54:08.056 +07:00 [INF] Request finished in 65.0087ms 200 text/html
+2019-09-27 15:54:08.155 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 15:54:08.155 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 15:54:08.155 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 15:54:08.262 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 15:54:08.262 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 15:54:08.278 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 15:54:08.279 +07:00 [INF] Request finished in 124.149ms 200 application/javascript
+2019-09-27 15:54:08.279 +07:00 [INF] Request finished in 124.149ms 200 application/javascript
+2019-09-27 15:54:08.279 +07:00 [INF] R2019-09-27 15:56:19.513 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 15:56:20.039 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 15:56:20.531 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 15:56:20.576 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 15:56:20.577 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 15:56:20.577 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 15:56:21.391 +07:00 [INF] Server apn-5cd6115wq9:28592:f7bd8104 successfully announced in 411.7437 ms
+2019-09-27 15:56:21.423 +07:00 [INF] Server apn-5cd6115wq9:28592:f7bd8104 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 15:56:23.043 +07:00 [INF] Server apn-5cd6115wq9:28592:f7bd8104 all the dispatchers started
+2019-09-27 15:56:24.798 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 15:56:25.055 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:56:25.075 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-27 15:56:25.230 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-27 15:56:25.244 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.48600000000000004ms.
+2019-09-27 15:56:25.258 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 15:56:25.342 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 256.267ms
+2019-09-27 15:56:25.346 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:56:25.350 +07:00 [INF] Request finished in 557.0131ms 200 application/json; charset=utf-8
+2019-09-27 15:56:25.599 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 15:56:25.613 +07:00 [INF] Request finished in 13.9634ms 404 
+2019-09-27 15:56:32.962 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 15:56:32.964 +07:00 [INF] Request finished in 1.5848ms 301 
+2019-09-27 15:56:32.974 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 15:56:33.028 +07:00 [INF] Request finished in 53.8451ms 200 text/html
+2019-09-27 15:56:33.106 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 15:56:33.106 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 15:56:33.106 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 15:56:33.199 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 15:56:33.207 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 15:56:33.210 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 15:56:33.212 +07:00 [INF] Request finished in 105.6839ms 200 application/javascript
+2019-09-27 15:56:33.212 +07:00 [INF] Request finished in 120.792ms 200 application/javascript
+2019-09-27 15:56:33.212 2019-09-27 15:59:27.992 +07:00 [DBG] Hosting starting
+2019-09-27 15:59:28.218 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 15:59:28.227 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-0d2730ca-2020-4e04-a630-233661d2ddbe.xml'.
+2019-09-27 15:59:28.274 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-75ceaef1-3ea3-4746-8a08-2125fc030afe.xml'.
+2019-09-27 15:59:28.274 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-e66457ff-679e-491f-9eb9-840602cc53bf.xml'.
+2019-09-27 15:59:28.284 +07:00 [DBG] Found key "0d2730ca-2020-4e04-a630-233661d2ddbe".
+2019-09-27 15:59:28.307 +07:00 [DBG] Found key "75ceaef1-3ea3-4746-8a08-2125fc030afe".
+2019-09-27 15:59:28.307 +07:00 [DBG] Found key "e66457ff-679e-491f-9eb9-840602cc53bf".
+2019-09-27 15:59:28.330 +07:00 [DBG] Considering key "e66457ff-679e-491f-9eb9-840602cc53bf" with expiration date "2019-12-02T02:02:54.9163754+00:00" as default key.
+2019-09-27 15:59:28.416 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 15:59:28.417 +07:00 [DBG] Decrypting secret element using Windows DPAPI.
+2019-09-27 15:59:28.426 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 15:59:28.428 +07:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2019-09-27 15:59:28.435 +07:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2019-09-27 15:59:28.442 +07:00 [DBG] Using key "e66457ff-679e-491f-9eb9-840602cc53bf" as the default key.
+2019-09-27 15:59:28.443 +07:00 [DBG] Key ring with default key "e66457ff-679e-491f-9eb9-840602cc53bf" was loaded during application startup.
+2019-09-27 15:59:28.975 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 15:59:29.784 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 15:59:29.832 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 15:59:29.833 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 15:59:29.834 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 15:59:29.972 +07:00 [DBG] Execution loop BackgroundServerProcess:b68e6fa5 has started in 90.5026 ms
+2019-09-27 15:59:30.132 +07:00 [DBG] Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.262 +07:00 [DBG] Compatibility switch AllowCombiningAuthorizeFilters in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.262 +07:00 [DBG] Compatibility switch AllowBindingHeaderValuesToNonStringModelTypes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.262 +07:00 [DBG] Compatibility switch AllowValidatingTopLevelNodes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.262 +07:00 [DBG] Compatibility switch InputFormatterExceptionPolicy in type MvcOptions is using compatibility value "MalformedInputExceptions" for version "Version_2_2"
+2019-09-27 15:59:30.262 +07:00 [DBG] Compatibility switch SuppressBindingUndefinedValueToEnumType in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.262 +07:00 [DBG] Compatibility switch EnableEndpointRouting in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.263 +07:00 [DBG] Compatibility switch MaxValidationDepth in type MvcOptions is using compatibility value 32 for version "Version_2_2"
+2019-09-27 15:59:30.263 +07:00 [DBG] Compatibility switch AllowShortCircuitingValidationWhenNoValidatorsArePresent in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.286 +07:00 [DBG] Compatibility switch SuppressMapClientErrors in type ApiBehaviorOptions is using default value false
+2019-09-27 15:59:30.287 +07:00 [DBG] Compatibility switch SuppressUseValidationProblemDetailsForInvalidModelStateResponses in type ApiBehaviorOptions is using default value false
+2019-09-27 15:59:30.287 +07:00 [DBG] Compatibility switch AllowInferringBindingSourceForCollectionTypesAsFromQuery in type ApiBehaviorOptions is using default value false
+2019-09-27 15:59:30.294 +07:00 [DBG] Compatibility switch AllowAreas in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.294 +07:00 [DBG] Compatibility switch AllowMappingHeadRequestsToGetHandler in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.294 +07:00 [DBG] Compatibility switch AllowDefaultHandlingForOptionsRequests in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.359 +07:00 [DBG] Compatibility switch AllowRecompilingViewsOnFileChange in type RazorViewEngineOptions is using explicitly configured value true
+2019-09-27 15:59:30.473 +07:00 [INF] Server apn-5cd6115wq9:26740:538fe0a8 successfully announced in 394.9211 ms
+2019-09-27 15:59:30.500 +07:00 [INF] Server apn-5cd6115wq9:26740:538fe0a8 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 15:59:30.501 +07:00 [DBG] Compatibility switch SuppressTempDataAttributePrefix in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.501 +07:00 [DBG] Compatibility switch AllowRenderingMaxLengthAttribute in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 15:59:30.507 +07:00 [DBG] Execution loop ServerHeartbeatProcess:1fe53922 has started in 30.9637 ms
+2019-09-27 15:59:30.575 +07:00 [DBG] Execution loop ServerWatchdog:05070273 has started in 75.0687 ms
+2019-09-27 15:59:30.697 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:f9bfb335 has started in 186.7497 ms
+2019-09-27 15:59:30.762 +07:00 [INF] 1 servers were removed due to timeout
+2019-09-27 15:59:30.779 +07:00 [DBG] Execution loop ExpirationManager:dfbe2f06 has started in 113.4216 ms
+2019-09-27 15:59:30.788 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-27 15:59:30.892 +07:00 [DBG] Execution loop CountersAggregator:586c96fc has started in 136.644 ms
+2019-09-27 15:59:30.914 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-27 15:59:30.937 +07:00 [DBG] Execution loop Worker:434e84f3 has started in 80.9403 ms
+2019-09-27 15:59:30.990 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-27 15:59:30.995 +07:00 [DBG] Execution loop Worker:c8a28fea has started in 139.0982 ms
+2019-09-27 15:59:31.050 +07:00 [DBG] Execution loop Worker:e76bf2be has started in 193.5226 ms
+2019-09-27 15:59:31.078 +07:00 [DBG] Execution loop Worker:d608360e has started in 221.474 ms
+2019-09-27 15:59:31.109 +07:00 [DBG] Execution loop Worker:bbffa643 has started in 252.9715 ms
+2019-09-27 15:59:31.144 +07:00 [DBG] Execution loop Worker:34da012a has started in 287.9077 ms
+2019-09-27 15:59:31.161 +07:00 [DBG] Execution loop Worker:9d301c07 has started in 304.6231 ms
+2019-09-27 15:59:31.213 +07:00 [DBG] Execution loop Worker:392e2d72 has started in 357.3249 ms
+2019-09-27 15:59:31.214 +07:00 [DBG] Execution loop Worker:f7fcf2bd has started in 357.6176 ms
+2019-09-27 15:59:31.215 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-27 15:59:31.323 +07:00 [DBG] Execution loop Worker:29df6d91 has started in 466.9616 ms
+2019-09-27 15:59:31.363 +07:00 [DBG] Execution loop Worker:ddbe8f39 has started in 506.6302 ms
+2019-09-27 15:59:31.429 +07:00 [DBG] Execution loop Worker:29c0f149 has started in 572.9906 ms
+2019-09-27 15:59:31.537 +07:00 [DBG] Execution loop Worker:8716cab7 has started in 680.5501 ms
+2019-09-27 15:59:31.537 +07:00 [DBG] Execution loop Worker:5ac59602 has started in 680.8226 ms
+2019-09-27 15:59:31.537 +07:00 [DBG] Execution loop Worker:f90b4677 has started in 680.9529 ms
+2019-09-27 15:59:31.591 +07:00 [DBG] Execution loop Worker:0aee820a has started in 735.1833 ms
+2019-09-27 15:59:31.644 +07:00 [DBG] Execution loop Worker:f12a9227 has started in 787.4899 ms
+2019-09-27 15:59:31.680 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-27 15:59:31.795 +07:00 [DBG] Execution loop Worker:3a317351 has started in 938.8502 ms
+2019-09-27 15:59:31.825 +07:00 [DBG] Execution loop Worker:385ec7d1 has started in 969.2943 ms
+2019-09-27 15:59:31.896 +07:00 [DBG] Execution loop Worker:a29d0233 has started in 1039.5064 ms
+2019-09-27 15:59:31.921 +07:00 [INF] Server apn-5cd6115wq9:26740:538fe0a8 all the dispatchers started
+2019-09-27 15:59:31.922 +07:00 [DBG] Execution loop DelayedJobScheduler:c6591388 has started in 123.5609 ms
+2019-09-27 15:59:31.938 +07:00 [DBG] Execution loop RecurringJobScheduler:b613b99b has started in 84.0385 ms
+2019-09-27 15:59:31.960 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-27 15:59:33.065 +07:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2019-09-27 15:59:34.010 +07:00 [DBG] Hosting started
+2019-09-27 15:59:34.010 +07:00 [DBG] Loaded hosting startup assembly com.apthai.DefectAPI
+2019-09-27 15:59:34.010 +07:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Server.IISIntegration
+2019-09-27 15:59:34.159 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 15:59:34.166 +07:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2019-09-27 15:59:34.311 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 15:59:34.528 +07:00 [DBG] 1 candidate(s) found for the request path '/api/values'
+2019-09-27 15:59:34.529 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)' with route pattern 'api/Values' is valid for the request path '/api/values'
+2019-09-27 15:59:34.531 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:59:34.533 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:59:34.612 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-27 15:59:34.613 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 15:59:34.613 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 15:59:34.613 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 15:59:34.614 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 15:59:34.614 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 15:59:34.804 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-27 15:59:34.812 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1.0803ms.
+2019-09-27 15:59:34.827 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 15:59:34.832 +07:00 [DBG] No information found on request to perform content negotiation.
+2019-09-27 15:59:34.832 +07:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-09-27 15:59:34.832 +07:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2019-09-27 15:59:34.833 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 15:59:34.833 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 15:59:34.905 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 282.2823ms
+2019-09-27 15:59:34.907 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 15:59:34.911 +07:00 [INF] Request finished in 753.7499ms 200 application/json; charset=utf-8
+2019-09-27 15:59:35.163 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 15:59:35.165 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 15:59:35.166 +07:00 [DBG] No candidates found for the request path '/favicon.ico'
+2019-09-27 15:59:35.166 +07:00 [DBG] Request did not match any endpoints
+2019-09-27 15:59:35.187 +07:00 [INF] Request finished in 23.7412ms 404 
+2019-09-27 15:59:39.829 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 15:59:39.831 +07:00 [INF] Request finished in 2.2446ms 301 
+2019-09-27 15:59:39.861 +07:00 [DBG] Connection ID "17798225741863714951" disconnecting.
+2019-09-27 15:59:39.878 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 15:59:39.960 +07:00 [INF] Request finished in 81.7071ms 200 text/html
+2019-09-27 15:59:40.015 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 15:59:40.015 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 15:59:40.015 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 15:59:40.090 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 15:59:40.090 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 15:59:40.102 +07:00 [INF] Request finished in 87.4917ms 200 text/css
+2019-09-27 15:59:40.110 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 15:59:40.111 +07:00 [INF] Request finished in 95.872ms 200 application/javascript
+2019-09-27 15:59:40.205 +07:00 [INF] Request finished in 189.779ms 200 application/javascript
+2019-09-27 15:59:40.528 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-27 15:59:40.610 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-27 15:59:40.610 +07:00 [INF] Request finished in 81.9035ms 200 text/plain
+2019-09-27 15:59:41.943 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-27 15:59:41.962 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-27 15:59:41.962 +07:00 [INF] Request finished in 20.0947ms 200 text/plain
+2019-09-27 15:59:42.647 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-27 15:59:43.550 +07:00 [INF] Request finished in 903.0264ms 200 application/json;charset=utf-8
+2019-09-27 16:00:00.695 +07:00 [DBG] Server apn-5cd6115wq9:26740:538fe0a8 heartbeat successfully sent
+2019-09-27 16:00:04.874 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/UnitMaster/GetUHeader application/json-patch+json 81
+2019-09-27 16:00:04.875 +07:00 [DBG] POST requests are not supported
+2019-09-27 16:00:04.921 +07:00 [DBG] 1 candidate(s) found for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:00:04.921 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)' with route pattern 'api/UnitMaster/GetUHeader' is valid for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:00:04.921 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:00:04.921 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:00:04.975 +07:00 [INF] Route matched with {action = "GetUHeader", controller = "UnitMaster"}. Executing action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)
+2019-09-27 16:00:04.975 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:00:04.975 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:00:04.975 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:00:04.975 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:00:04.975 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:00:04.997 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:00:05.003 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' using the name '' in request data ...
+2019-09-27 16:00:05.004 +07:00 [DBG] Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:00:05.004 +07:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:00:05.044 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:00:05.045 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:00:05.045 +07:00 [DBG] Attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:00:05.050 +07:00 [DBG] Done attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:00:05.124 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.CreateHeader"]) - Validation state: "Valid"
+2019-09-27 16:00:07.425 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2300.3675000000003ms.
+2019-09-27 16:00:07.425 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:00:07.428 +07:00 [DBG] Attempting to select an output formatter based on Accept header '["application/json"]'.
+2019-09-27 16:00:07.429 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:00:07.429 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.CustomModel.GetUHeaderResult, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-27 16:00:07.557 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) in 2581.4749ms
+2019-09-27 16:00:07.581 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:00:07.582 +07:00 [INF] Request finished in 2709.2172ms 200 application/json; charset=utf-8
+2019-09-27 16:00:30.733 +07:00 [DBG] Server apn-5cd6115wq9:26740:538fe0a8 heartbeat successfully sent
+2019-09-27 16:01:32.545 +07:00 [DBG] Hosting starting
+2019-09-27 16:01:33.135 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 16:01:33.160 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-0d2730ca-2020-4e04-a630-233661d2ddbe.xml'.
+2019-09-27 16:01:33.276 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-75ceaef1-3ea3-4746-8a08-2125fc030afe.xml'.
+2019-09-27 16:01:33.277 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-e66457ff-679e-491f-9eb9-840602cc53bf.xml'.
+2019-09-27 16:01:33.288 +07:00 [DBG] Found key "0d2730ca-2020-4e04-a630-233661d2ddbe".
+2019-09-27 16:01:33.295 +07:00 [DBG] Found key "75ceaef1-3ea3-4746-8a08-2125fc030afe".
+2019-09-27 16:01:33.296 +07:00 [DBG] Found key "e66457ff-679e-491f-9eb9-840602cc53bf".
+2019-09-27 16:01:33.317 +07:00 [DBG] Considering key "e66457ff-679e-491f-9eb9-840602cc53bf" with expiration date "2019-12-02T02:02:54.9163754+00:00" as default key.
+2019-09-27 16:01:33.400 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 16:01:33.401 +07:00 [DBG] Decrypting secret element using Windows DPAPI.
+2019-09-27 16:01:33.403 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 16:01:33.404 +07:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2019-09-27 16:01:33.409 +07:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2019-09-27 16:01:33.420 +07:00 [DBG] Using key "e66457ff-679e-491f-9eb9-840602cc53bf" as the default key.
+2019-09-27 16:01:33.421 +07:00 [DBG] Key ring with default key "e66457ff-679e-491f-9eb9-840602cc53bf" was loaded during application startup.
+2019-09-27 16:01:33.573 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 16:01:34.083 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 16:01:34.132 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 16:01:34.133 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 16:01:34.133 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 16:01:34.309 +07:00 [DBG] Execution loop BackgroundServerProcess:25d19810 has started in 149.9415 ms
+2019-09-27 16:01:34.359 +07:00 [DBG] Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.510 +07:00 [DBG] Compatibility switch AllowCombiningAuthorizeFilters in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.510 +07:00 [DBG] Compatibility switch AllowBindingHeaderValuesToNonStringModelTypes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.511 +07:00 [DBG] Compatibility switch AllowValidatingTopLevelNodes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.511 +07:00 [DBG] Compatibility switch InputFormatterExceptionPolicy in type MvcOptions is using compatibility value "MalformedInputExceptions" for version "Version_2_2"
+2019-09-27 16:01:34.512 +07:00 [DBG] Compatibility switch SuppressBindingUndefinedValueToEnumType in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.513 +07:00 [DBG] Compatibility switch EnableEndpointRouting in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.514 +07:00 [DBG] Compatibility switch MaxValidationDepth in type MvcOptions is using compatibility value 32 for version "Version_2_2"
+2019-09-27 16:01:34.516 +07:00 [DBG] Compatibility switch AllowShortCircuitingValidationWhenNoValidatorsArePresent in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.536 +07:00 [DBG] Compatibility switch SuppressMapClientErrors in type ApiBehaviorOptions is using default value false
+2019-09-27 16:01:34.536 +07:00 [DBG] Compatibility switch SuppressUseValidationProblemDetailsForInvalidModelStateResponses in type ApiBehaviorOptions is using default value false
+2019-09-27 16:01:34.536 +07:00 [DBG] Compatibility switch AllowInferringBindingSourceForCollectionTypesAsFromQuery in type ApiBehaviorOptions is using default value false
+2019-09-27 16:01:34.542 +07:00 [DBG] Compatibility switch AllowAreas in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.542 +07:00 [DBG] Compatibility switch AllowMappingHeadRequestsToGetHandler in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.542 +07:00 [DBG] Compatibility switch AllowDefaultHandlingForOptionsRequests in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.568 +07:00 [DBG] Compatibility switch AllowRecompilingViewsOnFileChange in type RazorViewEngineOptions is using explicitly configured value true
+2019-09-27 16:01:34.617 +07:00 [DBG] Compatibility switch SuppressTempDataAttributePrefix in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.617 +07:00 [DBG] Compatibility switch AllowRenderingMaxLengthAttribute in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:01:34.744 +07:00 [INF] Server apn-5cd6115wq9:13100:9485f99a successfully announced in 384.6605 ms
+2019-09-27 16:01:34.773 +07:00 [DBG] Execution loop ServerHeartbeatProcess:4b03d602 has started in 25.4997 ms
+2019-09-27 16:01:34.775 +07:00 [INF] Server apn-5cd6115wq9:13100:9485f99a is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 16:01:34.813 +07:00 [DBG] Execution loop ServerWatchdog:9fc65c35 has started in 38.1234 ms
+2019-09-27 16:01:34.831 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:a7fb25c8 has started in 42.2143 ms
+2019-09-27 16:01:34.903 +07:00 [DBG] Execution loop ExpirationManager:41ac8c51 has started in 71.1715 ms
+2019-09-27 16:01:34.905 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-27 16:01:35.034 +07:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2019-09-27 16:01:35.199 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-27 16:01:35.041 +07:00 [DBG] Execution loop CountersAggregator:09a39f97 has started in 159.094 ms
+2019-09-27 16:01:35.101 +07:00 [DBG] Execution loop Worker:82396ce3 has started in 89.7411 ms
+2019-09-27 16:01:35.194 +07:00 [DBG] Execution loop Worker:698f6163 has started in 182.8108 ms
+2019-09-27 16:01:35.223 +07:00 [DBG] Execution loop Worker:a3cdb713 has started in 211.9465 ms
+2019-09-27 16:01:35.240 +07:00 [DBG] Execution loop Worker:e51529d1 has started in 228.3125 ms
+2019-09-27 16:01:35.260 +07:00 [DBG] Execution loop Worker:bcb3141f has started in 249.0593 ms
+2019-09-27 16:01:35.286 +07:00 [DBG] Execution loop Worker:a62cbee9 has started in 273.4408 ms
+2019-09-27 16:01:35.322 +07:00 [DBG] Execution loop Worker:385f382a has started in 310.9341 ms
+2019-09-27 16:01:35.358 +07:00 [DBG] Execution loop Worker:754a637f has started in 347.0736 ms
+2019-09-27 16:01:35.395 +07:00 [DBG] Execution loop Worker:bc47314f has started in 384.001 ms
+2019-09-27 16:01:35.423 +07:00 [DBG] Execution loop Worker:95164e71 has started in 411.9743 ms
+2019-09-27 16:01:35.441 +07:00 [DBG] Execution loop Worker:d0832bbe has started in 430.0292 ms
+2019-09-27 16:01:35.459 +07:00 [DBG] Execution loop Worker:3f2cff0a has started in 445.554 ms
+2019-09-27 16:01:35.493 +07:00 [DBG] Execution loop Worker:41be5fa2 has started in 481.6656 ms
+2019-09-27 16:01:35.511 +07:00 [DBG] Execution loop Worker:79e12af7 has started in 499.5376 ms
+2019-09-27 16:01:35.528 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-27 16:01:35.542 +07:00 [DBG] Execution loop Worker:c670f107 has started in 530.6297 ms
+2019-09-27 16:01:35.709 +07:00 [DBG] Execution loop Worker:7ce0bda0 has started in 697.7336 ms
+2019-09-27 16:01:35.808 +07:00 [DBG] Execution loop Worker:24d9ca9b has started in 796.3221 ms
+2019-09-27 16:01:35.887 +07:00 [DBG] Execution loop Worker:81eacafb has started in 876.0716 ms
+2019-09-27 16:01:35.926 +07:00 [DBG] Execution loop Worker:4e8737ce has started in 915.1722 ms
+2019-09-27 16:01:35.947 +07:00 [DBG] Execution loop Worker:baf240ec has started in 935.2179 ms
+2019-09-27 16:01:35.975 +07:00 [INF] Server apn-5cd6115wq9:13100:9485f99a all the dispatchers started
+2019-09-27 16:01:35.990 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-27 16:01:35.990 +07:00 [DBG] Execution loop DelayedJobScheduler:adabcdb0 has started in 100.8732 ms
+2019-09-27 16:01:36.126 +07:00 [DBG] Execution loop RecurringJobScheduler:7303df9b has started in 194.1099 ms
+2019-09-27 16:01:36.290 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-27 16:01:36.731 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-27 16:01:38.204 +07:00 [DBG] Hosting started
+2019-09-27 16:01:38.204 +07:00 [DBG] Loaded hosting startup assembly com.apthai.DefectAPI
+2019-09-27 16:01:38.204 +07:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Server.IISIntegration
+2019-09-27 16:01:38.384 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 16:01:38.392 +07:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2019-09-27 16:01:38.535 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 16:01:38.689 +07:00 [DBG] 1 candidate(s) found for the request path '/api/values'
+2019-09-27 16:01:38.699 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)' with route pattern 'api/Values' is valid for the request path '/api/values'
+2019-09-27 16:01:38.701 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:01:38.730 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:01:38.750 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-27 16:01:38.752 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:01:38.752 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:01:38.752 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:01:38.753 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:01:38.753 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:01:38.940 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-27 16:01:38.950 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.52460000000000007ms.
+2019-09-27 16:01:38.961 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:01:38.970 +07:00 [DBG] No information found on request to perform content negotiation.
+2019-09-27 16:01:38.970 +07:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-09-27 16:01:38.970 +07:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2019-09-27 16:01:38.971 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:01:38.971 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 16:01:39.069 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 307.9074ms
+2019-09-27 16:01:39.070 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:01:39.073 +07:00 [INF] Request finished in 691.0358ms 200 application/json; charset=utf-8
+2019-09-27 16:01:39.315 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 16:01:39.316 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 16:01:39.316 +07:00 [DBG] No candidates found for the request path '/favicon.ico'
+2019-09-27 16:01:39.316 +07:00 [DBG] Request did not match any endpoints
+2019-09-27 16:01:39.335 +07:00 [INF] Request finished in 19.713ms 404 
+2019-09-27 16:01:49.703 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 16:01:49.706 +07:00 [INF] Request finished in 2.3846ms 301 
+2019-09-27 16:01:49.729 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 16:01:49.782 +07:00 [INF] Request finished in 53.2449ms 200 text/html
+2019-09-27 16:01:49.843 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 16:01:49.843 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 16:01:49.847 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 16:01:49.906 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 16:01:49.906 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 16:01:49.913 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 16:01:49.918 +07:00 [INF] Request finished in 72.1478ms 200 application/javascript
+2019-09-27 16:01:49.918 +07:00 [INF] Request finished in 75.2494ms 200 text/css
+2019-09-27 16:01:49.918 +07:00 [INF] Request finished in 75.2455ms 200 application/javascript
+2019-09-27 16:01:50.305 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-27 16:01:50.385 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-27 16:01:50.386 +07:00 [INF] Request finished in 80.1891ms 200 text/plain
+2019-09-27 16:01:52.240 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-27 16:01:52.329 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-27 16:01:52.330 +07:00 [INF] Request finished in 89.7002ms 200 text/plain
+2019-09-27 16:01:52.801 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-27 16:01:53.340 +07:00 [INF] Request finished in 539.2075ms 200 application/json;charset=utf-8
+2019-09-27 16:02:04.867 +07:00 [DBG] Server apn-5cd6115wq9:13100:9485f99a heartbeat successfully sent
+2019-09-27 16:02:34.913 +07:00 [DBG] Server apn-5cd6115wq9:13100:9485f99a heartbeat successfully sent
+2019-09-27 16:02:44.033 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/UnitMaster/GetUHeader application/json-patch+json 85
+2019-09-27 16:02:44.035 +07:00 [DBG] POST requests are not supported
+2019-09-27 16:02:44.063 +07:00 [DBG] 1 candidate(s) found for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:02:44.063 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)' with route pattern 'api/UnitMaster/GetUHeader' is valid for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:02:44.084 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:02:44.084 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:02:44.123 +07:00 [INF] Route matched with {action = "GetUHeader", controller = "UnitMaster"}. Executing action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)
+2019-09-27 16:02:44.123 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:02:44.123 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:02:44.124 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:02:44.124 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:02:44.124 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:02:44.134 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:02:44.142 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' using the name '' in request data ...
+2019-09-27 16:02:44.142 +07:00 [DBG] Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:02:44.142 +07:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:02:44.165 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:02:44.165 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:02:44.165 +07:00 [DBG] Attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:02:44.176 +07:00 [DBG] Done attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:02:44.232 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.CreateHeader"]) - Validation state: "Valid"
+2019-09-27 16:02:48.633 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4401.4708ms.
+2019-09-27 16:02:48.634 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:02:48.637 +07:00 [DBG] Attempting to select an output formatter based on Accept header '["application/json"]'.
+2019-09-27 16:02:48.637 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:02:48.638 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.CustomModel.GetUHeaderResult, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-27 16:02:48.709 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) in 4585.4592ms
+2019-09-27 16:02:48.710 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:02:48.711 +07:00 [INF] Request finished in 4678.544ms 200 application/json; charset=utf-8
+2019-09-27 16:03:04.955 +07:00 [DBG] Server apn-5cd6115wq9:13100:9485f99a heartbeat successfully sent
+2019-09-27 16:03:37.561 +07:00 [DBG] Hosting starting
+2019-09-27 16:03:38.180 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 16:03:38.205 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-0d2730ca-2020-4e04-a630-233661d2ddbe.xml'.
+2019-09-27 16:03:38.308 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-75ceaef1-3ea3-4746-8a08-2125fc030afe.xml'.
+2019-09-27 16:03:38.313 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-e66457ff-679e-491f-9eb9-840602cc53bf.xml'.
+2019-09-27 16:03:38.323 +07:00 [DBG] Found key "0d2730ca-2020-4e04-a630-233661d2ddbe".
+2019-09-27 16:03:38.335 +07:00 [DBG] Found key "75ceaef1-3ea3-4746-8a08-2125fc030afe".
+2019-09-27 16:03:38.335 +07:00 [DBG] Found key "e66457ff-679e-491f-9eb9-840602cc53bf".
+2019-09-27 16:03:38.350 +07:00 [DBG] Considering key "e66457ff-679e-491f-9eb9-840602cc53bf" with expiration date "2019-12-02T02:02:54.9163754+00:00" as default key.
+2019-09-27 16:03:38.424 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 16:03:38.425 +07:00 [DBG] Decrypting secret element using Windows DPAPI.
+2019-09-27 16:03:38.430 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 16:03:38.432 +07:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2019-09-27 16:03:38.436 +07:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2019-09-27 16:03:38.442 +07:00 [DBG] Using key "e66457ff-679e-491f-9eb9-840602cc53bf" as the default key.
+2019-09-27 16:03:38.442 +07:00 [DBG] Key ring with default key "e66457ff-679e-491f-9eb9-840602cc53bf" was loaded during application startup.
+2019-09-27 16:03:38.749 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 16:03:39.432 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 16:03:39.482 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 16:03:39.482 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 16:03:39.483 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 16:03:39.750 +07:00 [DBG] Execution loop BackgroundServerProcess:ce118eab has started in 242.675 ms
+2019-09-27 16:03:39.786 +07:00 [DBG] Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.955 +07:00 [DBG] Compatibility switch AllowCombiningAuthorizeFilters in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.955 +07:00 [DBG] Compatibility switch AllowBindingHeaderValuesToNonStringModelTypes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.955 +07:00 [DBG] Compatibility switch AllowValidatingTopLevelNodes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.955 +07:00 [DBG] Compatibility switch InputFormatterExceptionPolicy in type MvcOptions is using compatibility value "MalformedInputExceptions" for version "Version_2_2"
+2019-09-27 16:03:39.955 +07:00 [DBG] Compatibility switch SuppressBindingUndefinedValueToEnumType in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.955 +07:00 [DBG] Compatibility switch EnableEndpointRouting in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.956 +07:00 [DBG] Compatibility switch MaxValidationDepth in type MvcOptions is using compatibility value 32 for version "Version_2_2"
+2019-09-27 16:03:39.956 +07:00 [DBG] Compatibility switch AllowShortCircuitingValidationWhenNoValidatorsArePresent in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.970 +07:00 [DBG] Compatibility switch SuppressMapClientErrors in type ApiBehaviorOptions is using default value false
+2019-09-27 16:03:39.971 +07:00 [DBG] Compatibility switch SuppressUseValidationProblemDetailsForInvalidModelStateResponses in type ApiBehaviorOptions is using default value false
+2019-09-27 16:03:39.971 +07:00 [DBG] Compatibility switch AllowInferringBindingSourceForCollectionTypesAsFromQuery in type ApiBehaviorOptions is using default value false
+2019-09-27 16:03:39.979 +07:00 [DBG] Compatibility switch AllowAreas in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.979 +07:00 [DBG] Compatibility switch AllowMappingHeadRequestsToGetHandler in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:39.979 +07:00 [DBG] Compatibility switch AllowDefaultHandlingForOptionsRequests in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:40.002 +07:00 [DBG] Compatibility switch AllowRecompilingViewsOnFileChange in type RazorViewEngineOptions is using explicitly configured value true
+2019-09-27 16:03:40.051 +07:00 [DBG] Compatibility switch SuppressTempDataAttributePrefix in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:40.051 +07:00 [DBG] Compatibility switch AllowRenderingMaxLengthAttribute in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:03:40.177 +07:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2019-09-27 16:03:40.280 +07:00 [INF] Server apn-5cd6115wq9:16964:eabe6072 successfully announced in 410.0228 ms
+2019-09-27 16:03:40.301 +07:00 [INF] Server apn-5cd6115wq9:16964:eabe6072 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 16:03:40.358 +07:00 [DBG] Execution loop ServerHeartbeatProcess:7c117c58 has started in 75.5176 ms
+2019-09-27 16:03:40.431 +07:00 [DBG] Execution loop ServerWatchdog:d2b8f9cd has started in 129.5629 ms
+2019-09-27 16:03:40.485 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:bdde5c32 has started in 126.2459 ms
+2019-09-27 16:03:40.525 +07:00 [INF] 1 servers were removed due to timeout
+2019-09-27 16:03:40.534 +07:00 [DBG] Execution loop ExpirationManager:9b43b4ca has started in 80.3001 ms
+2019-09-27 16:03:40.558 +07:00 [DBG] Execution loop CountersAggregator:c660b839 has started in 44.9135 ms
+2019-09-27 16:03:40.558 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-27 16:03:40.571 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-27 16:03:40.616 +07:00 [DBG] Execution loop Worker:c84789ee has started in 77.2219 ms
+2019-09-27 16:03:40.655 +07:00 [DBG] Execution loop Worker:b63459eb has started in 115.6304 ms
+2019-09-27 16:03:40.707 +07:00 [DBG] Execution loop Worker:8264406e has started in 168.5741 ms
+2019-09-27 16:03:40.739 +07:00 [DBG] Execution loop Worker:cb182899 has started in 200.089 ms
+2019-09-27 16:03:40.804 +07:00 [DBG] Execution loop Worker:502c384a has started in 265.0979 ms
+2019-09-27 16:03:40.825 +07:00 [DBG] Execution loop Worker:8aafcc30 has started in 286.2935 ms
+2019-09-27 16:03:40.883 +07:00 [DBG] Execution loop Worker:8d155029 has started in 343.8233 ms
+2019-09-27 16:03:40.980 +07:00 [DBG] Execution loop Worker:3478929f has started in 441.0616 ms
+2019-09-27 16:03:41.029 +07:00 [DBG] Execution loop Worker:21242d91 has started in 490.1295 ms
+2019-09-27 16:03:41.119 +07:00 [DBG] Execution loop Worker:3dc5bed1 has started in 580.5298 ms
+2019-09-27 16:03:41.139 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-27 16:03:41.198 +07:00 [DBG] Execution loop Worker:dd2408ad has started in 658.9202 ms
+2019-09-27 16:03:41.230 +07:00 [DBG] Execution loop Worker:6558272e has started in 691.5932 ms
+2019-09-27 16:03:41.296 +07:00 [DBG] Execution loop Worker:665cb214 has started in 757.6158 ms
+2019-09-27 16:03:41.341 +07:00 [DBG] Execution loop Worker:a70bd554 has started in 802.1237 ms
+2019-09-27 16:03:41.370 +07:00 [DBG] Execution loop Worker:fbd6de6c has started in 831.1651 ms
+2019-09-27 16:03:41.389 +07:00 [DBG] Execution loop Worker:36eb39e4 has started in 850.0532 ms
+2019-09-27 16:03:41.499 +07:00 [DBG] Execution loop Worker:ffe24911 has started in 959.8878 ms
+2019-09-27 16:03:41.572 +07:00 [DBG] Execution loop Worker:d352c796 has started in 1033.1513 ms
+2019-09-27 16:03:41.616 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-27 16:03:41.706 +07:00 [DBG] Execution loop Worker:269ef83d has started in 1167.2691 ms
+2019-09-27 16:03:41.844 +07:00 [DBG] Execution loop Worker:a7cf8556 has started in 1304.9036 ms
+2019-09-27 16:03:41.847 +07:00 [DBG] Execution loop DelayedJobScheduler:b980413b has started in 274.2262 ms
+2019-09-27 16:03:41.847 +07:00 [INF] Server apn-5cd6115wq9:16964:eabe6072 all the dispatchers started
+2019-09-27 16:03:41.909 +07:00 [DBG] Execution loop RecurringJobScheduler:f047edd1 has started in 191.297 ms
+2019-09-27 16:03:42.179 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-27 16:03:42.487 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-27 16:03:43.620 +07:00 [DBG] Hosting started
+2019-09-27 16:03:43.620 +07:00 [DBG] Loaded hosting startup assembly com.apthai.DefectAPI
+2019-09-27 16:03:43.620 +07:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Server.IISIntegration
+2019-09-27 16:03:43.787 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 16:03:43.795 +07:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2019-09-27 16:03:43.925 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 16:03:44.063 +07:00 [DBG] 1 candidate(s) found for the request path '/api/values'
+2019-09-27 16:03:44.064 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)' with route pattern 'api/Values' is valid for the request path '/api/values'
+2019-09-27 16:03:44.065 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:03:44.067 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:03:44.106 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-27 16:03:44.107 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:03:44.107 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:03:44.108 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:03:44.108 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:03:44.108 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:03:44.330 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-27 16:03:44.336 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.4424ms.
+2019-09-27 16:03:44.355 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:03:44.360 +07:00 [DBG] No information found on request to perform content negotiation.
+2019-09-27 16:03:44.360 +07:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-09-27 16:03:44.360 +07:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2019-09-27 16:03:44.362 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:03:44.362 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 16:03:44.466 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 353.51590000000004ms
+2019-09-27 16:03:44.467 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:03:44.473 +07:00 [INF] Request finished in 685.9518ms 200 application/json; charset=utf-8
+2019-09-27 16:03:44.723 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 16:03:44.724 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 16:03:44.724 +07:00 [DBG] No candidates found for the request path '/favicon.ico'
+2019-09-27 16:03:44.724 +07:00 [DBG] Request did not match any endpoints
+2019-09-27 16:03:44.751 +07:00 [INF] Request finished in 28.1404ms 404 
+2019-09-27 16:04:02.882 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 16:04:02.884 +07:00 [INF] Request finished in 2.3427ms 301 
+2019-09-27 16:04:02.895 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 16:04:02.978 +07:00 [INF] Request finished in 82.9204ms 200 text/html
+2019-09-27 16:04:03.020 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 16:04:03.021 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 16:04:03.035 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 16:04:03.102 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 16:04:03.102 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 16:04:03.107 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 16:04:03.110 +07:00 [INF] Request finished in 88.8588ms 200 application/javascript
+2019-09-27 16:04:03.110 +07:00 [INF] Request finished in 74.91ms 200 application/javascript
+2019-09-27 16:04:03.110 +07:00 [INF] Request finished in 90.1112ms 200 text/css
+2019-09-27 16:04:03.498 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-27 16:04:03.519 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-27 16:04:03.519 +07:00 [INF] Request finished in 21.4301ms 200 text/plain
+2019-09-27 16:04:04.599 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-27 16:04:04.610 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-27 16:04:04.610 +07:00 [INF] Request finished in 10.8339ms 200 text/plain
+2019-09-27 16:04:05.071 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-27 16:04:05.581 +07:00 [INF] Request finished in 510.1202ms 200 application/json;charset=utf-8
+2019-09-27 16:04:10.429 +07:00 [DBG] Server apn-5cd6115wq9:16964:eabe6072 heartbeat successfully sent
+2019-09-27 16:04:40.452 +07:00 [DBG] Server apn-5cd6115wq9:16964:eabe6072 heartbeat successfully sent
+2019-09-27 16:04:50.282 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/UnitMaster/GetUHeader application/json-patch+json 81
+2019-09-27 16:04:50.282 +07:00 [DBG] POST requests are not supported
+2019-09-27 16:04:50.315 +07:00 [DBG] 1 candidate(s) found for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:04:50.315 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)' with route pattern 'api/UnitMaster/GetUHeader' is valid for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:04:50.315 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:04:50.317 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:04:50.380 +07:00 [INF] Route matched with {action = "GetUHeader", controller = "UnitMaster"}. Executing action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)
+2019-09-27 16:04:50.380 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:04:50.380 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:04:50.380 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:04:50.380 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:04:50.380 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:04:50.397 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:04:50.404 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' using the name '' in request data ...
+2019-09-27 16:04:50.405 +07:00 [DBG] Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:04:50.405 +07:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:04:50.430 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:04:50.430 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:04:50.431 +07:00 [DBG] Attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:04:50.438 +07:00 [DBG] Done attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:04:50.491 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.CreateHeader"]) - Validation state: "Valid"
+2019-09-27 16:04:52.226 +07:00 [INF] No one listens to me!
+2019-09-27 16:04:52.580 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2088.4588ms.
+2019-09-27 16:04:52.581 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:04:52.584 +07:00 [DBG] Attempting to select an output formatter based on Accept header '["application/json"]'.
+2019-09-27 16:04:52.584 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:04:52.585 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.CustomModel.GetUHeaderResult, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-27 16:04:52.662 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) in 2281.5985ms
+2019-09-27 16:04:52.662 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:04:52.662 +07:00 [INF] Request finished in 2380.8048ms 200 application/json; charset=utf-8
+2019-09-27 16:05:10.498 +07:00 [DBG] Server apn-5cd6115wq9:16964:eabe6072 heartbeat successfully sent
+2019-09-27 16:06:02.796 +07:00 [DBG] Hosting starting
+2019-09-27 16:06:03.270 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-27 16:06:03.298 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-0d2730ca-2020-4e04-a630-233661d2ddbe.xml'.
+2019-09-27 16:06:03.478 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-75ceaef1-3ea3-4746-8a08-2125fc030afe.xml'.
+2019-09-27 16:06:03.478 +07:00 [DBG] Reading data from file 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys\key-e66457ff-679e-491f-9eb9-840602cc53bf.xml'.
+2019-09-27 16:06:03.484 +07:00 [DBG] Found key "0d2730ca-2020-4e04-a630-233661d2ddbe".
+2019-09-27 16:06:03.498 +07:00 [DBG] Found key "75ceaef1-3ea3-4746-8a08-2125fc030afe".
+2019-09-27 16:06:03.498 +07:00 [DBG] Found key "e66457ff-679e-491f-9eb9-840602cc53bf".
+2019-09-27 16:06:03.524 +07:00 [DBG] Considering key "e66457ff-679e-491f-9eb9-840602cc53bf" with expiration date "2019-12-02T02:02:54.9163754+00:00" as default key.
+2019-09-27 16:06:03.756 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 16:06:03.758 +07:00 [DBG] Decrypting secret element using Windows DPAPI.
+2019-09-27 16:06:03.760 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-09-27 16:06:03.762 +07:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2019-09-27 16:06:03.766 +07:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2019-09-27 16:06:03.774 +07:00 [DBG] Using key "e66457ff-679e-491f-9eb9-840602cc53bf" as the default key.
+2019-09-27 16:06:03.776 +07:00 [DBG] Key ring with default key "e66457ff-679e-491f-9eb9-840602cc53bf" was loaded during application startup.
+2019-09-27 16:06:04.422 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-27 16:06:05.098 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-27 16:06:05.161 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-27 16:06:05.161 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-27 16:06:05.162 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-27 16:06:05.494 +07:00 [DBG] Execution loop BackgroundServerProcess:d1be3386 has started in 269.1297 ms
+2019-09-27 16:06:05.624 +07:00 [DBG] Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.794 +07:00 [DBG] Compatibility switch AllowCombiningAuthorizeFilters in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch AllowBindingHeaderValuesToNonStringModelTypes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch AllowValidatingTopLevelNodes in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch InputFormatterExceptionPolicy in type MvcOptions is using compatibility value "MalformedInputExceptions" for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch SuppressBindingUndefinedValueToEnumType in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch EnableEndpointRouting in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch MaxValidationDepth in type MvcOptions is using compatibility value 32 for version "Version_2_2"
+2019-09-27 16:06:05.795 +07:00 [DBG] Compatibility switch AllowShortCircuitingValidationWhenNoValidatorsArePresent in type MvcOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.814 +07:00 [DBG] Compatibility switch SuppressMapClientErrors in type ApiBehaviorOptions is using default value false
+2019-09-27 16:06:05.814 +07:00 [DBG] Compatibility switch SuppressUseValidationProblemDetailsForInvalidModelStateResponses in type ApiBehaviorOptions is using default value false
+2019-09-27 16:06:05.814 +07:00 [DBG] Compatibility switch AllowInferringBindingSourceForCollectionTypesAsFromQuery in type ApiBehaviorOptions is using default value false
+2019-09-27 16:06:05.819 +07:00 [DBG] Compatibility switch AllowAreas in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.819 +07:00 [DBG] Compatibility switch AllowMappingHeadRequestsToGetHandler in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.819 +07:00 [DBG] Compatibility switch AllowDefaultHandlingForOptionsRequests in type RazorPagesOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:05.903 +07:00 [DBG] Compatibility switch AllowRecompilingViewsOnFileChange in type RazorViewEngineOptions is using explicitly configured value true
+2019-09-27 16:06:06.006 +07:00 [DBG] Compatibility switch SuppressTempDataAttributePrefix in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:06.006 +07:00 [DBG] Compatibility switch AllowRenderingMaxLengthAttribute in type MvcViewOptions is using compatibility value true for version "Version_2_2"
+2019-09-27 16:06:06.006 +07:00 [INF] Server apn-5cd6115wq9:10220:94bbc063 successfully announced in 459.0424 ms
+2019-09-27 16:06:06.050 +07:00 [INF] Server apn-5cd6115wq9:10220:94bbc063 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-27 16:06:06.092 +07:00 [DBG] Execution loop ServerHeartbeatProcess:cd92d641 has started in 83.2768 ms
+2019-09-27 16:06:06.158 +07:00 [DBG] Execution loop ServerWatchdog:1a0afa7d has started in 108.1599 ms
+2019-09-27 16:06:06.248 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:cd7785aa has started in 128.0344 ms
+2019-09-27 16:06:06.318 +07:00 [DBG] Execution loop ExpirationManager:5fc8ea8d has started in 105.7118 ms
+2019-09-27 16:06:06.321 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-27 16:06:06.540 +07:00 [DBG] Execution loop CountersAggregator:fb5f3f38 has started in 245.5672 ms
+2019-09-27 16:06:06.665 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-27 16:06:06.734 +07:00 [DBG] Execution loop Worker:866d9209 has started in 322.3645 ms
+2019-09-27 16:06:06.764 +07:00 [DBG] Execution loop Worker:2522445c has started in 353.0623 ms
+2019-09-27 16:06:06.800 +07:00 [DBG] Execution loop Worker:f4b53e4e has started in 388.191 ms
+2019-09-27 16:06:06.800 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-27 16:06:06.828 +07:00 [DBG] Execution loop Worker:a4f9beba has started in 417.0481 ms
+2019-09-27 16:06:06.878 +07:00 [DBG] Execution loop Worker:8ed4f5e3 has started in 466.3963 ms
+2019-09-27 16:06:06.913 +07:00 [DBG] Execution loop Worker:30bfbb7a has started in 502.047 ms
+2019-09-27 16:06:06.978 +07:00 [DBG] Execution loop Worker:6c1ae7c5 has started in 563.0698 ms
+2019-09-27 16:06:06.994 +07:00 [DBG] Execution loop Worker:0c2c37fb has started in 582.9576 ms
+2019-09-27 16:06:07.029 +07:00 [DBG] Execution loop Worker:12105ffd has started in 617.8796 ms
+2019-09-27 16:06:07.043 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-27 16:06:07.046 +07:00 [DBG] Execution loop Worker:6957d3f1 has started in 635.1621 ms
+2019-09-27 16:06:07.083 +07:00 [DBG] Execution loop Worker:f279e940 has started in 671.2246 ms
+2019-09-27 16:06:07.135 +07:00 [DBG] Execution loop Worker:40853c0b has started in 723.4075 ms
+2019-09-27 16:06:07.193 +07:00 [DBG] Execution loop Worker:eb57ba4e has started in 781.709 ms
+2019-09-27 16:06:07.223 +07:00 [DBG] Execution loop Worker:8810a4f9 has started in 812.0026 ms
+2019-09-27 16:06:07.298 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-27 16:06:07.298 +07:00 [DBG] Execution loop Worker:e8a161cb has started in 887.1507 ms
+2019-09-27 16:06:07.299 +07:00 [DBG] Execution loop Worker:eaee7c1a has started in 887.4588 ms
+2019-09-27 16:06:07.377 +07:00 [DBG] Execution loop Worker:4efe5660 has started in 966.2052 ms
+2019-09-27 16:06:07.463 +07:00 [DBG] Execution loop Worker:c09ad88e has started in 1051.9321 ms
+2019-09-27 16:06:07.486 +07:00 [DBG] Execution loop Worker:87573a12 has started in 1074.343 ms
+2019-09-27 16:06:07.517 +07:00 [DBG] Execution loop Worker:83ee949a has started in 1106.1255 ms
+2019-09-27 16:06:07.564 +07:00 [DBG] Execution loop DelayedJobScheduler:bc67949d has started in 100.8442 ms
+2019-09-27 16:06:07.565 +07:00 [INF] Server apn-5cd6115wq9:10220:94bbc063 all the dispatchers started
+2019-09-27 16:06:07.645 +07:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2019-09-27 16:06:07.659 +07:00 [DBG] Execution loop RecurringJobScheduler:219ba1a4 has started in 141.0883 ms
+2019-09-27 16:06:07.767 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-27 16:06:09.733 +07:00 [DBG] Hosting started
+2019-09-27 16:06:09.733 +07:00 [DBG] Loaded hosting startup assembly com.apthai.DefectAPI
+2019-09-27 16:06:09.733 +07:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Server.IISIntegration
+2019-09-27 16:06:09.868 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-27 16:06:09.877 +07:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2019-09-27 16:06:09.990 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 16:06:10.118 +07:00 [DBG] 1 candidate(s) found for the request path '/api/values'
+2019-09-27 16:06:10.119 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)' with route pattern 'api/Values' is valid for the request path '/api/values'
+2019-09-27 16:06:10.124 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:06:10.159 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:06:10.174 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-27 16:06:10.206 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:06:10.206 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:06:10.206 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:06:10.207 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:06:10.207 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:06:10.411 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-27 16:06:10.425 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.5334ms.
+2019-09-27 16:06:10.447 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:06:10.451 +07:00 [DBG] No information found on request to perform content negotiation.
+2019-09-27 16:06:10.451 +07:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-09-27 16:06:10.452 +07:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2019-09-27 16:06:10.452 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:06:10.453 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-27 16:06:10.566 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 340.0883ms
+2019-09-27 16:06:10.567 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-27 16:06:10.570 +07:00 [INF] Request finished in 702.3687ms 200 application/json; charset=utf-8
+2019-09-27 16:06:10.934 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-27 16:06:10.935 +07:00 [DBG] The request path  does not match the path filter
+2019-09-27 16:06:10.935 +07:00 [DBG] No candidates found for the request path '/favicon.ico'
+2019-09-27 16:06:10.935 +07:00 [DBG] Request did not match any endpoints
+2019-09-27 16:06:10.946 +07:00 [INF] Request finished in 11.6638ms 404 
+2019-09-27 16:06:16.661 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-27 16:06:16.668 +07:00 [INF] Request finished in 7.3ms 301 
+2019-09-27 16:06:16.733 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-27 16:06:16.782 +07:00 [INF] Request finished in 49.6402ms 200 text/html
+2019-09-27 16:06:16.844 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-27 16:06:16.846 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-27 16:06:16.848 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-27 16:06:16.940 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-27 16:06:16.942 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-27 16:06:16.943 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-27 16:06:16.959 +07:00 [INF] Request finished in 113.3187ms 200 application/javascript
+2019-09-27 16:06:16.959 +07:00 [INF] Request finished in 110.9033ms 200 application/javascript
+2019-09-27 16:06:16.959 +07:00 [INF] Request finished in 115.6192ms 200 text/css
+2019-09-27 16:06:17.383 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-27 16:06:17.408 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-27 16:06:17.408 +07:00 [INF] Request finished in 25.7767ms 200 text/plain
+2019-09-27 16:06:19.030 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-27 16:06:19.043 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-27 16:06:19.044 +07:00 [INF] Request finished in 14.0041ms 200 text/plain
+2019-09-27 16:06:19.783 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-27 16:06:20.430 +07:00 [INF] Request finished in 646.2676ms 200 application/json;charset=utf-8
+2019-09-27 16:06:36.160 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:06:40.895 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/UnitMaster/GetUHeader application/json-patch+json 82
+2019-09-27 16:06:40.896 +07:00 [DBG] POST requests are not supported
+2019-09-27 16:06:40.919 +07:00 [DBG] 1 candidate(s) found for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:06:40.919 +07:00 [DBG] Endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)' with route pattern 'api/UnitMaster/GetUHeader' is valid for the request path '/api/UnitMaster/GetUHeader'
+2019-09-27 16:06:40.920 +07:00 [DBG] Request matched endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:06:40.920 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:06:40.965 +07:00 [INF] Route matched with {action = "GetUHeader", controller = "UnitMaster"}. Executing action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)
+2019-09-27 16:06:40.965 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2019-09-27 16:06:40.965 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter"]
+2019-09-27 16:06:40.965 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2019-09-27 16:06:40.965 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2019-09-27 16:06:40.965 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter","Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2019-09-27 16:06:40.979 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:06:40.984 +07:00 [DBG] Attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' using the name '' in request data ...
+2019-09-27 16:06:40.987 +07:00 [DBG] Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:06:40.987 +07:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json-patch+json'.
+2019-09-27 16:06:41.011 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:06:41.011 +07:00 [DBG] Done attempting to bind parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:06:41.011 +07:00 [DBG] Attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader' ...
+2019-09-27 16:06:41.014 +07:00 [DBG] Done attempting to validate the bound parameter 'data' of type 'com.apthai.DefectAPI.HttpRestModel.CreateHeader'.
+2019-09-27 16:06:41.060 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.CreateHeader"]) - Validation state: "Valid"
+2019-09-27 16:06:42.464 +07:00 [INF] No one listens to me!
+2019-09-27 16:06:42.464 +07:00 [INF] No one listens to me!
+2019-09-27 16:06:42.464 +07:00 [INF] ------ Get Header -----
+2019-09-27 16:06:42.465 +07:00 [INF] ------TRY------------------------------------
+2019-09-27 16:06:42.465 +07:00 [DBG] ---------- Header --------------
+2019-09-27 16:06:42.465 +07:00 [ERR] ----------- Test Error ------------
+2019-09-27 16:06:43.016 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1955.5326ms.
+2019-09-27 16:06:43.017 +07:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"]
+2019-09-27 16:06:43.020 +07:00 [DBG] Attempting to select an output formatter based on Accept header '["application/json"]'.
+2019-09-27 16:06:43.021 +07:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-09-27 16:06:43.021 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.CustomModel.GetUHeaderResult, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-27 16:06:43.049 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI) in 2083.0117ms
+2019-09-27 16:06:43.051 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.UnitMasterController.GetUHeader (com.apthai.DefectAPI)'
+2019-09-27 16:06:43.051 +07:00 [INF] Request finished in 2157.4068ms 200 application/json; charset=utf-8
+2019-09-27 16:07:06.205 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:07:36.244 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:08:06.268 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:08:36.287 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:09:06.321 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:09:36.359 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:10:06.389 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:10:36.425 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:11:06.457 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:11:06.906 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-27 16:11:36.478 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent
+2019-09-27 16:12:06.531 +07:00 [DBG] Server apn-5cd6115wq9:10220:94bbc063 heartbeat successfully sent

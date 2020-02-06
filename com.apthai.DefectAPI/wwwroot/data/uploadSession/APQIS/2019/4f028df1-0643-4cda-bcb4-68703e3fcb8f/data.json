@@ -1,0 +1,50 @@
+﻿{
+  "SessionId": "4f028df1-0643-4cda-bcb4-68703e3fcb8f",
+  "SessionDate": "2018-08-23T00:20:37.9392154-07:00",
+  "ClientDeviceId": "YD03RXNM",
+  "ClientUserId": "5271",
+  "ClientName": "APQIS",
+  "ClientVersion": "1.0.0.0",
+  "SessionDataType": "QisUnitDataAndPO",
+  "SessionUserRole": "SE",
+  "SessionDataPath": "0",
+  "Data": [
+    {
+      "HEADER": {
+        "ProjectID": 138,
+        "ProjectCode": "C-Test",
+        "ProjectName": "โครงการ Train Partial GR",
+        "ProjectType": "",
+        "JsonData": "{\"ProjectID\":138,\"ProjectCode\":\"C-Test\",\"ProjectName\":\"โครงการ Train Partial GR\",\"ProjectCRMCode\":null,\"ProjectType\":\"\",\"Plant\":\"\",\"Status\":\"Finish\",\"PM\":null,\"BU\":\"1\",\"RefID\":91,\"CreatedDate\":\"2013-03-25T17:39:01\",\"ModifiedDate\":\"2018-04-10T16:40:28.763\",\"DeletedDate\":null,\"ProjectFullName\":\"C-Test - โครงการ Train Partial GR\",\"ProjectCRMFullName\":\"\",\"BUName\":\"BG 1\",\"StatusName\":\"ก่อสร้างเสร็จแล้ว\",\"PMCode\":\"\",\"PMName\":\"\",\"CanRedeem\":null,\"SERedeem\":null,\"QARedeem\":null,\"RedeemModelID\":161,\"SurveyModelID\":162,\"CanRedeemName\":\"ยังไม่ตรวจ Pre ไถ่ถอน\",\"SERedeemName\":null,\"QARedeemName\":null,\"RedeemModelName\":\"Pre ไถ่ถอน\",\"SurveyModelName\":\"Survey\",\"CanSurvey\":null,\"QASurvey\":null}",
+        "BU": "1"
+      },
+      "DETAILS_PO": [],
+      "DETAILS": [
+        {
+          "MaxPhaseID": 962,
+          "MaxHeaderID": 12945,
+          "MaxDetailID": 52445,
+          "ModelUnitDataId": "35165.174_UID5271",
+          "DataOwnerUserId": 5271,
+          "ProjectID": 138,
+          "ProjectName": "",
+          "UnitID": 35165,
+          "UnitNumber": "",
+          "UnitWBS": "",
+          "ModelID": 174,
+          "ModelName": "",
+          "UPhases": "[{\"UPhaseID\":-1,\"UnitID\":35165,\"PhaseID\":949,\"ModelID\":174,\"SE\":5271,\"SEComplete\":null,\"SECompleteDate\":null,\"QA\":null,\"QAComplete\":null,\"QACompleteDate\":null,\"Complete\":null,\"StartDate\":\"2018-08-23T00:15:00.1888027-07:00\",\"FinishDate\":null,\"IsReq\":null,\"RefID\":null,\"RowClientId\":\"Q$UF$35165$YD03RXNM$20180823001500189\",\"RowState\":\"AddNew\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T00:20:37.9392154-07:00\",\"CreateDeviceId\":\"YD03RXNM\",\"CreateUserId\":5271,\"ModifiedDeviceId\":\"YD03RXNM\",\"ModifiedUserId\":5271,\"CreatedDate\":\"2018-08-23T00:15:00.1888027-07:00\",\"ModifiedDate\":\"2018-08-23T00:15:00.1888027-07:00\",\"ActualProcessDays\":null,\"RowSyncSessionId\":null,\"RowClientTypeID\":null,\"OfflineDetailIDs\":null,\"OfflineDetailCount\":null}]",
+          "UHeaders": "[]",
+          "UDetails": "[]",
+          "LastSyncDate": "2018-08-23T00:20:37.9392154-07:00",
+          "LastSyncUserId": 5271,
+          "ModifiedDate": "2018-08-23T00:15:00",
+          "ModifiedUserId": 5271,
+          "RowState": "Modified"
+        }
+      ],
+      "RESOURCES": [],
+      "DETAILS_PROJ": []
+    }
+  ]
+}

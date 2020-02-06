@@ -1,0 +1,50 @@
+﻿{
+  "SessionId": "f3b611eb-4156-41b1-b111-a48e969d3523",
+  "SessionDate": "2018-08-23T17:21:39.1282578+07:00",
+  "ClientDeviceId": "9SN9V22CN74430517019K",
+  "ClientUserId": "7226",
+  "ClientName": "APQIS",
+  "ClientVersion": "1.0.0.0",
+  "SessionDataType": "QisUnitDataAndPO",
+  "SessionUserRole": "QA",
+  "SessionDataPath": "0",
+  "Data": [
+    {
+      "HEADER": {
+        "ProjectID": 233,
+        "ProjectCode": "4/039",
+        "ProjectName": "Centro พุทธบูชา32",
+        "ProjectCRMCode": "40039",
+        "JsonData": "{\"ProjectID\":233,\"ProjectCode\":\"4/039\",\"ProjectName\":\"Centro พุทธบูชา32\",\"ProjectCRMCode\":\"40039\",\"ProjectType\":null,\"Plant\":\"\",\"Status\":\"Active\",\"PM\":339,\"BU\":\"1\",\"RefID\":null,\"CreatedDate\":null,\"ModifiedDate\":\"2018-05-14T16:15:05.973\",\"DeletedDate\":null,\"ProjectFullName\":\"4/039 - Centro พุทธบูชา32\",\"ProjectCRMFullName\":\"40039\",\"BUName\":\"BG 1\",\"StatusName\":\"อยู่ระหว่างก่อสร้าง\",\"PMCode\":\"AP000571\",\"PMName\":\"นายโยธิน ปกสุข\",\"CanRedeem\":null,\"SERedeem\":null,\"QARedeem\":null,\"RedeemModelID\":161,\"SurveyModelID\":162,\"CanRedeemName\":\"ยังไม่ตรวจ Pre ไถ่ถอน\",\"SERedeemName\":null,\"QARedeemName\":null,\"RedeemModelName\":\"Pre ไถ่ถอน\",\"SurveyModelName\":\"Survey\",\"CanSurvey\":null,\"QASurvey\":null}",
+        "BU": "1"
+      },
+      "DETAILS_PO": [],
+      "DETAILS": [
+        {
+          "MaxPhaseID": 962,
+          "MaxHeaderID": 12945,
+          "MaxDetailID": 52445,
+          "ModelUnitDataId": "63237.174_UID7226",
+          "DataOwnerUserId": 7226,
+          "ProjectID": 233,
+          "ProjectName": "",
+          "UnitID": 63237,
+          "UnitNumber": "",
+          "UnitWBS": "",
+          "ModelID": 174,
+          "ModelName": "",
+          "UPhases": "[{\"UPhaseID\":472980,\"UnitID\":63237,\"PhaseID\":950,\"ModelID\":174,\"SE\":8328,\"SEComplete\":\"Y\",\"SECompleteDate\":\"2018-08-23T15:49:51.037\",\"QA\":7226,\"QAComplete\":\"P\",\"QACompleteDate\":\"2018-08-23T17:21:22.2368961+07:00\",\"Complete\":\"Y\",\"StartDate\":\"2018-08-23T15:47:18.53\",\"FinishDate\":null,\"IsReq\":true,\"RefID\":null,\"RowClientId\":\"Q$UF$63237$SN9V22CN74430517019K$2018082315471853\",\"RowState\":\"Modified\",\"RowVersion\":2,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:47:18.53\",\"ModifiedDate\":\"2018-08-23T17:21:22.6456789+07:00\",\"ActualProcessDays\":null,\"RowSyncSessionId\":null,\"RowClientTypeID\":null,\"OfflineDetailIDs\":null,\"OfflineDetailCount\":null}]",
+          "UHeaders": "[{\"UHeaderID\":2151133,\"UnitID\":63237,\"UPhaseID\":472980,\"HeaderVersionID\":34712,\"HeaderID\":12591,\"PhaseID\":950,\"AreaID\":0,\"SEComplete\":\"Y\",\"QAComplete\":\"Y\",\"RefID\":null,\"RowClientId\":\"Q$UH$63237$SN9V22CN74430517019K$20180823154820911\",\"RowState\":\"Modified\",\"RowVersion\":2,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:20.91\",\"ModifiedDate\":\"2018-08-23T17:21:16.9409237+07:00\",\"VersionNumber\":null},{\"UHeaderID\":2151134,\"UnitID\":63237,\"UPhaseID\":472980,\"HeaderVersionID\":34719,\"HeaderID\":12592,\"PhaseID\":950,\"AreaID\":0,\"SEComplete\":\"Y\",\"QAComplete\":\"Y\",\"RefID\":null,\"RowClientId\":\"Q$UH$63237$SN9V22CN74430517019K$20180823154837228\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:37.227\",\"ModifiedDate\":\"2018-08-23T17:21:22.6456789+07:00\",\"VersionNumber\":null}]",
+          "UDetails": "[{\"UDetailID\":11807203,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61819,\"DetailID\":51263,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:49:30.48\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:11.4640616+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154820911\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:20.91\",\"ModifiedDate\":\"2018-08-23T17:21:11.4810532+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807204,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61820,\"DetailID\":51264,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:49:30.633\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:11.7199132+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154821136\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:21.137\",\"ModifiedDate\":\"2018-08-23T17:21:11.723911+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807205,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61821,\"DetailID\":51265,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:48:29.62\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:12.9951838+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154821356\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:21.357\",\"ModifiedDate\":\"2018-08-23T17:21:12.9971811+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807206,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61822,\"DetailID\":51266,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:48:29.73\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:13.1561063+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154821575\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:21.577\",\"ModifiedDate\":\"2018-08-23T17:21:13.1591044+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807207,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61823,\"DetailID\":51267,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:48:29.833\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:13.3110195+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154821794\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:21.793\",\"ModifiedDate\":\"2018-08-23T17:21:13.3140176+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807208,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61824,\"DetailID\":51268,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:48:29.94\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:13.467928+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154822028\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:22.03\",\"ModifiedDate\":\"2018-08-23T17:21:13.470927+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807209,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151133,\"DetailVersionID\":61825,\"DetailID\":51269,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-23T15:48:32.597\",\"QAPass\":\"Y\",\"QAScore\":null,\"QADate\":\"2018-08-23T17:21:16.9329334+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154822253\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:22.253\",\"ModifiedDate\":\"2018-08-23T17:21:16.9409237+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true},{\"UDetailID\":11807210,\"UnitID\":63237,\"UPhaseID\":472980,\"UHeaderID\":2151134,\"DetailVersionID\":61826,\"DetailID\":51270,\"SEPass\":\"Y\",\"SEScore\":10,\"SEDate\":\"2018-08-23T15:49:11.303\",\"QAPass\":\"Y\",\"QAScore\":10,\"QADate\":\"2018-08-23T17:21:22.6436806+07:00\",\"RowClientId\":\"Q$UD$63237$SN9V22CN74430517019K$20180823154837229\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-23T17:21:39.1282578+07:00\",\"CreateDeviceId\":\"9SN9V22CN74430517019K\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"9SN9V22CN74430517019K\",\"ModifiedUserId\":7226,\"CreatedDate\":\"2018-08-23T15:48:37.227\",\"ModifiedDate\":\"2018-08-23T17:21:22.6456789+07:00\",\"VersionNumber\":null,\"IsRequestQA\":true}]",
+          "LastSyncDate": "2018-08-23T17:21:39.1282578+07:00",
+          "LastSyncUserId": 7226,
+          "ModifiedDate": "2018-08-23T17:21:22",
+          "ModifiedUserId": 7226,
+          "RowState": "Modified"
+        }
+      ],
+      "RESOURCES": [],
+      "DETAILS_PROJ": []
+    }
+  ]
+}

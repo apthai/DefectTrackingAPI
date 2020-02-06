@@ -1,0 +1,401 @@
+2019-09-26 15:19:48.573 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-26 15:19:50.723 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-26 15:19:51.780 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-26 15:19:51.841 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-26 15:19:51.843 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-26 15:19:51.843 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-26 15:19:52.204 +07:00 [DBG] Execution loop BackgroundServerProcess:b5db254d has started in 309.7377 ms
+2019-09-26 15:19:52.929 +07:00 [INF] Server apn-5cd6115wq9:22628:f575344e successfully announced in 650.5903 ms
+2019-09-26 15:19:52.964 +07:00 [INF] Server apn-5cd6115wq9:22628:f575344e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-26 15:19:53.046 +07:00 [DBG] Execution loop ServerHeartbeatProcess:691d8e75 has started in 102.8366 ms
+2019-09-26 15:19:53.171 +07:00 [DBG] Execution loop ServerWatchdog:915a7728 has started in 206.3358 ms
+2019-09-26 15:19:53.250 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:f59ddc92 has started in 168.5928 ms
+2019-09-26 15:19:53.387 +07:00 [DBG] Execution loop ExpirationManager:ec6c57ea has started in 217.05 ms
+2019-09-26 15:19:53.418 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-26 15:19:53.481 +07:00 [DBG] Execution loop CountersAggregator:8d89838e has started in 163.758 ms
+2019-09-26 15:19:53.485 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 15:19:53.684 +07:00 [DBG] Execution loop Worker:5a3b8663 has started in 264.6304 ms
+2019-09-26 15:19:53.762 +07:00 [DBG] Execution loop Worker:8512cc1b has started in 342.4222 ms
+2019-09-26 15:19:53.783 +07:00 [DBG] Execution loop Worker:254726e5 has started in 363.1564 ms
+2019-09-26 15:19:53.848 +07:00 [DBG] Execution loop Worker:1283a5c5 has started in 428.7893 ms
+2019-09-26 15:19:53.967 +07:00 [DBG] Execution loop Worker:ceebebea has started in 547.8064 ms
+2019-09-26 15:19:53.998 +07:00 [DBG] Execution loop Worker:e4b7560e has started in 578.6461 ms
+2019-09-26 15:19:54.030 +07:00 [DBG] Execution loop Worker:30bd3e28 has started in 610.7519 ms
+2019-09-26 15:19:54.123 +07:00 [DBG] Execution loop Worker:156b2912 has started in 703.0214 ms
+2019-09-26 15:19:54.178 +07:00 [DBG] Execution loop Worker:2d203439 has started in 758.6017 ms
+2019-09-26 15:19:54.205 +07:00 [DBG] Execution loop Worker:cbe43fd4 has started in 785.0526 ms
+2019-09-26 15:19:54.278 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-26 15:19:54.279 +07:00 [DBG] Execution loop Worker:fd29bf78 has started in 859.9856 ms
+2019-09-26 15:19:54.344 +07:00 [DBG] Execution loop Worker:b4adde32 has started in 924.7744 ms
+2019-09-26 15:19:54.345 +07:00 [DBG] Execution loop Worker:23a7f37e has started in 925.1614 ms
+2019-09-26 15:19:54.416 +07:00 [DBG] Execution loop Worker:9a018783 has started in 996.4243 ms
+2019-09-26 15:19:54.547 +07:00 [DBG] Execution loop Worker:82f4d4fb has started in 1127.2114 ms
+2019-09-26 15:19:54.547 +07:00 [DBG] Execution loop Worker:573d2f2a has started in 1127.232 ms
+2019-09-26 15:19:54.594 +07:00 [DBG] Execution loop Worker:1c7e1511 has started in 1174.2554 ms
+2019-09-26 15:19:54.594 +07:00 [DBG] Execution loop Worker:a7238cbb has started in 1174.7028 ms
+2019-09-26 15:19:54.704 +07:00 [DBG] Execution loop Worker:21b4fcaa has started in 1284.588 ms
+2019-09-26 15:19:54.803 +07:00 [DBG] Execution loop Worker:51cc07d5 has started in 1383.6144 ms
+2019-09-26 15:19:54.871 +07:00 [DBG] Execution loop DelayedJobScheduler:9d88c162 has started in 282.857 ms
+2019-09-26 15:19:54.881 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-26 15:19:54.895 +07:00 [INF] Server apn-5cd6115wq9:22628:f575344e all the dispatchers started
+2019-09-26 15:19:54.954 +07:00 [DBG] Execution loop RecurringJobScheduler:d4e7584e has started in 149.9797 ms
+2019-09-26 15:19:55.298 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-26 15:19:55.821 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-26 15:19:57.716 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-26 15:19:58.065 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 15:19:58.135 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-26 15:19:58.383 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-26 15:19:58.398 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.632ms.
+2019-09-26 15:19:58.435 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-26 15:19:58.548 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 394.7388ms
+2019-09-26 15:19:58.552 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 15:19:58.558 +07:00 [INF] Request finished in 844.8936ms 200 application/json; charset=utf-8
+2019-09-26 15:19:58.846 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-26 15:19:58.863 +07:00 [INF] Request finished in 17.5992ms 404 
+2019-09-26 15:20:23.279 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:20:53.302 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:21:23.318 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:21:53.341 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:22:23.367 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:22:53.388 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:23:23.406 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:23:53.431 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:24:23.459 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:24:53.479 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 15:24:53.588 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 15:25:23.505 +07:00 [DBG] Server apn-5cd6115wq9:22628:f575344e heartbeat successfully sent
+2019-09-26 16:32:47.538 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-26 16:32:48.891 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-26 16:32:49.534 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-26 16:32:49.587 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-26 16:32:49.588 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-26 16:32:49.588 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-26 16:32:49.683 +07:00 [DBG] Execution loop BackgroundServerProcess:c098761d has started in 69.6048 ms
+2019-09-26 16:32:50.321 +07:00 [INF] Server apn-5cd6115wq9:19700:f4ae07f0 successfully announced in 497.6139 ms
+2019-09-26 16:32:50.351 +07:00 [INF] Server apn-5cd6115wq9:19700:f4ae07f0 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-26 16:32:50.352 +07:00 [DBG] Execution loop ServerHeartbeatProcess:59187698 has started in 28.0969 ms
+2019-09-26 16:32:50.387 +07:00 [DBG] Execution loop ServerWatchdog:a2a7c095 has started in 35.4757 ms
+2019-09-26 16:32:50.447 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:add23216 has started in 80.1123 ms
+2019-09-26 16:32:50.491 +07:00 [DBG] Execution loop ExpirationManager:2dacc12f has started in 42.8616 ms
+2019-09-26 16:32:50.495 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-26 16:32:50.518 +07:00 [DBG] Execution loop CountersAggregator:ff482e31 has started in 39.4075 ms
+2019-09-26 16:32:50.568 +07:00 [DBG] Execution loop Worker:388c0148 has started in 72.8591 ms
+2019-09-26 16:32:50.581 +07:00 [DBG] Execution loop Worker:b91dd7df has started in 85.4903 ms
+2019-09-26 16:32:50.585 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 16:32:50.616 +07:00 [DBG] Execution loop Worker:74aa2f88 has started in 120.7883 ms
+2019-09-26 16:32:50.678 +07:00 [DBG] Execution loop Worker:66d3bc88 has started in 183.2807 ms
+2019-09-26 16:32:50.700 +07:00 [DBG] Execution loop Worker:b9511cd2 has started in 204.6818 ms
+2019-09-26 16:32:50.739 +07:00 [DBG] Execution loop Worker:1646620d has started in 244.3455 ms
+2019-09-26 16:32:50.740 +07:00 [DBG] Execution loop Worker:246b8133 has started in 245.2483 ms
+2019-09-26 16:32:50.785 +07:00 [DBG] Execution loop Worker:4ab314dc has started in 289.8472 ms
+2019-09-26 16:32:50.872 +07:00 [DBG] Execution loop Worker:7b755ed9 has started in 377.0708 ms
+2019-09-26 16:32:50.899 +07:00 [DBG] Execution loop Worker:ed194dd6 has started in 403.8548 ms
+2019-09-26 16:32:50.929 +07:00 [DBG] Execution loop Worker:3e445efa has started in 433.8299 ms
+2019-09-26 16:32:50.947 +07:00 [DBG] Execution loop Worker:8f136889 has started in 452.1251 ms
+2019-09-26 16:32:50.963 +07:00 [DBG] Execution loop Worker:720ef14d has started in 466.2013 ms
+2019-09-26 16:32:50.977 +07:00 [DBG] Execution loop Worker:4bac8860 has started in 481.198 ms
+2019-09-26 16:32:51.000 +07:00 [DBG] Execution loop Worker:99a0c02f has started in 504.5565 ms
+2019-09-26 16:32:51.014 +07:00 [DBG] Execution loop Worker:b9d8a22e has started in 518.7463 ms
+2019-09-26 16:32:51.027 +07:00 [DBG] Execution loop Worker:83b3717f has started in 531.8518 ms
+2019-09-26 16:32:51.047 +07:00 [DBG] Execution loop Worker:0256e073 has started in 551.8573 ms
+2019-09-26 16:32:51.071 +07:00 [DBG] Execution loop Worker:d3ea4c2a has started in 576.4855 ms
+2019-09-26 16:32:51.088 +07:00 [DBG] Execution loop Worker:44d8a935 has started in 592.8804 ms
+2019-09-26 16:32:51.156 +07:00 [DBG] Execution loop DelayedJobScheduler:ab00006a has started in 84.6681 ms
+2019-09-26 16:32:51.180 +07:00 [INF] Server apn-5cd6115wq9:19700:f4ae07f0 all the dispatchers started
+2019-09-26 16:32:51.268 +07:00 [DBG] Execution loop RecurringJobScheduler:f04f5ce3 has started in 146.3945 ms
+2019-09-26 16:32:51.424 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-26 16:32:51.639 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-26 16:32:52.263 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-26 16:32:52.567 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-26 16:32:54.022 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-26 16:32:54.339 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 16:32:54.374 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-26 16:32:54.659 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-26 16:32:54.670 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.4741ms.
+2019-09-26 16:32:54.693 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-26 16:32:54.782 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 398.1644ms
+2019-09-26 16:32:54.785 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 16:32:54.788 +07:00 [INF] Request finished in 770.3043ms 200 application/json; charset=utf-8
+2019-09-26 16:32:55.161 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-26 16:32:55.186 +07:00 [INF] Request finished in 24.3374ms 404 
+2019-09-26 16:33:20.417 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:33:50.444 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:34:09.172 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs  
+2019-09-26 16:34:09.192 +07:00 [INF] Request finished in 20.361ms 301 
+2019-09-26 16:34:09.217 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-26 16:34:09.281 +07:00 [INF] Request finished in 63.5054ms 200 text/html
+2019-09-26 16:34:09.355 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-26 16:34:09.355 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-26 16:34:09.355 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-26 16:34:09.493 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-26 16:34:09.496 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-26 16:34:09.506 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-26 16:34:09.517 +07:00 [INF] Request finished in 161.6705ms 200 text/css
+2019-09-26 16:34:09.517 +07:00 [INF] Request finished in 161.525ms 200 application/javascript
+2019-09-26 16:34:09.517 +07:00 [INF] Request finished in 161.6663ms 200 application/javascript
+2019-09-26 16:34:09.905 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-26 16:34:09.934 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-26 16:34:09.935 +07:00 [INF] Request finished in 29.7329ms 200 text/plain
+2019-09-26 16:34:10.964 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-26 16:34:10.973 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-26 16:34:10.973 +07:00 [INF] Request finished in 9.5212ms 200 text/plain
+2019-09-26 16:34:11.577 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-26 16:34:12.203 +07:00 [INF] Request finished in 626.0343ms 200 application/json;charset=utf-8
+2019-09-26 16:34:20.471 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:34:50.506 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:35:20.529 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:35:50.564 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:36:20.611 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:36:38.138 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/Transaction/SubmitCheckResult application/json-patch+json 285
+2019-09-26 16:36:38.214 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:36:38.341 +07:00 [INF] Route matched with {action = "SubmitCheckResult", controller = "Transaction"}. Executing action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)
+2019-09-26 16:36:38.447 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.SubmitCheckResultParam"]) - Validation state: "Valid"
+2019-09-26 16:36:43.788 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5338.4299ms.
+2019-09-26 16:36:43.789 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.Model.DefectAPISync.UDetail, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-26 16:36:43.810 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) in 5469.768ms
+2019-09-26 16:36:43.811 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:36:43.811 +07:00 [INF] Request finished in 5674.8927ms 200 application/json; charset=utf-8
+2019-09-26 16:36:50.635 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:37:20.663 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:37:50.693 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:37:50.793 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 16:37:53.673 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/Transaction/SubmitCheckResult application/json-patch+json 285
+2019-09-26 16:37:53.708 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:37:53.708 +07:00 [INF] Route matched with {action = "SubmitCheckResult", controller = "Transaction"}. Executing action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)
+2019-09-26 16:37:53.779 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.SubmitCheckResultParam"]) - Validation state: "Valid"
+2019-09-26 16:43:16.067 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 16:43:17.047 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:43:17.827 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 324076.481ms.
+2019-09-26 16:43:17.828 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.Model.DefectAPISync.UDetail, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-26 16:43:17.830 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) in 324150.097ms
+2019-09-26 16:43:17.830 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:43:17.830 +07:00 [INF] Request finished in 324186.0994ms 200 application/json; charset=utf-8
+2019-09-26 16:43:36.462 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/Transaction/SubmitCheckResult application/json-patch+json 285
+2019-09-26 16:43:36.462 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:43:36.462 +07:00 [INF] Route matched with {action = "SubmitCheckResult", controller = "Transaction"}. Executing action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)
+2019-09-26 16:43:36.542 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.SubmitCheckResultParam"]) - Validation state: "Valid"
+2019-09-26 16:43:48.626 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:44:28.775 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:44:38.381 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 61842.002400000005ms.
+2019-09-26 16:44:38.381 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.Model.DefectAPISync.UDetail, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-26 16:44:38.382 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) in 61923.9403ms
+2019-09-26 16:44:38.382 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:44:38.383 +07:00 [INF] Request finished in 61924.9836ms 200 application/json; charset=utf-8
+2019-09-26 16:44:58.812 +07:00 [DBG] Server apn-5cd6115wq9:19700:f4ae07f0 heartbeat successfully sent
+2019-09-26 16:45:05.024 +07:00 [INF] Request starting HTTP/2.0 POST https://localhost:44365/api/Transaction/SubmitCheckResult application/json-patch+json 285
+2019-09-26 16:45:05.024 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:45:05.025 +07:00 [INF] Route matched with {action = "SubmitCheckResult", controller = "Transaction"}. Executing action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)
+2019-09-26 16:45:05.091 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) with arguments (["com.apthai.DefectAPI.HttpRestModel.SubmitCheckResultParam"]) - Validation state: "Valid"
+2019-09-26 16:45:08.975 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3884.19ms.
+2019-09-26 16:45:08.976 +07:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType6`3[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[com.apthai.DefectAPI.Model.DefectAPISync.UDetail, com.apthai.DefectAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-09-26 16:45:08.976 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI) in 3951.5775000000003ms
+2019-09-26 16:45:08.977 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.TransactionController.SubmitCheckResult (com.apthai.DefectAPI)'
+2019-09-26 16:45:08.977 +07:00 [INF] Request finished in 3952.9791ms 200 application/json; charset=utf-8
+2019-09-26 16:45:10.730 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-26 16:45:10.733 +07:00 [INF] Request finished in 2.1869ms 200 text/html
+2019-09-26 16:45:10.790 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-26 16:45:10.790 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-26 16:45:10.791 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-26 16:45:10.825 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-26 16:45:10.825 +07:00 [INF] Request finished in 34.4927ms 200 text/css
+2019-09-26 16:45:10.868 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-26 16:45:10.868 +07:00 [INF] Request finished in 77.4158ms 200 application/javascript
+2019-09-26 16:45:10.906 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-26 16:45:10.906 +07:00 [INF] Request finished in 115.4468ms 200 application/javascript
+2019-09-26 16:45:11.170 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-26 16:45:11.222 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-26 16:45:11.223 +07:00 [INF] Request finished in 53.0069ms 200 text/plain
+2019-09-26 16:45:12.703 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-26 16:45:12.847 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-26 16:45:12.848 +07:00 [INF] Request finished in 144.4138ms 200 text/plain
+2019-09-26 16:45:13.627 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-26 16:45:13.700 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/favicon-32x32.png  
+2019-09-26 16:45:13.701 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-09-26 16:45:13.701 +07:00 [INF] Request finished in 1.132ms 200 image/png
+2019-09-26 16:45:13.762 +07:00 [INF] Request finished in 135.6297ms 200 application/json;charset=utf-8
+2019-09-26 16:45:16.494 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-26 16:45:16.496 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 16:45:16.497 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-26 16:45:16.669 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-26 16:45:16.670 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.3539ms.
+2019-09-26 16:45:16.671 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-26 16:45:16.671 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 173.5342ms
+2019-09-26 16:45:16.671 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 16:45:16.671 +07:00 [INF] Request finished in 177.6545ms 200 application/json; charset=utf-8
+2019-09-26 16:45:18.020 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/index.html  
+2019-09-26 16:45:18.021 +07:00 [INF] Request finished in 1.2638ms 200 text/html
+2019-09-26 16:45:18.057 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js  
+2019-09-26 16:45:18.056 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui-bundle.js  
+2019-09-26 16:45:18.060 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/docs/swagger-ui.css  
+2019-09-26 16:45:18.327 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-09-26 16:45:18.328 +07:00 [INF] Request finished in 271.2673ms 200 text/css
+2019-09-26 16:45:18.329 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-09-26 16:45:18.330 +07:00 [INF] Request finished in 273.1947ms 200 application/javascript
+2019-09-26 16:45:18.401 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-09-26 16:45:18.402 +07:00 [INF] Request finished in 345.6434ms 200 application/javascript
+2019-09-26 16:45:18.669 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-bundle.js.map  
+2019-09-26 16:45:18.736 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js.map'. Physical path: 'N/A'
+2019-09-26 16:45:18.736 +07:00 [INF] Request finished in 67.2841ms 200 text/plain
+2019-09-26 16:45:20.214 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:44365/docs/swagger-ui-standalone-preset.js.map  
+2019-09-26 16:45:20.225 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js.map'. Physical path: 'N/A'
+2019-09-26 16:45:20.225 +07:00 [INF] Request finished in 11.1537ms 200 text/plain
+2019-09-26 16:45:20.800 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/swagger/v1/swagger.json  
+2019-09-26 16:45:20.872 +07:00 [INF] Request finished in 72.0108ms 200 application/json;charset=utf-8
+2019-09-26 16:52:18.640 +07:00 [INF] User profile is available. Using 'C:\Users\pacharavach_v\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-09-26 16:52:19.754 +07:00 [INF] Start installing Hangfire SQL objects...
+2019-09-26 16:52:20.386 +07:00 [INF] Hangfire SQL objects installed.
+2019-09-26 16:52:20.443 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: 192.168.2.52@db_QIS_Sync'
+2019-09-26 16:52:20.443 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2019-09-26 16:52:20.444 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2019-09-26 16:52:20.582 +07:00 [DBG] Execution loop BackgroundServerProcess:e751e145 has started in 108.3675 ms
+2019-09-26 16:52:21.122 +07:00 [INF] Server apn-5cd6115wq9:14408:adf62917 successfully announced in 478.5426 ms
+2019-09-26 16:52:21.151 +07:00 [INF] Server apn-5cd6115wq9:14408:adf62917 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2019-09-26 16:52:21.213 +07:00 [DBG] Execution loop ServerHeartbeatProcess:ae1baa35 has started in 78.1033 ms
+2019-09-26 16:52:21.482 +07:00 [DBG] Execution loop ServerWatchdog:8ab4058d has started in 331.0894 ms
+2019-09-26 16:52:21.587 +07:00 [DBG] Execution loop ServerJobCancellationWatcher:1917dcde has started in 199.2465 ms
+2019-09-26 16:52:21.660 +07:00 [INF] 1 servers were removed due to timeout
+2019-09-26 16:52:21.661 +07:00 [DBG] Execution loop ExpirationManager:fe806b84 has started in 116.4103 ms
+2019-09-26 16:52:21.664 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-26 16:52:21.770 +07:00 [DBG] Execution loop CountersAggregator:b8349f3c has started in 121.6088 ms
+2019-09-26 16:52:21.796 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 16:52:21.824 +07:00 [DBG] Execution loop Worker:718e5731 has started in 95.5276 ms
+2019-09-26 16:52:21.897 +07:00 [DBG] Execution loop Worker:64d15745 has started in 168.7242 ms
+2019-09-26 16:52:21.897 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-26 16:52:21.897 +07:00 [DBG] Execution loop Worker:6bc7537b has started in 168.9046 ms
+2019-09-26 16:52:21.897 +07:00 [DBG] Execution loop Worker:2662ab33 has started in 168.7242 ms
+2019-09-26 16:52:22.002 +07:00 [DBG] Execution loop Worker:24037aa8 has started in 274.1047 ms
+2019-09-26 16:52:22.080 +07:00 [DBG] Execution loop Worker:3565babd has started in 350.9235 ms
+2019-09-26 16:52:22.096 +07:00 [DBG] Execution loop Worker:0cdee660 has started in 367.9089 ms
+2019-09-26 16:52:22.128 +07:00 [DBG] Execution loop Worker:6c4f8931 has started in 399.9971 ms
+2019-09-26 16:52:22.146 +07:00 [DBG] Execution loop Worker:0a4ba3cf has started in 417.7139 ms
+2019-09-26 16:52:22.199 +07:00 [DBG] Execution loop Worker:eccf0764 has started in 471.1074 ms
+2019-09-26 16:52:22.199 +07:00 [DBG] Execution loop Worker:b1933a63 has started in 471.1074 ms
+2019-09-26 16:52:22.205 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-26 16:52:22.226 +07:00 [DBG] Execution loop Worker:92de788e has started in 497.5898 ms
+2019-09-26 16:52:22.283 +07:00 [DBG] Execution loop Worker:42d0a81e has started in 554.7393 ms
+2019-09-26 16:52:22.298 +07:00 [DBG] Execution loop Worker:4da1aeff has started in 570.2522 ms
+2019-09-26 16:52:22.344 +07:00 [DBG] Execution loop Worker:1f4affd9 has started in 615.5175 ms
+2019-09-26 16:52:22.360 +07:00 [DBG] Execution loop Worker:7c5d4460 has started in 632.2378 ms
+2019-09-26 16:52:22.391 +07:00 [DBG] Execution loop Worker:d2f8eabd has started in 661.9842 ms
+2019-09-26 16:52:22.401 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-26 16:52:22.453 +07:00 [DBG] Execution loop Worker:12400840 has started in 724.8605 ms
+2019-09-26 16:52:22.519 +07:00 [DBG] Execution loop Worker:578f14c0 has started in 791.4576 ms
+2019-09-26 16:52:22.598 +07:00 [DBG] Execution loop Worker:9c3ebf0f has started in 869.7898 ms
+2019-09-26 16:52:22.647 +07:00 [DBG] Execution loop DelayedJobScheduler:19f89fc9 has started in 127.7609 ms
+2019-09-26 16:52:22.652 +07:00 [INF] Server apn-5cd6115wq9:14408:adf62917 all the dispatchers started
+2019-09-26 16:52:22.716 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-26 16:52:22.732 +07:00 [DBG] Execution loop RecurringJobScheduler:3bd514a6 has started in 121.9113 ms
+2019-09-26 16:52:24.295 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/api/values  
+2019-09-26 16:52:24.531 +07:00 [INF] Executing endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 16:52:24.550 +07:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)
+2019-09-26 16:52:24.720 +07:00 [INF] Executing action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) - Validation state: "Valid"
+2019-09-26 16:52:24.732 +07:00 [INF] Executed action method com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.48550000000000004ms.
+2019-09-26 16:52:24.760 +07:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-09-26 16:52:24.875 +07:00 [INF] Executed action com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI) in 318.0747ms
+2019-09-26 16:52:24.876 +07:00 [INF] Executed endpoint 'com.apthai.DefectAPI.Controllers.ValuesController.Get (com.apthai.DefectAPI)'
+2019-09-26 16:52:24.881 +07:00 [INF] Request finished in 593.7587ms 200 application/json; charset=utf-8
+2019-09-26 16:52:25.348 +07:00 [INF] Request starting HTTP/2.0 GET https://localhost:44365/favicon.ico  
+2019-09-26 16:52:25.361 +07:00 [INF] Request finished in 13.7432ms 404 
+2019-09-26 16:52:51.269 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:53:21.315 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:53:51.344 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:54:21.375 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:54:51.404 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:55:21.431 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:55:51.457 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:56:21.483 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:56:51.511 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:57:21.534 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:57:22.001 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 16:57:51.559 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:58:21.591 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:58:51.621 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:59:21.650 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 16:59:51.685 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:00:21.713 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:00:51.739 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:01:21.767 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:01:51.795 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:02:21.822 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:02:22.021 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 17:02:51.846 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:03:21.878 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:03:51.902 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:04:21.935 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:04:51.965 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:05:22.001 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:05:52.060 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:06:22.105 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:06:52.160 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:07:22.044 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 17:07:22.201 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:07:52.238 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:08:22.268 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:08:52.292 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:09:22.348 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:09:52.388 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:10:22.440 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:10:52.493 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:11:22.536 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:11:52.556 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:12:22.097 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 17:12:22.599 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:12:52.652 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:13:22.689 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:13:52.720 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:14:22.770 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:14:52.798 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:15:22.838 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:15:52.873 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:16:22.922 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:16:52.966 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:17:22.145 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 17:17:23.001 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:17:53.027 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:18:23.071 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:18:53.108 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:19:23.143 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:19:53.199 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:20:23.229 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:20:53.250 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:21:23.277 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:21:53.336 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:22:22.179 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 17:22:23.244 +07:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2019-09-26 17:22:23.308 +07:00 [DBG] Removing outdated records from the 'Job' table...
+2019-09-26 17:22:23.381 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:22:23.383 +07:00 [DBG] Removing outdated records from the 'List' table...
+2019-09-26 17:22:23.436 +07:00 [DBG] Removing outdated records from the 'Set' table...
+2019-09-26 17:22:23.509 +07:00 [DBG] Removing outdated records from the 'Hash' table...
+2019-09-26 17:22:53.420 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:23:23.477 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:23:53.517 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:24:23.552 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:24:53.579 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:25:23.614 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:25:53.637 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:26:23.684 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:26:53.704 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:27:22.202 +07:00 [DBG] Aggregating records in 'Counter' table...
+2019-09-26 17:27:23.745 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:27:53.790 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:28:23.835 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:28:53.861 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:29:23.890 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:29:53.944 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:30:23.979 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:30:54.032 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:31:24.094 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent
+2019-09-26 17:31:54.130 +07:00 [DBG] Server apn-5cd6115wq9:14408:adf62917 heartbeat successfully sent

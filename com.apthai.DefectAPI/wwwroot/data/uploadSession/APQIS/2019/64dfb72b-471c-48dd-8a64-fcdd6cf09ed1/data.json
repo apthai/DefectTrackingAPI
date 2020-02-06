@@ -1,0 +1,51 @@
+﻿{
+  "SessionId": "64dfb72b-471c-48dd-8a64-fcdd6cf09ed1",
+  "SessionDate": "2018-07-23T14:58:18.9169188+07:00",
+  "ClientDeviceId": "A1SH83M00T9",
+  "ClientUserId": "8224",
+  "ClientName": "APQIS",
+  "ClientVersion": "1.0.0.0",
+  "SessionDataType": "QisUnitDataAndPO",
+  "SessionUserRole": "SE",
+  "SessionDataPath": "0",
+  "Data": [
+    {
+      "HEADER": {
+        "ProjectID": 86,
+        "ProjectCode": "1/177",
+        "ProjectName": "บ้านกลางเมืองสวนหลวง",
+        "ProjectCRMCode": "10177",
+        "ProjectType": "",
+        "JsonData": "{\"ProjectID\":86,\"ProjectCode\":\"1/177\",\"ProjectName\":\"บ้านกลางเมืองสวนหลวง\",\"ProjectCRMCode\":\"10177\",\"ProjectType\":\"\",\"Plant\":\"1177\",\"Status\":\"Active\",\"PM\":2418,\"BU\":\"2\",\"RefID\":152,\"CreatedDate\":\"2015-01-19T14:23:24\",\"ModifiedDate\":\"2018-07-13T16:23:14.773\",\"DeletedDate\":null,\"ProjectFullName\":\"1/177 - บ้านกลางเมืองสวนหลวง\",\"ProjectCRMFullName\":\"10177\",\"BUName\":\"BG 2\",\"StatusName\":\"อยู่ระหว่างก่อสร้าง\",\"PMCode\":\"AP002848\",\"PMName\":\"นายธนิต แป้นย้อย\",\"CanRedeem\":null,\"SERedeem\":5271,\"QARedeem\":null,\"RedeemModelID\":161,\"SurveyModelID\":162,\"CanRedeemName\":\"ยังไม่ตรวจ Pre ไถ่ถอน\",\"SERedeemName\":\"นายพัทธพงษ์ อุทัยรังษี\",\"QARedeemName\":null,\"RedeemModelName\":\"Pre ไถ่ถอน\",\"SurveyModelName\":\"Survey\",\"CanSurvey\":true,\"QASurvey\":1792}",
+        "BU": "2"
+      },
+      "DETAILS_PO": [],
+      "DETAILS": [
+        {
+          "MaxPhaseID": 275,
+          "MaxHeaderID": 3698,
+          "MaxDetailID": 14183,
+          "ModelUnitDataId": "44664.21_UID8224",
+          "DataOwnerUserId": 8224,
+          "ProjectID": 86,
+          "ProjectName": "",
+          "UnitID": 44664,
+          "UnitNumber": "",
+          "UnitWBS": "",
+          "ModelID": 21,
+          "ModelName": "",
+          "UPhases": "[]",
+          "UHeaders": "[]",
+          "UDetails": "[]",
+          "LastSyncDate": "2018-07-23T14:58:18.9169188+07:00",
+          "LastSyncUserId": 8224,
+          "ModifiedDate": "2018-07-23T14:07:23",
+          "ModifiedUserId": 8224,
+          "RowState": "Modified"
+        }
+      ],
+      "RESOURCES": [],
+      "DETAILS_PROJ": []
+    }
+  ]
+}

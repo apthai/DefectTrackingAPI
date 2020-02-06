@@ -1,0 +1,82 @@
+﻿{
+  "SessionId": "62f8c945-0308-4d44-bfa5-7135f69d054d",
+  "SessionDate": "2018-08-10T13:36:20.9809673+07:00",
+  "ClientDeviceId": "A1SH83M00T9",
+  "ClientUserId": "8328",
+  "ClientName": "APQIS",
+  "ClientVersion": "1.0.0.0",
+  "SessionDataType": "QisUnitDataAndPO",
+  "SessionUserRole": "SE",
+  "SessionDataPath": "233",
+  "Data": [
+    {
+      "HEADER": {
+        "ProjectID": 233,
+        "ProjectCode": "4/039",
+        "ProjectName": "Centro พุทธบูชา32",
+        "ProjectCRMCode": "40039",
+        "JsonData": "{\"ProjectID\":233,\"ProjectCode\":\"4/039\",\"ProjectName\":\"Centro พุทธบูชา32\",\"ProjectCRMCode\":\"40039\",\"ProjectType\":null,\"Plant\":\"\",\"Status\":\"Active\",\"PM\":339,\"BU\":\"1\",\"RefID\":null,\"CreatedDate\":null,\"ModifiedDate\":\"2018-05-14T16:15:05.973\",\"DeletedDate\":null,\"ProjectFullName\":\"4/039 - Centro พุทธบูชา32\",\"ProjectCRMFullName\":\"40039\",\"BUName\":\"BG 1\",\"StatusName\":\"อยู่ระหว่างก่อสร้าง\",\"PMCode\":\"AP000571\",\"PMName\":\"นายโยธิน ปกสุข\",\"CanRedeem\":null,\"SERedeem\":null,\"QARedeem\":null,\"RedeemModelID\":161,\"SurveyModelID\":162,\"CanRedeemName\":\"ยังไม่ตรวจ Pre ไถ่ถอน\",\"SERedeemName\":null,\"QARedeemName\":null,\"RedeemModelName\":\"Pre ไถ่ถอน\",\"SurveyModelName\":\"Survey\",\"CanSurvey\":null,\"QASurvey\":null}",
+        "BU": "1"
+      },
+      "DETAILS_PO": [],
+      "DETAILS": [
+        {
+          "MaxPhaseID": 962,
+          "MaxHeaderID": 12945,
+          "MaxDetailID": 52445,
+          "ModelUnitDataId": "63237.174_UID8328",
+          "DataOwnerUserId": 8328,
+          "ProjectID": 233,
+          "ProjectName": "",
+          "UnitID": 63237,
+          "UnitNumber": "",
+          "UnitWBS": "",
+          "ModelID": 174,
+          "ModelName": "",
+          "UPhases": "[{\"UPhaseID\":465810,\"UnitID\":63237,\"PhaseID\":950,\"ModelID\":174,\"SE\":8328,\"SEComplete\":\"N\",\"SECompleteDate\":null,\"QA\":null,\"QAComplete\":null,\"QACompleteDate\":null,\"Complete\":\"N\",\"StartDate\":\"2018-08-10T13:25:52.15\",\"FinishDate\":null,\"IsReq\":null,\"RefID\":null,\"RowClientId\":\"Q$UF$63237$A1SH83M00T9$2018081013255215\",\"RowState\":\"Modified\",\"RowVersion\":3,\"RowSyncDate\":\"2018-08-10T13:36:20.9809673+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":8328,\"CreatedDate\":\"2018-08-10T13:25:52.15\",\"ModifiedDate\":\"2018-08-10T13:36:12.7921638+07:00\",\"ActualProcessDays\":null,\"RowSyncSessionId\":null,\"RowClientTypeID\":null,\"OfflineDetailIDs\":null,\"OfflineDetailCount\":null}]",
+          "UHeaders": "[{\"UHeaderID\":-1,\"UnitID\":63237,\"UPhaseID\":465810,\"HeaderVersionID\":null,\"HeaderID\":12941,\"PhaseID\":950,\"AreaID\":0,\"SEComplete\":\"Y\",\"QAComplete\":\"P\",\"RefID\":null,\"RowClientId\":\"Q$UH$63237$A1SH83M00T9$20180810133606204\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-10T13:36:20.9809673+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":8328,\"CreatedDate\":\"2018-08-10T13:36:06.2046052+07:00\",\"ModifiedDate\":\"2018-08-10T13:36:12.7921638+07:00\",\"VersionNumber\":1}]",
+          "UDetails": "[{\"UDetailID\":-1,\"UnitID\":63237,\"UPhaseID\":465810,\"UHeaderID\":-1,\"DetailVersionID\":null,\"DetailID\":52441,\"SEPass\":\"Y\",\"SEScore\":null,\"SEDate\":\"2018-08-10T13:36:12.7901694+07:00\",\"QAPass\":\"P\",\"QAScore\":null,\"QADate\":null,\"RowClientId\":\"Q$UD$63237$A1SH83M00T9$20180810133606205\",\"RowState\":\"Modified\",\"RowVersion\":1,\"RowSyncDate\":\"2018-08-10T13:36:20.9809673+07:00\",\"CreateDeviceId\":\"A1SH83M00T9\",\"CreateUserId\":8328,\"ModifiedDeviceId\":\"A1SH83M00T9\",\"ModifiedUserId\":8328,\"CreatedDate\":\"2018-08-10T13:36:06.2046052+07:00\",\"ModifiedDate\":\"2018-08-10T13:36:12.7921638+07:00\",\"VersionNumber\":1,\"IsRequestQA\":false}]",
+          "LastSyncDate": "2018-08-10T13:36:20.9809673+07:00",
+          "LastSyncUserId": 8328,
+          "ModifiedDate": "2018-08-10T13:36:12",
+          "ModifiedUserId": 8328,
+          "RowState": "Modified"
+        }
+      ],
+      "RESOURCES": [
+        {
+          "RowClientId": "Q$RES$U63237$A1SH83M00T9$20180810133611265",
+          "ResourceId": 0,
+          "ResourceType": 110,
+          "ResourceTagCode": "U-SE",
+          "ResourceTagSubCode": "H",
+          "ResourceGroupSet": "6eb4755d69f04b1e969f92081b33ff35",
+          "ResourceGroupOrder": 1,
+          "ResourceMineType": "image/jpeg",
+          "ProjectId": 233,
+          "UnitId": 63237,
+          "FilePath": "P_233\\U_63237\\Camera\\Camera_A1SH83M00T9_20180810133608.jpg",
+          "Description": "",
+          "IsActive": true,
+          "PhaseId": 0,
+          "HeaderId": 12941,
+          "DetailId": 0,
+          "UHeader_RowClientId": "Q$UH$63237$A1SH83M00T9$20180810133606204",
+          "UDetail_RowClientId": "",
+          "UFHeader_RowClientId": "",
+          "UFDetail_RowClientId": "",
+          "RowState": "AddNew",
+          "RowSyncDate": "2018-08-10T13:36:20.9809673+07:00",
+          "FileLength": 17085,
+          "CreateDeviceId": "A1SH83M00T9",
+          "CreateUserId": 8328,
+          "ModifiedDeviceId": "A1SH83M00T9",
+          "ModifiedUserId": 8328,
+          "CreatedDate": "2018-08-10T13:36:11",
+          "ModifiedDate": "2018-08-10T13:36:11"
+        }
+      ],
+      "DETAILS_PROJ": []
+    }
+  ]
+}
