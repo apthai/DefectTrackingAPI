@@ -197,7 +197,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = false,
-                        date = Result.LoginResultMessage,
+                        data = Result.LoginResultMessage,
                         valid = false
                     };
                 }
@@ -214,7 +214,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = true,
-                        date = Result,
+                        data = Result,
                         AccessKey = accessKeyControl.AccessKey,
                         valid = false
                     };
@@ -229,7 +229,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = true,
-                        date = Result,
+                        data = Result,
                         AccessKey = AC.AccessKey,
                         valid = false
                     };
