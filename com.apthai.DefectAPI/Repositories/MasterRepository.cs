@@ -115,6 +115,23 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<calltype> GetCallCallType_Sync()
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callPoint where Active = 1 ";
+                    var result = conn.Query<calltype>(sQuery).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
         public callTDefect GetCallTDefect_Sync(int TDefectID)
         {
             using (IDbConnection conn = WebConnection)

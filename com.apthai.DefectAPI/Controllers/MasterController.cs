@@ -265,15 +265,15 @@ namespace com.apthai.DefectAPI.Controllers
         {
             try
             {
-                bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
-                if (CanAccess == false)
-                {
-                    return new
-                    {
-                        success = false,
-                        data = "AccessKey is Invalid!"
-                    };
-                }
+                //bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
+                //if (CanAccess == false)
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "AccessKey is Invalid!"
+                //    };
+                //}
                 callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
                 List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
                 GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
