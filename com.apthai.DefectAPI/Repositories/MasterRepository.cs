@@ -56,13 +56,55 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<calltype> GetCallCallType_Sync()
+        public List<point> GetCallPointByProductCat_Sync(string ProductTypeCate)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
-                    string sQuery = "Select * From callType where Active = 1 ";
+                    if (ProductTypeCate == null || ProductTypeCate == "")
+                    {
+                        string sQuery = "Select * From Point where Active = 1 ";
+                        var result = conn.Query<point>(sQuery).ToList();
+                        return result;
+                    }
+                    else
+                    {
+                        string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate And Active = 1 ";
+                        var result = conn.Query<point>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
+                        return result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public List<ICONEntFormsUnit> GetUnitByProduct(string ProductID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                        string sQuery = "Select * From ICON_EntForms_Unit where ProductID = @ProductID And Active = 1 ";
+                        var result = conn.Query<ICONEntFormsUnit>(sQuery, new { ProductID = ProductID }).ToList();
+                        return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetUnitByProduct() :: Error ", ex);
+                }
+            }
+        }
+        public List<calltype> GetCallCallPoint_Sync()
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callPoint where Active = 1 ";
                     var result = conn.Query<calltype>(sQuery).ToList();
                     return result;
 
@@ -73,6 +115,78 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public callTDefect GetCallTDefect_Sync(int TDefectID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefect " +
+                        "where TDefectID = @TDefectID And DocIsActive = 1 ";
+                    var result = conn.Query<callTDefect>(sQuery, new { TDefectID = TDefectID }).FirstOrDefault();
+                    return result;
 
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public List<GetCallTDefectByProjectObj> GetCallTDefectByProject_Sync(int ProductID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "SELECT callTDefect.* , dbo.ICON_EntForms_Products.Project FROM dbo.callTDefect" +
+                        " LEFT JOIN ICON_EntForms_Products ON dbo.callTDefect.ProductId = dbo.ICON_EntForms_Products.ProductID " +
+                        " Where callTDefect,ProductID = @ProductID AND DocIsActive = 1 " +
+                        " Order By callTDefect.CreateDate desc ";
+                    var result = conn.Query<GetCallTDefectByProjectObj>(sQuery, new { ProductID = ProductID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallTDefectByProject_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public List<callTDefectDetail> GetcallTDefectDetail_Sync(int TDefectID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefectDetail " +
+                        "where TDefectID = @TDefectID And DocIsActive = 1 ";
+                    var result = conn.Query<callTDefectDetail>(sQuery, new { TDefectID = TDefectID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetcallTDefectDetail_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From calldescriptions where callarea_id = @CallAreaID ";
+                    var result = conn.Query<calldescription>(sQuery, new { CallAreaID = CallAreaID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
     }
 }

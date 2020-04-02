@@ -24,6 +24,8 @@ using com.apthai.DefectAPI.Configuration;
 using Microsoft.AspNetCore.StaticFiles;
 using com.apthai.DefectAPI.CustomModel;
 using com.apthai.CoreApp.Data.Services;
+using com.apthai.DefectAPI.HttpRestModel;
+using Microsoft.Extensions.Primitives;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -53,21 +55,92 @@ namespace com.apthai.DefectAPI.Controllers
         {
             try
             {
-                bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
-                if (CanAccess == false)
-                {
-                    return new
-                    {
-                        success = false,
-                        data = "AccessKey is Invalid!"
-                    };
-                }
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
                 List<calltype> calltypes = _masterRepository.GetCallCallType_Sync();
 
                 return new
                 {
                     success = true,
                     data = calltypes
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+        [HttpPost]
+        [Route("GetUnitByProject")]
+        public async Task<object> GetMasterUnitByProject([FromBody]GetunitByProjectParam data)
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<ICONEntFormsUnit> Units = _masterRepository.GetUnitByProduct(data.ProductID);
+
+                return new
+                {
+                    success = true,
+                    data = Units
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+        [HttpPost]
+        [Route("GetCallPoint")]
+        public async Task<object> GetMasterCallPoint([FromBody]GetCAllArea data)
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<point> points = _masterRepository.GetCallPointByProductCat_Sync(data.ProductTypeCate);
+
+                return new
+                {
+                    success = true,
+                    data = points
                 };
 
             }
@@ -85,21 +158,68 @@ namespace com.apthai.DefectAPI.Controllers
         {
             try
             {
-                bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
-                if (CanAccess == false)
-                {
-                    return new
-                    {
-                        success = false,
-                        data = "AccessKey is Invalid!"
-                    };
-                }
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "Invalid AccessKey!!. ",
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                
                 List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync(data.ProductTypeCate);
+                List<GetCAllAreaxDescroiption> ReturnObj = new List<GetCAllAreaxDescroiption>();
+                for (int i = 0; i < callareas.Count(); i++)
+                {
+                    GetCAllAreaxDescroiption getCAllAreaxDescroiption = new GetCAllAreaxDescroiption();
+                    List<calldescription> calldescriptions = _masterRepository.GetCallDescriptionByCallAreaID_Sync(callareas[i].callarea_id);
+                    getCAllAreaxDescroiption.callarea = callareas[i];
+                    getCAllAreaxDescroiption.calldescriptions = calldescriptions;
+                    ReturnObj.Add(getCAllAreaxDescroiption);
+                }
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+        [HttpPost]
+        [Route("GetCallDescriptionByArea")]
+        public async Task<object> GetCallDescriptionByArea([FromBody]GetCAllDescriptionParam data)
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "Invalid AccessKey!!. ",
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                
+               List<calldescription> calldescriptions = _masterRepository.GetCallDescriptionByCallAreaID_Sync(data.CallAreaID);
                 
                 return new
                 {
                     success = true,
-                    data = callareas
+                    data = calldescriptions
                 };
 
             }
@@ -111,7 +231,93 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
 
-        
+        [HttpPost]
+        [Route("GetCallTransactionDefect")]
+        public async Task<object> GetCallTransactionDefect([FromBody]callTDefectObj data)
+        {
+            try
+            {
+                
+                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
+                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+                ReturnObj.callTDefect = callTDefect;
+                ReturnObj.callTDefectDetail = callTDefectDetails;
+                
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("CreateDefect")]
+        public async Task<object> CreateDefect([FromBody]callTDefectObj data)
+        {
+            try
+            {
+                bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
+                if (CanAccess == false)
+                {
+                    return new
+                    {
+                        success = false,
+                        data = "AccessKey is Invalid!"
+                    };
+                }
+                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
+                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+                ReturnObj.callTDefect = callTDefect;
+                ReturnObj.callTDefectDetail = callTDefectDetails;
+
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("GetCallTransactionDefectByProject")]
+        public async Task<object> GetCallTransactionDefectByProject([FromBody]GetCallTransactionDefectByProject data)
+        {
+            try
+            {
+
+                List<GetCallTDefectByProjectObj> callTDefect = _masterRepository.GetCallTDefectByProject_Sync(data.ProductID);
+
+                return new
+                {
+                    success = true,
+                    data = callTDefect
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
 
         //[ApiExplorerSettings(IgnoreApi = true)]
         //public async Task<string> GetQISFileStorageUrlAsync(int? StorageServerId, string FilePath)
@@ -164,9 +370,51 @@ namespace com.apthai.DefectAPI.Controllers
 
         //}
 
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public bool VerifyHeader(out string ErrorMsg)
+        {
+            //if (data == null)
+            //{
+            //    return BadRequest();
+            //}
 
+            //string ipaddress = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            string ipaddress = "5555555";
+            StringValues api_key;
+            StringValues EmpCode;
 
+            var isValidHeader = false;
+            //APIITVendor //VendorData = new APIITVendor();
+            if (Request.Headers.TryGetValue("api_Accesskey", out api_key) && Request.Headers.TryGetValue("EmpCode", out EmpCode))
+            {
+                string AccessKey = api_key.First();
+                string EmpCodeKey = EmpCode.First();
 
+                if (!string.IsNullOrEmpty(AccessKey) && !string.IsNullOrEmpty(EmpCodeKey))
+                {
+                    bool CanAccess = _authorizeService.AccessKeyAuthentication(AccessKey, EmpCodeKey);
+                    if (CanAccess == true)
+                    {
+                        ErrorMsg = "Invalid User Authentication!";
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (!isValidHeader)
+                {
+                    //_log.LogDebug(ipaddress + " :: Missing Authorization Header.");
+                    ErrorMsg = ipaddress + " :: Missing Authorization Header.";
+                    //VendorData = new APIITVendor();
+                    return false;
+                    //  return BadRequest("Missing Authorization Header.");
+                }
+            }
+            //VendorData = new APIITVendor();
+            ErrorMsg = "SomeThing Wrong with Header Contact Developer ASAP";
+            return false;
+        }
     }
 
 

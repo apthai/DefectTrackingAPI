@@ -48,4 +48,76 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string UserApp { get; set; }
         
     }
+    public class GetCAllArea
+    {
+        public string ProductTypeCate { get; set; }
+        public string AccessKey { get; set; }
+        public string EmpCode { get; set; }
+    }
+    public class GetunitByProjectParam
+    {
+        public string ProductID { get; set; }
+    }
+    public class GetCAllDescriptionParam
+    {
+        public int CallAreaID { get; set; }
+    }
+    public class GetCAllPoint
+    {
+        public string ProductTypeCate { get; set; }
+        public string AccessKey { get; set; }
+        public string EmpCode { get; set; }
+    }
+    public class callTDefectObj
+    {
+        public int TDefectID { get; set; }
+        public string EmpCode { get; set; }
+    }
+    public class CreateDefectTransactionParam
+    {
+        public string DefectType { get; set; }
+        public string ProductID { get; set; }
+        public string ItemID { get; set; }
+        public string Description { get; set; }
+        public string DeviceId { get; set; }
+        public string AccessKey { get; set; }
+        public string EmpCode { get; set; }
+    }
+
+    public class GetCAllType
+    {
+        public string AccessKey { get; set; }
+        public string EmpCode { get; set; }
+    }
+
+    public class CreateDefectObj
+    {
+        public int TDefectId { get; set; }
+        public string ProductId { get; set; }
+        public string ItemId { get; set; }
+        public string DeviceId { get; set; }
+        public string UserID { get; set; }
+        public string SellerId { get; set; }
+        public string Description { get; set; }
+        public string DefectType { get; set; } // H = Horizontal หรือ V = Vertical
+        //------ ของ TdefectDetail ------------
+        public string TDefectDetailStatus { get; set; }
+        public string TDefectDetailDesc { get; set; }
+        public int CallTypeID { get; set; }
+        public int CallArea { get; set; }
+        public int CallDescId { get; set; }
+        public int CallSubPointId { get; set; }
+        public string FloorPlanSet { get; set; }
+        public string AccessKey { get; set; }
+        public string EmpCode { get; set; }
+    }
+    public class CreateDefectListObj
+    {
+        public callTDefect callTDefect { get; set; }
+        public List<callTDefectDetail> callTDefectDetails { get; set; }
+    }
+    public class GetCallTransactionDefectByProject
+    {
+        public int ProductID { get; set; }
+    }
 }

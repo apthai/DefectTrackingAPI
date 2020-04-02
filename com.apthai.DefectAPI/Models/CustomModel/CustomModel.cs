@@ -6,15 +6,18 @@ using com.apthai.DefectAPI.Model.DefectAPI;
 
 namespace com.apthai.DefectAPI.CustomModel
 {
-    public class GetCAllArea
+    public class GetCAllAreaxDescroiption
     {
-        public string ProductTypeCate { get; set; }
-        public string AccessKey { get; set; }
-        public string EmpCode { get; set; }
+        public callarea callarea { get; set; }
+        public List<calldescription> calldescriptions { get; set; }
     }
-    public class GetCAllType
+    public class GetCallTransactionDefectObj 
     {
-        public string AccessKey { get; set; }
-        public string EmpCode { get; set; }
+        public callTDefect callTDefect { get; set; }
+        public List<callTDefectDetail> callTDefectDetail { get; set; }
+    }
+    public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect   
+    {
+        public string Project { get; set; }
     }
 }
