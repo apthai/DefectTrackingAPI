@@ -254,7 +254,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = true,
-                        data = Result,
+                        data = Return,
                         AccessKey = AC.AccessKey,
                         valid = false
                     };
