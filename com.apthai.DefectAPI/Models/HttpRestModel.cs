@@ -1,4 +1,5 @@
-﻿using com.apthai.DefectAPI.Model.DefectAPI;
+﻿using com.apthai.DefectAPI.CustomModel;
+using com.apthai.DefectAPI.Model.DefectAPI;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using Swashbuckle.AspNetCore.Filters;
@@ -47,6 +48,37 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string UserProject { get; set; }
         public string UserApp { get; set; }
         
+    }
+    public class AutorizeDataJWTReturnObject
+    {
+        public bool LoginResult { get; set; }
+        public string LoginResultMessage { get; set; }
+        public string UserPrincipalName { get; set; }
+        public string DomainUserName { get; set; }
+        public string CostCenterCode { get; set; }
+        public string CostCenterName { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string DisplayName { get; set; }
+        public string EmployeeID { get; set; }
+        public string Email { get; set; }
+        public string Division { get; set; }
+
+        public string Token { get; set; }
+
+        public DateTime? AccountExpirationDate { get; set; }
+        public DateTime? LastLogon { get; set; }
+
+        public string AuthenticationProvider { get; set; }
+        public string SysUserId { get; set; }
+        public string SysUserData { get; set; }
+        public vwUserRole SysUserRoles { get; set; }
+        public string SysAppCode { get; set; }
+        public string AppUserRole { get; set; }
+        public UserProject UserProject { get; set; }
+        public vwUserApp UserApp { get; set; }
+
     }
     public class GetCAllArea
     {

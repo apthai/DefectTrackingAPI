@@ -191,7 +191,32 @@ namespace com.apthai.DefectAPI.Controllers
                     };
                 }
                 var RespondData = await Respond.Content.ReadAsStringAsync();
-                var Result = JsonConvert.DeserializeObject<AutorizeDataJWT>(RespondData);
+                AutorizeDataJWT Result = JsonConvert.DeserializeObject<AutorizeDataJWT>(RespondData);
+                AutorizeDataJWTReturnObject Return = new AutorizeDataJWTReturnObject();
+                Return.AccountExpirationDate = Result.AccountExpirationDate;
+                Return.AppUserRole = Result.AppUserRole;
+                Return.AuthenticationProvider = Result.AuthenticationProvider;
+                Return.CostCenterCode = Result.CostCenterCode;
+                Return.CostCenterName = Result.CostCenterName;
+                Return.DisplayName = Result.DisplayName;
+                Return.Division = Result.Division;
+                Return.DomainUserName = Result.DomainUserName;
+                Return.Email = Result.Email;
+                Return.EmployeeID = Result.EmployeeID;
+                Return.FirstName = Result.FirstName;
+                Return.LastLogon = Result.LastLogon;
+                Return.LastName = Result.LastName;
+                Return.LoginResult = Result.LoginResult;
+                Return.LoginResultMessage = Result.LoginResultMessage;
+                Return.SysAppCode = Result.SysAppCode;
+                Return.SysUserData = Result.SysUserData;
+                Return.SysUserId = Result.SysUserId;
+                Return.SysUserRoles = JsonConvert.DeserializeObject<vwUserRole>(Result.SysUserRoles);
+                Return.Token = Result.Token;
+                Return.UserApp = JsonConvert.DeserializeObject<vwUserApp>(Result.UserApp);
+                Return.UserPrincipalName = Result.UserPrincipalName;
+                Return.UserProject = JsonConvert.DeserializeObject<UserProject>(Result.UserApp);
+
                 if (Result.LoginResult == false)
                 {
                     return new
@@ -214,7 +239,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = true,
-                        data = Result,
+                        data = Return,
                         AccessKey = accessKeyControl.AccessKey,
                         valid = false
                     };
