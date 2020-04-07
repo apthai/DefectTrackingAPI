@@ -215,7 +215,7 @@ namespace com.apthai.DefectAPI.Controllers
                 Return.Token = Result.Token;
                 Return.UserApp = JsonConvert.DeserializeObject<List<vwUserApp>>(Result.UserApp);
                 Return.UserPrincipalName = Result.UserPrincipalName;
-                Return.UserProject = JsonConvert.DeserializeObject<List<UserProject>>(Result.UserApp);
+                Return.UserProject = JsonConvert.DeserializeObject<List<UserProject>>(Result.UserProject);
 
                 if (Result.LoginResult == false)
                 {
