@@ -87,7 +87,7 @@ namespace com.apthai.DefectAPI.Repositories
             {
                 try
                 {
-                        string sQuery = "Select * From ICON_EntForms_Unit where ProductID = @ProductID And Active = 1 ";
+                        string sQuery = "Select * From ICON_EntForms_Unit where ProductID = @ProductID ";
                         var result = conn.Query<ICONEntFormsUnit>(sQuery, new { ProductID = ProductID }).ToList();
                         return result;
 
