@@ -49,6 +49,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public int ID { get; set; }
         public int UserID { get; set; }
         public int ProjectID { get; set; }
+        public string ProjectCode { get; set; }
         public string ProjectName { get; set; }
         public string AssignType { get; set; }
         public string SourceType { get; set; }
