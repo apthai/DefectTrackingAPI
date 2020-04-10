@@ -62,6 +62,38 @@ namespace com.apthai.DefectAPI.CustomModel
         public DateTime? EndDate { get; set; }
     }
 
+    public class UserModel
+    {
+        public vwUser User { get; set; }
+        public string TitleMsg { get; set; }
+        public string RedirectMsg { get; set; }
+        public string TypeMsg { get; set; }
+
+    }
+    public class AutorizeRoles
+    {
+
+        public string UserId { get; set; }
+        public List<vwUserRole> Roles { get; set; }
+
+
+    }
+    public class vwUser
+    {
+        public int UserID { get; set; }
+        public string UserGUID { get; set; }
+        public string UserName { get; set; }
+        public string EmpCode { get; set; }
+        public string TitleName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public string PositionName { get; set; }
+        public string Email { get; set; }
+        public string FullCodeName { get; set; }
+        public string UserNameLogin { get; set; }
+        public string RGUID { get; set; }
+    }
     public partial class vwUserApp
     {
         public int? ID { get; set; }

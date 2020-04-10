@@ -147,6 +147,125 @@ namespace com.apthai.DefectAPI.Controllers
         //    }
         //}
 
+        //[HttpPost]
+        //[Route("login")]
+        //[SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
+        //Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
+        //public async Task<object> PostLogin([FromBody] LoginData data)
+        //{
+        //    try
+        //    {
+        //        var userName = data.UserName;
+        //        var password = data.Password;
+        //        var appCode = data.AppCode;
+
+        //        string APApiKey = Environment.GetEnvironmentVariable("API_Key");
+        //        if (APApiKey == null)
+        //        {
+        //            APApiKey = UtilsProvider.AppSetting.ApiKey;
+        //        }
+        //        string APApiToken = Environment.GetEnvironmentVariable("Api_Token");
+        //        if (APApiToken == null)
+        //        {
+        //            APApiToken = UtilsProvider.AppSetting.ApiToken;
+        //        }
+                
+        //        var client = new HttpClient();
+        //        var Content = new StringContent(JsonConvert.SerializeObject(data));
+        //        Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //        Content.Headers.Add("api_key", APApiKey);
+        //        Content.Headers.Add("api_token", APApiToken);
+        //        string PostURL = Environment.GetEnvironmentVariable("AuthenticationURL");
+        //        if (PostURL == null)
+        //        {
+        //            PostURL = UtilsProvider.AppSetting.AuthorizeURL; 
+        //        }
+        //        var Respond = await client.PostAsync(PostURL, Content);
+        //        if (Respond.StatusCode != System.Net.HttpStatusCode.OK)
+        //        {
+        //            return new
+        //            {
+        //                success = false,
+        //                data = new AutorizeDataJWT(),
+        //                valid = false
+        //            };
+        //        }
+        //        var RespondData = await Respond.Content.ReadAsStringAsync();
+        //        AutorizeDataJWT Result = JsonConvert.DeserializeObject<AutorizeDataJWT>(RespondData);
+        //        AutorizeDataJWTReturnObject Return = new AutorizeDataJWTReturnObject();
+        //        Return.AccountExpirationDate = Result.AccountExpirationDate;
+        //        Return.AppUserRole = Result.AppUserRole;
+        //        Return.AuthenticationProvider = Result.AuthenticationProvider;
+        //        Return.CostCenterCode = Result.CostCenterCode;
+        //        Return.CostCenterName = Result.CostCenterName;
+        //        Return.DisplayName = Result.DisplayName;
+        //        Return.Division = Result.Division;
+        //        Return.DomainUserName = Result.DomainUserName;
+        //        Return.Email = Result.Email;
+        //        Return.EmployeeID = Result.EmployeeID;
+        //        Return.FirstName = Result.FirstName;
+        //        Return.LastLogon = Result.LastLogon;
+        //        Return.LastName = Result.LastName;
+        //        Return.LoginResult = Result.LoginResult;
+        //        Return.LoginResultMessage = Result.LoginResultMessage;
+        //        Return.SysAppCode = Result.SysAppCode;
+        //        Return.SysUserData = Result.SysUserData;
+        //        Return.SysUserId = Result.SysUserId;
+        //        Return.SysUserRoles = JsonConvert.DeserializeObject<vwUserRole>(Result.SysUserRoles);
+        //        Return.Token = Result.Token;
+        //        Return.UserApp = JsonConvert.DeserializeObject<List<vwUserApp>>(Result.UserApp);
+        //        Return.UserPrincipalName = Result.UserPrincipalName;
+        //        Return.UserProject = JsonConvert.DeserializeObject<List<UserProject>>(Result.UserProject);
+
+        //        if (Result.LoginResult == false)
+        //        {
+        //            return new
+        //            {
+        //                success = false,
+        //                data = Result.LoginResultMessage,
+        //                valid = false
+        //            };
+        //        }
+        //        AccessKeyControl AC = _UserRepository.GetUserAccessKey(Result.EmployeeID);
+        //        if (AC == null)
+        //        {
+        //            AccessKeyControl accessKeyControl = new AccessKeyControl();
+        //            accessKeyControl.EmpCode = Result.EmployeeID;
+        //            accessKeyControl.AccessKey = generateAccessKey(Result.EmployeeID);
+        //            accessKeyControl.LoginDate = DateTime.Now;
+
+        //            bool Insert = _UserRepository.InsertUserAccessKey(accessKeyControl);
+
+        //            return new
+        //            {
+        //                success = true,
+        //                data = Return,
+        //                AccessKey = accessKeyControl.AccessKey,
+        //                valid = false
+        //            };
+        //        }
+        //        else
+        //        {
+        //            AC.AccessKey = generateAccessKey(Result.EmployeeID);
+        //            AC.LoginDate = DateTime.Now;
+
+        //            bool Update = _UserRepository.UpdateUserAccessKey(AC);
+
+        //            return new
+        //            {
+        //                success = true,
+        //                data = Return,
+        //                AccessKey = AC.AccessKey,
+        //                valid = false
+        //            };
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, "Internal server error :: " + ex.Message);
+        //    }
+        //}
+
         [HttpPost]
         [Route("login")]
         [SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
@@ -169,16 +288,18 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     APApiToken = UtilsProvider.AppSetting.ApiToken;
                 }
-                
+
+
                 var client = new HttpClient();
                 var Content = new StringContent(JsonConvert.SerializeObject(data));
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Content.Headers.Add("api_key", APApiKey);
                 Content.Headers.Add("api_token", APApiToken);
                 string PostURL = Environment.GetEnvironmentVariable("AuthenticationURL");
+                PostURL = PostURL + "JWTUserLogin";
                 if (PostURL == null)
                 {
-                    PostURL = UtilsProvider.AppSetting.AuthorizeURL; 
+                    PostURL = UtilsProvider.AppSetting.AuthorizeURL + "JWTUserLogin";
                 }
                 var Respond = await client.PostAsync(PostURL, Content);
                 if (Respond.StatusCode != System.Net.HttpStatusCode.OK)
@@ -209,7 +330,7 @@ namespace com.apthai.DefectAPI.Controllers
                 Return.LoginResult = Result.LoginResult;
                 Return.LoginResultMessage = Result.LoginResultMessage;
                 Return.SysAppCode = Result.SysAppCode;
-                Return.SysUserData = Result.SysUserData;
+                Return.SysUserData = JsonConvert.DeserializeObject<UserModel>(Result.SysUserData);
                 Return.SysUserId = Result.SysUserId;
                 Return.SysUserRoles = JsonConvert.DeserializeObject<vwUserRole>(Result.SysUserRoles);
                 Return.Token = Result.Token;

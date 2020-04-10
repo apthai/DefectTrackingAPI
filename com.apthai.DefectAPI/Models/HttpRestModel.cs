@@ -72,7 +72,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
 
         public string AuthenticationProvider { get; set; }
         public string SysUserId { get; set; }
-        public string SysUserData { get; set; }
+        public UserModel SysUserData { get; set; }
         public vwUserRole SysUserRoles { get; set; }
         public string SysAppCode { get; set; }
         public string AppUserRole { get; set; }
