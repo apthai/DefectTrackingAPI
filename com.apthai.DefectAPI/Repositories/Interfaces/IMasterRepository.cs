@@ -13,7 +13,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<calltype> GetCallCallType_Sync();
         List<point> GetCallPointByProductCat_Sync(string ProductTypeCate);
         List<callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate);
-        List<ICONEntFormsUnit> GetUnitByProduct(string ProductID);
+        List<ViewUnitCustomer> GetUnitByProduct(string ProductID);
         List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID);
         callTDefect GetCallTDefect_Sync(int TDefectID);
         List<callTDefectDetail> GetcallTDefectDetail_Sync(int TDefectID);

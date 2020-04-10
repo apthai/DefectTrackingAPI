@@ -101,7 +101,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<ICONEntFormsUnit> Units = _masterRepository.GetUnitByProduct(data.ProductID);
+                List<ViewUnitCustomer> Units = _masterRepository.GetUnitByProduct(data.ProductID);
 
                 return new
                 {

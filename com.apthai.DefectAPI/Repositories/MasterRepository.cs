@@ -81,15 +81,14 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<ICONEntFormsUnit> GetUnitByProduct(string ProductID)
+        public List<ViewUnitCustomer> GetUnitByProduct(string ProductID)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
-                        string sQuery = "Select * From ICON_EntForms_Unit  " +
-                        " Left join ICON_EntForms_Unit where ProductID = @ProductID";
-                        var result = conn.Query<ICONEntFormsUnit>(sQuery, new { ProductID = ProductID }).ToList();
+                        string sQuery = "Select * From View_UnitCustomer  where ProductID = @ProductID";
+                        var result = conn.Query<ViewUnitCustomer>(sQuery, new { ProductID = ProductID }).ToList();
                         return result;
 
                 }

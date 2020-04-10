@@ -78,6 +78,37 @@ namespace com.apthai.DefectAPI.CustomModel
 
 
     }
+    public class vwUserProject
+    {
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public string UserName { get; set; }
+        public string UserGUID { get; set; }
+        public string EmpCode { get; set; }
+        public string TitleName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string FullName { get; set; }
+        public int ProjectID { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectWBS { get; set; }
+        public string ProjectName { get; set; }
+        public string BU { get; set; }
+        public string ProjectType { get; set; }
+        public int? CompanyID { get; set; }
+        public string CompanyCode { get; set; }
+        public string CompanySAPCode { get; set; }
+        public string CompanyName { get; set; }
+        public string AssignType { get; set; }
+        public string SourceType { get; set; }
+        public string ProjectGroup { get; set; }
+        public string Remark { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string ProjectGroupName { get; set; }
+        public string PositionName { get; set; }
+    }
     public class vwUser
     {
         public int UserID { get; set; }
