@@ -30,7 +30,22 @@ namespace com.apthai.DefectAPI.Repositories
             _hostingEnvironment = environment;
 
         }
-
+        public ICONEntFormsProduct GetProductDataFromCRM_Sync(int ProductID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                        string sQuery = "Select * From dbo.ICON_EntForms_Products WHERE ProductID = @ProductID ";
+                        var result = conn.Query<ICONEntFormsProduct>(sQuery, new { ProductID = ProductID }).FirstOrDefault();
+                        return result;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetProductDataFromCRM_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate)
         {
             using (IDbConnection conn = WebConnection)

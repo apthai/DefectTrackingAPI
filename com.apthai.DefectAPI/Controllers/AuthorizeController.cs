@@ -160,8 +160,26 @@ namespace com.apthai.DefectAPI.Controllers
                 Return.Token = Result.Token;
                 Return.UserApp = JsonConvert.DeserializeObject<List<vwUserApp>>(Result.UserApp);
                 Return.UserPrincipalName = Result.UserPrincipalName;
-                Return.UserProject = JsonConvert.DeserializeObject<List<UserProject>>(Result.UserProject);
+                List<UserProject> userProjects = JsonConvert.DeserializeObject<List<UserProject>>(Result.UserProject);
 
+                List<UserProjectType> userProjectTypes = new List<UserProjectType>();
+                for (int i = 0; i < userProjects.Count(); i++)
+                {
+                    ICONEntFormsProduct  Prd = _masterRepo.GetProductDataFromCRM_Sync(userProjects[i].ProjectID);
+                    string obj = JsonConvert.SerializeObject(userProjects[i]);
+                    UserProjectType ProductObj = JsonConvert.DeserializeObject<UserProjectType>(obj);
+                    if (Prd.Producttype == "โครงการแนวราบ")
+                    {
+                        ProductObj.producttypecate = "H";
+                    }
+                    if (Prd.Producttype == "โครงการแนวสูง")
+                    {
+                        ProductObj.producttypecate = "V";
+                    }
+                    userProjectTypes.Add(ProductObj);
+                }
+
+                Return.UserProject = userProjectTypes;
                 if (Result.LoginResult == false)
                 {
                     return new

@@ -61,6 +61,24 @@ namespace com.apthai.DefectAPI.CustomModel
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
     }
+    public partial class UserProjectType
+    {
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public int ProjectID { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectName { get; set; }
+        public string AssignType { get; set; }
+        public string SourceType { get; set; }
+        public int? CreatedBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public int? ModifiedBy { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public string Remark { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string producttypecate { get; set; }
+    }
 
     public class UserModel
     {

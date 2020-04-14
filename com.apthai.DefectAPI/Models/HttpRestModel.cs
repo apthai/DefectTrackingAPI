@@ -76,7 +76,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public vwUserRole SysUserRoles { get; set; }
         public string SysAppCode { get; set; }
         public string AppUserRole { get; set; }
-        public List<UserProject> UserProject { get; set; }
+        public List<UserProjectType> UserProject { get; set; }
         public List<vwUserApp> UserApp { get; set; }
 
     }
