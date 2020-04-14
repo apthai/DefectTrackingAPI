@@ -165,17 +165,21 @@ namespace com.apthai.DefectAPI.Controllers
                 List<UserProjectType> userProjectTypes = new List<UserProjectType>();
                 for (int i = 0; i < userProjects.Count(); i++)
                 {
-                    ICONEntFormsProduct  Prd = _masterRepo.GetProductDataFromCRM_Sync(userProjects[i].ProjectID);
+                    ICONEntFormsProduct  Prd = _masterRepo.GetProductDataFromCRM_Sync(userProjects[i].ProjectCode);
                     string obj = JsonConvert.SerializeObject(userProjects[i]);
                     UserProjectType ProductObj = JsonConvert.DeserializeObject<UserProjectType>(obj);
-                    if (Prd.Producttype == "โครงการแนวราบ")
+                    if (Prd != null)
                     {
-                        ProductObj.producttypecate = "H";
+                        if (Prd.Producttype == "โครงการแนวราบ")
+                        {
+                            ProductObj.producttypecate = "H";
+                        }
+                        if (Prd.Producttype == "โครงการแนวสูง")
+                        {
+                            ProductObj.producttypecate = "V";
+                        }
                     }
-                    if (Prd.Producttype == "โครงการแนวสูง")
-                    {
-                        ProductObj.producttypecate = "V";
-                    }
+                    
                     userProjectTypes.Add(ProductObj);
                 }
 

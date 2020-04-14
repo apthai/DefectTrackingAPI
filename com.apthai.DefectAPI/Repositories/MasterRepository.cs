@@ -30,7 +30,7 @@ namespace com.apthai.DefectAPI.Repositories
             _hostingEnvironment = environment;
 
         }
-        public ICONEntFormsProduct GetProductDataFromCRM_Sync(int ProductID)
+        public ICONEntFormsProduct GetProductDataFromCRM_Sync(string ProductID)
         {
             using (IDbConnection conn = WebConnection)
             {
