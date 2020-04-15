@@ -96,6 +96,13 @@ namespace com.apthai.DefectAPI.CustomModel
 
 
     }
+    public class GetUnitByProjectReturnObj : ViewUnitCustomer
+    {
+        public string PhaseID { get; set; }
+        public string BlockID { get; set; }
+        public string TowerID { get; set; }
+        public string FloorID { get; set; }
+    }
     public class vwUserProject
     {
         public int ID { get; set; }
