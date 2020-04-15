@@ -79,13 +79,13 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
-                        string sQuery = "Select * From Point where Active = 1 ";
+                        string sQuery = "Select * From Point ";
                         var result = conn.Query<point>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
-                        string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate And Active = 1 ";
+                        string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate ";
                         var result = conn.Query<point>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
                         return result;
                     }
