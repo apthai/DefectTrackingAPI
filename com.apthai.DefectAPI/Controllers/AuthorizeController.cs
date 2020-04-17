@@ -60,17 +60,17 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     PostURL = UtilsProvider.AppSetting.AuthorizeURL + "FindUserProjectByNamenew/" + EmpCode;
                 }
-                var Respond = await client.GetAsync(PostURL);
-                if (Respond.StatusCode != System.Net.HttpStatusCode.OK)
-                {
-                    return new
+                    var Respond = await client.GetAsync(PostURL);
+                    if (Respond.StatusCode != System.Net.HttpStatusCode.OK)
                     {
-                        success = false,
-                        data = new AutorizeDataJWT(),
-                        valid = false
-                    };
-                }
-                List<vwUserProject> data = Respond.Content.ReadAsAsync<List<vwUserProject>>().Result;
+                        return new
+                        {
+                            success = false,
+                            data = new AutorizeDataJWT(),
+                            valid = false
+                        };
+                    }
+                    List<vwUserProject> data = Respond.Content.ReadAsAsync<List<vwUserProject>>().Result;
                 return new
                 {
                     success = true,

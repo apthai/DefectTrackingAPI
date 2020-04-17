@@ -30,6 +30,7 @@ using Hangfire.Annotations;
 using Hangfire.Common;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.FileProviders;
+using Hangfire.SqlServer;
 
 namespace com.apthai.DefectAPI
 {
@@ -190,8 +191,17 @@ namespace com.apthai.DefectAPI
             {
                 conn = Configuration.GetConnectionString("DefaultConnection");
             }
+            var HangFireOption = new SqlServerStorageOptions
+            {
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                QueuePollInterval = TimeSpan.Zero,
+                UseRecommendedIsolationLevel = true,
+                UsePageLocksOnDequeue = true,
+                DisableGlobalLocks = true
+            };
             services.AddHangfire(config =>
-                config.UseSqlServerStorage(conn));
+                config.UseSqlServerStorage(conn, HangFireOption));
 
 
             //services.AddSwaggerExamples();

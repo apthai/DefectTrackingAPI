@@ -17,9 +17,8 @@
     <PackageReference Include="Dapper.Contrib" Version="1.50.7" />
     <PackageReference Include="dotnet-zip" Version="0.1.56" />
     <PackageReference Include="DotNetZip" Version="1.13.3" />
-    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.3" />
+    <PackageReference Include="HangFire" Version="1.7.11" />
     <PackageReference Include="Hangfire.Dashboard.Authorization.Unofficial" Version="2.1.1" />
-    <PackageReference Include="Hangfire.SqlServer" Version="1.7.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />

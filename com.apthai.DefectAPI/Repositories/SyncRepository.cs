@@ -92,7 +92,7 @@ namespace com.apthai.DefectAPI.Repositories
 
         //}
         
-
+    
         public async Task<int> TanonchaiJobSample()
         {
             int a = 20;
