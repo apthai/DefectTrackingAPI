@@ -103,7 +103,6 @@ namespace com.apthai.DefectAPI.HttpRestModel
     public class callTDefectObj
     {
         public int TDefectID { get; set; }
-        public string EmpCode { get; set; }
     }
     public class CreateDefectTransactionParam
     {

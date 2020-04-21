@@ -260,7 +260,7 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
-        [Route("CreateDefect")]
+        [Route("GetCreatedDefectByID")]
         public async Task<object> CreateDefect([FromBody]callTDefectObj data)
         {
             try
