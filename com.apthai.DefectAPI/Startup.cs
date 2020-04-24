@@ -223,8 +223,8 @@ namespace com.apthai.DefectAPI
             services.AddSingleton<IDataCrawlerServices, DataCrawlerServices>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IUserRepository, UserRepository>();
-            //services.AddSingleton<IResourceRepository, ResourceRepository>();
-            //services.AddSingleton<ITransactionsRepository, TransactionsRepository>();
+            services.AddSingleton<ISyncRepository, SyncRepository>();
+            services.AddSingleton<ITransactionRepository, TransactionRepository>();
             //services.AddSingleton<IFacilitiesTransactionsRepository, FacilitiesTransactionsRepository>();
 
         }

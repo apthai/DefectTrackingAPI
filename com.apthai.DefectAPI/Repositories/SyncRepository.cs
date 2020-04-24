@@ -12,6 +12,7 @@ using Dapper.Contrib.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Extensions;
+using com.apthai.DefectAPI.Model.DefectAPI;
 
 namespace com.apthai.DefectAPI.Repositories
 {
@@ -31,7 +32,27 @@ namespace com.apthai.DefectAPI.Repositories
 
         }
 
+        public bool InsertCallResource(callResource data)
+        {
+            using (IDbConnection conn = SyncConnection)
+            {
+                try
+                {
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
 
+                    var result = conn.Insert(data, tran);
+                    tran.Commit();
+
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.updateMUnit_Sync() :: Error ", ex);
+                }
+            }
+        }
 
         //private void proc_SaveResource(
         // Guid SynSessionId, int SynUserId, string SynUserRole,
@@ -91,8 +112,8 @@ namespace com.apthai.DefectAPI.Repositories
 
 
         //}
-        
-    
+
+
         public async Task<int> TanonchaiJobSample()
         {
             int a = 20;

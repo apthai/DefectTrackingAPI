@@ -1,11 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using com.apthai.DefectAPI.Model.DefectAPI;
+using Microsoft.AspNetCore.Http;
 
 namespace com.apthai.DefectAPI.CustomModel
 {
+    public partial class ParamUploadImage
+    {
+        [Required]
+        public string TDefectID { get; set; }
+        [Required]
+        public string TDefectDetailIDID { get; set; }
+        [Required]
+        public int UserID { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string Description { get; set; }
+        public string ProjectNO { get; set; }
+        public int UnitNo { get; set; }
+        public string SerialNo { get; set; }
+        public string DeviceID { get; set; }
+        public List<IFormFile> Files { get; set; }
+
+
+    }
     public class GetCAllAreaxDescroiption
     {
         public callarea callarea { get; set; }

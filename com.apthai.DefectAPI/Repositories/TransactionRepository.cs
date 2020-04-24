@@ -88,6 +88,26 @@ namespace com.apthai.DefectAPI.Repositories
                 throw ex;
             }
         }
+        public bool InsertTdefectDetail(callTDefect defectDetail,ref long DefectID)
+        {
+            try
+            {
+                using (IDbConnection conn = WebConnection)
+                {
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
+
+                    DefectID = conn.Insert(defectDetail, tran);
+                    tran.Commit();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool InsertTdefectDetail(callTDefectDetail defectDetail)
         {
             try

@@ -26,6 +26,7 @@ using com.apthai.DefectAPI.CustomModel;
 using com.apthai.CoreApp.Data.Services;
 using com.apthai.DefectAPI.HttpRestModel;
 using Microsoft.Extensions.Primitives;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -37,19 +38,21 @@ namespace com.apthai.DefectAPI.Controllers
         private readonly IConfiguration _config;
         private readonly IMasterRepository _masterRepository;
         private readonly ITransactionRepository _transactionRepository;
+        private readonly ISyncRepository _syncRepository;
         //private List<MStorageServer> _QISStorageServer;
         protected AppSettings _appSetting;
 
-        public TransactionController(IAuthorizeService authorizeService , ITransactionRepository transactionRepository) {
+        public TransactionController(IAuthorizeService authorizeService , ITransactionRepository transactionRepository,ISyncRepository syncRepository) {
 
 
             _hostingEnvironment  = UtilsProvider.HostingEnvironment;
             _config = UtilsProvider.Config;
-            _appSetting = UtilsProvider.AppSetting;
+            //_appSetting = UtilsProvider.AppSetting;
             _unitOfWork = new UnitOfWork(_hostingEnvironment, _config);
             _masterRepository = new MasterRepository(_hostingEnvironment, _config);
             _authorizeService = authorizeService;
             _transactionRepository = transactionRepository;
+            _syncRepository = syncRepository;
         }
         
         //[HttpPost]
@@ -95,14 +98,14 @@ namespace com.apthai.DefectAPI.Controllers
             try
             {
                 string ErrorMsg = "";
-                if (!VerifyHeader(out ErrorMsg))
-                {
-                    return new
-                    {
-                        success = false,
-                        data = ErrorMsg
-                    };
-                }
+                //if (!VerifyHeader(out ErrorMsg))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorMsg
+                //    };
+                //}
                 int taskNo = 1;
                 if (data.TDefectId != 0 )
                 {
@@ -183,6 +186,9 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.DocReceiveUnitDate = DateTime.Now;
                     CreateDefect.DocDueTransferDate = DateTime.Now;
                     CreateDefect.ContactID = null;
+                    long DefectID = 0;
+                    bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect,ref DefectID);
+                    CreateDefect.TDefectId = Convert.ToInt32(DefectID);
                     return new
                     {
                         success = true,
@@ -230,6 +236,365 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
 
+        //[HttpPost]
+        //[Route("uploadTransactionPicture")]
+        //[Consumes("multipart/form-data")]
+        //public async Task<object> uploadTransactionPicture([FromForm] ParamUploadImage data)
+        //{
+        //    try
+        //    {
+        //        List<string> tempUploadPath = new List<string>();
+        //        //<PlanImageUploadResult> tempUploadFiles = new List<PlanImageUploadResult>();
+        //        string message = "";
+        //        //var _ImageUnitMappingData = new List<ImageMappingData>();
+        //        //if (!string.IsNullOrEmpty(data.ImageFiles))
+        //        //    _ImageUnitMappingData = JsonConvert.DeserializeObject<List<ImageMappingData>>(data.ImageUnitMappingData);
+
+        //        if (data.ImageFiles != null && data.ImageFiles.Count() > 0)
+        //        {
+
+        //            //var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads");
+
+
+        //            foreach (var formFile in data.ImageFiles)
+        //            {
+
+        //                long size = data.ImageFiles.Sum(f => f.Length);
+
+        //                var fileName = formFile.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+        //                var yearPath = DateTime.Now.Year;
+        //                var MonthPath = DateTime.Now.Month;
+        //                int dataPath = 0; int dataPath2 = 0;
+                        
+        //                dataPath = Convert.ToInt32(data.ProjectNO);
+        //                dataPath2 = data.UnitNo;
+
+        //                var dirPath = $"{yearPath}/{MonthPath}/P{dataPath}";
+        //                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads/" + dirPath);
+        //                var savePath = new FileInfo(Path.Combine(uploads, fileName));
+        //                //if (!savePath.Directory.Exists)
+        //                //    savePath.Directory.Create();
+        //                if (!Directory.Exists(uploads))
+        //                {
+        //                    Directory.CreateDirectory(uploads);
+        //                }
+
+        //                if (formFile.Length > 0)
+        //                {
+        //                    var filePath = Path.Combine(uploads, formFile.FileName);
+        //                    if (System.IO.File.Exists(filePath))
+        //                    {
+        //                        string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+        //                        string extension = Path.GetExtension(filePath);
+        //                        string path = Path.GetDirectoryName(filePath);
+        //                        string newFullPath = filePath;
+        //                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+        //                        newFullPath = Path.Combine(path, tempFileName + extension);
+        //                        using (var fileStream = new FileStream(newFullPath, FileMode.Create))
+        //                        {
+        //                            message = formFile.Length.ToString();
+        //                            await formFile.CopyToAsync(fileStream);
+        //                            fileName = tempFileName;
+
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //                        {
+        //                            message = formFile.Length.ToString();
+        //                            await formFile.CopyToAsync(fileStream);
+
+        //                        }
+        //                    }
+
+
+        //                    if (System.IO.File.Exists(filePath))
+        //                    {
+        //                        //tempUploadPath.Add(filePath.FullName);
+
+        //                        //var filePath = dirPath.Replace("\\", "/");
+        //                        //var saveStoragePath = await base.GetQISResourceStoragePhysicalPathAsync(base._appSetting.StorageServerId, dirPath);
+        //                        //var url = await base.GetQISFileStorageUrlAsync(base._appSetting.StorageServerId, filePath);
+
+        //                        //if (!new FileInfo(saveStoragePath).Directory.Exists)
+        //                        //    new FileInfo(saveStoragePath).Directory.Create();
+
+        //                        // System.IO.File.Copy(savePath.FullName, saveStoragePath, true);
+        //                        // var fi = new System.IO.FileInfo(saveStoragePath);
+
+        //                        //var res = new TResource()
+        //                        //{
+        //                        //    CreatedDate = DateTime.Now,
+        //                        //    CreateDeviceId = "",
+        //                        //    CreateUserId = data.UserID,
+        //                        //    Description = data.Description,
+        //                        //    FilePath = filePath,
+        //                        //    RowClientId = data.RowClientID,
+        //                        //    IsActive = true,
+        //                        //    StorageServerId = _appSetting.StorageServerId,
+        //                        //    ProjectId = _ImageUnitMappingData.FirstOrDefault().ProjectID,
+        //                        //    FileLength = fi.Length
+        //                        //};
+
+        //                        //var uPlanImages = new List<MImage>();
+        //                        //List<ImageMappingData> Mappings = new List<ImageMappingData>();
+        //                        //foreach (var d in _ImageUnitMappingData)
+        //                        //{
+        //                        //    uPlanImages.Add(new MImage()
+        //                        //    {
+        //                        //        ResourceRowClientID = res.RowClientId,
+        //                        //        UnitID = d.UnitID,
+        //                        //        ImageType = "PlanImage",
+        //                        //        Description = d.Description,
+        //                        //        ImageClientID = Guid.NewGuid(),
+        //                        //        CreateDeviceDate = data.CreateDeviceDate,
+        //                        //        CreateDeviceId = data.CreateDeviceId
+        //                        //    });
+
+        //                        //}
+
+
+        //                        //await _unitOfWork.SyncRepository.AddPlanImages(res, uPlanImages);
+
+
+        //                        //var dirExport = Path.Combine(_hostingEnvironment.WebRootPath, "data", "FloorPlanImages");
+        //                        //if (!Directory.Exists(dirExport))
+        //                        //    Directory.CreateDirectory(dirExport);
+
+        //                        filePath = filePath.Replace("\\", "/");
+        //                        var saveStoragePath = await base.GetQISResourceStoragePhysicalPathAsync(base._appSetting.StorageServerId, filePath);
+        //                        // var savePath = new FileInfo(Path.Combine(saveStoragePath, dirPath));
+
+        //                        //var url = await base.GetQISFileStorageUrlAsync(base._appSetting.StorageServerId, filePath);
+
+        //                        //if (!new FileInfo(saveStoragePath).Directory.Exists)
+        //                        //    new FileInfo(saveStoragePath).Directory.Create();
+
+        //                        // System.IO.File.Copy(savePath.FullName, saveStoragePath, true);
+        //                        // var fi = new System.IO.FileInfo(saveStoragePath);
+
+        //                        //var res = new TResource()
+
+        //                        var ImageId = data.RowClientID.ToLower();
+        //                        if (string.IsNullOrEmpty(ImageId))
+        //                            ImageId = Guid.NewGuid().ToString("N");
+
+        //                        var tempUploadFile = savePath.FullName;
+
+        //                        //var newDir = new DirectoryInfo(filePath);
+        //                        //if (!newDir.Exists)
+        //                        //    newDir.Create();
+
+        //                        string mainResizePath = System.IO.Path.Combine(savePath.DirectoryName, string.Format("PLM{0}.jpg", ImageId));
+        //                        mainResizePath = mainResizePath.Replace("\\", "/");
+
+        //                        /*--- New Code ---*/
+
+
+        //                        long ResFileLength = 0;
+
+        //                        var tempUploadad = new FileInfo(mainResizePath);
+        //                        ResFileLength = tempUploadad.Length;
+
+        //                        string ResId = Guid.NewGuid().ToString();
+
+
+        //                        //For Save Main Image
+        //                        var valid = await func_SaveImageAsync(ResId.ToString(), dataPath, dataPath2, mainResizePath, ImageId, true, ResFileLength, data.Description, data.CreateDeviceId, data.UserID, data.CreateDeviceDate, _ImageUnitMappingData, data.CreatorFullName, data.UserID);
+
+                             
+        //            return new
+        //            {
+        //                success = true,
+        //                data = new { MappingPlanImages = tempUploadFiles },
+        //                // data = _data.ToList(),
+        //                //message = string.Format("found {0} items", _data.Count)
+        //            };
+
+        //        }
+
+
+        //        //var dataResult = await _unitOfWork.MasterRepository.GetUnitSearch(data.ProjectId, data.SearchText);
+        //        //var _data = dataResult.ToList();
+
+
+        //        return new
+        //        {
+        //            success = false,
+        //            message = "missing upload file."
+        //        };
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return StatusCode(500, "Internal server error :: " + ex.Message);
+        //    }
+
+        //}
+
+        [HttpPost("uploadTResourceForFacilities")]
+        [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
+        [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
+       Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
+        public async Task<object> Upload([FromForm]ParamUploadImage data)
+        {
+            int a = 0;
+            //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
+            //string StroageID = base._appSetting.StorageServerId.ToString();
+
+            //com.apthai.QISAPINETCore.Model.QIS.MStorageServer StorageData = _ResourceRepo.GetStorageServerDetail(StroageID);
+
+            //var UploadLoctaion = StorageData.StoragePhysicalPath;
+            int SuccessUploadCount = 0;
+            int count = 0;
+            for (int i = 0; i < data.Files.Count(); i++)
+            {
+                callResource callResourceDate = new callResource();
+                if (data.Files != null && data.Files.Count() > 0)
+                {
+                    // -- New ---- for Docker
+                    var yearPath = DateTime.Now.Year;
+                    var MonthPath = DateTime.Now.Month;
+                    var dirPath1 = $"{yearPath}/{MonthPath}";
+                    int dataPath = 0;
+                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads", dirPath1);
+
+                    string FileBinary;
+
+
+                    long size = data.Files.Sum(f => f.Length);
+                    string FileExtension = Path.GetExtension(data.Files[i].FileName);  // -------------- > Get File Extention
+                    var fileName = data.Files[i].FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+
+                    var dirPath = $"{yearPath}\\M{dataPath}";
+
+                    // --- New Docker ----
+                    if (!Directory.Exists(uploads))
+                    {
+                        Directory.CreateDirectory(uploads);
+                    }
+                    if (data.Files[i].Length > 0)
+                    {
+                        var filePath = Path.Combine(uploads, data.Files[i].FileName);
+                        var message = "";
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+                            string extension = Path.GetExtension(filePath);
+                            string path = Path.GetDirectoryName(filePath);
+                            string newFullPath = filePath;
+                            string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                            newFullPath = Path.Combine(path, tempFileName + extension);
+                            using (var fileStream = new FileStream(newFullPath, FileMode.Create))
+                            {
+                                message = data.Files[i].Length.ToString();
+                                await data.Files[i].CopyToAsync(fileStream);
+                                fileName = tempFileName + extension;
+
+                            }
+                        }
+                        else
+                        {
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                message = data.Files[i].Length.ToString();
+                                await data.Files[i].CopyToAsync(fileStream);
+                            }
+                        }
+
+                        // -- -End New -----
+                        //if (System.IO.File.Exists(savePath.FullName))
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            // ----- Old -----
+                            //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
+                            // ----- New Docker -----
+                            callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
+
+                            //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
+                            //TresourceData[i].FileLength = size;
+                            //TresourceData[i].CreatedDate = DateTime.Now;
+                            //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
+                            //TresourceData[i].RowSyncDate = DateTime.Now;
+                            //TresourceData[i].StorageServerId = StorageData.StorageServerId;
+                            //bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
+
+                            //if (InsertResult == true)
+                            //{
+                                //SuccessUploadCount++;
+                                //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
+                                //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
+                                //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
+                                //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
+                                //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
+                                //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
+                                //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
+                                //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
+                                //TresourceTransfer.UnitId = TresourceData[i].UnitId;
+                                ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
+                                //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
+                                //TresourceTransfer.Description = TresourceData[i].Description;
+                                //TresourceTransfer.IsActive = TresourceData[i].IsActive;
+                                //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
+                                //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
+                                //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
+                                //TresourceTransfer.DetailId = TresourceData[i].DetailId;
+                                //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
+                                //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
+                                //TresourceTransfer.Tag = TresourceData[i].Tag;
+                                //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
+                                //TresourceTransfer.RowState = TresourceData[i].RowState;
+                                //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
+                                //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
+                                //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
+                                //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
+                                //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
+                                //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
+                                //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
+                                //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
+                                //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
+                                //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
+                                //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
+                                //TresourceTransfer.FileLength = TresourceData[i].FileLength;
+                                //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
+                                //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
+                                //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
+                                //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
+                                //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
+                                //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
+                                //TresourceTransfer.TagState = TresourceData[i].TagState;
+                                //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
+
+                                //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
+                            //}
+                        }
+                    }
+
+                }
+                else
+                {
+                    return new
+                    {
+                        success = false,
+                        data = "[]",
+                        message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
+                    };
+                }
+
+            }
+
+
+            return new
+            {
+                success = true,
+                data = "[]",
+                message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
+            };
+        }
         [ApiExplorerSettings(IgnoreApi = true)]
         public bool VerifyHeader(out string ErrorMsg)
         {
@@ -326,7 +691,7 @@ namespace com.apthai.DefectAPI.Controllers
         //    return path;
 
         //}
-
+        
     }
 
 
