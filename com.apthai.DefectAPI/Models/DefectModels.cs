@@ -565,6 +565,41 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public DateTime? ExpireAt { get; set; }
     }
 
+    [Table("CRM1_UNIT_DIRECT_TEMP")]
+    public partial class CRM1UNITDIRECTTEMP
+    {
+        public string ProductID { get; set; }
+        public string ProductName { get; set; }
+        public string ProductNameEN { get; set; }
+        public string ProductNickName { get; set; }
+        public string ProductType { get; set; }
+        public string ProductTypeCate { get; set; }
+        public string UnitNumber { get; set; }
+        public string AddressNumber { get; set; }
+        public string WbsNumber { get; set; }
+        public string ModelID { get; set; }
+        public string ModelHomeThai { get; set; }
+        public string ModelHomeEng { get; set; }
+        public string ModelLayoutType { get; set; }
+        public decimal? AreaFromRE { get; set; }
+        public string PhaseBuildingName { get; set; }
+        public string Phase { get; set; }
+        public string Tower { get; set; }
+        public string Floor { get; set; }
+        public string ContactID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string CustomerFullName { get; set; }
+        public string ContactTel { get; set; }
+        public DateTime? TransferDueDate { get; set; }
+        public DateTime? TransferDate { get; set; }
+        public string BookingNumber { get; set; }
+        public string ContractNumber { get; set; }
+        public int? SellerID { get; set; }
+        public string SellerFullName { get; set; }
+        public int? AppointmentJobNo { get; set; }
+    }
+
     [Table("cusnote")]
     public partial class cusnote
     {
@@ -682,30 +717,6 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public int version { get; set; }
     }
 
-    [Table("FXMLocDistrict")]
-    public partial class FXMLocDistrict
-    {
-        public string DistrictCKey { get; set; }
-        public string DistrictID { get; set; }
-        public string DistrictName { get; set; }
-    }
-
-    [Table("FXMLocProvince")]
-    public partial class FXMLocProvince
-    {
-        public string ProvinceCKey { get; set; }
-        public string ProvinceID { get; set; }
-        public string ProvinceName { get; set; }
-    }
-
-    [Table("FXMLocSubDistrict")]
-    public partial class FXMLocSubDistrict
-    {
-        public string SubDistrictCKey { get; set; }
-        public string SubDistrictID { get; set; }
-        public string SubDistrictName { get; set; }
-    }
-
     [Table("Hash")]
     public partial class Hash
     {
@@ -716,6 +727,184 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string ExpireAt { get; set; }
     }
 
+    [Table("ICON_EntForms_Agreement")]
+    public partial class ICONEntFormsAgreement
+    {
+        public string ContractNumber { get; set; }
+        public long RunningID { get; set; }
+        public string ContractReferent { get; set; }
+        public DateTime? ContractDate { get; set; }
+        public string BookingNumber { get; set; }
+        public string OwnerID { get; set; }
+        public string SaleID { get; set; }
+        public string ProductID { get; set; }
+        public string UnitNumber { get; set; }
+        public bool? IsBuildComplete { get; set; }
+        public double? IncreasingArea { get; set; }
+        public decimal? IncreasingAreaPrice { get; set; }
+        public decimal? UnitIncreasingAreaPrice { get; set; }
+        public decimal? TotalSellingPrice { get; set; }
+        public decimal? SellingPrice { get; set; }
+        public decimal? SuggestionPrice { get; set; }
+        public DateTime? SuggestionDate { get; set; }
+        public string Subordinator { get; set; }
+        public decimal? NetSalePrice { get; set; }
+        public decimal? KasornPrice { get; set; }
+        public decimal? PheuksaPrice { get; set; }
+        public decimal? KasornDiscount { get; set; }
+        public decimal? PheuksaDiscount { get; set; }
+        public bool? isNeedSpecialDis { get; set; }
+        public decimal? AdditionalDiscount { get; set; }
+        public byte? DiscountTo { get; set; }
+        public decimal? SpacialDiscount { get; set; }
+        public decimal? BoiDiscount { get; set; }
+        public decimal? EmployeeDiscount { get; set; }
+        public bool? PreApprove { get; set; }
+        public decimal? PaidOtherContract { get; set; }
+        public double? PercentBooking { get; set; }
+        public decimal? BookingAmount { get; set; }
+        public double? PercentContract { get; set; }
+        public decimal? ContractAmount { get; set; }
+        public double? PercentDownPayment { get; set; }
+        public decimal? DownAmount { get; set; }
+        public decimal? TransferPayment { get; set; }
+        public decimal? TotalPayment { get; set; }
+        public string ContractType { get; set; }
+        public decimal? Contract2 { get; set; }
+        public DateTime? TransferDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public int? PeriodDate { get; set; }
+        public DateTime? PaymentPeriodStart { get; set; }
+        public DateTime? PaymentPeriodEnd { get; set; }
+        public int? DownPaymentPeriod { get; set; }
+        public decimal? DownPaymentPerMonth { get; set; }
+        public string ExtraDownPayment { get; set; }
+        public decimal? ExtraDownAmount { get; set; }
+        public string PromotionID { get; set; }
+        public string PromotionDetail { get; set; }
+        public decimal? PromotionPrice { get; set; }
+        public decimal? PromotionDiscount { get; set; }
+        public decimal? CashDiscount { get; set; }
+        public decimal? TransferDiscount { get; set; }
+        public string KasornContractNo { get; set; }
+        public DateTime? ApproveDate { get; set; }
+        public bool? isPaidCompleted { get; set; }
+        public decimal? RemainAmount { get; set; }
+        public bool? isEditThis { get; set; }
+        public string IntroducerID { get; set; }
+        public string IntroducerName { get; set; }
+        public decimal? IntroducerAmount { get; set; }
+        public byte? Cancel { get; set; }
+        public DateTime? CancelDate { get; set; }
+        public string CancelType { get; set; }
+        public string CancelReason { get; set; }
+        public string CancelReasonGroup { get; set; }
+        public string CancelBy { get; set; }
+        public decimal? ReturnPrice { get; set; }
+        public bool? ChangeUnit { get; set; }
+        public byte? CreditType { get; set; }
+        public string Remark { get; set; }
+        public string CreateBy { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public string ModifyBy { get; set; }
+        public DateTime? ModifyDate { get; set; }
+        public decimal? PublicFundRate { get; set; }
+        public DateTime? PublicFundEndDate { get; set; }
+        public int? SendDocAt { get; set; }
+        public string SendName { get; set; }
+        public string SendAddress { get; set; }
+        public decimal? BookingPaid { get; set; }
+        public bool? isTmp { get; set; }
+        public string MA_RUNNO { get; set; }
+        public DateTime? ContractDate_Old { get; set; }
+        public string OppID { get; set; }
+        public int? OldPeriodDate { get; set; }
+        public DateTime? isContractDate { get; set; }
+        public DateTime? pContractDate { get; set; }
+        public decimal? FurniturePrice { get; set; }
+        public decimal? FGFDiscount { get; set; }
+        public string PromotionAmountDetail { get; set; }
+        public decimal? TotalBudgetPromotion { get; set; }
+        public DateTime? PromotionTransferDate { get; set; }
+        public bool? isApPay { get; set; }
+        public decimal? LastDownAmount { get; set; }
+        public DateTime? LastDownDate { get; set; }
+        public DateTime? SignContractDate { get; set; }
+        public string SignContractBy { get; set; }
+        public DateTime? SignContractApproveDate { get; set; }
+        public string SignContractApproveBy { get; set; }
+        public DateTime? SignContractRejectDate { get; set; }
+        public string SignContractRejectBy { get; set; }
+        public DateTime? SignContractApproveDate2 { get; set; }
+        public string SignContractApproveBy2 { get; set; }
+        public DateTime? SignContractRejectDate2 { get; set; }
+        public string SignContractRejectBy2 { get; set; }
+        public DateTime? HoldCancelCreateDate { get; set; }
+        public string HoldCancelBy { get; set; }
+        public int? HoldCancelStatus { get; set; }
+        public DateTime? HoldCancelStatusDate { get; set; }
+        public int? PreCancel { get; set; }
+        public DateTime? PreCancelDate { get; set; }
+        public int? SaleHelper { get; set; }
+        public int? SaleTraineeID { get; set; }
+        public string PreSalePromotionID { get; set; }
+    }
+
+    [Table("ICON_EntForms_AgreementOwner")]
+    public partial class ICONEntFormsAgreementOwner
+    {
+        public string ContractNumber { get; set; }
+        public int Contactrunning { get; set; }
+        public int? SequenceNo { get; set; }
+        public string ContactID { get; set; }
+        public string PersonCardID { get; set; }
+        public string NamesTitle { get; set; }
+        public string NamesTitleExt { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool? IsVIP { get; set; }
+        public string Nationality { get; set; }
+        public string CurrentAddress { get; set; }
+        public string Moo { get; set; }
+        public string Village { get; set; }
+        public string Soi { get; set; }
+        public string Road { get; set; }
+        public string SubDistrict { get; set; }
+        public string District { get; set; }
+        public string Province { get; set; }
+        public string Country { get; set; }
+        public string PostCode { get; set; }
+        public string Phone { get; set; }
+        public string Mobile { get; set; }
+        public string Email { get; set; }
+        public bool? Header { get; set; }
+        public bool? IsDelete { get; set; }
+        public bool? IsFirstOwner { get; set; }
+        public string FullAddress { get; set; }
+        public byte? Status { get; set; }
+        public int? ContStatus { get; set; }
+        public bool? isTmp { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public string Phone_old { get; set; }
+        public string Mobile_old { get; set; }
+        public string NamesTitle_ENG { get; set; }
+        public string NamesTitleExt_ENG { get; set; }
+        public string FirstName_ENG { get; set; }
+        public string LastName_ENG { get; set; }
+        public string CurrentAddress_ENG { get; set; }
+        public string Moo_ENG { get; set; }
+        public string Village_ENG { get; set; }
+        public string Soi_ENG { get; set; }
+        public string Road_ENG { get; set; }
+        public string SubDistrict_ENG { get; set; }
+        public string District_ENG { get; set; }
+        public string Province_ENG { get; set; }
+        public string Country_ENG { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
+    }
+
     [Table("ICON_EntForms_Brand")]
     public partial class ICONEntFormsBrand
     {
@@ -724,6 +913,175 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string BrandID { get; set; }
         public string BrandName { get; set; }
         public bool? DeleteFlag { get; set; }
+    }
+
+    [Table("ICON_EntForms_Contacts")]
+    public partial class ICONEntFormsContact
+    {
+        public string ItemId { get; set; }
+        public long? OwnerId { get; set; }
+        public string BUID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string DisplayName { get; set; }
+        public string Status { get; set; }
+        public string StatusReason { get; set; }
+        public string Statusincrease { get; set; }
+        public string CreateBy { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public string ModifyBy { get; set; }
+        public DateTime? ModifyDate { get; set; }
+        public Guid? ContactGUID { get; set; }
+        public bool? IsUpdated { get; set; }
+        public bool? IsViP { get; set; }
+        public string Nationality { get; set; }
+        public string SourceKey { get; set; }
+        public string ContactID { get; set; }
+        public string ContactRunno { get; set; }
+        public string Gender { get; set; }
+        public DateTime? Date_of_birth { get; set; }
+        public string HouseID_4 { get; set; }
+        public string Moo_4 { get; set; }
+        public string Village_4 { get; set; }
+        public string Soi_4 { get; set; }
+        public string Road_4 { get; set; }
+        public string SubDistrict_4 { get; set; }
+        public string District_4 { get; set; }
+        public string Province_4 { get; set; }
+        public string PostalCode_4 { get; set; }
+        public string Country_4 { get; set; }
+        public string HouseID_1 { get; set; }
+        public string Moo_1 { get; set; }
+        public string Village_1 { get; set; }
+        public string Soi_1 { get; set; }
+        public string Road_1 { get; set; }
+        public string SubDistrict_1 { get; set; }
+        public string District_1 { get; set; }
+        public string Province_1 { get; set; }
+        public string PostalCode { get; set; }
+        public string Country_1 { get; set; }
+        public string Tel_1 { get; set; }
+        public string TelExt_1 { get; set; }
+        public string PostalCode_1 { get; set; }
+        public string HouseID_3 { get; set; }
+        public string Moo_3 { get; set; }
+        public string Village_3 { get; set; }
+        public string Soi_3 { get; set; }
+        public string Road_3 { get; set; }
+        public string SubDistrict_3 { get; set; }
+        public string District_3 { get; set; }
+        public string Province_3 { get; set; }
+        public string PostalCode_3 { get; set; }
+        public string Country_3 { get; set; }
+        public string HouseID_2 { get; set; }
+        public string Moo_2 { get; set; }
+        public string Village_2 { get; set; }
+        public string Soi_2 { get; set; }
+        public string Road_2 { get; set; }
+        public string SubDistrict_2 { get; set; }
+        public string District_2 { get; set; }
+        public string Province_2 { get; set; }
+        public string PostalCode_2 { get; set; }
+        public string Country_2 { get; set; }
+        public string Tel_2 { get; set; }
+        public string TelExt_2 { get; set; }
+        public string Tel_3 { get; set; }
+        public string Tel_4 { get; set; }
+        public string TelExt_3 { get; set; }
+        public string TelExt_4 { get; set; }
+        public string Title_1 { get; set; }
+        public string Title_2 { get; set; }
+        public bool? DM_Flag { get; set; }
+        public bool? SMS_Flag { get; set; }
+        public string EMail { get; set; }
+        public string LeadOwner { get; set; }
+        public string ContactRunningNumber { get; set; }
+        public string WebType { get; set; }
+        public string PersonalID { get; set; }
+        public string Remark { get; set; }
+        public string Ref_CS_CODE { get; set; }
+        public long autoid { get; set; }
+        public string Source { get; set; }
+        public bool? FromPhase2 { get; set; }
+        public string Tel_1_old { get; set; }
+        public string TelExt_1_old { get; set; }
+        public string Tel_2_old { get; set; }
+        public string TelExt_2_old { get; set; }
+        public string Tel_3_old { get; set; }
+        public string TelExt_3_old { get; set; }
+        public string Tel_4_old { get; set; }
+        public string TelExt_4_old { get; set; }
+        public bool IsLock { get; set; }
+        public string OldContactID { get; set; }
+        public bool? PreferToDM { get; set; }
+        public string FatherName { get; set; }
+        public string MotherName { get; set; }
+        public string SpouseName { get; set; }
+        public string NationalitySpouse { get; set; }
+        public int? IsUse { get; set; }
+        public int? CustomerType { get; set; }
+        public string Department { get; set; }
+        public string Mobile_1 { get; set; }
+        public string Mobile_2 { get; set; }
+        public string Mobile_3 { get; set; }
+        public string Mobile_4 { get; set; }
+        public string Mobile_5 { get; set; }
+        public string IssueBy { get; set; }
+        public string Province_4_Id { get; set; }
+        public string District_4_Id { get; set; }
+        public string SubDistrict_4_Id { get; set; }
+        public DateTime? ChangeDate { get; set; }
+        public int? TransferToSCV { get; set; }
+        public string District_2_Id { get; set; }
+        public string Province_2_Id { get; set; }
+        public string SubDistrict_2_Id { get; set; }
+        public string CustomerCategory { get; set; }
+        public string HouseID_4_ENG { get; set; }
+        public string Moo_4_ENG { get; set; }
+        public string Village_4_ENG { get; set; }
+        public string Soi_4_ENG { get; set; }
+        public string Road_4_ENG { get; set; }
+        public string SubDistrict_4_ENG { get; set; }
+        public string District_4_ENG { get; set; }
+        public string Province_4_ENG { get; set; }
+        public string Country_4_ENG { get; set; }
+        public string HouseID_1_ENG { get; set; }
+        public string Moo_1_ENG { get; set; }
+        public string Village_1_ENG { get; set; }
+        public string Soi_1_ENG { get; set; }
+        public string Road_1_ENG { get; set; }
+        public string SubDistrict_1_ENG { get; set; }
+        public string District_1_ENG { get; set; }
+        public string Province_1_ENG { get; set; }
+        public string Country_1_ENG { get; set; }
+        public string HouseID_3_ENG { get; set; }
+        public string Moo_3_ENG { get; set; }
+        public string Village_3_ENG { get; set; }
+        public string Soi_3_ENG { get; set; }
+        public string Road_3_ENG { get; set; }
+        public string SubDistrict_3_ENG { get; set; }
+        public string District_3_ENG { get; set; }
+        public string Province_3_ENG { get; set; }
+        public string Country_3_ENG { get; set; }
+        public string HouseID_2_ENG { get; set; }
+        public string Moo_2_ENG { get; set; }
+        public string Village_2_ENG { get; set; }
+        public string Soi_2_ENG { get; set; }
+        public string Road_2_ENG { get; set; }
+        public string SubDistrict_2_ENG { get; set; }
+        public string District_2_ENG { get; set; }
+        public string Province_2_ENG { get; set; }
+        public string Country_2_ENG { get; set; }
+        public string Title_1_ENG { get; set; }
+        public string Title_2_ENG { get; set; }
+        public string FirstName_ENG { get; set; }
+        public string LastName_ENG { get; set; }
+        public string DisplayName_ENG { get; set; }
+        public string Nationality_ENG { get; set; }
+        public string NickName { get; set; }
+        public string AddressName_2 { get; set; }
+        public string Floor_4 { get; set; }
+        public string Room_4 { get; set; }
     }
 
     [Table("ICON_EntForms_Model")]
@@ -1101,6 +1459,8 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string UnitLayoutType { get; set; }
         public string FloorPlanImage { get; set; }
         public string RoomPlanImage { get; set; }
+        public string GLPreTransferBatchID { get; set; }
+        public bool? IsForeignUnit { get; set; }
     }
 
     [Table("Job")]
@@ -1180,6 +1540,37 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
     [Table("ProjectOwner")]
     public partial class ProjectOwner
     {
+        public string Productid { get; set; }
+        public string Productname { get; set; }
+        public int? PType { get; set; }
+        public string Producttype { get; set; }
+        public string SEAFS { get; set; }
+        public string PM { get; set; }
+        public string PM_SQE { get; set; }
+        public string VP { get; set; }
+        public string ManagerSE { get; set; }
+        public string SSM { get; set; }
+        public string LCM { get; set; }
+        public string ManagerSSM { get; set; }
+        public string Chief { get; set; }
+        public int? chkassign { get; set; }
+        public string SEAFS_W { get; set; }
+        public string PM_W { get; set; }
+        public string VP_W { get; set; }
+        public string ManagerSE_W { get; set; }
+        public string Chief_W { get; set; }
+        public int? Chk_W { get; set; }
+        public int? ISwecare { get; set; }
+        public string PM_Wname { get; set; }
+        public string SEAFS_FXT { get; set; }
+        public string PM_FXT { get; set; }
+        public string VP_FXT { get; set; }
+        public string Chief_FXT { get; set; }
+    }
+
+    [Table("ProjectOwner_14122016")]
+    public partial class ProjectOwner14122016
+    {
         [ExplicitKey]
         public string Productid { get; set; }
         public string Productname { get; set; }
@@ -1252,6 +1643,16 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         [Key]
         public int reason_id { get; set; }
         public string _reason { get; set; }
+    }
+
+    [Table("ResourceTagCode")]
+    public partial class ResourceTagCode
+    {
+        [Key]
+        public int ResourceTagCodeID { get; set; }
+        public string _ResourceTagCode { get; set; }
+        public string Description { get; set; }
+        public int? ResourceType { get; set; }
     }
 
     [Table("Schema")]
@@ -1436,7 +1837,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string PostCode { get; set; }
         public string Phone { get; set; }
         public string Mobile { get; set; }
-        public bool? Header { get; set; }
+        public int Header { get; set; }
         public decimal? ContractAmount { get; set; }
         public decimal? DownAmount { get; set; }
         public decimal? AreaFromPFB { get; set; }
@@ -1767,6 +2168,29 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public bool? DocIsActive { get; set; }
     }
 
+    [Table("vwCallDefectReceiveUnitDocRAudit_bk")]
+    public partial class vwCallDefectReceiveUnitDocRAuditbk
+    {
+        public int ResourceId { get; set; }
+        public string ProjectNo { get; set; }
+        public string SerialNo { get; set; }
+        public string RAuditNo { get; set; }
+        public int? TDefectId { get; set; }
+        public DateTime? DocOpenDate { get; set; }
+        public string TDefectDocNo { get; set; }
+        public int? ResourceType { get; set; }
+        public string ResourceTypeDesc { get; set; }
+        public string ResourceMineType { get; set; }
+        public string ResourceTagCode { get; set; }
+        public string ResourceTagSubCode { get; set; }
+        public string FilePhyPath { get; set; }
+        public string FileUrl { get; set; }
+        public DateTime? DocReceiveUnitDate { get; set; }
+        public string ContactID { get; set; }
+        public string ContactName { get; set; }
+        public bool? DocIsActive { get; set; }
+    }
+
     [Table("vwCallDefectReceiveUnitMailApprove")]
     public partial class vwCallDefectReceiveUnitMailApprove
     {
@@ -1821,7 +2245,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public int DefectDocId { get; set; }
         public string DocNo { get; set; }
         public DateTime? DocReceiveUnitDate { get; set; }
-        public int RAuditNo { get; set; }
+        public int? RAuditNo { get; set; }
         public int? RAuditNumOfTask { get; set; }
         public string RAuditTaskNo { get; set; }
         public string RAuditDateQuater { get; set; }
@@ -1938,7 +2362,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string DefectDocFileUrl { get; set; }
         public string AddressNo { get; set; }
         public string ContactFullName { get; set; }
-        public int AuditRoundNo { get; set; }
+        public int? AuditRoundNo { get; set; }
         public string IsZeroDefect { get; set; }
         public int? NumOfTaskDefect { get; set; }
         public DateTime? AuditDate { get; set; }

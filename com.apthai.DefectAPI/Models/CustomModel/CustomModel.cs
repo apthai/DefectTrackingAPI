@@ -17,7 +17,9 @@ namespace com.apthai.DefectAPI.CustomModel
         [Required]
         public int UserID { get; set; }
         public DateTime CreateDate { get; set; }
+        public int ResourceType { get; set; }
         public string Description { get; set; }
+        public string ResourceTagCode { get; set; }
         public string ProjectNO { get; set; }
         public int UnitNo { get; set; }
         public string SerialNo { get; set; }
@@ -106,7 +108,6 @@ namespace com.apthai.DefectAPI.CustomModel
         public string TitleMsg { get; set; }
         public string RedirectMsg { get; set; }
         public string TypeMsg { get; set; }
-
     }
     public class AutorizeRoles
     {

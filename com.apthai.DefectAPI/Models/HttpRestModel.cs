@@ -18,6 +18,12 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string AppCode { get; set; }
 
     }
+    public partial class LoginHashData
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
+    }
     public class AutorizeDataJWT
     {
         public bool LoginResult { get; set; }

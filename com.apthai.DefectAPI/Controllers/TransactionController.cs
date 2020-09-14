@@ -436,11 +436,11 @@ namespace com.apthai.DefectAPI.Controllers
 
         //}
 
-        [HttpPost("uploadTResourceForFacilities")]
+        [HttpPost("uploadPicture")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
        Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
-        public async Task<object> Upload([FromForm]ParamUploadImage data)
+        public async Task<object> uploadPicture([FromForm]ParamUploadImage data)
         {
             int a = 0;
             //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
@@ -510,11 +510,18 @@ namespace com.apthai.DefectAPI.Controllers
                         //if (System.IO.File.Exists(savePath.FullName))
                         if (System.IO.File.Exists(filePath))
                         {
+                            string FileExtention = Path.GetExtension(filePath);
                             // ----- Old -----
                             //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
                             // ----- New Docker -----
                             callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-
+                            callResourceDate.FileLength = size;
+                            callResourceDate.CreateDate = DateTime.Now;
+                            callResourceDate.RowState = "Original";
+                            callResourceDate.ResourceType = data.ResourceType;
+                            callResourceDate.ResourceTagCode = data.ResourceTagCode;
+                            callResourceDate.ResourceGroupSet = null;
+                            callResourceDate.ResourceGroupOrder = 0;
                             //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                             //TresourceData[i].FileLength = size;
                             //TresourceData[i].CreatedDate = DateTime.Now;
@@ -525,51 +532,51 @@ namespace com.apthai.DefectAPI.Controllers
 
                             //if (InsertResult == true)
                             //{
-                                //SuccessUploadCount++;
-                                //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
-                                //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
-                                //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
-                                //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
-                                //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
-                                //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
-                                //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
-                                //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
-                                //TresourceTransfer.UnitId = TresourceData[i].UnitId;
-                                ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
-                                //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
-                                //TresourceTransfer.Description = TresourceData[i].Description;
-                                //TresourceTransfer.IsActive = TresourceData[i].IsActive;
-                                //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
-                                //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
-                                //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
-                                //TresourceTransfer.DetailId = TresourceData[i].DetailId;
-                                //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
-                                //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
-                                //TresourceTransfer.Tag = TresourceData[i].Tag;
-                                //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
-                                //TresourceTransfer.RowState = TresourceData[i].RowState;
-                                //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
-                                //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
-                                //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
-                                //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
-                                //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
-                                //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                                //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
-                                //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                                //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
-                                //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
-                                //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
-                                //TresourceTransfer.FileLength = TresourceData[i].FileLength;
-                                //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
-                                //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
-                                //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
-                                //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
-                                //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
-                                //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
-                                //TresourceTransfer.TagState = TresourceData[i].TagState;
-                                //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
+                            //SuccessUploadCount++;
+                            //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
+                            //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
+                            //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
+                            //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
+                            //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
+                            //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
+                            //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
+                            //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
+                            //TresourceTransfer.UnitId = TresourceData[i].UnitId;
+                            ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
+                            //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
+                            //TresourceTransfer.Description = TresourceData[i].Description;
+                            //TresourceTransfer.IsActive = TresourceData[i].IsActive;
+                            //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
+                            //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
+                            //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
+                            //TresourceTransfer.DetailId = TresourceData[i].DetailId;
+                            //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
+                            //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
+                            //TresourceTransfer.Tag = TresourceData[i].Tag;
+                            //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
+                            //TresourceTransfer.RowState = TresourceData[i].RowState;
+                            //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
+                            //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
+                            //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
+                            //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
+                            //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
+                            //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
+                            //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
+                            //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
+                            //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
+                            //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
+                            //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
+                            //TresourceTransfer.FileLength = TresourceData[i].FileLength;
+                            //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
+                            //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
+                            //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
+                            //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
+                            //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
+                            //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
+                            //TresourceTransfer.TagState = TresourceData[i].TagState;
+                            //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
 
-                                //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
+                            //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
                             //}
                         }
                     }
