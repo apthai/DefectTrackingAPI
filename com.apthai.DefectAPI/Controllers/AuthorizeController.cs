@@ -241,8 +241,8 @@ namespace com.apthai.DefectAPI.Controllers
             try
             {
 
-                var userName = SHAHelper.TwoWayDecrypt(data.UserName,"APFamilyKey");
-                var password = SHAHelper.TwoWayDecrypt(data.Password, "APFamilyKey");
+                var userName = SHAHelper.TwoWayDecrypt(data.UserName, "APFamilyAPThaiAP");
+                var password = SHAHelper.TwoWayDecrypt(data.Password, "APFamilyAPThaiAP");
 
 
                 var appCode = "Defect";
