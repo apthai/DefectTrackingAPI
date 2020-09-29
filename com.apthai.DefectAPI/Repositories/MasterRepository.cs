@@ -96,7 +96,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID)
+        public List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID ,string FloorID , string TowerID )
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -104,8 +104,9 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                         string sQuery = "Select * From View_UnitCustomer  " +
                         "left join ICON_EntForms_Unit on View_UnitCustomer.UnitNumber = ICON_EntForms_Unit.UnitNumber  " +
-                        "where View_UnitCustomer.ContactID IS NOT NULL And View_UnitCustomer.ProductID = @ProductID";
-                        var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { ProductID = ProductID }).ToList();
+                        "where View_UnitCustomer.ContactID IS NOT NULL And View_UnitCustomer.ProductID = @ProductID " +
+                        "AND ICON_EntForms_Unit.FloorID = @FloorID AND ICON_EntForms_Unit.TowerID = @TowerID ";
+                        var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { ProductID = ProductID ,FloorID = FloorID,TowerID = TowerID }).ToList();
                         return result;
 
                 }

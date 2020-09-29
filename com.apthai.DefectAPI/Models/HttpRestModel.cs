@@ -95,6 +95,8 @@ namespace com.apthai.DefectAPI.HttpRestModel
     public class GetunitByProjectParam
     {
         public string ProductID { get; set; }
+        public string FloorID { get; set; }
+        public string TowerID { get; set; }
     }
     public class GetCAllDescriptionParam
     {
