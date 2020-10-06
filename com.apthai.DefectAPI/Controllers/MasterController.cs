@@ -84,6 +84,51 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
         [HttpPost]
+        [Route("GetProjectInformationDetail")]
+        public async Task<object> GetProjectInformationDetail([FromBody]GetProjectInformationDetail data)
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<Tower> Tower = _masterRepository.GetTowersByProject(data.ProjectCode);
+                ProjectObjList projectObjList = new ProjectObjList();
+                projectObjList.ProjectList = new List<ProjectObj>();
+                for (int i = 0; i < Tower.Count(); i++)
+                {
+                    ProjectObj projectObj = new ProjectObj();
+                    projectObj.TowerID = Tower[i];
+                    List<Floor> Floor = _masterRepository.GetFloorsByProjectTower(data.ProjectCode, Tower[i].TowerID);
+                    projectObj.FloorID = Floor;
+                    projectObjList.ProjectList.Add(projectObj);
+                }
+                
+
+                return new
+                {
+                    success = true,
+                    data = projectObjList
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+        [HttpPost]
         [Route("GetUnitByProject")]
         public async Task<object> GetMasterUnitByProject([FromBody]GetunitByProjectParam data)
         {

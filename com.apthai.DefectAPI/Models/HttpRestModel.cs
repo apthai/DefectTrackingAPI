@@ -98,6 +98,10 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string FloorID { get; set; }
         public string TowerID { get; set; }
     }
+    public class GetProjectInformationDetail
+    {
+        public string ProjectCode { get; set; }
+    }
     public class GetCAllDescriptionParam
     {
         public int CallAreaID { get; set; }

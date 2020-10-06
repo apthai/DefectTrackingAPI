@@ -102,13 +102,25 @@ namespace com.apthai.DefectAPI.Repositories
             {
                 try
                 {
-                        string sQuery = "Select * From View_UnitCustomer  " +
+                    string sQuery = "";
+                    if (FloorID == "" || TowerID == "")
+                    {
+                        sQuery = "Select * From View_UnitCustomer  " +
+                        "left join ICON_EntForms_Unit on View_UnitCustomer.UnitNumber = ICON_EntForms_Unit.UnitNumber  " +
+                        "where View_UnitCustomer.ContactID IS NOT NULL And View_UnitCustomer.ProductID = @ProductID ";
+                        var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { ProductID = ProductID }).ToList();
+                        return result;
+                    }
+                    else
+                    {
+                        sQuery = "Select * From View_UnitCustomer  " +
                         "left join ICON_EntForms_Unit on View_UnitCustomer.UnitNumber = ICON_EntForms_Unit.UnitNumber  " +
                         "where View_UnitCustomer.ContactID IS NOT NULL And View_UnitCustomer.ProductID = @ProductID " +
                         "AND ICON_EntForms_Unit.FloorID = @FloorID AND ICON_EntForms_Unit.TowerID = @TowerID ";
-                        var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { ProductID = ProductID ,FloorID = FloorID,TowerID = TowerID }).ToList();
+                        var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { ProductID = ProductID, FloorID = FloorID, TowerID = TowerID }).ToList();
                         return result;
-
+                    }
+                       
                 }
                 catch (Exception ex)
                 {
@@ -220,6 +232,40 @@ namespace com.apthai.DefectAPI.Repositories
                 catch (Exception ex)
                 {
                     throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public List<Floor> GetFloorsByProjectTower(string ProjectID,string TowerID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "SELECT DISTINCT(FloorID) FROM  ICON_EntForms_Unit WHERE ProductID = @ProjectID AND TowerID = @TowerID";
+                    var result = conn.Query<Floor>(sQuery, new { ProjectID = ProjectID , TowerID = TowerID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetFloorsByProject() :: Error ", ex);
+                }
+            }
+        }
+        public List<Tower> GetTowersByProject(string ProjectID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "SELECT DISTINCT(TowerID) FROM  ICON_EntForms_Unit WHERE ProductID = @ProjectID ";
+                    var result = conn.Query<Tower>(sQuery, new { ProjectID = ProjectID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetTowersByProject() :: Error ", ex);
                 }
             }
         }

@@ -155,6 +155,24 @@ namespace com.apthai.DefectAPI.CustomModel
         public string ProjectGroupName { get; set; }
         public string PositionName { get; set; }
     }
+
+    public class ProjectObj
+    {
+        public Tower TowerID { get; set; }
+        public List<Floor> FloorID { get; set; }
+    }
+    public class ProjectObjList
+    {
+        public List<ProjectObj> ProjectList { get; set; }
+    }
+    public class Floor
+    {
+        public string FloorID { get; set; }
+    }
+    public class Tower
+    {
+        public string TowerID { get; set; }
+    }
     public class vwUser
     {
         public int UserID { get; set; }
