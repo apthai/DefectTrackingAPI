@@ -89,10 +89,6 @@ namespace com.apthai.DefectAPI.Controllers
                     data = data,
                     valid = false
                 };
-
-
-
-
             }
             catch (Exception ex)
             {

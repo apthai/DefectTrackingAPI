@@ -146,7 +146,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProductID,data.FloorID,data.TowerID);
+                List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProductID,data.UnitNumber,data.FirstName,data.LastName,data.AddressNumber);
 
                 return new
                 {
