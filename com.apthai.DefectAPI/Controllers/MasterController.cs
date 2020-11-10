@@ -153,11 +153,9 @@ namespace com.apthai.DefectAPI.Controllers
                     success = true,
                     data = Units
                 };
-
             }
             catch (Exception ex)
             {
-
                 return StatusCode(500, "Internal server error");
             }
 
