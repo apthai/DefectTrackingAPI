@@ -146,13 +146,20 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProductID,data.UnitNumber,data.FirstName,data.LastName,data.AddressNumber);
-
-                return new
+                if (data.IsRecent == true)
                 {
-                    success = true,
-                    data = Units
-                };
+                    List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode);
+                }
+                else
+                {
+                    List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProductID, data.UnitNumber, data.FirstName, data.LastName, data.AddressNumber);
+
+                    return new
+                    {
+                        success = true,
+                        data = Units
+                    };
+                }
             }
             catch (Exception ex)
             {

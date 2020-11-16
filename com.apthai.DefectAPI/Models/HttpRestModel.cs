@@ -99,6 +99,8 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AddressNumber { get; set; }
+        public string EmpCode { get; set; }
+        public bool IsRecent { get; set; }
     }
     public class GetProjectInformationDetail
     {

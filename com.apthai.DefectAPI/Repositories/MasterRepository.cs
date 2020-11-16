@@ -208,6 +208,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "select top 20 * from View_UnitCustomer where productID in " +
+                                    " (Select top 20 ProductId From callTDefect " +
+                                    " where UpdateUserID = '@EmpCode' And DocIsActive = 1 Order by 1 desc) AND TransferDate is not null order by 1 desc";
+                    var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { EmpCode = EmpCode }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetcallTDefectDetail_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID)
         {
             using (IDbConnection conn = WebConnection)
