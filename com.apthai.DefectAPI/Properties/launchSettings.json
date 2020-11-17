@@ -18,7 +18,7 @@
         "DefaultAuthorizeConnection": "Data Source=192.168.0.41;Initial Catalog=db_AuthorizationCenter;User ID=sa;Password=P@ssw0rd; Application Name=ApiSyncAuth",
         "AuthorizeEndpointUrlAddress": "http://192.168.0.40/authorizewebservice/Authorize.asmx?wsdl",
         "Api_Token": "CtOcOl54qoQVGAp6XaRnfI/PC/77cjN6c4tVj76uXwT+sEjnimRK8j2Dw+7uWPtqSSpt+rr/vZcswsd1o+V1phuvsBv0Ag==",
-        "DefaultConnection": "Data Source=192.168.0.41;Initial Catalog=defecttracking;User ID=sa;Password=P@ssw0rd; Application Name=WebAPI_com.apthai.CoreApp",
+        "DefaultConnection": "Data Source=192.168.0.41;Initial Catalog=defecttracking_20201007;User ID=sa;Password=P@ssw0rd; Application Name=WebAPI_com.apthai.CoreApp",
         "API_Key": "z66PDOx/wrdRcfI38UAWy+eb6pw7ivpNdpz+eYJQScNX19mbFiA87KZvF2/qnLx+6JWUaNbBSrUtC4rYjOB4HIayTQU=",
         "AuthenticationURL": "http://58.137.32.228/DotNetCoreAuth/Api/authorize/",
         "AuthenticationURL_PRD": "https://authorizewebservice.apthai.com/newapi/Api/authorize/",
