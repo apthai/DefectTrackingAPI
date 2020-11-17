@@ -149,10 +149,15 @@ namespace com.apthai.DefectAPI.Controllers
                 if (data.IsRecent == true)
                 {
                     List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode);
+                    return new
+                    {
+                        success = true,
+                        data = callTDefects
+                    };
                 }
                 else
                 {
-                    List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProductID, data.UnitNumber, data.FirstName, data.LastName, data.AddressNumber);
+                    List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProjectID, data.UnitNumber, data.FirstName, data.LastName, data.AddressNumber);
 
                     return new
                     {
