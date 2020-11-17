@@ -250,6 +250,51 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
+
+        [HttpPost]
+        [Route("GetCallAreaNew")]
+        public async Task<object> GetMasterCallAreaNew([FromBody]GetCAllArea data)
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "Invalid AccessKey!!. ",
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+
+                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync(data.ProductTypeCate);
+                //List<GetCAllAreaxDescroiption> ReturnObj = new List<GetCAllAreaxDescroiption>();
+                //for (int i = 0; i < callareas.Count(); i++)
+                //{
+                //    GetCAllAreaxDescroiption getCAllAreaxDescroiption = new GetCAllAreaxDescroiption();
+                //    List<calldescription> calldescriptions = _masterRepository.GetCallDescriptionByCallAreaID_Sync(callareas[i].callarea_id);
+                //    getCAllAreaxDescroiption.callarea = callareas[i];
+                //    getCAllAreaxDescroiption.calldescriptions = calldescriptions;
+                //    ReturnObj.Add(getCAllAreaxDescroiption);
+                //}
+                return new
+                {
+                    success = true,
+                    data = callareas
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
         [HttpPost]
         [Route("GetCallDescriptionByArea")]
         public async Task<object> GetCallDescriptionByArea([FromBody]GetCAllDescriptionParam data)
