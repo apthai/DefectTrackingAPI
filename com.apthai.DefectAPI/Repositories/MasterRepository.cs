@@ -107,7 +107,7 @@ namespace com.apthai.DefectAPI.Repositories
                         sQuery = "Select * From View_UnitCustomer  " +
                         "left join ICON_EntForms_Unit on View_UnitCustomer.UnitNumber = ICON_EntForms_Unit.UnitNumber  " +
                         "where View_UnitCustomer.ContactID IS NOT NULL And View_UnitCustomer.ProductID = @ProductID " +
-                        " AND ( ICON_EntForms_Unit.UnitNumber = @UnitNumber OR FirstName = @FirstName OR LastName = @LastName OR AddressNumber = @AddressNumber )";
+                        " AND ( ICON_EntForms_Unit.UnitNumber like '%@UnitNumber%' OR FirstName like '%@FirstName%' OR LastName like '%@LastName%' OR AddressNumber like '%@AddressNumber%' )";
                         var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { ProductID = ProductID, UnitNumber = UnitNumber , FirstName = FirstName,
                         LastName = LastName ,AddressNumber = AddressNumber}).ToList();
                         return result;
