@@ -76,6 +76,9 @@ namespace com.apthai.DefectAPI.Controllers
                     string ProJson = JsonConvert.SerializeObject(data[i]);
                     DefectUserProject defect = new DefectUserProject();
                     defect = JsonConvert.DeserializeObject<DefectUserProject>(ProJson);
+                    Model.DefectAPISync.vwProject vwProject = new Model.DefectAPISync.vwProject();
+                    vwProject = _masterRepo.GetVwProjects(defect.ProjectCode);
+                    defect.ProjectCategory = vwProject.ProjectCategory;
                     if (defect.ProjectCategory == "โครงการแนวราบ")
                     {
                         defect.ProjectDefectType = "L";

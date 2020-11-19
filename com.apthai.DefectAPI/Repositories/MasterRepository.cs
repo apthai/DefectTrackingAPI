@@ -300,5 +300,22 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public Model.DefectAPISync.vwProject GetVwProjects(string ProjectID)
+        {
+            using (IDbConnection conn = AuthConnection)
+            {
+                try
+                {
+                    string sQuery = "SELECT * FROM  vw_Project WHERE ProductID = @ProjectID ";
+                    var result = conn.Query<Model.DefectAPISync.vwProject>(sQuery, new { ProjectID = ProjectID }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetVwProjects() :: Error ", ex);
+                }
+            }
+        }
     }
 }

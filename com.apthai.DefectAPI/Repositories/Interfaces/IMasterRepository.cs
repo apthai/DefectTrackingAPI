@@ -21,6 +21,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode);
         List<GetCallTDefectByProjectObj> GetCallTDefectByProject_Sync(int ProductID);
         List<Floor> GetFloorsByProjectTower(string ProjectID, string TowerID);
+        Model.DefectAPISync.vwProject GetVwProjects(string ProjectID);
         List<Tower> GetTowersByProject(string ProjectID);
     }
 }
