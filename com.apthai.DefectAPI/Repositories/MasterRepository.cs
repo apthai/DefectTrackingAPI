@@ -306,7 +306,7 @@ namespace com.apthai.DefectAPI.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM  vw_Project WHERE ProductID = @ProjectID ";
+                    string sQuery = "SELECT * FROM  vw_Project WHERE ProjectCode = @ProjectID ";
                     var result = conn.Query<Model.DefectAPISync.vwProject>(sQuery, new { ProjectID = ProjectID }).FirstOrDefault();
                     return result;
 
