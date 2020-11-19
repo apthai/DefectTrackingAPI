@@ -138,6 +138,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string FullName { get; set; }
         public int ProjectID { get; set; }
         public string ProjectCode { get; set; }
+        public string ProjectCategory { get; set; }
         public string ProjectWBS { get; set; }
         public string ProjectName { get; set; }
         public string BU { get; set; }
@@ -155,7 +156,10 @@ namespace com.apthai.DefectAPI.CustomModel
         public string ProjectGroupName { get; set; }
         public string PositionName { get; set; }
     }
-
+    public class DefectUserProject : vwUserProject
+    { 
+        public string ProjectDefectType { get; set; }
+    }
     public class ProjectObj
     {
         public Tower TowerID { get; set; }

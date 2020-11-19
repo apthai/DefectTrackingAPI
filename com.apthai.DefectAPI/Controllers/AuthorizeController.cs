@@ -70,6 +70,22 @@ namespace com.apthai.DefectAPI.Controllers
                         };
                     }
                 List<vwUserProject> data = Respond.Content.ReadAsAsync<List<vwUserProject>>().Result;
+                List<DefectUserProject> Projects = new List<DefectUserProject>();
+                for (int i = 0; i < data.Count(); i++)
+                {
+                    string ProJson = JsonConvert.SerializeObject(data[i]);
+                    DefectUserProject defect = new DefectUserProject();
+                    defect = JsonConvert.DeserializeObject<DefectUserProject>(ProJson);
+                    if (defect.ProjectCategory == "โครงการแนวราบ")
+                    {
+                        defect.ProjectDefectType = "L";
+                    }
+                    if (defect.ProjectCategory == "โครงการแนวสูง")
+                    {
+                        defect.ProjectDefectType = "H";
+                    }
+                    Projects.Add(defect);
+                }
                 // ------- หา Tower 
                 //List<ProjectObj> ReturnData = new List<ProjectObj>();
                 //for (int i = 0; i < data.Count(); i++)
@@ -86,7 +102,7 @@ namespace com.apthai.DefectAPI.Controllers
                 return new
                 {
                     success = true,
-                    data = data,
+                    data = Projects,
                     valid = false
                 };
             }
