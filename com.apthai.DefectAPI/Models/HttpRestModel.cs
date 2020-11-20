@@ -95,10 +95,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
     public class GetunitByProjectParam
     {
         public string ProjectID { get; set; }
-        public string UnitNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string AddressNumber { get; set; }
+        public string SearchText { get; set; }
         public string EmpCode { get; set; }
         public bool IsRecent { get; set; }
     }

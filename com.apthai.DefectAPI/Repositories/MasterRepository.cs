@@ -96,27 +96,31 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID ,string UnitNumber, string FirstName , string LastName ,string AddressNumber )
+        public List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID ,string SearchText)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
+                    string UnitNumber = "";
                     if (UnitNumber == "")
                     {
-                        UnitNumber = "%%";
+                        UnitNumber = "%"+ SearchText  +"% ";
                     }
+                    string FirstName = "";
                     if (FirstName == "")
                     {
-                        FirstName = "%%";
+                        FirstName = "%" + SearchText + "% ";
                     }
+                    string LastName = "";
                     if (LastName == "")
                     {
-                        LastName = "%%";
+                        LastName = "%" + SearchText + "% ";
                     }
+                    string AddressNumber = "";
                     if (AddressNumber == "")
                     {
-                        AddressNumber = "%%";
+                        AddressNumber = "%" + SearchText + "% ";
                     }
                     string sQuery = "";
 
