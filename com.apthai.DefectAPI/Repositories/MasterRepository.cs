@@ -105,33 +105,37 @@ namespace com.apthai.DefectAPI.Repositories
                     string UnitNumber = "";
                     if (UnitNumber == "")
                     {
-                        UnitNumber = "%"+ SearchText  +"% ";
+                        UnitNumber = "%"+ SearchText  +"%";
                     }
                     string FirstName = "";
                     if (FirstName == "")
                     {
-                        FirstName = "%" + SearchText + "% ";
+                        FirstName = "%" + SearchText + "%";
                     }
                     string LastName = "";
                     if (LastName == "")
                     {
-                        LastName = "%" + SearchText + "% ";
+                        LastName = "%" + SearchText + "%";
                     }
                     string AddressNumber = "";
                     if (AddressNumber == "")
                     {
-                        AddressNumber = "%" + SearchText + "% ";
+                        AddressNumber = "%" + SearchText + "%";
                     }
                     string sQuery = "";
 
-                    sQuery = "Select top 50 * From ICON_EntForms_Unit u  " +
-                    "left join View_UnitCustomer c on u.ProductID=c.ProductID and  u.UnitNumber = c.UnitNumber  " +
-                    "where c.ContactID IS NOT NULL And u.ProductID = @ProductID " +
-                    " AND ( u.UnitNumber like @UnitNumber OR FirstName like @FirstName OR LastName like @LastName OR AddressNumber like @AddressNumber )";
+                    //sQuery = "Select top 50 * From ICON_EntForms_Unit u  " +
+                    //"left join View_UnitCustomer c on u.ProductID=c.ProductID and  u.UnitNumber = c.UnitNumber  " +
+                    //"where c.ContactID IS NOT NULL And u.ProductID = '@ProductID' " +
+                    //" AND ( u.UnitNumber like @UnitNumber OR FirstName like @FirstName OR LastName like @LastName OR AddressNumber like @AddressNumber )";
+                    sQuery = "select top 50 * From ICON_EntForms_Unit u " +
+                        "left join View_UnitCustomer c on u.ProductID=c.ProductID and  u.UnitNumber = c.UnitNumber  " +
+                        "where c.ContactID IS NOT NULL And u.ProductID = @ProductID " +
+                        " AND ( u.UnitNumber like @UnitNumber OR FirstName like @FirstName OR LastName like @LastName OR AddressNumber like @AddressNumber )";
                     var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new
                     {
                         ProductID = ProductID,
-                        UnitNumber = UnitNumber,
+                        UnitNumber = FirstName,
                         FirstName = FirstName,
                         LastName = LastName,
                         AddressNumber = AddressNumber
