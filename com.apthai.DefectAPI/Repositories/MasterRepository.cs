@@ -124,7 +124,7 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     string sQuery = "";
 
-                    sQuery = "Select * From ICON_EntForms_Unit u  " +
+                    sQuery = "Select top 50 * From ICON_EntForms_Unit u  " +
                     "left join View_UnitCustomer c on u.ProductID=c.ProductID and  u.UnitNumber = c.UnitNumber  " +
                     "where c.ContactID IS NOT NULL And u.ProductID = @ProductID " +
                     " AND ( u.UnitNumber like @UnitNumber OR FirstName like @FirstName OR LastName like @LastName OR AddressNumber like @AddressNumber )";
