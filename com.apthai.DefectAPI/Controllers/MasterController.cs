@@ -26,6 +26,7 @@ using com.apthai.DefectAPI.CustomModel;
 using com.apthai.CoreApp.Data.Services;
 using com.apthai.DefectAPI.HttpRestModel;
 using Microsoft.Extensions.Primitives;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -85,6 +86,8 @@ namespace com.apthai.DefectAPI.Controllers
         }
         [HttpPost]
         [Route("GetCallTypewithArea")]
+        [SwaggerOperation(Summary = "ดึงข้อมูลบริเวณ ",
+        Description = "ไม่ต้องส่ง อะไรมา ")]
         public async Task<object> GetCallTypewithArea([FromBody] GetCAllArea data)
         {
             try
