@@ -84,6 +84,40 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
         [HttpPost]
+        [Route("GetCallTypewithArea")]
+        public async Task<object> GetCallTypewithArea([FromBody] GetCAllArea data)
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<GetcallTypeWithArea> calltypes = _masterRepository.GetCallCallTypeWithArea_Sync();
+
+                return new
+                {
+                    success = true,
+                    data = calltypes
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+        [HttpPost]
         [Route("GetProjectInformationDetail")]
         public async Task<object> GetProjectInformationDetail([FromBody]GetProjectInformationDetail data)
         {

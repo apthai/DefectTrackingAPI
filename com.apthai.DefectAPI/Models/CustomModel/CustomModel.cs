@@ -33,12 +33,12 @@ namespace com.apthai.DefectAPI.CustomModel
         public callarea callarea { get; set; }
         public List<calldescription> calldescriptions { get; set; }
     }
-    public class GetCallTransactionDefectObj 
+    public class GetCallTransactionDefectObj
     {
         public callTDefect callTDefect { get; set; }
         public List<callTDefectDetail> callTDefectDetail { get; set; }
     }
-    public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect   
+    public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect
     {
         public string Project { get; set; }
     }
@@ -157,7 +157,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string PositionName { get; set; }
     }
     public class DefectUserProject : vwUserProject
-    { 
+    {
         public string ProjectDefectType { get; set; }
     }
     public class ProjectObj
@@ -214,5 +214,13 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Remark { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime EndDate { get; set; }
+    }
+
+    public partial class GetcallTypeWithArea : calltype
+    {
+        public string chk_type { get; set; }
+        public string responsible { get; set; }
+        public string callarea_name { get; set; }
+        public string producttypecate { get; set; }
     }
 }

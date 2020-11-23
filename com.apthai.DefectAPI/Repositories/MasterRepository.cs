@@ -182,6 +182,26 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<GetcallTypeWithArea> GetCallCallTypeWithArea_Sync()
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "select t.calltype_id,t.calltype,callarea_name,a.chk_type,a.responsible,a.producttypecate " +
+                           " from calltype t " +
+                           " left join callarea a on t.calltype_id = a.calltype_id " +
+                           " where t.active = 1";
+                    var result = conn.Query<GetcallTypeWithArea>(sQuery).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallCallTypeWithArea_Sync() :: Error ", ex);
+                }
+            }
+        }
         public callTDefect GetCallTDefect_Sync(int TDefectID)
         {
             using (IDbConnection conn = WebConnection)
@@ -325,6 +345,5 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-
     }
 }
