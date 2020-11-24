@@ -243,7 +243,6 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
-
         [HttpPost]
         [Route("GetCallArea")]
         public async Task<object> GetMasterCallArea([FromBody]GetCAllArea data)
@@ -413,6 +412,42 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
                 List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
+                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+                ReturnObj.callTDefect = callTDefect;
+                ReturnObj.callTDefectDetail = callTDefectDetails;
+
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("GetCreatedDefectByID")]
+        public async Task<object> GetDefectTransactionByunitID([FromBody] GetDefectTransactionByUnitID data)
+        {
+            try
+            {
+                //bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
+                //if (CanAccess == false)
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "AccessKey is Invalid!"
+                //    };
+                //}
+                callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectID,data.UnitID);
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(callTDefect.TDefectId);
                 GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
                 ReturnObj.callTDefect = callTDefect;
                 ReturnObj.callTDefectDetail = callTDefectDetails;

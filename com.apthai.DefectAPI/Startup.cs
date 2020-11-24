@@ -289,7 +289,7 @@ namespace com.apthai.DefectAPI
             var manager = new RecurringJobManager();
             //manager.AddOrUpdate("core-daily_sync_master", Job.FromExpression(() => RecurringJobDaily_Master()), Cron.Daily(23 - 2, 30)); // 2 AM
             manager.AddOrUpdate("TestHangFireJobs", Job.FromExpression(() => RecurringJobTestHangFire_Master()), Cron.Minutely()); // 2 AM
-            manager.AddOrUpdate("TestHangFireJobs_2", Job.FromExpression(() => RecurringJobTestHangFire_Master()), Cron.MinuteInterval(4)); // 2 AM
+            //manager.AddOrUpdate("TestHangFireJobs_2", Job.FromExpression(() => RecurringJobTestHangFire_Master()), Cron.MinuteInterval(4)); // 2 AM
             ////var manager = new RecurringJobManager();
             //manager.AddOrUpdate("core-daily_sync_master", Job.FromExpression(() => RecurringJobDaily_Master()), Cron.Daily(2-4)); // 2 AM
 

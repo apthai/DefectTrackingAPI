@@ -22,7 +22,7 @@ namespace com.apthai.DefectAPI.Repositories
 
         private readonly IConfiguration _config;
         private readonly IHostingEnvironment _hostingEnvironment;
-        string TAG = "MasterRepository";
+        //string TAG = "MasterRepository";
 
         public MasterRepository(IHostingEnvironment environment, IConfiguration config) : base(environment, config)
         {
@@ -211,6 +211,24 @@ namespace com.apthai.DefectAPI.Repositories
                     string sQuery = "Select * From callTDefect " +
                         "where TDefectID = @TDefectID And DocIsActive = 1 ";
                     var result = conn.Query<callTDefect>(sQuery, new { TDefectID = TDefectID }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public callTDefect GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefect " +
+                        "where ProductId = @ProjectCode and ItemId = @UnitID And DocIsActive = 1 ";
+                    var result = conn.Query<callTDefect>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).FirstOrDefault();
                     return result;
 
                 }
