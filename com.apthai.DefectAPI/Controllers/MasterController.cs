@@ -132,6 +132,44 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
+        [HttpGet]
+        [Route("GetFloor")]
+        public async Task<object> GetFloorDistinct()
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<point> points = _masterRepository.GetFloorDistinct();
+                List<string> Floor = new List<string>();
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    Floor.Add(points[i].floorplantset);
+                }
+                return new
+                {
+                    success = true,
+                    data = Floor
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
         [HttpPost]
         [Route("GetUnitByProject")]
         public async Task<object> GetMasterUnitByProject([FromBody]GetunitByProjectParam data)

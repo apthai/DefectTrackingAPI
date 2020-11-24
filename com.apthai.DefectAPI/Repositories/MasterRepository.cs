@@ -71,6 +71,22 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<point> GetFloorDistinct()
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                     string sQuery = "select distinct(floorplantset) from point where producttypecate = 'H' ";
+                     var result = conn.Query<point>(sQuery).ToList();
+                     return result;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<point> GetCallPointByProductCat_Sync(string ProductTypeCate)
         {
             using (IDbConnection conn = WebConnection)
