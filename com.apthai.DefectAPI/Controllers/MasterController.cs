@@ -432,7 +432,7 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
-        [Route("GetCreatedDefectByID")]
+        [Route("GetCreatedDefectByByProjectCodeAndUnit")]
         public async Task<object> GetDefectTransactionByunitID([FromBody] GetDefectTransactionByUnitID data)
         {
             try
