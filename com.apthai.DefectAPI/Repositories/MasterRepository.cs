@@ -165,14 +165,14 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<calltype> GetCallCallType_Sync()
+        public List<calltype> GetCallCallType_Sync(string CalltypeID)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
-                    string sQuery = "Select * From callPoint where Active = 1 ";
-                    var result = conn.Query<calltype>(sQuery).ToList();
+                    string sQuery = "Select * From callPoint where calltype_id = @CalltypeID  And Active = 1 ";
+                    var result = conn.Query<calltype>(sQuery,new { CalltypeID = CalltypeID }).ToList();
                     return result;
 
                 }

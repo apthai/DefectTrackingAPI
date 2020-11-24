@@ -10,7 +10,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
 {
     public interface IMasterRepository
     {
-        List<calltype> GetCallCallType_Sync();
+        List<calltype> GetCallCallType_Sync(string CalltypeID);
         List<GetcallTypeWithArea> GetCallCallTypeWithArea_Sync();
         List<point> GetCallPointByProductCat_Sync(string ProductTypeCate);
         List<callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate);

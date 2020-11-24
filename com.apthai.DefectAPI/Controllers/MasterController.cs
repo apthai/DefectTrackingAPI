@@ -50,40 +50,7 @@ namespace com.apthai.DefectAPI.Controllers
             _masterRepository = new MasterRepository(_hostingEnvironment, _config);
             _authorizeService = authorizeService;
         }
-        [HttpPost]
-        [Route("GetCallType")]
-        public async Task<object> GetMasterCallType([FromBody]GetCAllArea data)
-        {
-            try
-            {
-                //#region VerifyHeader
-                //string ErrorHeader = "";
-                //if (!VerifyHeader(out ErrorHeader))
-                //{
-                //    return new
-                //    {
-                //        success = false,
-                //        data = ErrorHeader ,
-                //        valid = false
-                //    };
-                //}
-                //#endregion
-                List<calltype> calltypes = _masterRepository.GetCallCallType_Sync();
 
-                return new
-                {
-                    success = true,
-                    data = calltypes
-                };
-
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(500, "Internal server error");
-            }
-
-        }
         [HttpPost]
         [Route("GetCallTypewithArea")]
         [SwaggerOperation(Summary = "ดึงข้อมูลบริเวณ ",
@@ -209,9 +176,9 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
-        [HttpPost]
-        [Route("GetCallPoint")]
-        public async Task<object> GetMasterCallPoint([FromBody]GetCAllArea data)
+        [HttpGet]
+        [Route("GetCallPointHorizontal")]
+        public async Task<object> GetCallPointHorizontal()
         {
             try
             {
@@ -227,7 +194,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<point> points = _masterRepository.GetCallPointByProductCat_Sync(data.ProductTypeCate);
+                List<point> points = _masterRepository.GetCallPointByProductCat_Sync("H");
 
                 return new
                 {
@@ -243,9 +210,44 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
-        [HttpPost]
-        [Route("GetCallArea")]
-        public async Task<object> GetMasterCallArea([FromBody]GetCAllArea data)
+        [HttpGet]
+        [Route("GetCallPointVertical")]
+        public async Task<object> GetCallPointVertical()
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<point> points = _masterRepository.GetCallPointByProductCat_Sync("V");
+
+                return new
+                {
+                    success = true,
+                    data = points
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpGet]
+        [Route("GetCallAreaHorizontal")]
+        public async Task<object> GetCallAreaHorizontal()
         {
             try
             {
@@ -262,20 +264,48 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
                 
-                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync(data.ProductTypeCate);
-                List<GetCAllAreaxDescroiption> ReturnObj = new List<GetCAllAreaxDescroiption>();
-                for (int i = 0; i < callareas.Count(); i++)
-                {
-                    GetCAllAreaxDescroiption getCAllAreaxDescroiption = new GetCAllAreaxDescroiption();
-                    List<calldescription> calldescriptions = _masterRepository.GetCallDescriptionByCallAreaID_Sync(callareas[i].callarea_id);
-                    getCAllAreaxDescroiption.callarea = callareas[i];
-                    getCAllAreaxDescroiption.calldescriptions = calldescriptions;
-                    ReturnObj.Add(getCAllAreaxDescroiption);
-                }
+                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("H");
+
                 return new
                 {
                     success = true,
-                    data = ReturnObj
+                    data = callareas
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpGet]
+        [Route("GetCallAreaVertical")]
+        public async Task<object> GetCallAreaVertical()
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "Invalid AccessKey!!. ",
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+
+                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("V");
+
+                return new
+                {
+                    success = true,
+                    data = callareas
                 };
 
             }
@@ -447,6 +477,15 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode,data.UnitNo);
+                if (callTDefect == null)
+                {
+                    return new
+                    {
+                        success = false,
+                        data = callTDefect,
+                        message = "Cannot Find Any Defect Header!"
+                    };
+                }
                 List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(callTDefect.TDefectId);
                 GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
                 ReturnObj.callTDefect = callTDefect;
