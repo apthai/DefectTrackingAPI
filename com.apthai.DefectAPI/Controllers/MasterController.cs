@@ -446,7 +446,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //        data = "AccessKey is Invalid!"
                 //    };
                 //}
-                callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectID,data.UnitID);
+                callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode,data.UnitNo);
                 List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(callTDefect.TDefectId);
                 GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
                 ReturnObj.callTDefect = callTDefect;

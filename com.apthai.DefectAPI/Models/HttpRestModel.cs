@@ -119,8 +119,8 @@ namespace com.apthai.DefectAPI.HttpRestModel
     }
     public class GetDefectTransactionByUnitID
     {
-        public string UnitID { get; set; }
-        public string ProjectID { get; set; }
+        public string UnitNo { get; set; }
+        public string ProjectCode { get; set; }
     }
     public class CreateDefectTransactionParam
     {
