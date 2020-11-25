@@ -232,7 +232,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<point> points = _masterRepository.GetCallPointByProductCat_Sync("H");
+                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("H");
 
                 return new
                 {
@@ -266,7 +266,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<point> points = _masterRepository.GetCallPointByProductCat_Sync("V");
+                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("V");
 
                 return new
                 {
@@ -302,7 +302,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
                 
-                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("H");
+                List<Callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("H");
 
                 return new
                 {
@@ -338,7 +338,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
 
-                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("V");
+                List<Callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("V");
 
                 return new
                 {
@@ -374,7 +374,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
 
-                List<callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync(data.ProductTypeCate);
+                List<Callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync(data.ProductTypeCate);
                 //List<GetCAllAreaxDescroiption> ReturnObj = new List<GetCAllAreaxDescroiption>();
                 //for (int i = 0; i < callareas.Count(); i++)
                 //{

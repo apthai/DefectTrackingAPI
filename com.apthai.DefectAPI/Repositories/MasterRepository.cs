@@ -46,7 +46,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate)
+        public List<Callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -55,13 +55,13 @@ namespace com.apthai.DefectAPI.Repositories
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
                         string sQuery = "Select * From callarea where Active = 1 ";
-                        var result = conn.Query<callarea>(sQuery).ToList();
+                        var result = conn.Query<Callarea>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
                         string sQuery = "Select * From callarea where ProductTypeCate = @ProductTypeCate And Active = 1 ";
-                        var result = conn.Query<callarea>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
+                        var result = conn.Query<Callarea>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
                         return result;
                     }
                 }
@@ -87,7 +87,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<point> GetCallPointByProductCat_Sync(string ProductTypeCate)
+        public List<Point> GetCallPointByProductCat_Sync(string ProductTypeCate)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -96,13 +96,13 @@ namespace com.apthai.DefectAPI.Repositories
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
                         string sQuery = "Select * From Point ";
-                        var result = conn.Query<point>(sQuery).ToList();
+                        var result = conn.Query<Point>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
                         string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate ";
-                        var result = conn.Query<point>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
+                        var result = conn.Query<Point>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
                         return result;
                     }
                 }

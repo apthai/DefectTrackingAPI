@@ -223,4 +223,28 @@ namespace com.apthai.DefectAPI.CustomModel
         public string callarea_name { get; set; }
         public string producttypecate { get; set; }
     }
+    public partial class Callarea
+    {
+        public int Callarea_id { get; set; }
+        public int? Calltype_id { get; set; }
+        public string Callarea_name { get; set; }
+        public int? Chk_type { get; set; }
+        public int? Active { get; set; }
+        public string Responsible { get; set; }
+        public string Producttypecate { get; set; }
+        public int? Sequence { get; set; }
+    }
+    public partial class Point
+    {
+        [Key]
+        public int Comppoint_id { get; set; }
+        public string Project { get; set; }
+        public string Point_name { get; set; }
+        public string Sub_point { get; set; }
+        public string End_point { get; set; }
+        public int? Cate { get; set; }
+        public int? Chkmainpoint { get; set; }
+        public string Floorplantset { get; set; }
+        public string Producttypecate { get; set; }
+    }
 }
