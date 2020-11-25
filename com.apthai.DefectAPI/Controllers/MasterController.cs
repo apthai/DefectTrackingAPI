@@ -581,10 +581,66 @@ namespace com.apthai.DefectAPI.Controllers
                 List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
                 for (int i = 0; i < callTDefect.Count(); i++)
                 {
-                    List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(callTDefect[i].TDefectId);
+                    List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect[i].TDefectId);
+                    List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
+                    for (int a = 0; a < callTDefectDetails.Count(); a++)
+                    {
+                        CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
+                        obj.Active = callTDefectDetails[a].Active;
+                        obj.CallAreaId = callTDefectDetails[a].CallArea_Id;
+                        obj.CallAreaName = callTDefectDetails[a].CallArea_Name;
+                        obj.CallDescId = callTDefectDetails[a].CallDescId;
+                        obj.CallPointId = callTDefectDetails[a].CallPointId;
+                        obj.CallSubPointId = callTDefectDetails[a].CallSubPointId;
+                        obj.CallTypeId = callTDefectDetails[a].CallType_Id;
+                        obj.Cate = callTDefectDetails[a].Cate;
+                        obj.ChkMainPoint = callTDefectDetails[a].ChkMainPoint;
+                        obj.ChkType = callTDefectDetails[a].Chk_Type;
+                        obj.ClientId = callTDefectDetails[a].Client_Id;
+                        obj.ClientSyncDate = callTDefectDetails[a].Client_SyncDate;
+                        obj.ComPointId = callTDefectDetails[a].ComPoint_Id;
+                        obj.CreateDate = callTDefectDetails[a].CreateDate;
+                        obj.CreateUserId = callTDefectDetails[a].CreateUserId;
+                        obj.CustRoundAuditDate = callTDefectDetails[a].CustRoundAuditDate;
+                        obj.CustRoundAuditDueCloseDate = callTDefectDetails[a].CustRoundAuditDueCloseDate;
+                        obj.CustRoundAuditNo = callTDefectDetails[a].CustRoundAuditNo;
+                        obj.DeviceId = callTDefectDetails[a].DeviceId;
+                        obj.EndPoint = callTDefectDetails[a].End_Point;
+                        obj.FloorPlanSet = callTDefectDetails[a].FloorPlanSet;
+                        obj.FloorPlanImageId = callTDefectDetails[a].FloorPlan_ImageId;
+                        obj.FloorPlanX = callTDefectDetails[a].FloorPlan_X;
+                        obj.FloorPlanY = callTDefectDetails[a].FloorPlan_Y;
+                        obj.IsServerLockRow = callTDefectDetails[a].IsServerLockRow;
+                        obj.ItemId = callTDefectDetails[a].ItemId;
+                        obj.PointName = callTDefectDetails[a].Point_Name;
+                        obj.ProductId = callTDefectDetails[a].ProductId;
+                        obj.ProductTypeCate = callTDefectDetails[a].ProductTypeCate;
+                        obj.Respondsible = callTDefectDetails[a].Respondsible;
+                        obj.RowActive = callTDefectDetails[a].RowActive;
+                        obj.RowState = callTDefectDetails[a].RowState;
+                        obj.Sequence = callTDefectDetails[a].Sequence;
+                        obj.SubPoint = callTDefectDetails[a].Sequence;
+                        obj.SubPoint = callTDefectDetails[a].Sub_Point;
+                        obj.Tag = callTDefectDetails[a].Tag;
+                        obj.TaskActualCloseDate = callTDefectDetails[a].TaskActualCloseDate;
+                        obj.TaskActualFinishDate = callTDefectDetails[a].TaskActualFinishDate;
+                        obj.TaskMarkName = callTDefectDetails[a].TaskMarkName;
+                        obj.TaskNo = callTDefectDetails[a].TaskNo;
+                        obj.TaskOpenDate = callTDefectDetails[a].TaskOpenDate;
+                        obj.TaskProcessDate = callTDefectDetails[a].TaskProcessDate;
+                        obj.TDefectDetailDesc = callTDefectDetails[a].TDefectDetailDesc;
+                        obj.TDefectDetailId = callTDefectDetails[a].TDefectDetailId;
+                        obj.TDefectDetailStatus = callTDefectDetails[a].TDefectDetailStatus;
+                        obj.TDefectDetailSubStatus = callTDefectDetails[a].TDefectDetailSubStatus;
+                        obj.TDefectDocNo = callTDefectDetails[a].TDefectDocNo;
+                        obj.TDefectId = callTDefectDetails[a].TDefectId;
+                        obj.UpdateDate = callTDefectDetails[a].UpdateDate;
+                        obj.UpdateUserId = callTDefectDetails[a].UpdateUserId;
+                        DefectDetailCustomList.Add(obj);
+                    }
                     GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
                     ReturnObj.callTDefect = callTDefect[i];
-                    ReturnObj.callTDefectDetail = callTDefectDetails;
+                    ReturnObj.callTDefectDetail = DefectDetailCustomList;
                     Return.Add(ReturnObj);
                 }
                 

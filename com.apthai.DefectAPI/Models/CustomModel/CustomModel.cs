@@ -37,7 +37,7 @@ namespace com.apthai.DefectAPI.CustomModel
     public class GetCallTransactionDefectObj
     {
         public CallTdefectMObj callTDefect { get; set; }
-        public List<callTDefectDetail> callTDefectDetail { get; set; }
+        public List<CallTdefectDetailCustomShow> callTDefectDetail { get; set; }
     }
     public class CallTdefectMObj : callTDefect
     { 
@@ -46,9 +46,55 @@ namespace com.apthai.DefectAPI.CustomModel
         public string TowerID { get; set; }
         public string FloorID { get; set; }
     }
+    
     public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect
     {
         public string Project { get; set; }
+    }
+    public class CallTdefectDetailCustom : callTDefectDetail
+    { 
+        public string ComPoint_Id { get; set; }
+        public string Point_Name { get; set; }
+        public string Sub_Point { get; set; }
+        public string End_Point { get; set; }
+        public string Cate { get; set; }
+        public string ChkMainPoint { get; set; }
+        public string FloorPlanSet { get; set; }
+        public string ProductTypeCate { get; set; }
+        //-----------------------------------------
+        public string CallArea_Id { get; set; }
+        public string CallType_Id { get; set; }
+        public string CallArea_Name { get; set; }
+        public string Chk_Type { get; set; }
+        public string Active { get; set; }
+        public string Respondsible { get; set; }
+        public string Sequence { get; set; }
+
+    }
+    public class CallTdefectDetailCustomShow : callTDefectDetail
+    {
+        public string ClientId { get; set; }
+        public DateTime? ClientSyncDate { get; set; }
+        public string FloorPlanImageId { get; set; }
+        public double? FloorPlanX { get; set; }
+        public double? FloorPlanY { get; set; }
+        public string ComPointId { get; set; }
+        public string PointName { get; set; }
+        public string SubPoint { get; set; }
+        public string EndPoint { get; set; }
+        public string Cate { get; set; }
+        public string ChkMainPoint { get; set; }
+        public string FloorPlanSet { get; set; }
+        public string ProductTypeCate { get; set; }
+        //-----------------------------------------
+        public string CallAreaId { get; set; }
+        public string CallTypeId { get; set; }
+        public string CallAreaName { get; set; }
+        public string ChkType { get; set; }
+        public string Active { get; set; }
+        public string Respondsible { get; set; }
+        public string Sequence { get; set; }
+
     }
 
     public partial class vwUserRole

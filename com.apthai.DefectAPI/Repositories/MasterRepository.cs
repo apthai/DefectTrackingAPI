@@ -292,6 +292,26 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<CallTdefectDetailCustom> GetcallTDefectDetailShow_Sync(int TDefectID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "select * from callTDefectDetail " +
+                                    "left join callarea on callTDefectDetail.CallAreaId = callarea.callarea_id " +
+                                    "left join point on callTDefectDetail.CallPointId = point.comppoint_id and callTDefectDetail.CallSubPointId = point.cate " +
+                        "where callTDefectDetail.TDefectID = @TDefectID And callTDefectDetail.RowActive = 1 ";
+                    var result = conn.Query<CallTdefectDetailCustom>(sQuery, new { TDefectID = TDefectID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetcallTDefectDetail_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode)
         {
             using (IDbConnection conn = WebConnection)
