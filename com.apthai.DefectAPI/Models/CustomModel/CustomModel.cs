@@ -247,4 +247,28 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Floorplantset { get; set; }
         public string Producttypecate { get; set; }
     }
+    public partial class PointCamel
+    {
+        public int CompPointId { get; set; }
+        public string Project { get; set; }
+        public string PointName { get; set; }
+        public string SubPoint { get; set; }
+        public string EndPoint { get; set; }
+        public int? Cate { get; set; }
+        public int? ChkMainPoint { get; set; }
+        public string FloorPlantSet { get; set; }
+        public string ProductTypeCate { get; set; }
+    }
+    public partial class CallareaCamel
+    {
+        public int CallAreaId { get; set; }
+        public int? CallTypeId { get; set; }
+        public string CallAreaName { get; set; }
+        public int? ChkType { get; set; }
+        public int? Active { get; set; }
+        public string Responsible { get; set; }
+        public string ProductTypeCate { get; set; }
+        public int? Sequence { get; set; }
+    }
 }
+

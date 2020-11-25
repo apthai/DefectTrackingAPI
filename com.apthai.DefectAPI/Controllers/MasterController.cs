@@ -233,11 +233,25 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
                 List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("H");
-
+                List<PointCamel> PointCamel = new List<PointCamel>();
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    PointCamel camels = new PointCamel();
+                    camels.Cate = PointCamel[i].Cate;
+                    camels.ChkMainPoint = PointCamel[i].ChkMainPoint;
+                    camels.CompPointId = PointCamel[i].CompPointId;
+                    camels.EndPoint = PointCamel[i].EndPoint;
+                    camels.FloorPlantSet = PointCamel[i].FloorPlantSet;
+                    camels.PointName = PointCamel[i].PointName;
+                    camels.ProductTypeCate = PointCamel[i].ProductTypeCate;
+                    camels.Project = PointCamel[i].Project;
+                    camels.SubPoint = PointCamel[i].SubPoint;
+                    PointCamel.Add(camels);
+                }
                 return new
                 {
                     success = true,
-                    data = points
+                    data = PointCamel
                 };
 
             }
@@ -267,11 +281,25 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
                 List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("V");
-
+                List<PointCamel> PointCamel = new List<PointCamel>();
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    PointCamel camels = new PointCamel();
+                    camels.Cate = PointCamel[i].Cate;
+                    camels.ChkMainPoint = PointCamel[i].ChkMainPoint;
+                    camels.CompPointId = PointCamel[i].CompPointId;
+                    camels.EndPoint = PointCamel[i].EndPoint;
+                    camels.FloorPlantSet = PointCamel[i].FloorPlantSet;
+                    camels.PointName = PointCamel[i].PointName;
+                    camels.ProductTypeCate = PointCamel[i].ProductTypeCate;
+                    camels.Project = PointCamel[i].Project;
+                    camels.SubPoint = PointCamel[i].SubPoint;
+                    PointCamel.Add(camels);
+                }
                 return new
                 {
                     success = true,
-                    data = points
+                    data = PointCamel
                 };
 
             }
@@ -303,11 +331,24 @@ namespace com.apthai.DefectAPI.Controllers
                 //#endregion
                 
                 List<Callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("H");
-
+                List<CallareaCamel> callareaCamels = new List<CallareaCamel>();
+                for (int i = 0; i < callareas.Count(); i++)
+                {
+                    CallareaCamel camel = new CallareaCamel();
+                    camel.Active = callareas[i].Active;
+                    camel.CallAreaId = callareas[i].Callarea_id;
+                    camel.CallAreaName = callareas[i].Callarea_name;
+                    camel.CallTypeId = callareas[i].Calltype_id;
+                    camel.ChkType = callareas[i].Chk_type;
+                    camel.ProductTypeCate = callareas[i].Producttypecate;
+                    camel.Responsible = callareas[i].Responsible;
+                    camel.Sequence = callareas[i].Sequence;
+                    callareaCamels.Add(camel);
+                }
                 return new
                 {
                     success = true,
-                    data = callareas
+                    data = callareaCamels
                 };
 
             }
