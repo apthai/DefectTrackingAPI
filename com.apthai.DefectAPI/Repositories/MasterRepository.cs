@@ -243,7 +243,7 @@ namespace com.apthai.DefectAPI.Repositories
                 try
                 {
                     string sQuery = "Select * From callTDefect c " +
-                        " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber " +
+                        " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber  and c.ProductId = i.ProductID " +
                         "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
                     var result = conn.Query<CallTdefectMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).ToList();
                     return result;
