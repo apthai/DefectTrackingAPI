@@ -94,7 +94,6 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Active { get; set; }
         public string Respondsible { get; set; }
         public string Sequence { get; set; }
-
     }
 
     public partial class vwUserRole
