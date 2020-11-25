@@ -236,17 +236,17 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public callTDefect GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
+        public List<CallTdefectMObj> GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
-                    string sQuery = "Select * From callTDefect " +
-                        "where ProductId = @ProjectCode and ItemId = @UnitID And DocIsActive = 1 ";
-                    var result = conn.Query<callTDefect>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).FirstOrDefault();
+                    string sQuery = "Select * From callTDefect c Left Join " +
+                        " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber " +
+                        "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
+                    var result = conn.Query<CallTdefectMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).ToList();
                     return result;
-
                 }
                 catch (Exception ex)
                 {

@@ -33,10 +33,18 @@ namespace com.apthai.DefectAPI.CustomModel
         public callarea callarea { get; set; }
         public List<calldescription> calldescriptions { get; set; }
     }
+
     public class GetCallTransactionDefectObj
     {
-        public callTDefect callTDefect { get; set; }
+        public CallTdefectMObj callTDefect { get; set; }
         public List<callTDefectDetail> callTDefectDetail { get; set; }
+    }
+    public class CallTdefectMObj : callTDefect
+    { 
+        public string Phase { get; set; }
+        public string Block { get; set; }
+        public string TowerID { get; set; }
+        public string FloorID { get; set; }
     }
     public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect
     {

@@ -476,69 +476,69 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
 
-        [HttpPost]
-        [Route("GetCallTransactionDefect")]
-        public async Task<object> GetCallTransactionDefect([FromBody]callTDefectObj data)
-        {
-            try
-            {
+        //[HttpPost]
+        //[Route("GetCallTransactionDefect")]
+        //public async Task<object> GetCallTransactionDefect([FromBody]callTDefectObj data)
+        //{
+        //    try
+        //    {
                 
-                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
-                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
-                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
-                ReturnObj.callTDefect = callTDefect;
-                ReturnObj.callTDefectDetail = callTDefectDetails;
+        //        callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+        //        List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
+        //        GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+        //        ReturnObj.callTDefect = callTDefect;
+        //        ReturnObj.callTDefectDetail = callTDefectDetails;
                 
-                return new
-                {
-                    success = true,
-                    data = ReturnObj
-                };
+        //        return new
+        //        {
+        //            success = true,
+        //            data = ReturnObj
+        //        };
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return StatusCode(500, "Internal server error");
-            }
+        //        return StatusCode(500, "Internal server error");
+        //    }
 
-        }
+        //}
 
-        [HttpPost]
-        [Route("GetCreatedDefectByID")]
-        public async Task<object> CreateDefect([FromBody]callTDefectObj data)
-        {
-            try
-            {
-                //bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
-                //if (CanAccess == false)
-                //{
-                //    return new
-                //    {
-                //        success = false,
-                //        data = "AccessKey is Invalid!"
-                //    };
-                //}
-                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
-                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
-                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
-                ReturnObj.callTDefect = callTDefect;
-                ReturnObj.callTDefectDetail = callTDefectDetails;
+        //[HttpPost]
+        //[Route("GetCreatedDefectByID")]
+        //public async Task<object> CreateDefect([FromBody]callTDefectObj data)
+        //{
+        //    try
+        //    {
+        //        //bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
+        //        //if (CanAccess == false)
+        //        //{
+        //        //    return new
+        //        //    {
+        //        //        success = false,
+        //        //        data = "AccessKey is Invalid!"
+        //        //    };
+        //        //}
+        //        callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+        //        List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
+        //        GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+        //        ReturnObj.callTDefect = callTDefect;
+        //        ReturnObj.callTDefectDetail = callTDefectDetails;
 
-                return new
-                {
-                    success = true,
-                    data = ReturnObj
-                };
+        //        return new
+        //        {
+        //            success = true,
+        //            data = ReturnObj
+        //        };
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return StatusCode(500, "Internal server error");
-            }
+        //        return StatusCode(500, "Internal server error");
+        //    }
 
-        }
+        //}
 
         [HttpPost]
         [Route("GetCreatedDefectByProjectCodeAndUnit")]
@@ -555,7 +555,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //        data = "AccessKey is Invalid!"
                 //    };
                 //}
-                callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode,data.UnitNo);
+                List<CallTdefectMObj> callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode,data.UnitNo);
                 if (callTDefect == null)
                 {
                     return new
@@ -565,15 +565,20 @@ namespace com.apthai.DefectAPI.Controllers
                         message = "Cannot Find Any Defect Header!"
                     };
                 }
-                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(callTDefect.TDefectId);
-                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
-                ReturnObj.callTDefect = callTDefect;
-                ReturnObj.callTDefectDetail = callTDefectDetails;
-
+                List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
+                for (int i = 0; i < callTDefect.Count(); i++)
+                {
+                    List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(callTDefect[i].TDefectId);
+                    GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+                    ReturnObj.callTDefect = callTDefect[i];
+                    ReturnObj.callTDefectDetail = callTDefectDetails;
+                    Return.Add(ReturnObj);
+                }
+                
                 return new
                 {
                     success = true,
-                    data = ReturnObj
+                    data = Return
                 };
 
             }
