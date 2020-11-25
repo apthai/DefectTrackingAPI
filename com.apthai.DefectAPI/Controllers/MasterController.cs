@@ -237,15 +237,15 @@ namespace com.apthai.DefectAPI.Controllers
                 for (int i = 0; i < points.Count(); i++)
                 {
                     PointCamel camels = new PointCamel();
-                    camels.Cate = PointCamel[i].Cate;
-                    camels.ChkMainPoint = PointCamel[i].ChkMainPoint;
-                    camels.CompPointId = PointCamel[i].CompPointId;
-                    camels.EndPoint = PointCamel[i].EndPoint;
-                    camels.FloorPlantSet = PointCamel[i].FloorPlantSet;
-                    camels.PointName = PointCamel[i].PointName;
-                    camels.ProductTypeCate = PointCamel[i].ProductTypeCate;
-                    camels.Project = PointCamel[i].Project;
-                    camels.SubPoint = PointCamel[i].SubPoint;
+                    camels.Cate = points[i].Cate;
+                    camels.ChkMainPoint = points[i].Chkmainpoint;
+                    camels.CompPointId = points[i].Comppoint_id;
+                    camels.EndPoint = points[i].End_point;
+                    camels.FloorPlantSet = points[i].Floorplantset;
+                    camels.PointName = points[i].Point_name;
+                    camels.ProductTypeCate = points[i].Producttypecate;
+                    camels.Project = points[i].Project;
+                    camels.SubPoint = points[i].Sub_point;
                     PointCamel.Add(camels);
                 }
                 return new
@@ -285,15 +285,15 @@ namespace com.apthai.DefectAPI.Controllers
                 for (int i = 0; i < points.Count(); i++)
                 {
                     PointCamel camels = new PointCamel();
-                    camels.Cate = PointCamel[i].Cate;
-                    camels.ChkMainPoint = PointCamel[i].ChkMainPoint;
-                    camels.CompPointId = PointCamel[i].CompPointId;
-                    camels.EndPoint = PointCamel[i].EndPoint;
-                    camels.FloorPlantSet = PointCamel[i].FloorPlantSet;
-                    camels.PointName = PointCamel[i].PointName;
-                    camels.ProductTypeCate = PointCamel[i].ProductTypeCate;
-                    camels.Project = PointCamel[i].Project;
-                    camels.SubPoint = PointCamel[i].SubPoint;
+                    camels.Cate = points[i].Cate;
+                    camels.ChkMainPoint = points[i].Chkmainpoint;
+                    camels.CompPointId = points[i].Comppoint_id;
+                    camels.EndPoint = points[i].End_point;
+                    camels.FloorPlantSet = points[i].Floorplantset;
+                    camels.PointName = points[i].Point_name;
+                    camels.ProductTypeCate = points[i].Producttypecate;
+                    camels.Project = points[i].Project;
+                    camels.SubPoint = points[i].Sub_point;
                     PointCamel.Add(camels);
                 }
                 return new
