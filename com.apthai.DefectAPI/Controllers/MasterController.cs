@@ -380,11 +380,24 @@ namespace com.apthai.DefectAPI.Controllers
                 //#endregion
 
                 List<Callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("V");
-
+                List<CallareaCamel> callareaCamels = new List<CallareaCamel>();
+                for (int i = 0; i < callareas.Count(); i++)
+                {
+                    CallareaCamel camel = new CallareaCamel();
+                    camel.Active = callareas[i].Active;
+                    camel.CallAreaId = callareas[i].Callarea_id;
+                    camel.CallAreaName = callareas[i].Callarea_name;
+                    camel.CallTypeId = callareas[i].Calltype_id;
+                    camel.ChkType = callareas[i].Chk_type;
+                    camel.ProductTypeCate = callareas[i].Producttypecate;
+                    camel.Responsible = callareas[i].Responsible;
+                    camel.Sequence = callareas[i].Sequence;
+                    callareaCamels.Add(camel);
+                }
                 return new
                 {
                     success = true,
-                    data = callareas
+                    data = callareaCamels
                 };
 
             }
