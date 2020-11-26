@@ -151,10 +151,12 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
                 List<point> points = _masterRepository.GetFloorDistinct();
-                List<string> Floor = new List<string>();
+                List<FloorObj> Floor = new List<FloorObj>();
                 for (int i = 0; i < points.Count(); i++)
                 {
-                    Floor.Add(points[i].floorplantset);
+                    FloorObj obj = new FloorObj();
+                    obj.FloorName = points[i].floorplantset;
+                    Floor.Add(obj);
                 }
                 return new
                 {
