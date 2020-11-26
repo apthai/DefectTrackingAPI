@@ -569,7 +569,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //        data = "AccessKey is Invalid!"
                 //    };
                 //}
-                List<CallTdefectMObj> callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
+                CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
                     return new
@@ -580,10 +580,9 @@ namespace com.apthai.DefectAPI.Controllers
                     };
                 }
                 List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
-                for (int i = 0; i < callTDefect.Count(); i++)
-                {
-                    List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect[i].TDefectId);
-                    List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
+
+                List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect.TDefectId);
+                List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
                     for (int a = 0; a < callTDefectDetails.Count(); a++)
                     {
                         CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
@@ -640,10 +639,10 @@ namespace com.apthai.DefectAPI.Controllers
                         DefectDetailCustomList.Add(obj);
                     }
                     GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
-                    ReturnObj.callTDefect = callTDefect[i];
+                    ReturnObj.callTDefect = callTDefect;
                     ReturnObj.callTDefectDetail = DefectDetailCustomList;
                     Return.Add(ReturnObj);
-                }
+
 
                 return new
                 {

@@ -236,7 +236,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<CallTdefectMObj> GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
+        public CallTdefectMObj GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -245,7 +245,7 @@ namespace com.apthai.DefectAPI.Repositories
                     string sQuery = "Select * From callTDefect c " +
                         " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber  and c.ProductId = i.ProductID " +
                         "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
-                    var result = conn.Query<CallTdefectMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).ToList();
+                    var result = conn.Query<CallTdefectMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).FirstOrDefault();
                     return result;
                 }
                 catch (Exception ex)
