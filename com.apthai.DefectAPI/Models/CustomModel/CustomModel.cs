@@ -69,6 +69,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Active { get; set; }
         public string Respondsible { get; set; }
         public string Sequence { get; set; }
+        public string StaComplain { get; set; }
 
     }
     public class CallTdefectDetailCustomShow : callTDefectDetail
@@ -94,6 +95,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Active { get; set; }
         public string Respondsible { get; set; }
         public string Sequence { get; set; }
+        public string StaComplain { get; set; }
     }
 
     public partial class vwUserRole
