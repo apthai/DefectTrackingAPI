@@ -81,11 +81,11 @@ namespace com.apthai.DefectAPI.Controllers
                     defect.ProjectCategory = vwProject.ProjectCategory;
                     if (defect.ProjectCategory == "โครงการแนวราบ")
                     {
-                        defect.ProjectDefectType = "L";
+                        defect.ProjectDefectType = "H";
                     }
                     if (defect.ProjectCategory == "โครงการแนวสูง")
                     {
-                        defect.ProjectDefectType = "H";
+                        defect.ProjectDefectType = "V";
                     }
                     Projects.Add(defect);
                 }
