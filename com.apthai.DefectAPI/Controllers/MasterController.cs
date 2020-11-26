@@ -587,6 +587,7 @@ namespace com.apthai.DefectAPI.Controllers
                 List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
                     for (int a = 0; a < callTDefectDetails.Count(); a++)
                     {
+
                         CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
                         obj.Active = callTDefectDetails[a].Active;
                         obj.CallAreaId = callTDefectDetails[a].CallArea_Id;
