@@ -290,7 +290,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("V",data.Cate);
+                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync(null,data.Cate);
                 List<PointCamel> PointCamel = new List<PointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {

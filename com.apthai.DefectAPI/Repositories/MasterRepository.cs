@@ -105,7 +105,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
-                        string sQuery = "Select * From Point ";
+                        string sQuery = "Select * From Point where producttypecate = 'V' ";
                         var result = conn.Query<Point>(sQuery).ToList();
                         return result;
                     }
