@@ -151,11 +151,25 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 //#endregion
                 List<point> points = _masterRepository.GetFloorDistinct("H");
-
+                List<pointCamel> ReturnObj = new List<pointCamel>();
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    pointCamel point = new pointCamel();
+                    point.Cate = points[i].cate;
+                    point.ChkMainPoint = points[i].chkmainpoint;
+                    point.CompPointId = points[i].comppoint_id;
+                    point.EndPoint = points[i].end_point;
+                    point.FloorPlantset = points[i].floorplantset;
+                    point.PointName = points[i].point_name;
+                    point.ProductTypeCate = points[i].producttypecate;
+                    point.Project = points[i].project;
+                    point.SubPoint = points[i].sub_point;
+                    ReturnObj.Add(point);
+                }
                 return new
                 {
                     success = true,
-                    data = points
+                    data = ReturnObj
                 };
 
             }

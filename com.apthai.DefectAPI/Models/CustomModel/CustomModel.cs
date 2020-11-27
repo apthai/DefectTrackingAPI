@@ -175,7 +175,18 @@ namespace com.apthai.DefectAPI.CustomModel
         public string UserId { get; set; }
         public List<vwUserRole> Roles { get; set; }
 
-
+    }
+    public partial class pointCamel
+    {
+        public int CompPointId { get; set; }
+        public string Project { get; set; }
+        public string PointName { get; set; }
+        public string SubPoint { get; set; }
+        public string EndPoint { get; set; }
+        public int? Cate { get; set; }
+        public int? ChkMainPoint { get; set; }
+        public string FloorPlantset { get; set; }
+        public string ProductTypeCate { get; set; }
     }
     public class GetUnitByProjectReturnObj : ViewUnitCustomer
     {
