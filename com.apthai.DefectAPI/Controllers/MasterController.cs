@@ -43,7 +43,7 @@ namespace com.apthai.DefectAPI.Controllers
         public MasterController(IAuthorizeService authorizeService) {
 
 
-            _hostingEnvironment  = UtilsProvider.HostingEnvironment;
+            _hostingEnvironment = UtilsProvider.HostingEnvironment;
             _config = UtilsProvider.Config;
             _appSetting = UtilsProvider.AppSetting;
             _unitOfWork = new UnitOfWork(_hostingEnvironment, _config);
@@ -89,7 +89,7 @@ namespace com.apthai.DefectAPI.Controllers
         }
         [HttpPost]
         [Route("GetProjectInformationDetail")]
-        public async Task<object> GetProjectInformationDetail([FromBody]GetProjectInformationDetail data)
+        public async Task<object> GetProjectInformationDetail([FromBody] GetProjectInformationDetail data)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace com.apthai.DefectAPI.Controllers
                     projectObj.FloorID = Floor;
                     projectObjList.ProjectList.Add(projectObj);
                 }
-                
+
 
                 return new
                 {
@@ -150,18 +150,12 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<point> points = _masterRepository.GetFloorDistinct();
-                List<FloorObj> Floor = new List<FloorObj>();
-                for (int i = 0; i < points.Count(); i++)
-                {
-                    FloorObj obj = new FloorObj();
-                    obj.FloorName = points[i].floorplantset;
-                    Floor.Add(obj);
-                }
+                List<point> points = _masterRepository.GetFloorDistinct("H");
+
                 return new
                 {
                     success = true,
-                    data = Floor
+                    data = points
                 };
 
             }
@@ -174,7 +168,7 @@ namespace com.apthai.DefectAPI.Controllers
         }
         [HttpPost]
         [Route("GetUnitByProject")]
-        public async Task<object> GetMasterUnitByProject([FromBody]GetunitByProjectParam data)
+        public async Task<object> GetMasterUnitByProject([FromBody] GetunitByProjectParam data)
         {
             try
             {
@@ -216,9 +210,9 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
-        [HttpGet]
+        [HttpPost]
         [Route("GetCallPointHorizontal")]
-        public async Task<object> GetCallPointHorizontal()
+        public async Task<object> GetCallPointHorizontal([FromBody] GetPointParam data)
         {
             try
             {
@@ -234,7 +228,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("H");
+                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("H", data.Cate);
                 List<PointCamel> PointCamel = new List<PointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {
@@ -264,9 +258,9 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
-        [HttpGet]
+        [HttpPost]
         [Route("GetCallPointVertical")]
-        public async Task<object> GetCallPointVertical()
+        public async Task<object> GetCallPointVertical([FromBody] GetPointParam data)
         {
             try
             {
@@ -282,7 +276,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("V");
+                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("V",data.Cate);
                 List<PointCamel> PointCamel = new List<PointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {
@@ -645,7 +639,6 @@ namespace com.apthai.DefectAPI.Controllers
                     ReturnObj.callTDefect = callTDefect;
                     ReturnObj.callTDefectDetail = DefectDetailCustomList;
                     Return.Add(ReturnObj);
-
 
                 return new
                 {

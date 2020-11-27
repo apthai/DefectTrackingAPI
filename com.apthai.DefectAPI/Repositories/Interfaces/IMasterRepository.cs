@@ -12,8 +12,8 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
     {
         List<calltype> GetCallCallType_Sync(string CalltypeID);
         List<GetcallTypeWithArea> GetCallCallTypeWithArea_Sync();
-        List<Point> GetCallPointByProductCat_Sync(string ProductTypeCate);
-        List<point> GetFloorDistinct();
+        List<Point> GetCallPointByProductCat_Sync(string ProductTypeCate, string Cate);
+        List<point> GetFloorDistinct(string CateType);
         List<Callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate);
         ICONEntFormsProduct GetProductDataFromCRM_Sync(string ProductID);
         List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID, string SearchText);

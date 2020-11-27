@@ -71,15 +71,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<point> GetFloorDistinct()
+        public List<point> GetFloorDistinct(string CateType)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
-                     string sQuery = "select distinct(floorplantset) from point where producttypecate = 'H' ";
-                     var result = conn.Query<point>(sQuery).ToList();
-                     return result;
+                    if (CateType == "H")
+                    {
+                        string sQuery = " select distinct(cate),point_name from point where producttypecate = 'H'";
+                        var result = conn.Query<point>(sQuery).ToList();
+                        return result;
+                    }
+                    else
+                    {
+                        string sQuery = "select distinct(cate),point_name  from point where producttypecate = 'V' ";
+                        var result = conn.Query<point>(sQuery).ToList();
+                        return result;
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -87,7 +97,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<Point> GetCallPointByProductCat_Sync(string ProductTypeCate)
+        public List<Point> GetCallPointByProductCat_Sync(string ProductTypeCate,string Cate)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -101,8 +111,8 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate ";
-                        var result = conn.Query<Point>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
+                        string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate and cate = @Cate ";
+                        var result = conn.Query<Point>(sQuery, new { ProductTypeCate = ProductTypeCate , Cate = Cate }).ToList();
                         return result;
                     }
                 }

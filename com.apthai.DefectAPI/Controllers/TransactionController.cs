@@ -522,13 +522,16 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.ResourceTagCode = data.ResourceTagCode;
                             callResourceDate.ResourceGroupSet = null;
                             callResourceDate.ResourceGroupOrder = 0;
+                            callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                            callResourceDate.ProjectNo = data.ProjectCode;
+                            callResourceDate.SerialNo = data.UnitNo;
                             //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                             //TresourceData[i].FileLength = size;
                             //TresourceData[i].CreatedDate = DateTime.Now;
                             //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
                             //TresourceData[i].RowSyncDate = DateTime.Now;
                             //TresourceData[i].StorageServerId = StorageData.StorageServerId;
-                            //bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
+                            bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
                             //if (InsertResult == true)
                             //{

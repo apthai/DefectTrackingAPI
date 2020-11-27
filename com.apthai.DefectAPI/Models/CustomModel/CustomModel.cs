@@ -13,15 +13,15 @@ namespace com.apthai.DefectAPI.CustomModel
         [Required]
         public string TDefectID { get; set; }
         [Required]
-        public string TDefectDetailIDID { get; set; }
+        public string TDefectDetailId { get; set; }
         [Required]
         public int UserID { get; set; }
         public DateTime CreateDate { get; set; }
         public int ResourceType { get; set; }
         public string Description { get; set; }
         public string ResourceTagCode { get; set; }
-        public string ProjectNO { get; set; }
-        public int UnitNo { get; set; }
+        public string ProjectCode { get; set; }
+        public string  UnitNo { get; set; }
         public string SerialNo { get; set; }
         public string DeviceID { get; set; }
         public List<IFormFile> Files { get; set; }
