@@ -54,13 +54,17 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
-                        string sQuery = "Select * From callarea where Active = 1 ";
+                        string sQuery = "Select callarea.*,MobileAreaIcons.ImageURL From callarea " +
+                            " left join MobileAreaIcons on callarea.callarea_id = MobileAreaIcons.callareaid " +
+                            " where Active = 1 ";
                         var result = conn.Query<Callarea>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
-                        string sQuery = "Select * From callarea where ProductTypeCate = @ProductTypeCate And Active = 1 ";
+                        string sQuery = "Select callarea.*,MobileAreaIcons.ImageURL From callarea " +
+                            " left join MobileAreaIcons on callarea.callarea_id = MobileAreaIcons.callareaid " +
+                            "where callarea.ProductTypeCate = @ProductTypeCate And callarea.Active = 1 ";
                         var result = conn.Query<Callarea>(sQuery, new { ProductTypeCate = ProductTypeCate }).ToList();
                         return result;
                     }
@@ -71,7 +75,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<point> GetFloorDistinct(string CateType)
+        public List<PointURL> GetFloorDistinct(string CateType)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -79,14 +83,18 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (CateType == "H")
                     {
-                        string sQuery = " select distinct(cate),point_name from point where producttypecate = 'H'";
-                        var result = conn.Query<point>(sQuery).ToList();
+                        string sQuery = " select distinct(cate),point_name,MobilePointIcons.ImageURL from point " +
+                            " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
+                            " where point.producttypecate = 'H'";
+                        var result = conn.Query<PointURL>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
-                        string sQuery = "select distinct(cate),point_name  from point where producttypecate = 'V' ";
-                        var result = conn.Query<point>(sQuery).ToList();
+                        string sQuery = "select distinct(cate),point_name,MobilePointIcons.ImageURL  from point " +
+                            " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
+                            "where point.producttypecate = 'V' ";
+                        var result = conn.Query<PointURL>(sQuery).ToList();
                         return result;
                     }
 
@@ -97,7 +105,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<Point> GetCallPointByProductCat_Sync(string ProductTypeCate,string Cate)
+        public List<PointURL> GetCallPointByProductCat_Sync(string ProductTypeCate,string Cate)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -105,14 +113,18 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
-                        string sQuery = "Select * From Point where producttypecate = 'V' ";
-                        var result = conn.Query<Point>(sQuery).ToList();
+                        string sQuery = "Select Point.*,MobilePointIcons.ImageURL From " +
+                            " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
+                            "  where Point.producttypecate = 'V' ";
+                        var result = conn.Query<PointURL>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
-                        string sQuery = "Select * From Point where ProductTypeCate = @ProductTypeCate and cate = @Cate ";
-                        var result = conn.Query<Point>(sQuery, new { ProductTypeCate = ProductTypeCate , Cate = Cate }).ToList();
+                        string sQuery = "Select Point.*,MobilePointIcons.ImageURL From " +
+                            " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
+                            " Point where Point.ProductTypeCate = @ProductTypeCate and Point.cate = @Cate ";
+                        var result = conn.Query<PointURL>(sQuery, new { ProductTypeCate = ProductTypeCate , Cate = Cate }).ToList();
                         return result;
                     }
                 }

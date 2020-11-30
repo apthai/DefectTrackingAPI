@@ -150,20 +150,21 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<point> points = _masterRepository.GetFloorDistinct("H");
+                List<PointURL> points = _masterRepository.GetFloorDistinct("H");
                 List<pointCamel> ReturnObj = new List<pointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {
                     pointCamel point = new pointCamel();
-                    point.Cate = points[i].cate;
-                    point.ChkMainPoint = points[i].chkmainpoint;
-                    point.CompPointId = points[i].comppoint_id;
-                    point.EndPoint = points[i].end_point;
-                    point.FloorPlantset = points[i].floorplantset;
-                    point.PointName = points[i].point_name;
-                    point.ProductTypeCate = points[i].producttypecate;
-                    point.Project = points[i].project;
-                    point.SubPoint = points[i].sub_point;
+                    point.Cate = points[i].Cate;
+                    point.ChkMainPoint = points[i].Chkmainpoint;
+                    point.CompPointId = points[i].Comppoint_id;
+                    point.EndPoint = points[i].End_point;
+                    point.FloorPlantset = points[i].Floorplantset;
+                    point.PointName = points[i].Point_name;
+                    point.ProductTypeCate = points[i].Producttypecate;
+                    point.Project = points[i].Project;
+                    point.SubPoint = points[i].Sub_point;
+                    point.URL = points[i].ImageURL;
                     ReturnObj.Add(point);
                 }
                 return new
@@ -242,7 +243,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync("H", data.Cate);
+                List<PointURL> points = _masterRepository.GetCallPointByProductCat_Sync("H", data.Cate);
                 List<PointCamel> PointCamel = new List<PointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {
@@ -256,6 +257,7 @@ namespace com.apthai.DefectAPI.Controllers
                     camels.ProductTypeCate = points[i].Producttypecate;
                     camels.Project = points[i].Project;
                     camels.SubPoint = points[i].Sub_point;
+                    camels.URL = points[i].ImageURL;
                     PointCamel.Add(camels);
                 }
                 return new
@@ -290,7 +292,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<Point> points = _masterRepository.GetCallPointByProductCat_Sync(null,data.Cate);
+                List<PointURL> points = _masterRepository.GetCallPointByProductCat_Sync(null,data.Cate);
                 List<PointCamel> PointCamel = new List<PointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {
@@ -304,6 +306,7 @@ namespace com.apthai.DefectAPI.Controllers
                     camels.ProductTypeCate = points[i].Producttypecate;
                     camels.Project = points[i].Project;
                     camels.SubPoint = points[i].Sub_point;
+                    camels.URL = points[i].ImageURL;
                     PointCamel.Add(camels);
                 }
                 return new
@@ -353,6 +356,7 @@ namespace com.apthai.DefectAPI.Controllers
                     camel.ProductTypeCate = callareas[i].Producttypecate;
                     camel.Responsible = callareas[i].Responsible;
                     camel.Sequence = callareas[i].Sequence;
+                    camel.URL = callareas[i].ImageURL;
                     callareaCamels.Add(camel);
                 }
                 return new
@@ -402,6 +406,7 @@ namespace com.apthai.DefectAPI.Controllers
                     camel.ProductTypeCate = callareas[i].Producttypecate;
                     camel.Responsible = callareas[i].Responsible;
                     camel.Sequence = callareas[i].Sequence;
+                    camel.URL = callareas[i].ImageURL;
                     callareaCamels.Add(camel);
                 }
                 return new

@@ -187,6 +187,11 @@ namespace com.apthai.DefectAPI.CustomModel
         public int? ChkMainPoint { get; set; }
         public string FloorPlantset { get; set; }
         public string ProductTypeCate { get; set; }
+        public string URL { get; set; }
+    }
+    public partial class PointURL : Point
+    { 
+        public string ImageURL { get; set; }
     }
     public class GetUnitByProjectReturnObj : ViewUnitCustomer
     {
@@ -304,7 +309,10 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Responsible { get; set; }
         public string Producttypecate { get; set; }
         public int? Sequence { get; set; }
+        public string ImageURL { get; set; }
     }
+
+
     public partial class Point
     {
         [Key]
@@ -329,6 +337,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public int? ChkMainPoint { get; set; }
         public string FloorPlantSet { get; set; }
         public string ProductTypeCate { get; set; }
+        public string URL { get; set; }
     }
     public partial class CallareaCamel
     {
@@ -340,6 +349,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Responsible { get; set; }
         public string ProductTypeCate { get; set; }
         public int? Sequence { get; set; }
+        public string URL { get; set; }
     }
 }
 
