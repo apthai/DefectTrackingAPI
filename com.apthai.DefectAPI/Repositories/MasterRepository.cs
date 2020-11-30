@@ -113,7 +113,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (ProductTypeCate == null || ProductTypeCate == "")
                     {
-                        string sQuery = "Select Point.*,MobilePointIcons.ImageURL From " +
+                        string sQuery = "Select Point.*,MobilePointIcons.ImageURL From Point " +
                             " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
                             "  where Point.producttypecate = 'V' ";
                         var result = conn.Query<PointURL>(sQuery).ToList();
@@ -121,9 +121,9 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        string sQuery = "Select Point.*,MobilePointIcons.ImageURL From " +
+                        string sQuery = "Select Point.*,MobilePointIcons.ImageURL From Point " +
                             " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
-                            " Point where Point.ProductTypeCate = @ProductTypeCate and Point.cate = @Cate ";
+                            " where Point.ProductTypeCate = @ProductTypeCate and Point.cate = @Cate ";
                         var result = conn.Query<PointURL>(sQuery, new { ProductTypeCate = ProductTypeCate , Cate = Cate }).ToList();
                         return result;
                     }
