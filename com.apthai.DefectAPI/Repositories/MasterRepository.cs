@@ -83,16 +83,16 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (CateType == "H")
                     {
-                        string sQuery = " select distinct(point.cate),point_name,MobilePointIcons.ImageURL from point " +
-                            " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
+                        string sQuery = " select distinct(point.cate),point_name,MobileFloorIcons.ImageURL from point " +
+                            " left join MobileFloorIcons on point.cate = MobileFloorIcons.cate " +
                             " where point.producttypecate = 'H'";
                         var result = conn.Query<PointURL>(sQuery).ToList();
                         return result;
                     }
                     else
                     {
-                        string sQuery = "select distinct(point.cate),point_name,MobilePointIcons.ImageURL  from point " +
-                            " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
+                        string sQuery = "select distinct(point.cate),point_name,MobileFloorIcons.ImageURL  from point " +
+                            " left join MobileFloorIcons on point.cate = MobileFloorIcons.cate " +
                             "where point.producttypecate = 'V' ";
                         var result = conn.Query<PointURL>(sQuery).ToList();
                         return result;
