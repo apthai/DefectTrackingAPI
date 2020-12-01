@@ -83,7 +83,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (CateType == "H")
                     {
-                        string sQuery = " select distinct(cate),point_name,MobilePointIcons.ImageURL from point " +
+                        string sQuery = " select distinct(point.cate),point_name,MobilePointIcons.ImageURL from point " +
                             " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
                             " where point.producttypecate = 'H'";
                         var result = conn.Query<PointURL>(sQuery).ToList();
@@ -91,7 +91,7 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        string sQuery = "select distinct(cate),point_name,MobilePointIcons.ImageURL  from point " +
+                        string sQuery = "select distinct(point.cate),point_name,MobilePointIcons.ImageURL  from point " +
                             " left join MobilePointIcons on point.comppoint_id = MobilePointIcons.ComppointId " +
                             "where point.producttypecate = 'V' ";
                         var result = conn.Query<PointURL>(sQuery).ToList();
