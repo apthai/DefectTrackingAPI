@@ -187,7 +187,10 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.DocReceiveUnitDate = DateTime.Now;
                     CreateDefect.DocDueTransferDate = DateTime.Now;
                     CreateDefect.ContactID = null;
-                    CreateDefect.Desciption = data.TDefectDetailDesc;
+                    CreateDefect.Desciption = data.Description;
+                    CreateDefect.DocIsActive = true;
+                    CreateDefect.DocIsExternalAudit = false;
+                    CreateDefect.DocIsReqUnitReceiveAttachFile = false;
                     long DefectID = 0;
                     bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect,ref DefectID);
                     CreateDefect.TDefectId = Convert.ToInt32(DefectID);
@@ -200,8 +203,8 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.Client_Id = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
                     tDefectDetail.Client_SyncDate = DateTime.Now;
-                    tDefectDetail.TDefectId = data.TDefectId;
-                    tDefectDetail.TDefectDocNo = DefectDocNo;
+                    tDefectDetail.TDefectId = CreateDefect.TDefectId;
+                    tDefectDetail.TDefectDocNo = CreateDefect.TDefectDocNo;
                     tDefectDetail.ProductId = data.ProductId;
                     tDefectDetail.ItemId = data.ItemId;
                     tDefectDetail.TDefectDetailStatus = "001";
