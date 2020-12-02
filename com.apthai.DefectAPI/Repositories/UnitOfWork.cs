@@ -28,7 +28,6 @@ namespace com.apthai.DefectAPI.Repositories
             //var name = TableNameMapper(typeof(User));
 
         }
-
         //private static string TableNameMapper(Type type)
         //{
         //    dynamic tableattr = type.GetCustomAttributes(false).SingleOrDefault(attr => attr.GetType().Name == "TableAttribute");
