@@ -265,7 +265,7 @@ namespace com.apthai.DefectAPI.Repositories
                 try
                 {
                     string sQuery = "Select * From callTDefect " +
-                        "where ItemId = @UnitNumber And DocIsActive = 1 ";
+                        "where ItemId = @UnitNumber And DocIsActive = 1 order by CreateDate desc ";
                     var result = conn.Query<callTDefect>(sQuery, new { UnitNumber = UnitNumber }).FirstOrDefault();
                     return result;
 
