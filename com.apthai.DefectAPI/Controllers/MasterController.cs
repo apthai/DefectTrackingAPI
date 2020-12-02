@@ -202,6 +202,19 @@ namespace com.apthai.DefectAPI.Controllers
                 if (data.IsRecent == true)
                 {
                     List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode);
+                    for (int i = 0; i < callTDefects.Count(); i++)
+                    {
+                        callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(callTDefects[i].UnitNumber);
+                        if (callTDefect != null)
+                        {
+                            callTDefects[i].TDefectId = callTDefect.TDefectId;
+                        }
+                        else
+                        {
+                            callTDefects[i].TDefectId = 0;
+                        }
+                    }
+                    
                     return new
                     {
                         success = true,
@@ -211,6 +224,19 @@ namespace com.apthai.DefectAPI.Controllers
                 else
                 {
                     List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProjectID, data.SearchText);
+                    
+                    for (int i = 0; i < Units.Count(); i++)
+                    {
+                        callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(Units[i].UnitNumber);
+                        if (callTDefect != null)
+                        {
+                            Units[i].TDefectId = callTDefect.TDefectId;
+                        }
+                        else
+                        {
+                            Units[i].TDefectId = 0;
+                        }
+                    }
 
                     return new
                     {
@@ -652,10 +678,12 @@ namespace com.apthai.DefectAPI.Controllers
                         obj.TDefectId = callTDefectDetails[a].TDefectId;
                         obj.UpdateDate = callTDefectDetails[a].UpdateDate;
                         obj.UpdateUserId = callTDefectDetails[a].UpdateUserId;
+                    
                         DefectDetailCustomList.Add(obj);
                     }
                     GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
                     ReturnObj.callTDefect = callTDefect;
+                    
                     ReturnObj.callTDefectDetail = DefectDetailCustomList;
                     Return.Add(ReturnObj);
 

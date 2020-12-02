@@ -51,7 +51,6 @@ namespace com.apthai.DefectAPI
             Formatting = Formatting.None
         };
 
-
         //public Startup(IConfiguration configuration)
         //{
         //    Configuration = configuration;
@@ -77,8 +76,6 @@ namespace com.apthai.DefectAPI
             Configuration = builder.Build();
 
         }
-
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -300,8 +297,6 @@ namespace com.apthai.DefectAPI
 
         }
 
-
-
         //public static async Task RecurringJobDaily_Master()
         //{
         //    try
@@ -364,8 +359,6 @@ namespace com.apthai.DefectAPI
 
 
         }
-
-
     }
 
 

@@ -199,6 +199,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string BlockID { get; set; }
         public string TowerID { get; set; }
         public string FloorID { get; set; }
+        public int TDefectId { get; set; }
     }
     public class vwUserProject
     {

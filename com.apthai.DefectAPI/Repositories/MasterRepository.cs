@@ -258,6 +258,24 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public callTDefect GetCallTDefectByUnitNumber_Sync(string UnitNumber)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefect " +
+                        "where ItemId = @UnitNumber And DocIsActive = 1 ";
+                    var result = conn.Query<callTDefect>(sQuery, new { UnitNumber = UnitNumber }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallTDefectByUnitNumber_Sync() :: Error ", ex);
+                }
+            }
+        }
         public CallTdefectMObj GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
         {
             using (IDbConnection conn = WebConnection)
