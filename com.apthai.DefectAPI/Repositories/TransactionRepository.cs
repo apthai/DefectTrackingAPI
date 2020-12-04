@@ -108,7 +108,7 @@ namespace com.apthai.DefectAPI.Repositories
                 throw ex;
             }
         }
-        public bool InsertTdefectDetail(callTDefectDetail defectDetail)
+        public long InsertTdefectDetail(callTDefectDetail defectDetail)
         {
             try
             {
@@ -117,10 +117,10 @@ namespace com.apthai.DefectAPI.Repositories
                     conn.Open();
                     var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
 
-                    var result = conn.Insert(defectDetail, tran);
+                    long result = conn.Insert(defectDetail, tran);
                     tran.Commit();
 
-                    return true;
+                    return result;
                 }
             }
             catch (Exception ex)

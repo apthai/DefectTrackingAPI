@@ -163,6 +163,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string FloorPlanSet { get; set; }
         public string AccessKey { get; set; }
         public string EmpCode { get; set; }
+        public List<IFormFile> Files { get; set; }
     }
     public class CreateDefectListObj
     {
