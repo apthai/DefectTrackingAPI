@@ -142,7 +142,10 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string AccessKey { get; set; }
         public string EmpCode { get; set; }
     }
-
+    public class GetDefectUploadListParam
+    {
+        public int TDefectDetailID { get; set; }
+    }
     public partial class CreateDefectObj
     {
         public int TDefectId { get; set; }

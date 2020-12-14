@@ -75,6 +75,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    
+                        string sQuery = "select * from callResource " +
+                            " where TDefectDetailId = @TDefectDetailId and Active = 1 ";
+                        var result = conn.Query<callResource>(sQuery, new { TDefectDetailId = TDefectDetailId }).ToList();
+                        return result;
+                    
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallResourceByTdefectDetailID() :: Error ", ex);
+                }
+            }
+        }
         public List<PointURL> GetFloorDistinct(string CateType)
         {
             using (IDbConnection conn = WebConnection)
@@ -329,6 +348,24 @@ namespace com.apthai.DefectAPI.Repositories
                 catch (Exception ex)
                 {
                     throw new Exception("MasterRepository.GetcallTDefectDetail_Sync() :: Error ", ex);
+                }
+            }
+        }
+        public callTDefectDetail GetcallTDefectDetailByDetailID_Sync(int TDefectDetailID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefectDetail " +
+                        "where TDefectDetailId = @TDefectDetailID And RowActive = 1 ";
+                    var result = conn.Query<callTDefectDetail>(sQuery, new { TDefectDetailID = TDefectDetailID }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetcallTDefectDetailByDetailID_Sync() :: Error ", ex);
                 }
             }
         }

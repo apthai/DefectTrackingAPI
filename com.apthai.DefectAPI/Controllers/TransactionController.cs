@@ -1271,6 +1271,41 @@ namespace com.apthai.DefectAPI.Controllers
             };
         }
 
+        [HttpPost]
+        [Route("DefectUploadList")]
+        [Consumes("multipart/form-data")]
+        public async Task<object> DefectUploadList([FromForm] GetDefectUploadListParam data)
+        {
+            try
+            {
+
+                callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
+
+                if (callTDefectDetail != null)
+                {
+                    List<callResource> callResources = _masterRepository.GetCallResourceByTdefectDetailID(callTDefectDetail.TDefectDetailId);
+                    return new
+                    {
+                        success = true,
+                        data = callResources
+                    };
+                }
+                else
+                {
+                    return new
+                    {
+                        success = true,
+                        data = new callTDefectDetail() 
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
         [ApiExplorerSettings(IgnoreApi = true)]
         public bool VerifyHeader(out string ErrorMsg)
         {
