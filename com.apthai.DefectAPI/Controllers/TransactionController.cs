@@ -294,7 +294,7 @@ namespace com.apthai.DefectAPI.Controllers
                             {
                                 return new
                                 {
-                                    success = false,
+                                    success = true,
                                     data = tDefectDetail,
                                     message = string.Format("Create Defect Detail Success!")
                                 };
