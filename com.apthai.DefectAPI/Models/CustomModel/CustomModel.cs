@@ -24,7 +24,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string  UnitNo { get; set; }
         public string SerialNo { get; set; }
         public string DeviceID { get; set; }
-        public List<IFormFile> Files { get; set; }
+        public IFormFile Files { get; set; }
 
 
     }
