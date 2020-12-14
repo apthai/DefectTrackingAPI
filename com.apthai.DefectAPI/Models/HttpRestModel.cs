@@ -143,7 +143,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string EmpCode { get; set; }
     }
 
-    public class CreateDefectObj
+    public partial class CreateDefectObj
     {
         public int TDefectId { get; set; }
         public string ProductId { get; set; }
@@ -163,7 +163,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string FloorPlanSet { get; set; }
         public string AccessKey { get; set; }
         public string EmpCode { get; set; }
-        public List<IFormFile> Files { get; set; }
+        public IFormFile Files { get; set; }
     }
     public class CreateDefectListObj
     {

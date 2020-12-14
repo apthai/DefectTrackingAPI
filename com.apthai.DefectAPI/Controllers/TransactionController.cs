@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
+using System.Globalization;
 using Ionic.Zip;
 using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,8 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace com.apthai.DefectAPI.Controllers
 {
-    public class TransactionController : ControllerBase
+    [Route("api/[controller]")]
+    public class TransactionController : BaseController
     {
         private readonly IAuthorizeService _authorizeService;
         private readonly IHostingEnvironment _hostingEnvironment;
@@ -93,6 +95,7 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("CreateDefectTransaction")]
+        [Consumes("multipart/form-data")]
         public async Task<object> CreateDefectTransaction([FromForm]CreateDefectObj data)
         {
             try
@@ -154,10 +157,9 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         int SuccessUploadCount = 0;
                         int count = 0;
-                        for (int i = 0; i < data.Files.Count(); i++)
-                        {
+
                             callResource callResourceDate = new callResource();
-                            if (data.Files != null && data.Files.Count() > 0)
+                            if (data.Files != null )
                             {
                                 // -- New ---- for Docker
                                 var yearPath = DateTime.Now.Year;
@@ -169,9 +171,9 @@ namespace com.apthai.DefectAPI.Controllers
                                 string FileBinary;
 
 
-                                long size = data.Files.Sum(f => f.Length);
-                                string FileExtension = Path.GetExtension(data.Files[i].FileName);  // -------------- > Get File Extention
-                                var fileName = data.Files[i].FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+                                long size = data.Files.Length;
+                                string FileExtension = Path.GetExtension(data.Files.FileName);  // -------------- > Get File Extention
+                                var fileName = data.Files.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
 
                                 var dirPath = $"{yearPath}\\M{dataPath}";
 
@@ -180,9 +182,9 @@ namespace com.apthai.DefectAPI.Controllers
                                 {
                                     Directory.CreateDirectory(uploads);
                                 }
-                                if (data.Files[i].Length > 0)
+                                if (data.Files.Length > 0)
                                 {
-                                    var filePath = Path.Combine(uploads, data.Files[i].FileName);
+                                    var filePath = Path.Combine(uploads, data.Files.FileName);
                                     var message = "";
                                     if (System.IO.File.Exists(filePath))
                                     {
@@ -194,8 +196,8 @@ namespace com.apthai.DefectAPI.Controllers
                                         newFullPath = Path.Combine(path, tempFileName + extension);
                                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                                         {
-                                            message = data.Files[i].Length.ToString();
-                                            await data.Files[i].CopyToAsync(fileStream);
+                                            message = data.Files.Length.ToString();
+                                            await data.Files.CopyToAsync(fileStream);
                                             fileName = tempFileName + extension;
 
                                         }
@@ -204,8 +206,8 @@ namespace com.apthai.DefectAPI.Controllers
                                     {
                                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                                         {
-                                            message = data.Files[i].Length.ToString();
-                                            await data.Files[i].CopyToAsync(fileStream);
+                                            message = data.Files.Length.ToString();
+                                            await data.Files.CopyToAsync(fileStream);
                                         }
                                     }
 
@@ -298,7 +300,7 @@ namespace com.apthai.DefectAPI.Controllers
                                 };
                             }
 
-                        }
+                        
                     }
 
                     return new
@@ -392,10 +394,9 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         int SuccessUploadCount = 0;
                         int count = 0;
-                        for (int i = 0; i < data.Files.Count(); i++)
-                        {
+                        
                             callResource callResourceDate = new callResource();
-                            if (data.Files != null && data.Files.Count() > 0)
+                            if (data.Files != null )
                             {
                                 // -- New ---- for Docker
                                 var yearPath = DateTime.Now.Year;
@@ -407,9 +408,9 @@ namespace com.apthai.DefectAPI.Controllers
                                 string FileBinary;
 
 
-                                long size = data.Files.Sum(f => f.Length);
-                                string FileExtension = Path.GetExtension(data.Files[i].FileName);  // -------------- > Get File Extention
-                                var fileName = data.Files[i].FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+                                long size = data.Files.Length;
+                                string FileExtension = Path.GetExtension(data.Files.FileName);  // -------------- > Get File Extention
+                                var fileName = data.Files.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
 
                                 var dirPath = $"{yearPath}\\M{dataPath}";
 
@@ -418,9 +419,9 @@ namespace com.apthai.DefectAPI.Controllers
                                 {
                                     Directory.CreateDirectory(uploads);
                                 }
-                                if (data.Files[i].Length > 0)
+                                if (data.Files.Length > 0)
                                 {
-                                    var filePath = Path.Combine(uploads, data.Files[i].FileName);
+                                    var filePath = Path.Combine(uploads, data.Files.FileName);
                                     var message = "";
                                     if (System.IO.File.Exists(filePath))
                                     {
@@ -432,8 +433,8 @@ namespace com.apthai.DefectAPI.Controllers
                                         newFullPath = Path.Combine(path, tempFileName + extension);
                                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                                         {
-                                            message = data.Files[i].Length.ToString();
-                                            await data.Files[i].CopyToAsync(fileStream);
+                                            message = data.Files.Length.ToString();
+                                            await data.Files.CopyToAsync(fileStream);
                                             fileName = tempFileName + extension;
 
                                         }
@@ -442,8 +443,8 @@ namespace com.apthai.DefectAPI.Controllers
                                     {
                                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                                         {
-                                            message = data.Files[i].Length.ToString();
-                                            await data.Files[i].CopyToAsync(fileStream);
+                                            message = data.Files.Length.ToString();
+                                            await data.Files.CopyToAsync(fileStream);
                                         }
                                     }
 
@@ -535,8 +536,6 @@ namespace com.apthai.DefectAPI.Controllers
                                     message = string.Format("Create Defect Detail Success!")
                                 };
                             }
-
-                        }
                     }
 
                     return new
