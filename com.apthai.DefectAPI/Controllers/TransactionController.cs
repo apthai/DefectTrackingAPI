@@ -239,6 +239,8 @@ namespace com.apthai.DefectAPI.Controllers
                                         callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
                                         callResourceDate.ProjectNo = data.ProductId;
                                         callResourceDate.SerialNo = data.ItemId;
+                                        callResourceDate.Active = true;
+                                        callResourceDate.RowState = "AddNew";
                                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                                         //TresourceData[i].FileLength = size;
                                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -475,6 +477,7 @@ namespace com.apthai.DefectAPI.Controllers
                                         callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail) ;
                                         callResourceDate.ProjectNo = data.ProductId;
                                         callResourceDate.SerialNo = data.ItemId;
+                                        callResourceDate.Active = true;
                                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                                         //TresourceData[i].FileLength = size;
                                         //TresourceData[i].CreatedDate = DateTime.Now;

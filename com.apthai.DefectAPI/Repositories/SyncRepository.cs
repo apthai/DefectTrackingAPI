@@ -34,7 +34,7 @@ namespace com.apthai.DefectAPI.Repositories
 
         public bool InsertCallResource(callResource data)
         {
-            using (IDbConnection conn = SyncConnection)
+            using (IDbConnection conn = WebConnection)
             {
                 try
                 {
