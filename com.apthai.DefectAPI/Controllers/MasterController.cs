@@ -40,7 +40,8 @@ namespace com.apthai.DefectAPI.Controllers
         //private List<MStorageServer> _QISStorageServer;
         protected AppSettings _appSetting;
 
-        public MasterController(IAuthorizeService authorizeService) {
+        public MasterController(IAuthorizeService authorizeService)
+        {
 
 
             _hostingEnvironment = UtilsProvider.HostingEnvironment;
@@ -214,7 +215,7 @@ namespace com.apthai.DefectAPI.Controllers
                             callTDefects[i].TDefectId = 0;
                         }
                     }
-                    
+
                     return new
                     {
                         success = true,
@@ -224,7 +225,7 @@ namespace com.apthai.DefectAPI.Controllers
                 else
                 {
                     List<GetUnitByProjectReturnObj> Units = _masterRepository.GetUnitByProduct(data.ProjectID, data.SearchText);
-                    
+
                     for (int i = 0; i < Units.Count(); i++)
                     {
                         callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(Units[i].UnitNumber);
@@ -318,7 +319,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                List<PointURL> points = _masterRepository.GetCallPointByProductCat_Sync(null,data.Cate);
+                List<PointURL> points = _masterRepository.GetCallPointByProductCat_Sync(null, data.Cate);
                 List<PointCamel> PointCamel = new List<PointCamel>();
                 for (int i = 0; i < points.Count(); i++)
                 {
@@ -368,7 +369,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                
+
                 List<Callarea> callareas = _masterRepository.GetCallAreaByProductCat_Sync("H");
                 List<CallareaCamel> callareaCamels = new List<CallareaCamel>();
                 for (int i = 0; i < callareas.Count(); i++)
@@ -452,7 +453,7 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("GetCallAreaNew")]
-        public async Task<object> GetMasterCallAreaNew([FromBody]GetCAllArea data)
+        public async Task<object> GetMasterCallAreaNew([FromBody] GetCAllArea data)
         {
             try
             {
@@ -496,7 +497,7 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("GetCallDescriptionByArea")]
-        public async Task<object> GetCallDescriptionByArea([FromBody]GetCAllDescriptionParam data)
+        public async Task<object> GetCallDescriptionByArea([FromBody] GetCAllDescriptionParam data)
         {
             try
             {
@@ -512,9 +513,9 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 //#endregion
-                
-               List<calldescription> calldescriptions = _masterRepository.GetCallDescriptionByCallAreaID_Sync(data.CallAreaID);
-                
+
+                List<calldescription> calldescriptions = _masterRepository.GetCallDescriptionByCallAreaID_Sync(data.CallAreaID);
+
                 return new
                 {
                     success = true,
@@ -536,13 +537,13 @@ namespace com.apthai.DefectAPI.Controllers
         //{
         //    try
         //    {
-                
+
         //        callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
         //        List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetail_Sync(data.TDefectID);
         //        GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
         //        ReturnObj.callTDefect = callTDefect;
         //        ReturnObj.callTDefectDetail = callTDefectDetails;
-                
+
         //        return new
         //        {
         //            success = true,
@@ -594,7 +595,7 @@ namespace com.apthai.DefectAPI.Controllers
 
         //}
 
-       
+
         [HttpPost]
         [Route("GetCreatedDefectByProjectCodeAndUnit")]
         public async Task<object> GetCreatedDefectByProjectCodeAndUnitHorizontal([FromBody] GetDefectTransactionByUnitID data)
@@ -624,68 +625,90 @@ namespace com.apthai.DefectAPI.Controllers
 
                 List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect.TDefectId);
                 List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
-                    for (int a = 0; a < callTDefectDetails.Count(); a++)
-                    {
+                for (int a = 0; a < callTDefectDetails.Count(); a++)
+                {
 
-                        CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
-                        obj.Active = callTDefectDetails[a].Active;
-                        obj.CallAreaId = callTDefectDetails[a].CallArea_Id;
-                        obj.CallAreaName = callTDefectDetails[a].CallArea_Name;
-                        obj.CallDescId = callTDefectDetails[a].CallDescId;
-                        obj.CallPointId = callTDefectDetails[a].CallPointId;
-                        obj.CallSubPointId = callTDefectDetails[a].CallSubPointId;
-                        obj.CallTypeId = callTDefectDetails[a].CallType_Id;
-                        obj.Cate = callTDefectDetails[a].Cate;
-                        obj.ChkMainPoint = callTDefectDetails[a].ChkMainPoint;
-                        obj.ChkType = callTDefectDetails[a].Chk_Type;
-                        obj.ClientId = callTDefectDetails[a].Client_Id;
-                        obj.ClientSyncDate = callTDefectDetails[a].Client_SyncDate;
-                        obj.ComPointId = callTDefectDetails[a].ComPoint_Id;
-                        obj.CreateDate = callTDefectDetails[a].CreateDate;
-                        obj.CreateUserId = callTDefectDetails[a].CreateUserId;
-                        obj.CustRoundAuditDate = callTDefectDetails[a].CustRoundAuditDate;
-                        obj.CustRoundAuditDueCloseDate = callTDefectDetails[a].CustRoundAuditDueCloseDate;
-                        obj.CustRoundAuditNo = callTDefectDetails[a].CustRoundAuditNo;
-                        obj.DeviceId = callTDefectDetails[a].DeviceId;
-                        obj.EndPoint = callTDefectDetails[a].End_Point;
-                        obj.FloorPlanSet = callTDefectDetails[a].FloorPlanSet;
-                        obj.FloorPlanImageId = callTDefectDetails[a].FloorPlan_ImageId;
-                        obj.FloorPlanX = callTDefectDetails[a].FloorPlan_X;
-                        obj.FloorPlanY = callTDefectDetails[a].FloorPlan_Y;
-                        obj.IsServerLockRow = callTDefectDetails[a].IsServerLockRow;
-                        obj.ItemId = callTDefectDetails[a].ItemId;
-                        obj.PointName = callTDefectDetails[a].Point_Name;
-                        obj.ProductId = callTDefectDetails[a].ProductId;
-                        obj.ProductTypeCate = callTDefectDetails[a].ProductTypeCate;
-                        obj.Respondsible = callTDefectDetails[a].Respondsible;
-                        obj.RowActive = callTDefectDetails[a].RowActive;
-                        obj.RowState = callTDefectDetails[a].RowState;
-                        obj.Sequence = callTDefectDetails[a].Sequence;
-                        obj.SubPoint = callTDefectDetails[a].Sequence;
-                        obj.SubPoint = callTDefectDetails[a].Sub_Point;
-                        obj.Tag = callTDefectDetails[a].Tag;
-                        obj.TaskActualCloseDate = callTDefectDetails[a].TaskActualCloseDate;
-                        obj.TaskActualFinishDate = callTDefectDetails[a].TaskActualFinishDate;
-                        obj.TaskMarkName = callTDefectDetails[a].TaskMarkName;
-                        obj.TaskNo = callTDefectDetails[a].TaskNo;
-                        obj.TaskOpenDate = callTDefectDetails[a].TaskOpenDate;
-                        obj.TaskProcessDate = callTDefectDetails[a].TaskProcessDate;
-                        obj.TDefectDetailDesc = callTDefectDetails[a].TDefectDetailDesc;
-                        obj.TDefectDetailId = callTDefectDetails[a].TDefectDetailId;
-                        obj.TDefectDetailStatus = callTDefectDetails[a].TDefectDetailStatus;
-                        obj.TDefectDetailSubStatus = callTDefectDetails[a].TDefectDetailSubStatus;
-                        obj.TDefectDocNo = callTDefectDetails[a].TDefectDocNo;
-                        obj.TDefectId = callTDefectDetails[a].TDefectId;
-                        obj.UpdateDate = callTDefectDetails[a].UpdateDate;
-                        obj.UpdateUserId = callTDefectDetails[a].UpdateUserId;
-                    
-                        DefectDetailCustomList.Add(obj);
+                    CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
+                    obj.Active = callTDefectDetails[a].Active;
+                    obj.CallAreaId = callTDefectDetails[a].CallArea_Id;
+                    obj.CallAreaName = callTDefectDetails[a].CallArea_Name;
+                    obj.CallDescId = callTDefectDetails[a].CallDescId;
+                    obj.CallPointId = callTDefectDetails[a].CallPointId;
+                    obj.CallSubPointId = callTDefectDetails[a].CallSubPointId;
+                    obj.CallTypeId = callTDefectDetails[a].CallType_Id;
+                    obj.Cate = callTDefectDetails[a].Cate;
+                    obj.ChkMainPoint = callTDefectDetails[a].ChkMainPoint;
+                    obj.ChkType = callTDefectDetails[a].Chk_Type;
+                    obj.ClientId = callTDefectDetails[a].Client_Id;
+                    obj.ClientSyncDate = callTDefectDetails[a].Client_SyncDate;
+                    obj.ComPointId = callTDefectDetails[a].ComPoint_Id;
+                    obj.CreateDate = callTDefectDetails[a].CreateDate;
+                    obj.CreateUserId = callTDefectDetails[a].CreateUserId;
+                    obj.CustRoundAuditDate = callTDefectDetails[a].CustRoundAuditDate;
+                    obj.CustRoundAuditDueCloseDate = callTDefectDetails[a].CustRoundAuditDueCloseDate;
+                    obj.CustRoundAuditNo = callTDefectDetails[a].CustRoundAuditNo;
+                    obj.DeviceId = callTDefectDetails[a].DeviceId;
+                    obj.EndPoint = callTDefectDetails[a].End_Point;
+                    obj.FloorPlanSet = callTDefectDetails[a].FloorPlanSet;
+                    obj.FloorPlanImageId = callTDefectDetails[a].FloorPlan_ImageId;
+                    obj.FloorPlanX = callTDefectDetails[a].FloorPlan_X;
+                    obj.FloorPlanY = callTDefectDetails[a].FloorPlan_Y;
+                    obj.IsServerLockRow = callTDefectDetails[a].IsServerLockRow;
+                    obj.ItemId = callTDefectDetails[a].ItemId;
+                    obj.PointName = callTDefectDetails[a].Point_Name;
+                    obj.ProductId = callTDefectDetails[a].ProductId;
+                    obj.ProductTypeCate = callTDefectDetails[a].ProductTypeCate;
+                    obj.Respondsible = callTDefectDetails[a].Respondsible;
+                    obj.RowActive = callTDefectDetails[a].RowActive;
+                    obj.RowState = callTDefectDetails[a].RowState;
+                    obj.Sequence = callTDefectDetails[a].Sequence;
+                    obj.SubPoint = callTDefectDetails[a].Sequence;
+                    obj.SubPoint = callTDefectDetails[a].Sub_Point;
+                    obj.Tag = callTDefectDetails[a].Tag;
+                    obj.TaskActualCloseDate = callTDefectDetails[a].TaskActualCloseDate;
+                    obj.TaskActualFinishDate = callTDefectDetails[a].TaskActualFinishDate;
+                    obj.TaskMarkName = callTDefectDetails[a].TaskMarkName;
+                    obj.TaskNo = callTDefectDetails[a].TaskNo;
+                    obj.TaskOpenDate = callTDefectDetails[a].TaskOpenDate;
+                    obj.TaskProcessDate = callTDefectDetails[a].TaskProcessDate;
+                    obj.TDefectDetailDesc = callTDefectDetails[a].TDefectDetailDesc;
+                    obj.TDefectDetailId = callTDefectDetails[a].TDefectDetailId;
+                    obj.TDefectDetailStatus = callTDefectDetails[a].TDefectDetailStatus;
+                    obj.TDefectDetailSubStatus = callTDefectDetails[a].TDefectDetailSubStatus;
+                    obj.TDefectDocNo = callTDefectDetails[a].TDefectDocNo;
+                    obj.TDefectId = callTDefectDetails[a].TDefectId;
+                    obj.UpdateDate = callTDefectDetails[a].UpdateDate;
+                    obj.UpdateUserId = callTDefectDetails[a].UpdateUserId;
+
+                    List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
+                    List<callResource> AF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
+                    if (BF.Count > 0)
+                    {
+                        List<string> BFURL = new List<string>();
+                        for (int i = 0; i < BF.Count(); i++)
+                        {
+                            string bfurl = BF[i].FilePath;
+                            BFURL.Add(bfurl);
+                        }
+                        obj.BeforePic = BFURL;
                     }
-                    GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
-                    ReturnObj.callTDefect = callTDefect;
-                    
-                    ReturnObj.callTDefectDetail = DefectDetailCustomList;
-                    Return.Add(ReturnObj);
+                    if (AF.Count > 0)
+                    {
+                        List<string> AFURL = new List<string>();
+                        for (int i = 0; i < BF.Count(); i++)
+                        {
+                            string afurl = AF[i].FilePath;
+                            AFURL.Add(afurl);
+                        }
+                        obj.AfterPic = AFURL;
+                    }
+                    DefectDetailCustomList.Add(obj);
+                }
+                GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
+                ReturnObj.callTDefect = callTDefect;
+
+                ReturnObj.callTDefectDetail = DefectDetailCustomList;
+                Return.Add(ReturnObj);
 
                 return new
                 {
@@ -704,7 +727,7 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("GetCallTransactionDefectByProject")]
-        public async Task<object> GetCallTransactionDefectByProject([FromBody]GetCallTransactionDefectByProject data)
+        public async Task<object> GetCallTransactionDefectByProject([FromBody] GetCallTransactionDefectByProject data)
         {
             try
             {

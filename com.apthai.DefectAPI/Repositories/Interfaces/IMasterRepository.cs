@@ -16,6 +16,8 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<PointURL> GetFloorDistinct(string CateType);
         List<Callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate);
         List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId);
+        List<callResource> GetCallResourceBeforeByTdefectDetailID(int TDefectDetailId);
+        List<callResource> GetCallResourceAfterByTdefectDetailID(int TDefectDetailId);
         ICONEntFormsProduct GetProductDataFromCRM_Sync(string ProductID);
         List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID, string SearchText);
         List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID);

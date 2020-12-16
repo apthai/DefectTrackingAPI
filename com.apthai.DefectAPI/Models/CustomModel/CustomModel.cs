@@ -155,8 +155,8 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Respondsible { get; set; }
         public string Sequence { get; set; }
         public string StaComplain { get; set; }
-        public string BeforePic { get; set; }
-        public string AfterPic { get; set; }
+        public List<string> BeforePic { get; set; }
+        public List<string> AfterPic { get; set; }
     }
 
     public partial class vwUserRole

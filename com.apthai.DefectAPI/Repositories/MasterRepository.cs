@@ -94,6 +94,44 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<callResource> GetCallResourceBeforeByTdefectDetailID(int TDefectDetailId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectDetailId = @TDefectDetailId and ResourceTagCode = 'BF-RP' and Active = 1 ";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectDetailId = TDefectDetailId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallResourceByTdefectDetailID() :: Error ", ex);
+                }
+            }
+        }
+        public List<callResource> GetCallResourceAfterByTdefectDetailID(int TDefectDetailId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectDetailId = @TDefectDetailId and ResourceTagCode = 'AF-RP' and Active = 1 ";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectDetailId = TDefectDetailId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallResourceByTdefectDetailID() :: Error ", ex);
+                }
+            }
+        }
         public List<PointURL> GetFloorDistinct(string CateType)
         {
             using (IDbConnection conn = WebConnection)
