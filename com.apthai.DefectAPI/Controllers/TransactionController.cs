@@ -958,7 +958,7 @@ namespace com.apthai.DefectAPI.Controllers
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
        Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
-        public async Task<object> uploadPicture([FromForm]ParamUploadImage data)
+        public async Task<object> uploadPicture([FromForm] ParamUploadImageBefore data)
         {
             int a = 0;
             //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
@@ -1035,7 +1035,7 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.FileLength = size;
                             callResourceDate.CreateDate = DateTime.Now;
                             callResourceDate.RowState = "Original";
-                            callResourceDate.ResourceType = data.ResourceType;
+                            callResourceDate.ResourceType = 7;
                             callResourceDate.ResourceTagCode = "BF-RP";
                             callResourceDate.ResourceGroupSet = null;
                             callResourceDate.ResourceGroupOrder = 0;
@@ -1449,7 +1449,7 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
-        [Route("DefectUploadList")]
+        [Route("DefectUploadedList")]
         [Consumes("multipart/form-data")]
         public async Task<object> DefectUploadList([FromForm] GetDefectUploadListParam data)
         {
