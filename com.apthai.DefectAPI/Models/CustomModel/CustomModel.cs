@@ -62,6 +62,40 @@ namespace com.apthai.DefectAPI.CustomModel
 
 
     }
+    public partial class ParamUploadImageCusNotSign
+    {
+        [Required]
+        public string TDefectID { get; set; }
+        [Required]
+        public string TDefectDetailId { get; set; }
+        [Required]
+        public int UserID { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string ProjectCode { get; set; }
+        public string UnitNo { get; set; }
+        public string SerialNo { get; set; }
+        public string DeviceID { get; set; }
+        public IFormFile Files { get; set; }
+
+
+    }
+    public partial class ParamUploadImageCusSignature
+    {
+        [Required]
+        public string TDefectID { get; set; }
+        [Required]
+        public string TDefectDetailId { get; set; }
+        [Required]
+        public int UserID { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string ProjectCode { get; set; }
+        public string UnitNo { get; set; }
+        public string SerialNo { get; set; }
+        public string DeviceID { get; set; }
+        public IFormFile Files { get; set; }
+        public bool IsBF { get; set; }
+
+    }
     public partial class ParamUploadImagess
     {
         [Required]

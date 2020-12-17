@@ -169,6 +169,10 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string EmpCode { get; set; }
         public IFormFile Files { get; set; }
     }
+    public partial class UpdateDefectDetailID
+    {
+        public int TDefectDetailID { get; set; }
+    }
     public class CreateDefectListObj
     {
         public callTDefect callTDefect { get; set; }
