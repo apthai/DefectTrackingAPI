@@ -1765,6 +1765,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
@@ -1843,7 +1844,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
-        [HttpPost("uploadSignatureSLC")]
+        [HttpPost("uploadSignatureLC")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
 Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
@@ -1937,6 +1938,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
@@ -2109,6 +2111,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
