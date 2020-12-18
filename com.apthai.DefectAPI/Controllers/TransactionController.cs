@@ -1764,7 +1764,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
-                        callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectDetailId = 0;
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
@@ -1937,7 +1937,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
-                        callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectDetailId = 0;
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
@@ -2110,7 +2110,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
-                        callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectDetailId = 0;
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
@@ -2283,7 +2283,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
-                        callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                        callResourceDate.TDefectDetailId = 0;
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
