@@ -621,6 +621,18 @@ namespace com.apthai.DefectAPI.Controllers
                         message = "Cannot Find Any Defect Header!"
                     };
                 }
+                if (callTDefect.TDefectStatus == "001")
+                {
+                    callTDefect.StatusShow = "Open";
+                }
+                else if (callTDefect.TDefectStatus == "003")
+                {
+                    callTDefect.StatusShow = "Finish";
+                }
+                else if (callTDefect.TDefectStatus == "001")
+                {
+                    callTDefect.StatusShow = "Close";
+                }
                 List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
 
                 List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect.TDefectId);
@@ -679,6 +691,19 @@ namespace com.apthai.DefectAPI.Controllers
                     obj.TDefectId = callTDefectDetails[a].TDefectId;
                     obj.UpdateDate = callTDefectDetails[a].UpdateDate;
                     obj.UpdateUserId = callTDefectDetails[a].UpdateUserId;
+                    if (obj.TDefectDetailStatus == "001")
+                    {
+                        obj.StatusShow = "Open";
+                    }
+                    else if (obj.TDefectDetailStatus == "003")
+                    {
+                        obj.StatusShow = "Finish";
+                    }
+                    else if (obj.TDefectDetailStatus == "001")
+                    {
+                        obj.StatusShow = "Close";
+                    }
+
 
                     List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     List<callResource> AF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);

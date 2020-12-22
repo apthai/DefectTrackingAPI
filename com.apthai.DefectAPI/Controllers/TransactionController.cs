@@ -163,6 +163,24 @@ namespace com.apthai.DefectAPI.Controllers
 
                     long inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
 
+                    TDefectDetailWithStatus Returnobj = new TDefectDetailWithStatus();
+                    if (inserttdefectdetail == 1)
+                    {
+                        string a = JsonConvert.SerializeObject(tDefectDetail);
+                        Returnobj = JsonConvert.DeserializeObject<TDefectDetailWithStatus>(a);
+                        if (Returnobj.TDefectDetailStatus == "001")
+                        {
+                            Returnobj.StatusShow = "Open";
+                        }
+                        else if (Returnobj.TDefectDetailStatus == "003")
+                        {
+                            Returnobj.StatusShow = "Finish";
+                        }
+                        else if (Returnobj.TDefectDetailStatus == "001")
+                        {
+                            Returnobj.StatusShow = "Close";
+                        }
+                    }
                     if (inserttdefectdetail != 0)
                     {
                         int SuccessUploadCount = 0;
@@ -317,7 +335,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = true,
-                        data = tDefectDetail
+                        data = Returnobj
                     };
                 }
                 else
@@ -359,6 +377,24 @@ namespace com.apthai.DefectAPI.Controllers
                     long DefectID = 0;
                     bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
                     CreateDefect.TDefectId = Convert.ToInt32(DefectID);
+                    callTDefectWithStatus Returnobj = new callTDefectWithStatus();
+                    if (InsertData == true)
+                    {
+                        string a = JsonConvert.SerializeObject(CreateDefect);
+                        Returnobj = JsonConvert.DeserializeObject<callTDefectWithStatus>(a);
+                        if (Returnobj.TDefectStatus == "001")
+                        {
+                            Returnobj.StatusShow = "Open";
+                        }
+                        else if (Returnobj.TDefectStatus == "003")
+                        {
+                            Returnobj.StatusShow = "Finish";
+                        }
+                        else if (Returnobj.TDefectStatus == "001")
+                        {
+                            Returnobj.StatusShow = "Close";
+                        }
+                    }
                     // --------------------------------------------------------------------
                     string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
@@ -553,7 +589,7 @@ namespace com.apthai.DefectAPI.Controllers
                     return new
                     {
                         success = true,
-                        data = CreateDefect
+                        data = Returnobj
                     };
                 }
             }

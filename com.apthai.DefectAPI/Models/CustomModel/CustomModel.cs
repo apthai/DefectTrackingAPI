@@ -94,6 +94,16 @@ namespace com.apthai.DefectAPI.CustomModel
         public bool IsBF { get; set; }
 
     }
+    public partial class TDefectDetailWithStatus : callTDefectDetail
+    {
+        public string StatusShow { get; set; }
+
+    }
+    public partial class callTDefectWithStatus : callTDefect
+    {
+        public string StatusShow { get; set; }
+
+    }
     public partial class ParamUploadImagess
     {
         [Required]
@@ -131,6 +141,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Block { get; set; }
         public string TowerID { get; set; }
         public string FloorID { get; set; }
+        public string StatusShow { get; set; }
     }
     
     public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect
@@ -189,6 +200,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string StaComplain { get; set; }
         public List<string> BeforePic { get; set; }
         public List<string> AfterPic { get; set; }
+        public string StatusShow { get; set; }
     }
 
     public partial class vwUserRole
