@@ -162,7 +162,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
 
                     long inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
-
+                    tDefectDetail.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
                     TDefectDetailWithStatus Returnobj = new TDefectDetailWithStatus();
                     if (inserttdefectdetail == 1)
                     {
