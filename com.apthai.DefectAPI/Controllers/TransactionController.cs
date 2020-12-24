@@ -164,7 +164,7 @@ namespace com.apthai.DefectAPI.Controllers
                     long inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
                     tDefectDetail.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
                     TDefectDetailWithStatus Returnobj = new TDefectDetailWithStatus();
-                    if (inserttdefectdetail == 1)
+                    if (inserttdefectdetail > 0)
                     {
                         string a = JsonConvert.SerializeObject(tDefectDetail);
                         Returnobj = JsonConvert.DeserializeObject<TDefectDetailWithStatus>(a);
