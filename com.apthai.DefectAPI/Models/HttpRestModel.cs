@@ -18,6 +18,24 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string AppCode { get; set; }
 
     }
+    public partial class ParamUploadImageAfterList
+    {
+        [Required]
+        public string TDefectID { get; set; }
+        [Required]
+        public string TDefectDetailId { get; set; }
+        [Required]
+        public int UserID { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string ProjectCode { get; set; }
+        public string UnitNo { get; set; }
+        public string SerialNo { get; set; }
+        public string DeviceID { get; set; }
+        public List<IFormFile> Files { get; set; }
+
+
+    }
+
     public partial class LoginHashData
     {
         public string UserName { get; set; }

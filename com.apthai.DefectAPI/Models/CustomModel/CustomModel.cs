@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using com.apthai.DefectAPI.Model.DefectAPI;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace com.apthai.DefectAPI.CustomModel
 {
