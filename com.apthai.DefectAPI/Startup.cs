@@ -357,7 +357,6 @@ namespace com.apthai.DefectAPI
             //return HttpContext.Current.User.Identity.IsAuthenticated;
             return true;
 
-
         }
     }
 
