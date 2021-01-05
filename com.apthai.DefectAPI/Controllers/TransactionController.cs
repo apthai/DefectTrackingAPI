@@ -2605,6 +2605,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             };
         }
 
+
         [HttpPost]
         [Route("uploadBeforePictureList")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
