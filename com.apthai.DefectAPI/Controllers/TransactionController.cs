@@ -803,7 +803,7 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.ContactID = null;
                     CreateDefect.Desciption = data.Description;
                     CreateDefect.DocIsActive = true;
-                    CreateDefect.DocIsExternalAudit = false;
+                    CreateDefect.DocIsExternalAudit = true;
                     CreateDefect.DocIsReqUnitReceiveAttachFile = false;
                     long DefectID = 0;
                     bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
