@@ -341,6 +341,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     string sQuery = "Select * From callTDefect c " +
                         " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber  and c.ProductId = i.ProductID " +
+                        " left join View_UnitCustomer VC on i.UnitNumber = VC.UnitNumber and c.ProductId = VC.ProductID " +
                         "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
                     var result = conn.Query<CallTdefectMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).FirstOrDefault();
                     return result;
@@ -359,7 +360,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     string sQuery = "SELECT callTDefect.* , dbo.ICON_EntForms_Products.Project FROM dbo.callTDefect" +
                         " LEFT JOIN ICON_EntForms_Products ON dbo.callTDefect.ProductId = dbo.ICON_EntForms_Products.ProductID " +
-                        " Where callTDefect,ProductID = @ProductID AND DocIsActive = 1 " +
+                        " Where callTDefect.ProductID = @ProductID AND DocIsActive = 1 " +
                         " Order By callTDefect.CreateDate desc ";
                     var result = conn.Query<GetCallTDefectByProjectObj>(sQuery, new { ProductID = ProductID }).ToList();
                     return result;

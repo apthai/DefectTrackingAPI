@@ -2610,7 +2610,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Route("uploadBeforePictureList")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
-Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
+            Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
         public async Task<object> uploadBeforePictureList([FromForm] ParamUploadImageAfterList data)
         {
             int a = 0;

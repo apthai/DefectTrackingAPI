@@ -144,6 +144,9 @@ namespace com.apthai.DefectAPI.CustomModel
         public string TowerID { get; set; }
         public string FloorID { get; set; }
         public string StatusShow { get; set; }
+        public string CurrentCustomerFirstName { get; set; }
+        public string CurrentCustomerLastName { get; set; }
+        public bool IsNew { get; set; }
     }
     
     public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect

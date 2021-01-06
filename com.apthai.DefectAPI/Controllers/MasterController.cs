@@ -634,7 +634,14 @@ namespace com.apthai.DefectAPI.Controllers
                     callTDefect.StatusShow = "Close";
                 }
                 List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
-
+                if (callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName) && callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName))
+                {
+                    callTDefect.IsNew = false;
+                }
+                else
+                {
+                    callTDefect.IsNew = true;
+                }
                 List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect.TDefectId);
                 List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
                 for (int a = 0; a < callTDefectDetails.Count(); a++)
@@ -706,7 +713,7 @@ namespace com.apthai.DefectAPI.Controllers
 
 
                     List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
-                    List<callResource> AF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
+                    List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     if (BF.Count > 0)
                     {
                         List<string> BFURL = new List<string>();
