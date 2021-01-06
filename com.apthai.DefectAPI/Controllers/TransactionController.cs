@@ -705,164 +705,164 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
 
-        //[HttpPost]
-        //[Route("CreateDefectVendorTransaction")]
-        //public async Task<object> CreateDefectVendorTransaction([FromBody] CreateDefectObj data)
-        //{
-        //    try
-        //    {
-        //        string ErrorMsg = "";
-        //        //if (!VerifyHeader(out ErrorMsg))
-        //        //{
-        //        //    return new
-        //        //    {
-        //        //        success = false,
-        //        //        data = ErrorMsg
-        //        //    };
-        //        //}
-        //        int taskNo = 1;
-        //        if (data.TDefectId != 0)
-        //        {
-        //            string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
-        //                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
-        //            callTDefectDetail tDefectDetail = new callTDefectDetail();
-        //            tDefectDetail.RowState = "Original";
-        //            tDefectDetail.RowActive = true;
-        //            tDefectDetail.Client_Id = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
-        //                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
-        //            tDefectDetail.Client_SyncDate = DateTime.Now;
-        //            tDefectDetail.TDefectId = data.TDefectId;
-        //            tDefectDetail.TDefectDocNo = DefectDocNo;
-        //            tDefectDetail.ProductId = data.ProductId;
-        //            tDefectDetail.ItemId = data.ItemId;
-        //            tDefectDetail.TDefectDetailStatus = "001";
-        //            tDefectDetail.TDefectDetailSubStatus = "";
-        //            tDefectDetail.CallTypeId = data.CallTypeID;
-        //            tDefectDetail.CallAreaId = data.CallArea;
-        //            tDefectDetail.CallDescId = data.CallDescId;
-        //            tDefectDetail.CallPointId = data.CallSubPointId;
-        //            tDefectDetail.CallSubPointId = data.CallSubPointId;
-        //            tDefectDetail.DeviceId = data.DeviceId;
-        //            tDefectDetail.Tag = null;
-        //            tDefectDetail.CreateUserId = data.UserID;
-        //            tDefectDetail.UpdateDate = DateTime.Now;
-        //            tDefectDetail.FloorPlan_ImageId = null;
-        //            tDefectDetail.FloorPlan_X = 0;
-        //            tDefectDetail.FloorPlan_Y = 0;
-        //            tDefectDetail.TaskNo = taskNo;
-        //            tDefectDetail.TaskMarkName = "DummyData";
-        //            tDefectDetail.FloorPlanSet = data.FloorPlanSet;
-        //            tDefectDetail.CustRoundAuditNo = 1;
-        //            tDefectDetail.CustRoundAuditDate = DateTime.Now;
-        //            tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
-        //            tDefectDetail.IsServerLockRow = false;
-        //            tDefectDetail.TaskOpenDate = DateTime.Now;
-        //            tDefectDetail.TaskProcessDate = null;
-        //            tDefectDetail.TaskActualFinishDate = null;
-        //            tDefectDetail.TaskActualCloseDate = null;
-        //            tDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
+        [HttpPost]
+        [Route("CreateDefectVendorTransaction")]
+        public async Task<object> CreateDefectVendorTransaction([FromBody] CreateDefectObj data)
+        {
+            try
+            {
+                string ErrorMsg = "";
+                //if (!VerifyHeader(out ErrorMsg))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorMsg
+                //    };
+                //}
+                int taskNo = 1;
+                if (data.TDefectId != 0)
+                {
+                    string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
+                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
+                    callTDefectDetail tDefectDetail = new callTDefectDetail();
+                    tDefectDetail.RowState = "Original";
+                    tDefectDetail.RowActive = true;
+                    tDefectDetail.Client_Id = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
+                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
+                    tDefectDetail.Client_SyncDate = DateTime.Now;
+                    tDefectDetail.TDefectId = data.TDefectId;
+                    tDefectDetail.TDefectDocNo = DefectDocNo;
+                    tDefectDetail.ProductId = data.ProductId;
+                    tDefectDetail.ItemId = data.ItemId;
+                    tDefectDetail.TDefectDetailStatus = "001";
+                    tDefectDetail.TDefectDetailSubStatus = "";
+                    tDefectDetail.CallTypeId = data.CallTypeID;
+                    tDefectDetail.CallAreaId = data.CallArea;
+                    tDefectDetail.CallDescId = data.CallDescId;
+                    tDefectDetail.CallPointId = data.CallSubPointId;
+                    tDefectDetail.CallSubPointId = data.CallSubPointId;
+                    tDefectDetail.DeviceId = data.DeviceId;
+                    tDefectDetail.Tag = null;
+                    tDefectDetail.CreateUserId = data.UserID;
+                    tDefectDetail.UpdateDate = DateTime.Now;
+                    tDefectDetail.FloorPlan_ImageId = null;
+                    tDefectDetail.FloorPlan_X = 0;
+                    tDefectDetail.FloorPlan_Y = 0;
+                    tDefectDetail.TaskNo = taskNo;
+                    tDefectDetail.TaskMarkName = "DummyData";
+                    tDefectDetail.FloorPlanSet = data.FloorPlanSet;
+                    tDefectDetail.CustRoundAuditNo = 1;
+                    tDefectDetail.CustRoundAuditDate = DateTime.Now;
+                    tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
+                    tDefectDetail.IsServerLockRow = false;
+                    tDefectDetail.TaskOpenDate = DateTime.Now;
+                    tDefectDetail.TaskProcessDate = null;
+                    tDefectDetail.TaskActualFinishDate = null;
+                    tDefectDetail.TaskActualCloseDate = null;
+                    tDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
 
-        //            long inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
-        //            return new
-        //            {
-        //                success = true,
-        //                data = tDefectDetail
-        //            };
-        //        }
-        //        else
-        //        {
-        //            callTDefect CreateDefect = new callTDefect();
-        //            CreateDefect.RowState = "Original";
-        //            CreateDefect.RowActive = true;
-        //            CreateDefect.Client_Id = "Defect-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
-        //                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
-        //            CreateDefect.Client_SyncDate = DateTime.Now;
-        //            CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "/" +
-        //                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
-        //            CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
-        //            CreateDefect.TDefectSubStatus = null;
-        //            CreateDefect.ProductId = data.ProductId;
-        //            CreateDefect.ItemId = data.ItemId;
-        //            CreateDefect.DeviceId = data.DeviceId;
-        //            CreateDefect.CreateUserId = data.EmpCode;
-        //            CreateDefect.UpdateUserId = null;
-        //            CreateDefect.CustRoundAuditNo_Rn = 1;
-        //            CreateDefect.CustRoundAuditDate_Last = DateTime.Now;
-        //            CreateDefect.CustRoundAudit_JsonLog = null;
-        //            CreateDefect.CreateDate = DateTime.Now;
-        //            CreateDefect.UpdateDate = null;
-        //            CreateDefect.Desciption = data.Description;
-        //            CreateDefect.DocOpenDate = DateTime.Now;
-        //            CreateDefect.DocDueCloseDate = DateTime.Now.AddDays(14);
-        //            CreateDefect.MechanicId = null;
-        //            CreateDefect.MechanicName = null;
-        //            CreateDefect.SellerId = null;
-        //            CreateDefect.SallerName = null;
-        //            CreateDefect.DocReceiveUnitDate = DateTime.Now;
-        //            CreateDefect.DocDueTransferDate = DateTime.Now;
-        //            CreateDefect.ContactID = null;
-        //            CreateDefect.Desciption = data.Description;
-        //            CreateDefect.DocIsActive = true;
-        //            CreateDefect.DocIsExternalAudit = false;
-        //            CreateDefect.DocIsReqUnitReceiveAttachFile = false;
-        //            long DefectID = 0;
-        //            bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
-        //            CreateDefect.TDefectId = Convert.ToInt32(DefectID);
-        //            // --------------------------------------------------------------------
-        //            //string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
-        //            //                        DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
-        //            //callTDefectDetail tDefectDetail = new callTDefectDetail();
-        //            //tDefectDetail.RowState = "Original";
-        //            //tDefectDetail.RowActive = true;
-        //            //tDefectDetail.Client_Id = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
-        //            //                        DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
-        //            //tDefectDetail.Client_SyncDate = DateTime.Now;
-        //            //tDefectDetail.TDefectId = CreateDefect.TDefectId;
-        //            //tDefectDetail.TDefectDocNo = CreateDefect.TDefectDocNo;
-        //            //tDefectDetail.ProductId = data.ProductId;
-        //            //tDefectDetail.ItemId = data.ItemId;
-        //            //tDefectDetail.TDefectDetailStatus = "001";
-        //            //tDefectDetail.TDefectDetailSubStatus = "";
-        //            //tDefectDetail.CallTypeId = data.CallTypeID;
-        //            //tDefectDetail.CallAreaId = data.CallArea;
-        //            //tDefectDetail.CallDescId = data.CallDescId;
-        //            //tDefectDetail.CallPointId = data.CallSubPointId;
-        //            //tDefectDetail.CallSubPointId = data.CallSubPointId;
-        //            //tDefectDetail.DeviceId = data.DeviceId;
-        //            //tDefectDetail.Tag = null;
-        //            //tDefectDetail.CreateUserId = data.UserID;
-        //            //tDefectDetail.UpdateDate = DateTime.Now;
-        //            //tDefectDetail.FloorPlan_ImageId = null;
-        //            //tDefectDetail.FloorPlan_X = 0;
-        //            //tDefectDetail.FloorPlan_Y = 0;
-        //            //tDefectDetail.TaskNo = taskNo;
-        //            //tDefectDetail.TaskMarkName = "DummyData";
-        //            //tDefectDetail.FloorPlanSet = data.FloorPlanSet;
-        //            //tDefectDetail.CustRoundAuditNo = 1;
-        //            //tDefectDetail.CustRoundAuditDate = DateTime.Now;
-        //            //tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
-        //            //tDefectDetail.IsServerLockRow = false;
-        //            //tDefectDetail.TaskOpenDate = DateTime.Now;
-        //            //tDefectDetail.TaskProcessDate = null;
-        //            //tDefectDetail.TaskActualFinishDate = null;
-        //            //tDefectDetail.TaskActualCloseDate = null;
-        //            //tDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
+                    long inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
+                    return new
+                    {
+                        success = true,
+                        data = tDefectDetail
+                    };
+                }
+                else
+                {
+                    callTDefect CreateDefect = new callTDefect();
+                    CreateDefect.RowState = "Original";
+                    CreateDefect.RowActive = true;
+                    CreateDefect.Client_Id = "Defect-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
+                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
+                    CreateDefect.Client_SyncDate = DateTime.Now;
+                    CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "/" +
+                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
+                    CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
+                    CreateDefect.TDefectSubStatus = null;
+                    CreateDefect.ProductId = data.ProductId;
+                    CreateDefect.ItemId = data.ItemId;
+                    CreateDefect.DeviceId = data.DeviceId;
+                    CreateDefect.CreateUserId = data.EmpCode;
+                    CreateDefect.UpdateUserId = null;
+                    CreateDefect.CustRoundAuditNo_Rn = 1;
+                    CreateDefect.CustRoundAuditDate_Last = DateTime.Now;
+                    CreateDefect.CustRoundAudit_JsonLog = null;
+                    CreateDefect.CreateDate = DateTime.Now;
+                    CreateDefect.UpdateDate = null;
+                    CreateDefect.Desciption = data.Description;
+                    CreateDefect.DocOpenDate = DateTime.Now;
+                    CreateDefect.DocDueCloseDate = DateTime.Now.AddDays(14);
+                    CreateDefect.MechanicId = null;
+                    CreateDefect.MechanicName = null;
+                    CreateDefect.SellerId = null;
+                    CreateDefect.SallerName = null;
+                    CreateDefect.DocReceiveUnitDate = DateTime.Now;
+                    CreateDefect.DocDueTransferDate = DateTime.Now;
+                    CreateDefect.ContactID = null;
+                    CreateDefect.Desciption = data.Description;
+                    CreateDefect.DocIsActive = true;
+                    CreateDefect.DocIsExternalAudit = false;
+                    CreateDefect.DocIsReqUnitReceiveAttachFile = false;
+                    long DefectID = 0;
+                    bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
+                    CreateDefect.TDefectId = Convert.ToInt32(DefectID);
+                    // --------------------------------------------------------------------
+                    //string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
+                    //                        DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
+                    //callTDefectDetail tDefectDetail = new callTDefectDetail();
+                    //tDefectDetail.RowState = "Original";
+                    //tDefectDetail.RowActive = true;
+                    //tDefectDetail.Client_Id = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
+                    //                        DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
+                    //tDefectDetail.Client_SyncDate = DateTime.Now;
+                    //tDefectDetail.TDefectId = CreateDefect.TDefectId;
+                    //tDefectDetail.TDefectDocNo = CreateDefect.TDefectDocNo;
+                    //tDefectDetail.ProductId = data.ProductId;
+                    //tDefectDetail.ItemId = data.ItemId;
+                    //tDefectDetail.TDefectDetailStatus = "001";
+                    //tDefectDetail.TDefectDetailSubStatus = "";
+                    //tDefectDetail.CallTypeId = data.CallTypeID;
+                    //tDefectDetail.CallAreaId = data.CallArea;
+                    //tDefectDetail.CallDescId = data.CallDescId;
+                    //tDefectDetail.CallPointId = data.CallSubPointId;
+                    //tDefectDetail.CallSubPointId = data.CallSubPointId;
+                    //tDefectDetail.DeviceId = data.DeviceId;
+                    //tDefectDetail.Tag = null;
+                    //tDefectDetail.CreateUserId = data.UserID;
+                    //tDefectDetail.UpdateDate = DateTime.Now;
+                    //tDefectDetail.FloorPlan_ImageId = null;
+                    //tDefectDetail.FloorPlan_X = 0;
+                    //tDefectDetail.FloorPlan_Y = 0;
+                    //tDefectDetail.TaskNo = taskNo;
+                    //tDefectDetail.TaskMarkName = "DummyData";
+                    //tDefectDetail.FloorPlanSet = data.FloorPlanSet;
+                    //tDefectDetail.CustRoundAuditNo = 1;
+                    //tDefectDetail.CustRoundAuditDate = DateTime.Now;
+                    //tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
+                    //tDefectDetail.IsServerLockRow = false;
+                    //tDefectDetail.TaskOpenDate = DateTime.Now;
+                    //tDefectDetail.TaskProcessDate = null;
+                    //tDefectDetail.TaskActualFinishDate = null;
+                    //tDefectDetail.TaskActualCloseDate = null;
+                    //tDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
 
-        //            //bool inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
+                    //bool inserttdefectdetail = _transactionRepository.InsertTdefectDetail(tDefectDetail);
 
-        //            return new
-        //            {
-        //                success = true,
-        //                data = CreateDefect
-        //            };
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, "Internal server error");
-        //    }
+                    return new
+                    {
+                        success = true,
+                        data = CreateDefect
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
 
-        //}
+        }
 
         //[HttpPost]
         //[Route("uploadTransactionPicture")]
@@ -1032,37 +1032,37 @@ namespace com.apthai.DefectAPI.Controllers
         //                        var valid = await func_SaveImageAsync(ResId.ToString(), dataPath, dataPath2, mainResizePath, ImageId, true, ResFileLength, data.Description, data.CreateDeviceId, data.UserID, data.CreateDeviceDate, _ImageUnitMappingData, data.CreatorFullName, data.UserID);
 
 
-        //            return new
-        //            {
-        //                success = true,
-        //                data = new { MappingPlanImages = tempUploadFiles },
-        //                // data = _data.ToList(),
-        //                //message = string.Format("found {0} items", _data.Count)
-        //            };
+        //                        return new
+        //                        {
+        //                            success = true,
+        //                            data = new { MappingPlanImages = tempUploadFiles },
+        //                            // data = _data.ToList(),
+        //                            //message = string.Format("found {0} items", _data.Count)
+        //                        };
 
-        //        }
-
-
-        //        //var dataResult = await _unitOfWork.MasterRepository.GetUnitSearch(data.ProjectId, data.SearchText);
-        //        //var _data = dataResult.ToList();
+        //                    }
 
 
-        //        return new
-        //        {
-        //            success = false,
-        //            message = "missing upload file."
-        //        };
+        //                    //var dataResult = await _unitOfWork.MasterRepository.GetUnitSearch(data.ProjectId, data.SearchText);
+        //                    //var _data = dataResult.ToList();
+
+
+        //                    return new
+        //                    {
+        //                        success = false,
+        //                        message = "missing upload file."
+        //                    };
 
 
 
-        //    }
+        //                }
         //    catch (Exception ex)
         //    {
 
         //        return StatusCode(500, "Internal server error :: " + ex.Message);
         //    }
 
-        //}
+        }
 
         [HttpPost("uploadBeforePicture")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
