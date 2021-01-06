@@ -707,6 +707,8 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("CreateDefectVendorTransaction")]
+        [SwaggerOperation(Summary = "สร้างรายการ DefectDetail แบบจ้างตรวจ",
+        Description = "สร้างรายการ DefectHeader ใน Unit นั้นๆ ให้เป็นแบบจ้างตรวจ")]
         public async Task<object> CreateDefectVendorTransaction([FromBody] CreateDefectObj data)
         {
             try
