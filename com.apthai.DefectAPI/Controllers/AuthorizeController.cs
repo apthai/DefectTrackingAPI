@@ -69,6 +69,7 @@ namespace com.apthai.DefectAPI.Controllers
                             valid = false
                         };
                     }
+
                 List<vwUserProject> data = Respond.Content.ReadAsAsync<List<vwUserProject>>().Result;
                 List<DefectUserProject> Projects = new List<DefectUserProject>();
                 for (int i = 0; i < data.Count(); i++)
