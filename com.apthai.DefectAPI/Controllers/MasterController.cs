@@ -209,20 +209,23 @@ namespace com.apthai.DefectAPI.Controllers
                         if (callTDefect != null)
                         {
                             callTDefects[i].TDefectId = callTDefect.TDefectId;
+                            if (callTDefect.ContactName != null && (callTDefect.CurrentCustomerFirstName == null ? false : callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName))
+                            && (callTDefect.CurrentCustomerLastName == null ? false : callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName)))
+                            {
+                                callTDefects[i].IsNew = false;
+                            }
+                            else
+                            {
+                                callTDefects[i].IsNew = true;
+                            }
+                            callTDefects[i].DocIsExternalAudit = callTDefect.DocIsExternalAudit;
                         }
                         else
                         {
                             callTDefects[i].TDefectId = 0;
-                        }
-                        if (callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName) && callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName))
-                        {
-                            callTDefects[i].IsNew = false;
-                        }
-                        else
-                        {
                             callTDefects[i].IsNew = true;
                         }
-                        callTDefects[i].DocIsExternalAudit = callTDefect.DocIsExternalAudit;
+                        
                     }
 
                     return new
@@ -241,20 +244,23 @@ namespace com.apthai.DefectAPI.Controllers
                         if (callTDefect != null)
                         {
                             Units[i].TDefectId = callTDefect.TDefectId;
+                            if (callTDefect.ContactName != null && (callTDefect.CurrentCustomerFirstName == null ? false : callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName))
+                            && (callTDefect.CurrentCustomerLastName == null ? false : callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName)))
+                            {
+                                Units[i].IsNew = false;
+                            }
+                            else
+                            {
+                                Units[i].IsNew = true;
+                            }
+                            Units[i].DocIsExternalAudit = callTDefect.DocIsExternalAudit;
                         }
                         else
                         {
                             Units[i].TDefectId = 0;
-                        }
-                        if (callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName) && callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName))
-                        {
-                            Units[i].IsNew = false;
-                        }
-                        else
-                        {
                             Units[i].IsNew = true;
                         }
-                        Units[i].DocIsExternalAudit = callTDefect.DocIsExternalAudit;
+                        
                     }
 
                     return new

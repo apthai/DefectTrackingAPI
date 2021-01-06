@@ -322,7 +322,7 @@ namespace com.apthai.DefectAPI.Repositories
                 try
                 {
                     string sQuery = "Select c.*,VC.FirstName as CurrentCustomerFirstName , VC.LastName as CurrentCustomerLastName From callTDefect c" +
-                        " left join View_UnitCustomer VC on i.UnitNumber = c.ItemId and c.ProductId = VC.ProductID " +
+                        " left join View_UnitCustomer VC on c.ItemID = VC.UnitNumber and c.ProductId = VC.ProductID " +
                         "where c.ItemId = @UnitNumber And DocIsActive = 1 order by CreateDate desc ";
                     var result = conn.Query<CallTdefectCheckCustomer>(sQuery, new { UnitNumber = UnitNumber }).FirstOrDefault();
                     return result;
