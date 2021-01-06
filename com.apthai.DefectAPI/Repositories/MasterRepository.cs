@@ -277,6 +277,23 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public ViewUnitCustomer GetViewUnitCustomer(string UnitNumber , string ProductID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "select * from View_UnitCustomer where UnitNumber = @UnitNumber and ProductID = @ProductID ";
+                    var result = conn.Query<ViewUnitCustomer>(sQuery, new { UnitNumber = UnitNumber , ProductID = ProductID }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetViewUnitCustomer() :: Error ", ex);
+                }
+            }
+        }
         public List<GetcallTypeWithArea> GetCallCallTypeWithArea_Sync()
         {
             using (IDbConnection conn = WebConnection)

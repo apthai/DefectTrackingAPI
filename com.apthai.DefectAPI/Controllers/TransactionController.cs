@@ -120,6 +120,7 @@ namespace com.apthai.DefectAPI.Controllers
                     };
 
                 }
+
                 if (data.TDefectId != 0)
                 {
                     string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
@@ -340,6 +341,7 @@ namespace com.apthai.DefectAPI.Controllers
                 }
                 else
                 {
+                    ViewUnitCustomer viewUnitCustomer = _masterRepository.GetViewUnitCustomer(data.ItemId, data.ProductId);
                     callTDefect CreateDefect = new callTDefect();
                     CreateDefect.RowState = "Original";
                     CreateDefect.RowActive = true;
@@ -370,6 +372,14 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.DocReceiveUnitDate = DateTime.Now;
                     CreateDefect.DocDueTransferDate = DateTime.Now;
                     CreateDefect.ContactID = null;
+                    if (viewUnitCustomer != null)
+                    {
+                        CreateDefect.ContactName = viewUnitCustomer.FirstName + "  " + viewUnitCustomer.LastName;
+                    }
+                    else
+                    {
+                        CreateDefect.ContactName = "";
+                    }
                     CreateDefect.Desciption = data.Description;
                     CreateDefect.DocIsActive = true;
                     CreateDefect.DocIsExternalAudit = false;

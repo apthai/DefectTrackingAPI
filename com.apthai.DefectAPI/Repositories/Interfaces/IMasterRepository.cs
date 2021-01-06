@@ -20,6 +20,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<callResource> GetCallResourceAfterByTdefectDetailID(int TDefectDetailId);
         ICONEntFormsProduct GetProductDataFromCRM_Sync(string ProductID);
         List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID, string SearchText);
+        ViewUnitCustomer GetViewUnitCustomer(string UnitNumber, string ProductID);
         List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID);
         callTDefect GetCallTDefect_Sync(int TDefectID);
         CallTdefectCheckCustomer GetCallTDefectByUnitNumber_Sync(string UnitNumber);
