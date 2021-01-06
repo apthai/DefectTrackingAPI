@@ -1062,7 +1062,7 @@ namespace com.apthai.DefectAPI.Controllers
         //        return StatusCode(500, "Internal server error :: " + ex.Message);
         //    }
 
-        }
+        //}
 
         [HttpPost("uploadBeforePicture")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
