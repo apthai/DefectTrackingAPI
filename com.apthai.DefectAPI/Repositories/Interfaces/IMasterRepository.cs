@@ -22,7 +22,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID, string SearchText);
         List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID);
         callTDefect GetCallTDefect_Sync(int TDefectID);
-        callTDefect GetCallTDefectByUnitNumber_Sync(string UnitNumber);
+        CallTdefectCheckCustomer GetCallTDefectByUnitNumber_Sync(string UnitNumber);
         CallTdefectMObj GetCallTDefectByUnitID_Sync(string ProjectCode, string UnitID);
         List<callTDefectDetail> GetcallTDefectDetail_Sync(int TDefectID);
         callTDefectDetail GetcallTDefectDetailByDetailID_Sync(int TDefectDetailID);

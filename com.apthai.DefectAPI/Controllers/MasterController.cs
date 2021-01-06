@@ -205,7 +205,7 @@ namespace com.apthai.DefectAPI.Controllers
                     List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode);
                     for (int i = 0; i < callTDefects.Count(); i++)
                     {
-                        callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(callTDefects[i].UnitNumber);
+                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(callTDefects[i].UnitNumber);
                         if (callTDefect != null)
                         {
                             callTDefects[i].TDefectId = callTDefect.TDefectId;
@@ -214,6 +214,15 @@ namespace com.apthai.DefectAPI.Controllers
                         {
                             callTDefects[i].TDefectId = 0;
                         }
+                        if (callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName) && callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName))
+                        {
+                            callTDefects[i].IsNew = false;
+                        }
+                        else
+                        {
+                            callTDefects[i].IsNew = true;
+                        }
+                        callTDefects[i].DocIsExternalAudit = callTDefect.DocIsExternalAudit;
                     }
 
                     return new
@@ -228,7 +237,7 @@ namespace com.apthai.DefectAPI.Controllers
 
                     for (int i = 0; i < Units.Count(); i++)
                     {
-                        callTDefect callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(Units[i].UnitNumber);
+                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(Units[i].UnitNumber);
                         if (callTDefect != null)
                         {
                             Units[i].TDefectId = callTDefect.TDefectId;
@@ -237,6 +246,15 @@ namespace com.apthai.DefectAPI.Controllers
                         {
                             Units[i].TDefectId = 0;
                         }
+                        if (callTDefect.ContactName.Contains(callTDefect.CurrentCustomerFirstName) && callTDefect.ContactName.Contains(callTDefect.CurrentCustomerLastName))
+                        {
+                            Units[i].IsNew = false;
+                        }
+                        else
+                        {
+                            Units[i].IsNew = true;
+                        }
+                        Units[i].DocIsExternalAudit = callTDefect.DocIsExternalAudit;
                     }
 
                     return new

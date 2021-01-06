@@ -106,6 +106,11 @@ namespace com.apthai.DefectAPI.CustomModel
         public string StatusShow { get; set; }
 
     }
+    public partial class CallTdefectCheckCustomer : callTDefect
+    { 
+        public string CurrentCustomerFirstName { get; set; }
+        public string CurrentCustomerLastName { get; set; }
+    }
     public partial class ParamUploadImagess
     {
         [Required]
@@ -305,6 +310,8 @@ namespace com.apthai.DefectAPI.CustomModel
         public string TowerID { get; set; }
         public string FloorID { get; set; }
         public int TDefectId { get; set; }
+        public bool IsNew { get; set; }
+        public bool? DocIsExternalAudit { get; set; }
     }
     public class vwUserProject
     {

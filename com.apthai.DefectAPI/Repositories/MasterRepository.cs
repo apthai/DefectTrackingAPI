@@ -315,15 +315,16 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public callTDefect GetCallTDefectByUnitNumber_Sync(string UnitNumber)
+        public CallTdefectCheckCustomer GetCallTDefectByUnitNumber_Sync(string UnitNumber)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
-                    string sQuery = "Select * From callTDefect " +
-                        "where ItemId = @UnitNumber And DocIsActive = 1 order by CreateDate desc ";
-                    var result = conn.Query<callTDefect>(sQuery, new { UnitNumber = UnitNumber }).FirstOrDefault();
+                    string sQuery = "Select c.*,VC.FirstName as CurrentCustomerFirstName , VC.LastName as CurrentCustomerLastName From callTDefect c" +
+                        " left join View_UnitCustomer VC on i.UnitNumber = c.ItemId and c.ProductId = VC.ProductID " +
+                        "where c.ItemId = @UnitNumber And DocIsActive = 1 order by CreateDate desc ";
+                    var result = conn.Query<CallTdefectCheckCustomer>(sQuery, new { UnitNumber = UnitNumber }).FirstOrDefault();
                     return result;
 
                 }
