@@ -614,7 +614,8 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("UpdateDefectDetailStatusFinish")]
-        [Consumes("multipart/form-data")]
+        [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
+        Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]
         public async Task<object> UpdateDefectDetailStatusFinish([FromForm] UpdateDefectDetailID data)
         {
             try
@@ -640,11 +641,107 @@ namespace com.apthai.DefectAPI.Controllers
             }
 
         }
+
+        [HttpPost]
+        [Route("UpdateDefectHeaderDueTranferDateDate")]
+        [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
+        Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน โดยจะเอา DocDueCloseDate ปัจจุบันไป ใสใน AuditCustRoundAuditDate_last ")]
+        public async Task<object> UpdateDefectHeaderDueTranferDateDate([FromForm] UpdateDefectHeaderTranferDate data)
+        {
+            try
+            {
+
+                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+
+                callTDefect.DocDueTransferDate = data.DocDueTranferDate;
+                // --------------------------------------------------------------------
+
+
+                var inserttdefectdetail = _transactionRepository.UpdateTdefect(callTDefect);
+
+
+                return new
+                {
+                    success = true,
+                    data = callTDefect
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("UpdateDefectHeaderDueCloseDateFirstTime")]
+        [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
+        Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน ครั้งแรก คือ พึ่งมีรายการซ้อม ")]
+        public async Task<object> UpdateDefectHeaderDueCloseDateFirstTime([FromForm] UpdateDefectHeader data)
+        {
+            try
+            {
+
+                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+                callTDefect.DocDueCloseDate = data.DocDueCloseDate;
+                // --------------------------------------------------------------------
+                
+
+                var inserttdefectdetail = _transactionRepository.UpdateTdefect(callTDefect);
+
+
+                return new
+                {
+                    success = true,
+                    data = callTDefect
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("UpdateDefectHeaderDueCloseDate")]
+        [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
+        Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน โดยจะเอา DocDueCloseDate ปัจจุบันไป ใสใน AuditCustRoundAuditDate_last ")]
+        public async Task<object> UpdateDefectHeaderDueCloseDate([FromForm] UpdateDefectHeader data)
+        {
+            try
+            {
+
+                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+                DateTime? LastCloseDate = callTDefect.DocDueCloseDate;
+                callTDefect.CustRoundAuditDate_Last = LastCloseDate;
+                callTDefect.DocDueCloseDate = data.DocDueCloseDate;
+                // --------------------------------------------------------------------
+
+
+                var inserttdefectdetail = _transactionRepository.UpdateTdefect(callTDefect);
+
+
+                return new
+                {
+                    success = true,
+                    data = callTDefect
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
         [HttpPost]
         [Route("UpdateDefectDetailStatusClose")]
-        [Consumes("multipart/form-data")]
-        [SwaggerOperation(Summary = "Uploadรูปภาพ Before",
-        Description = "Upload รูปภาพของรายการ TDefectDetail Before ")]
+        [SwaggerOperation(Summary = "Update DefectDetail ปิดงาน ตรวจผ่านแล้ว ",
+        Description = "Update DefectDetail ปิดงาน ตรวจผ่านแล้ว ")]
         public async Task<object> UpdateDefectDetailStatusClose([FromForm] UpdateDefectDetailID data)
         {
             try

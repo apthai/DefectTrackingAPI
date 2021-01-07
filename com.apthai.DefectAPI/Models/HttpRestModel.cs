@@ -191,6 +191,17 @@ namespace com.apthai.DefectAPI.HttpRestModel
     {
         public int TDefectDetailID { get; set; }
     }
+    public partial class UpdateDefectHeader
+    {
+        public int TDefectID { get; set; }
+        public DateTime DocDueCloseDate { get; set; }
+    }
+    public partial class UpdateDefectHeaderTranferDate
+    {
+        public int TDefectID { get; set; }
+        public DateTime DocDueTranferDate { get; set; }
+    }
+
     public class CreateDefectListObj
     {
         public callTDefect callTDefect { get; set; }

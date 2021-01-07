@@ -12,6 +12,7 @@ namespace com.apthai.DefectAPI.Repositories
         bool UpdateUserAccessKey(AccessKeyControl AC);
         long InsertTdefectDetail(callTDefectDetail defectDetail);
         bool UpdateTdefectDetail(callTDefectDetail defectDetail);
+        bool UpdateTdefect(callTDefect callTDefect);
         bool InsertTdefectDetail(callTDefect defectDetail, ref long DefectID);
         bool InsertTdefectDetailList(List<callTDefectDetail> defectDetails);
         bool InsertTdefect(callTDefect callTDefect);

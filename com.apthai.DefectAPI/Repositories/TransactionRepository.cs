@@ -188,6 +188,26 @@ namespace com.apthai.DefectAPI.Repositories
                 throw ex;
             }
         }
+        public bool UpdateTdefect(callTDefect callTDefect)
+        {
+            try
+            {
+                using (IDbConnection conn = WebConnection)
+                {
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
+
+                    var result = conn.Update(callTDefect, tran);
+                    tran.Commit();
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }
