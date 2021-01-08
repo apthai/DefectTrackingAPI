@@ -46,7 +46,7 @@ namespace com.apthai.DefectAPI
             DateFormatHandling = DateFormatHandling.IsoDateFormat,
             DateTimeZoneHandling = DateTimeZoneHandling.Local,
             DateParseHandling = DateParseHandling.DateTimeOffset,
-            NullValueHandling = NullValueHandling.Ignore,
+            //NullValueHandling = NullValueHandling.Ignore,
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             Formatting = Formatting.None
         };
@@ -111,7 +111,7 @@ namespace com.apthai.DefectAPI
                   options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                   options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local; //RoundtripKind;
                   options.SerializerSettings.DateParseHandling = DateParseHandling.DateTimeOffset;
-                  options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                  //options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                   options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
 
@@ -122,7 +122,7 @@ namespace com.apthai.DefectAPI
                 DateFormatHandling = DateFormatHandling.IsoDateFormat,
                 DateTimeZoneHandling = DateTimeZoneHandling.Local,
                 DateParseHandling = DateParseHandling.DateTimeOffset,
-                NullValueHandling = NullValueHandling.Ignore,
+                //NullValueHandling = NullValueHandling.Ignore,
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 
             };
