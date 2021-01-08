@@ -732,25 +732,30 @@ namespace com.apthai.DefectAPI.Controllers
                     List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
+                    List<PicInDetailObj> BFObject = new List<PicInDetailObj>();
+                    List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
                     if (BF.Count > 0)
                     {
-                        List<string> BFURL = new List<string>();
+                        
                         for (int i = 0; i < BF.Count(); i++)
                         {
-                            string bfurl = WebBaseUrl + "/" + BF[i].FilePath;
-                            BFURL.Add(bfurl);
+                            PicInDetailObj BFURL = new PicInDetailObj();
+                            BFURL.URL = WebBaseUrl + "/" + BF[i].FilePath;
+                            BFURL.ResourceId = BF[i].ResourceId;
+                            BFObject.Add(BFURL);
                         }
-                        obj.BeforePic = BFURL;
+                        obj.BeforePic = BFObject;
                     }
                     if (AF.Count > 0)
                     {
-                        List<string> AFURL = new List<string>();
                         for (int i = 0; i < BF.Count(); i++)
                         {
-                            string afurl = WebBaseUrl + "/" + AF[i].FilePath;
-                            AFURL.Add(afurl);
+                            PicInDetailObj AFURL = new PicInDetailObj();
+                            AFURL.URL = WebBaseUrl + "/" + BF[i].FilePath;
+                            AFURL.ResourceId = BF[i].ResourceId;
+                            AFObject.Add(AFURL);
                         }
-                        obj.AfterPic = AFURL;
+                        obj.AfterPic = AFObject;
                     }
                     DefectDetailCustomList.Add(obj);
                 }

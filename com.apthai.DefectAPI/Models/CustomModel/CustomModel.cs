@@ -212,11 +212,15 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Respondsible { get; set; }
         public string Sequence { get; set; }
         public string StaComplain { get; set; }
-        public List<string> BeforePic { get; set; }
-        public List<string> AfterPic { get; set; }
+        public List<PicInDetailObj> BeforePic { get; set; }
+        public List<PicInDetailObj> AfterPic { get; set; }
         public string StatusShow { get; set; }
     }
-
+    public partial class PicInDetailObj
+    { 
+        public string URL { get; set; }
+        public int ResourceId { get; set; }
+    }
     public partial class vwUserRole
     {
         public int? ID { get; set; }
