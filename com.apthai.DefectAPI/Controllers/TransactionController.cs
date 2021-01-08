@@ -2530,10 +2530,14 @@ Description = "ดึงข้อมูล รุปภาพทั้งหม�
                 if (callTDefectDetail != null)
                 {
                     List<callResource> callResources = _masterRepository.GetCallResourceByTdefectDetailID(callTDefectDetail.TDefectDetailId);
+                    var Json = JsonConvert.SerializeObject(callResources);
+                    CallresouceWithURL callresouceWithURL = new CallresouceWithURL();
+                    callresouceWithURL = JsonConvert.DeserializeObject<CallresouceWithURL>(Json);
+                    callresouceWithURL.URL = Environment.GetEnvironmentVariable("BaseURL") + "/" + callresouceWithURL.FilePath;
                     return new
                     {
                         success = true,
-                        data = callResources
+                        data = callresouceWithURL
                     };
                 }
                 else

@@ -101,6 +101,10 @@ namespace com.apthai.DefectAPI.CustomModel
         public string StatusShow { get; set; }
 
     }
+    public partial class CallresouceWithURL : callResource
+    { 
+        public string URL { get; set; }
+    }
     public partial class callTDefectWithStatus : callTDefect
     {
         public string StatusShow { get; set; }

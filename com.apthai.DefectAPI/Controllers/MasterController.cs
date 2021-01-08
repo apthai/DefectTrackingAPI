@@ -731,12 +731,13 @@ namespace com.apthai.DefectAPI.Controllers
 
                     List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
+                    string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
                     if (BF.Count > 0)
                     {
                         List<string> BFURL = new List<string>();
                         for (int i = 0; i < BF.Count(); i++)
                         {
-                            string bfurl = BF[i].FilePath;
+                            string bfurl = WebBaseUrl + "/" + BF[i].FilePath;
                             BFURL.Add(bfurl);
                         }
                         obj.BeforePic = BFURL;
@@ -746,7 +747,7 @@ namespace com.apthai.DefectAPI.Controllers
                         List<string> AFURL = new List<string>();
                         for (int i = 0; i < BF.Count(); i++)
                         {
-                            string afurl = AF[i].FilePath;
+                            string afurl = WebBaseUrl + "/" + AF[i].FilePath;
                             AFURL.Add(afurl);
                         }
                         obj.AfterPic = AFURL;
@@ -798,6 +799,55 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
 
+        [HttpGet]
+        [Route("GetMasterFloorPlanImage")]
+        public async Task<object> GetMasterFloorPlanImage()
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<PointURL> points = _masterRepository.GetFloorDistinct("H");
+                List<pointCamel> ReturnObj = new List<pointCamel>();
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    pointCamel point = new pointCamel();
+                    point.Cate = points[i].Cate;
+                    point.ChkMainPoint = points[i].Chkmainpoint;
+                    point.CompPointId = points[i].Comppoint_id;
+                    point.EndPoint = points[i].End_point;
+                    point.FloorPlantset = points[i].Floorplantset;
+                    point.PointName = points[i].Point_name;
+                    point.ProductTypeCate = points[i].Producttypecate;
+                    point.Project = points[i].Project;
+                    point.SubPoint = points[i].Sub_point;
+                    point.URL = points[i].ImageURL;
+                    ReturnObj.Add(point);
+                }
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
         //[ApiExplorerSettings(IgnoreApi = true)]
         //public async Task<string> GetQISFileStorageUrlAsync(int? StorageServerId, string FilePath)
         //{
