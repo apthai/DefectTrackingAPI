@@ -178,7 +178,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (CateType == "H")
                     {
-                        string sQuery = " select distinct(point.cate),point_name,MobileFloorIcons.ImageURL from point " +
+                        string sQuery = " select distinct(point.cate),point_name,MobileFloorIcons.ImageURL,point.floorplantset from point " +
                             " left join MobileFloorIcons on point.cate = MobileFloorIcons.cate " +
                             " where point.producttypecate = 'H'";
                         var result = conn.Query<PointURL>(sQuery).ToList();
