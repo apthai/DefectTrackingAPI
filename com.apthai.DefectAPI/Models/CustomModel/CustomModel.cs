@@ -28,7 +28,6 @@ namespace com.apthai.DefectAPI.CustomModel
         public string DeviceID { get; set; }
         public IFormFile Files { get; set; }
 
-
     }
     public partial class ParamUploadImageBefore
     {

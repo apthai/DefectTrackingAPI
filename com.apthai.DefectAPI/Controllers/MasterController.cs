@@ -53,6 +53,41 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
+        [Route("GetAllSignatureByCallTDefectID")]
+        public async Task<object> GetAllSignatureByCallTDefectID([FromBody] int TDefectID )
+        {
+            try
+            {
+                //#region VerifyHeader
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader ,
+                //        valid = false
+                //    };
+                //}
+                //#endregion
+                List<callResource> callResources = _masterRepository.GetSignatureCallResourceByTdefectID(TDefectID);
+                
+                return new
+                {
+                    success = true,
+                    data = callResources
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
         [Route("GetCallTypewithArea")]
         [SwaggerOperation(Summary = "ดึงข้อมูลบริเวณ ",
         Description = "ไม่ต้องส่ง อะไรมา ")]
@@ -746,6 +781,10 @@ namespace com.apthai.DefectAPI.Controllers
                         }
                         obj.BeforePic = BFObject;
                     }
+                    else
+                    {
+                        obj.BeforePic = new List<PicInDetailObj>();
+                    }
                     if (AF.Count > 0)
                     {
                         for (int i = 0; i < BF.Count(); i++)
@@ -756,6 +795,10 @@ namespace com.apthai.DefectAPI.Controllers
                             AFObject.Add(AFURL);
                         }
                         obj.AfterPic = AFObject;
+                    }
+                    else
+                    {
+                        obj.AfterPic = new List<PicInDetailObj>();
                     }
                     DefectDetailCustomList.Add(obj);
                 }

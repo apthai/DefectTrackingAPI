@@ -75,6 +75,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<callResource> GetSignatureCallResourceByTdefectID(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectId = @TDefectId and Active = 1 and ResourceType in (1,2,6 )";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectId = TDefectId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetSignatureCallResourceByTdefectID() :: Error ", ex);
+                }
+            }
+        }
         public List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId)
         {
             using (IDbConnection conn = WebConnection)
