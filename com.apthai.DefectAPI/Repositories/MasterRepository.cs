@@ -113,6 +113,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<callResource> GetCallResourceByTdefect(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectId = @TDefectId ";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectId = TDefectId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallResourceByTdefectDetailID() :: Error ", ex);
+                }
+            }
+        }
         public List<callResource> GetCallResourceBeforeByTdefectDetailID(int TDefectDetailId)
         {
             using (IDbConnection conn = WebConnection)

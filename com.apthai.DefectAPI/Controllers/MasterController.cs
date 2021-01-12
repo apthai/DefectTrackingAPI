@@ -824,6 +824,72 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
+        [Route("GetCreatedVendorDefectByProjectCodeAndUnit")]
+        public async Task<object> GetCreatedVendorDefectByProjectCodeAndUnit([FromBody] GetDefectTransactionByUnitID data)
+        {
+            try
+            {
+                //bool CanAccess = _authorizeService.AccessKeyAuthentication(data.AccessKey, data.EmpCode);
+                //if (CanAccess == false)
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = "AccessKey is Invalid!"
+                //    };
+                //}
+                CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
+                if (callTDefect == null)
+                {
+                    return new
+                    {
+                        success = false,
+                        data = callTDefect,
+                        message = "Cannot Find Any Defect Header!"
+                    };
+                }
+                if (callTDefect.TDefectStatus == "001")
+                {
+                    callTDefect.StatusShow = "Open";
+                }
+                else if (callTDefect.TDefectStatus == "003")
+                {
+                    callTDefect.StatusShow = "Finish";
+                }
+                else if (callTDefect.TDefectStatus == "001")
+                {
+                    callTDefect.StatusShow = "Close";
+                }
+                List<callResource> callResources = _masterRepository.GetCallResourceByTdefect(callTDefect.TDefectId);
+                string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
+                List<PicInDetailObj> ReturnObj = new List<PicInDetailObj>();
+                if (callResources.Count > 0)
+                    {
+
+                    for (int i = 0; i < callResources.Count(); i++)
+                    {
+                        PicInDetailObj BFURL = new PicInDetailObj();
+                        BFURL.URL = WebBaseUrl + "/" + callResources[i].FilePath;
+                        BFURL.ResourceId = callResources[i].ResourceId;
+                        ReturnObj.Add(BFURL);
+                    }
+                }
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
         [Route("GetCallTransactionDefectByProject")]
         public async Task<object> GetCallTransactionDefectByProject([FromBody] GetCallTransactionDefectByProject data)
         {

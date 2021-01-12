@@ -17,6 +17,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<callResource> GetSignatureCallResourceByTdefectID(int TDefectId);
         List<Callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate);
         List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId);
+        List<callResource> GetCallResourceByTdefect(int TDefectId);
         List<callResource> GetCallResourceBeforeByTdefectDetailID(int TDefectDetailId);
         List<callResource> GetCallResourceAfterByTdefectDetailID(int TDefectDetailId);
         ICONEntFormsProduct GetProductDataFromCRM_Sync(string ProductID);
