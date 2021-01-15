@@ -512,6 +512,63 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
+        [Route("UpdateDefectDetail")]
+        [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
+Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]
+        public async Task<object> UpdateDefectDetailStatusFinish([FromForm] UpdateDefectObj data)
+        {
+            try
+            {
+
+                callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailId);
+                // --------------------------------------------------------------------
+                callTDefectDetail.RowState = "Original";
+                callTDefectDetail.RowActive = true;
+                callTDefectDetail.Client_SyncDate = DateTime.Now;
+                callTDefectDetail.ProductId = data.ProductId;
+                callTDefectDetail.ItemId = data.ItemId;
+                callTDefectDetail.TDefectDetailSubStatus = "";
+                callTDefectDetail.CallTypeId = data.CallTypeID;
+                callTDefectDetail.CallAreaId = data.CallArea;
+                callTDefectDetail.CallDescId = data.CallDescId;
+                callTDefectDetail.CallPointId = data.Cate;
+                callTDefectDetail.CallSubPointId = data.CallSubPointId;
+                callTDefectDetail.DeviceId = data.DeviceId;
+                callTDefectDetail.Tag = null;
+                callTDefectDetail.CreateUserId = data.UserID;
+                callTDefectDetail.UpdateDate = DateTime.Now;
+                callTDefectDetail.FloorPlan_ImageId = null;
+                callTDefectDetail.FloorPlan_X = 0;
+                callTDefectDetail.FloorPlan_Y = 0;
+                callTDefectDetail.TaskMarkName = "DummyData";
+                callTDefectDetail.FloorPlanSet = data.FloorPlanSet;
+                callTDefectDetail.CustRoundAuditNo = 1;
+                callTDefectDetail.CustRoundAuditDate = DateTime.Now;
+                callTDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
+                callTDefectDetail.IsServerLockRow = false;
+                callTDefectDetail.TaskOpenDate = DateTime.Now;
+                callTDefectDetail.TaskProcessDate = null;
+                callTDefectDetail.TaskActualFinishDate = null;
+                callTDefectDetail.TaskActualCloseDate = null;
+                callTDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
+                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
+
+
+                return new
+                {
+                    success = true,
+                    data = callTDefectDetail
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
         [Route("UpdateDefectDetailStatusFinish")]
         [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
         Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]

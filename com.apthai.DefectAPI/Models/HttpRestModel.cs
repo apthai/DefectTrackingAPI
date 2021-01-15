@@ -187,6 +187,30 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string EmpCode { get; set; }
         public IFormFile Files { get; set; }
     }
+    public partial class UpdateDefectObj
+    {
+        public int TDefectDetailId { get; set; }
+        public int TDefectId { get; set; }
+        public string ProductId { get; set; }
+        public string ItemId { get; set; }
+        public string DeviceId { get; set; }
+        public string UserID { get; set; }
+        public string SellerId { get; set; }
+        public string Description { get; set; }
+        public int Cate { get; set; }
+        public string DefectType { get; set; } // H = Horizontal หรือ V = Vertical
+        //------ ของ TdefectDetail ------------
+        public string TDefectDetailStatus { get; set; }
+        public string TDefectDetailDesc { get; set; }
+        public int CallTypeID { get; set; }
+        public int CallArea { get; set; }
+        public int CallDescId { get; set; }
+        public int CallSubPointId { get; set; }
+        public string FloorPlanSet { get; set; }
+        public string AccessKey { get; set; }
+        public string EmpCode { get; set; }
+        public IFormFile Files { get; set; }
+    }
     public partial class UpdateDefectDetailID
     {
         public int TDefectDetailID { get; set; }
