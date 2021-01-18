@@ -515,7 +515,7 @@ namespace com.apthai.DefectAPI.Controllers
         [Route("UpdateDefectDetail")]
         [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
 Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]
-        public async Task<object> UpdateDefectDetailStatusFinish([FromForm] UpdateDefectObj data)
+        public async Task<object> UpdateDefectDetailStatusFinish([FromBody] UpdateDefectObj data)
         {
             try
             {
@@ -572,7 +572,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         [Route("UpdateDefectDetailStatusFinish")]
         [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
         Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]
-        public async Task<object> UpdateDefectDetailStatusFinish([FromForm] UpdateDefectDetailID data)
+        public async Task<object> UpdateDefectDetailStatusFinish([FromBody] UpdateDefectDetailID data)
         {
             try
             {
@@ -602,7 +602,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         [Route("UpdateDefectHeaderDueTranferDateDate")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
         Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน โดยจะเอา DocDueCloseDate ปัจจุบันไป ใสใน AuditCustRoundAuditDate_last ")]
-        public async Task<object> UpdateDefectHeaderDueTranferDateDate([FromForm] UpdateDefectHeaderTranferDate data)
+        public async Task<object> UpdateDefectHeaderDueTranferDateDate([FromBody] UpdateDefectHeaderTranferDate data)
         {
             try
             {
@@ -634,7 +634,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         [Route("UpdateDefectHeaderDueCloseDateFirstTime")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
         Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน ครั้งแรก คือ พึ่งมีรายการซ้อม ")]
-        public async Task<object> UpdateDefectHeaderDueCloseDateFirstTime([FromForm] UpdateDefectHeader data)
+        public async Task<object> UpdateDefectHeaderDueCloseDateFirstTime([FromBody] UpdateDefectHeader data)
         {
             try
             {
@@ -665,7 +665,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         [Route("DeleteeDefectDetail")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
         Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน ครั้งแรก คือ พึ่งมีรายการซ้อม ")]
-        public async Task<object> DeleteeDefectDetail([FromForm] UpdateDefectDetailID data)
+        public async Task<object> DeleteeDefectDetail([FromBody] UpdateDefectDetailID data)
         {
             try
             {
@@ -696,7 +696,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         [Route("UpdateDefectHeaderDueCloseDate")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
         Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน โดยจะเอา DocDueCloseDate ปัจจุบันไป ใสใน AuditCustRoundAuditDate_last ")]
-        public async Task<object> UpdateDefectHeaderDueCloseDate([FromForm] UpdateDefectHeader data)
+        public async Task<object> UpdateDefectHeaderDueCloseDate([FromBody] UpdateDefectHeader data)
         {
             try
             {
@@ -729,7 +729,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         [Route("UpdateDefectDetailStatusClose")]
         [SwaggerOperation(Summary = "Update DefectDetail ปิดงาน ตรวจผ่านแล้ว ",
         Description = "Update DefectDetail ปิดงาน ตรวจผ่านแล้ว ")]
-        public async Task<object> UpdateDefectDetailStatusClose([FromForm] UpdateDefectDetailID data)
+        public async Task<object> UpdateDefectDetailStatusClose([FromBody] UpdateDefectDetailID data)
         {
             try
             {
