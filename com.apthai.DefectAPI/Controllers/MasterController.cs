@@ -700,6 +700,8 @@ namespace com.apthai.DefectAPI.Controllers
                 {
 
                     CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
+                    Model.DefectAPI.point CurrentPoint = new Model.DefectAPI.point();
+                    CurrentPoint = _masterRepository.GetCallPointByPointID_Sync(callTDefectDetails[a].CallPointId);
                     obj.Active = callTDefectDetails[a].Active;
                     obj.CallAreaId = callTDefectDetails[a].CallArea_Id;
                     obj.CallAreaName = callTDefectDetails[a].CallArea_Name;
@@ -707,7 +709,7 @@ namespace com.apthai.DefectAPI.Controllers
                     obj.CallPointId = callTDefectDetails[a].CallPointId;
                     obj.CallSubPointId = callTDefectDetails[a].CallSubPointId;
                     obj.CallTypeId = callTDefectDetails[a].CallType_Id;
-                    obj.Cate = callTDefectDetails[a].Cate;
+                    obj.Cate = CurrentPoint.cate.ToString();
                     obj.ChkMainPoint = callTDefectDetails[a].ChkMainPoint;
                     obj.ChkType = callTDefectDetails[a].Chk_Type;
                     obj.ClientId = callTDefectDetails[a].Client_Id;
@@ -726,7 +728,7 @@ namespace com.apthai.DefectAPI.Controllers
                     obj.FloorPlanY = callTDefectDetails[a].FloorPlan_Y;
                     obj.IsServerLockRow = callTDefectDetails[a].IsServerLockRow;
                     obj.ItemId = callTDefectDetails[a].ItemId;
-                    obj.PointName = callTDefectDetails[a].Point_Name;
+                    obj.PointName = CurrentPoint.point_name;
                     obj.ProductId = callTDefectDetails[a].ProductId;
                     obj.ProductTypeCate = callTDefectDetails[a].ProductTypeCate;
                     obj.Respondsible = callTDefectDetails[a].Respondsible;

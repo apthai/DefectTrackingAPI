@@ -35,5 +35,6 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<Floor> GetFloorsByProjectTower(string ProjectID, string TowerID);
         Model.DefectAPISync.vwProject GetVwProjects(string ProjectID);
         List<Tower> GetTowersByProject(string ProjectID);
+        Model.DefectAPI.point GetCallPointByPointID_Sync(int? comppoint_id);
     }
 }
