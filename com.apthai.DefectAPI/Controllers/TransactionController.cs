@@ -2804,6 +2804,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                             callResourceDate.ProjectNo = data.ProjectCode;
                             callResourceDate.SerialNo = data.UnitNo;
+                            callResourceDate.Active = true;
                             //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                             //TresourceData[i].FileLength = size;
                             //TresourceData[i].CreatedDate = DateTime.Now;
