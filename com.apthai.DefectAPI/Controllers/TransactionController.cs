@@ -2603,7 +2603,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             string extension = Path.GetExtension(filePath);
                             string path = Path.GetDirectoryName(filePath);
                             string newFullPath = filePath;
-                            string tempFileName = string.Format("{0}({1})", fileNameOnly);
+                            string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
                             newFullPath = Path.Combine(path, tempFileName + extension);
                             using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                             {
@@ -2775,7 +2775,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             string extension = Path.GetExtension(filePath);
                             string path = Path.GetDirectoryName(filePath);
                             string newFullPath = filePath;
-                            string tempFileName = string.Format("{0}({1})", fileNameOnly);
+                            string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
                             newFullPath = Path.Combine(path, tempFileName + extension);
                             using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                             {
