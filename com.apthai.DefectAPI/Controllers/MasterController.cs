@@ -793,8 +793,8 @@ namespace com.apthai.DefectAPI.Controllers
                         for (int i = 0; i < AF.Count(); i++)
                         {
                             PicInDetailObj AFURL = new PicInDetailObj();
-                            AFURL.URL = WebBaseUrl + "/" + BF[i].FilePath;
-                            AFURL.ResourceId = BF[i].ResourceId;
+                            AFURL.URL = WebBaseUrl + "/" + AF[i].FilePath;
+                            AFURL.ResourceId = AF[i].ResourceId;
                             AFObject.Add(AFURL);
                         }
                         obj.AfterPic = AFObject;
