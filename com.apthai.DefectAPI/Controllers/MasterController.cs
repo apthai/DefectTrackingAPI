@@ -702,6 +702,7 @@ namespace com.apthai.DefectAPI.Controllers
                     CallTdefectDetailCustomShow obj = new CallTdefectDetailCustomShow();
                     Model.DefectAPI.point CurrentPoint = new Model.DefectAPI.point();
                     CurrentPoint = _masterRepository.GetCallPointByPointID_Sync(callTDefectDetails[a].CallPointId);
+                    obj.TDefectDetailId = callTDefectDetails[a].TDefectDetailId;
                     obj.Active = callTDefectDetails[a].Active;
                     obj.CallAreaId = callTDefectDetails[a].CallArea_Id;
                     obj.CallAreaName = callTDefectDetails[a].CallArea_Name;
