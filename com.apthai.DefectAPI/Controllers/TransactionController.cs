@@ -223,7 +223,7 @@ namespace com.apthai.DefectAPI.Controllers
                                     string extension = Path.GetExtension(filePath);
                                     string path = Path.GetDirectoryName(filePath);
                                     string newFullPath = filePath;
-                                    string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                                    string tempFileName = string.Format("{0}({1})", fileNameOnly);
                                     newFullPath = Path.Combine(path, tempFileName + extension);
                                     using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                                     {
@@ -435,7 +435,7 @@ namespace com.apthai.DefectAPI.Controllers
                                     string extension = Path.GetExtension(filePath);
                                     string path = Path.GetDirectoryName(filePath);
                                     string newFullPath = filePath;
-                                    string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                                    string tempFileName = string.Format("{0}({1})", fileNameOnly);
                                     newFullPath = Path.Combine(path, tempFileName + extension);
                                     using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                                     {
@@ -1201,7 +1201,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -1367,7 +1367,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -1533,7 +1533,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -1698,7 +1698,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -1864,7 +1864,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -2038,7 +2038,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -2212,7 +2212,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -2387,7 +2387,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {
@@ -2603,7 +2603,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             string extension = Path.GetExtension(filePath);
                             string path = Path.GetDirectoryName(filePath);
                             string newFullPath = filePath;
-                            string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                            string tempFileName = string.Format("{0}({1})", fileNameOnly);
                             newFullPath = Path.Combine(path, tempFileName + extension);
                             using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                             {
@@ -2775,7 +2775,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             string extension = Path.GetExtension(filePath);
                             string path = Path.GetDirectoryName(filePath);
                             string newFullPath = filePath;
-                            string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
+                            string tempFileName = string.Format("{0}({1})", fileNameOnly);
                             newFullPath = Path.Combine(path, tempFileName + extension);
                             using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                             {
