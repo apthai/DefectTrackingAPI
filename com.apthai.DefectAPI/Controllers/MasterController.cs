@@ -708,6 +708,7 @@ namespace com.apthai.DefectAPI.Controllers
                     obj.CallAreaName = callTDefectDetails[a].CallArea_Name;
                     obj.CallDescId = callTDefectDetails[a].CallDescId;
                     obj.CallPointId = callTDefectDetails[a].CallPointId;
+                    obj.ComPointId = callTDefectDetails[a].CallPointId.ToString();
                     obj.CallSubPointId = callTDefectDetails[a].CallSubPointId;
                     obj.CallTypeId = callTDefectDetails[a].CallType_Id;
                     obj.Cate = CurrentPoint.cate.ToString();
@@ -736,7 +737,6 @@ namespace com.apthai.DefectAPI.Controllers
                     obj.RowActive = callTDefectDetails[a].RowActive;
                     obj.RowState = callTDefectDetails[a].RowState;
                     obj.Sequence = callTDefectDetails[a].Sequence;
-                    obj.SubPoint = callTDefectDetails[a].Sequence;
                     obj.SubPoint = callTDefectDetails[a].Sub_Point;
                     obj.Tag = callTDefectDetails[a].Tag;
                     obj.TaskActualCloseDate = callTDefectDetails[a].TaskActualCloseDate;

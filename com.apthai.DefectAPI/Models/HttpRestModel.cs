@@ -197,6 +197,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string UserID { get; set; }
         public string SellerId { get; set; }
         public string Description { get; set; }
+        public int PointID { get; set; }
         public int Cate { get; set; }
         public string DefectType { get; set; } // H = Horizontal หรือ V = Vertical
         //------ ของ TdefectDetail ------------
