@@ -2742,6 +2742,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
             int count = 0;
             for (int i = 0; i < data.Files.Count(); i++)
             {
+
                 if (data.Files != null)
                 {
                     // -- New ---- for Docker
