@@ -802,6 +802,7 @@ namespace com.apthai.DefectAPI.Controllers
                     else
                     {
                         obj.AfterPic = new List<PicInDetailObj>();
+
                     }
                     DefectDetailCustomList.Add(obj);
                 }
