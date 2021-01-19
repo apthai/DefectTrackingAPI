@@ -1238,6 +1238,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1403,6 +1404,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1568,6 +1570,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1732,6 +1735,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1906,6 +1910,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2079,6 +2084,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2252,6 +2258,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2425,6 +2432,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
+                        callResourceDate.Active = true;
                         //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                         //TresourceData[i].FileLength = size;
                         //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2633,6 +2641,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                             callResourceDate.ProjectNo = data.ProjectCode;
                             callResourceDate.SerialNo = data.UnitNo;
+                            callResourceDate.Active = true;
                             //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                             //TresourceData[i].FileLength = size;
                             //TresourceData[i].CreatedDate = DateTime.Now;
