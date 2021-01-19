@@ -790,7 +790,7 @@ namespace com.apthai.DefectAPI.Controllers
                     }
                     if (AF.Count > 0)
                     {
-                        for (int i = 0; i < BF.Count(); i++)
+                        for (int i = 0; i < AF.Count(); i++)
                         {
                             PicInDetailObj AFURL = new PicInDetailObj();
                             AFURL.URL = WebBaseUrl + "/" + BF[i].FilePath;
