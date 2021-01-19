@@ -181,6 +181,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public int CallTypeID { get; set; }
         public int CallArea { get; set; }
         public int CallDescId { get; set; }
+        public int PointId { get; set; }
         public int CallSubPointId { get; set; }
         public string FloorPlanSet { get; set; }
         public string AccessKey { get; set; }

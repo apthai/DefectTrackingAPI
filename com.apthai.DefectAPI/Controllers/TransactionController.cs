@@ -142,7 +142,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.CallTypeId = data.CallTypeID;
                     tDefectDetail.CallAreaId = data.CallArea;
                     tDefectDetail.CallDescId = data.CallDescId;
-                    tDefectDetail.CallPointId = data.Cate;
+                    tDefectDetail.CallPointId = data.PointId;
                     tDefectDetail.CallSubPointId = data.CallSubPointId;
                     tDefectDetail.DeviceId = data.DeviceId;
                     tDefectDetail.Tag = null;
@@ -372,7 +372,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.CallTypeId = data.CallTypeID;
                     tDefectDetail.CallAreaId = data.CallArea;
                     tDefectDetail.CallDescId = data.CallDescId;
-                    tDefectDetail.CallPointId = data.Cate;
+                    tDefectDetail.CallPointId = data.PointId;
                     tDefectDetail.CallSubPointId = data.CallSubPointId;
                     tDefectDetail.DeviceId = data.DeviceId;
                     tDefectDetail.Tag = null;
