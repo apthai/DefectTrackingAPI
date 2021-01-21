@@ -489,7 +489,7 @@ namespace com.apthai.DefectAPI.Repositories
                 try
                 {
                     string sQuery = "Select * From callTDefectDetail " +
-                        "where TDefectDetailId in ( @TDefectDetailID ) And RowActive = 1 ";
+                        "where TDefectDetailId in ( @TDefectDetailIDList ) And RowActive = 1 ";
                     var result = conn.Query<callTDefectDetail>(sQuery, new { TDefectDetailIDList = TDefectDetailIDList }).ToList();
                     return result;
 

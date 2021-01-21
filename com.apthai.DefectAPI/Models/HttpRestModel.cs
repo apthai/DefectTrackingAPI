@@ -18,6 +18,11 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string AppCode { get; set; }
 
     }
+    public partial class GenerateReportByTDefectId
+    {
+        public int? TDefectId { get; set; } 
+
+    }
     public partial class ParamUploadImageAfterList
     {
         [Required]

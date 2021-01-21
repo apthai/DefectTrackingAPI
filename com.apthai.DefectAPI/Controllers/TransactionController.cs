@@ -607,34 +607,30 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         {
             try
             {
-                string Listed = "";
+                List<callTDefectDetail> UpdateLists = new List<callTDefectDetail>();
                 for (int i = 0; i < data.TDefectDetailIDList.Count(); i++)
                 {
-                    if (Listed == "")
-                    {
-                        Listed = Listed + data.TDefectDetailIDList[i].TDefectDetailID;
-                    }
-                    else
-                    {
-                        Listed = Listed + "," + data.TDefectDetailIDList[i].TDefectDetailID;
-                    }
-                    //callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
-                    //// --------------------------------------------------------------------
-                    //callTDefectDetail.TDefectDetailStatus = "003";
+                    //if (Listed == "")
+                    //{
+                    //    Listed = Listed + "'" + data.TDefectDetailIDList[i].TDefectDetailID + "'";
+                    //}
+                    //else
+                    //{
+                    //    Listed = Listed + ",'" + data.TDefectDetailIDList[i].TDefectDetailID + "'";
+                    //}
+                    callTDefectDetail callTDefectDetail = new callTDefectDetail();
+                    callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailIDList[i].TDefectDetailID);
+                    // --------------------------------------------------------------------
+                    callTDefectDetail.TDefectDetailStatus = "003";
 
-                    //var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
+                    UpdateLists.Add(callTDefectDetail);
                 }
-                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailIDList_Sync(Listed);
-                for (int i = 0; i < callTDefectDetails.Count(); i++)
-                {
-                    callTDefectDetails[i].TDefectDetailStatus = "003";
-                }
+                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(UpdateLists);
 
-                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
                 return new
                 {
                     success = true,
-                    data = callTDefectDetails
+                    data = UpdateLists
                 };
 
             }
@@ -810,36 +806,31 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         {
             try
             {
-                string Listed = "";
+                List<callTDefectDetail> UpdateLists = new List<callTDefectDetail>();
                 for (int i = 0; i < data.TDefectDetailIDList.Count(); i++)
                 {
-                    if (Listed == "")
-                    {
-                        Listed = Listed + data.TDefectDetailIDList[i].TDefectDetailID;
-                    }
-                    else
-                    {
-                        Listed = Listed + "," + data.TDefectDetailIDList[i].TDefectDetailID;
-                    }
-                    //callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
-                    //// --------------------------------------------------------------------
-                    //callTDefectDetail.TDefectDetailStatus = "003";
+                    //if (Listed == "")
+                    //{
+                    //    Listed = Listed + "'" + data.TDefectDetailIDList[i].TDefectDetailID + "'";
+                    //}
+                    //else
+                    //{
+                    //    Listed = Listed + ",'" + data.TDefectDetailIDList[i].TDefectDetailID + "'";
+                    //}
+                    callTDefectDetail callTDefectDetail = new callTDefectDetail();
+                    callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailIDList[i].TDefectDetailID);
+                    // --------------------------------------------------------------------
+                    callTDefectDetail.TDefectDetailStatus = "005";
 
-                    //var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
+                    UpdateLists.Add(callTDefectDetail);
                 }
-                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailIDList_Sync(Listed);
-                for (int i = 0; i < callTDefectDetails.Count(); i++)
-                {
-                    callTDefectDetails[i].TDefectDetailStatus = "005";
-                }
+                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(UpdateLists);
 
-                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
                 return new
                 {
                     success = true,
-                    data = callTDefectDetails
+                    data = UpdateLists
                 };
-
             }
             catch (Exception ex)
             {
@@ -2987,6 +2978,50 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
+
+        [HttpPost]
+        [Route("DefectReport")]
+        [SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
+Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
+        public async Task<object> DefectReport([FromBody] GenerateReportByTDefectId data)
+        {
+            try
+            {
+
+                var client = new HttpClient();
+                var Content = new StringContent(JsonConvert.SerializeObject(data));
+                Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                //Content.Headers.Add("api_key", APApiKey);
+                //Content.Headers.Add("api_token", APApiToken);
+                string PostURL = Environment.GetEnvironmentVariable("ReportURL");
+                //PostURL = PostURL + "JWTUserLogin";
+                if (PostURL == null)
+                {
+                    PostURL = UtilsProvider.AppSetting.AuthorizeURL ;
+                }
+                var Respond = await client.PostAsync(PostURL, Content);
+                if (Respond.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return new
+                    {
+                        success = false,
+                        data = new AutorizeDataJWT(),
+                        valid = false
+                    };
+                }
+                return new
+                {
+                    success = false,
+                    data = new AutorizeDataJWT(),
+                    valid = false
+                };
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error :: " + ex.Message);
+            }
+        }
+
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public bool VerifyHeader(out string ErrorMsg)
