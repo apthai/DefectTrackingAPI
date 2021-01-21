@@ -148,6 +148,26 @@ namespace com.apthai.DefectAPI.Repositories
                 throw ex;
             }
         }
+        public bool UpdateTdefectDetailList(List<callTDefectDetail> defectDetailList)
+        {
+            try
+            {
+                using (IDbConnection conn = WebConnection)
+                {
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
+
+                    var result = conn.Update(defectDetailList, tran);
+                    tran.Commit();
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool InsertTdefectDetailList(List<callTDefectDetail> defectDetails)
         {
             try

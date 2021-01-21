@@ -217,6 +217,10 @@ namespace com.apthai.DefectAPI.HttpRestModel
     {
         public int TDefectDetailID { get; set; }
     }
+    public partial class UpdateDefectDetailIDList
+    {
+        public List<UpdateDefectDetailID> TDefectDetailIDList { get; set; }
+    }
     public partial class UpdateDefectHeader
     {
         public int TDefectID { get; set; }

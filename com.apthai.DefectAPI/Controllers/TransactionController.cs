@@ -600,6 +600,52 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         }
 
         [HttpPost]
+        [Route("UpdateDefectDetailStatusFinishList")]
+        [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
+      Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]
+        public async Task<object> UpdateDefectDetailStatusFinishList([FromBody] UpdateDefectDetailIDList data)
+        {
+            try
+            {
+                string Listed = "";
+                for (int i = 0; i < data.TDefectDetailIDList.Count(); i++)
+                {
+                    if (Listed == "")
+                    {
+                        Listed = Listed + data.TDefectDetailIDList[i].TDefectDetailID;
+                    }
+                    else
+                    {
+                        Listed = Listed + "," + data.TDefectDetailIDList[i].TDefectDetailID;
+                    }
+                    //callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
+                    //// --------------------------------------------------------------------
+                    //callTDefectDetail.TDefectDetailStatus = "003";
+
+                    //var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
+                }
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailIDList_Sync(Listed);
+                for (int i = 0; i < callTDefectDetails.Count(); i++)
+                {
+                    callTDefectDetails[i].TDefectDetailStatus = "003";
+                }
+
+                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
+                return new
+                {
+                    success = true,
+                    data = callTDefectDetails
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
         [Route("UpdateDefectHeaderDueTranferDateDate")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
         Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน โดยจะเอา DocDueCloseDate ปัจจุบันไป ใสใน AuditCustRoundAuditDate_last ")]
@@ -746,6 +792,52 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 {
                     success = true,
                     data = callTDefectDetail
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
+        [Route("UpdateDefectDetailStatusCloseList")]
+        [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
+Description = "Update DefectDetail ซ้อมงานเสร็จแล้ว ")]
+        public async Task<object> UpdateDefectDetailStatusCloseList([FromBody] UpdateDefectDetailIDList data)
+        {
+            try
+            {
+                string Listed = "";
+                for (int i = 0; i < data.TDefectDetailIDList.Count(); i++)
+                {
+                    if (Listed == "")
+                    {
+                        Listed = Listed + data.TDefectDetailIDList[i].TDefectDetailID;
+                    }
+                    else
+                    {
+                        Listed = Listed + "," + data.TDefectDetailIDList[i].TDefectDetailID;
+                    }
+                    //callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
+                    //// --------------------------------------------------------------------
+                    //callTDefectDetail.TDefectDetailStatus = "003";
+
+                    //var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
+                }
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailIDList_Sync(Listed);
+                for (int i = 0; i < callTDefectDetails.Count(); i++)
+                {
+                    callTDefectDetails[i].TDefectDetailStatus = "005";
+                }
+
+                var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
+                return new
+                {
+                    success = true,
+                    data = callTDefectDetails
                 };
 
             }
