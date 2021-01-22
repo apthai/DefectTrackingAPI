@@ -569,6 +569,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
 
         }
 
+
         [HttpPost]
         [Route("UpdateDefectDetailStatusFinish")]
         [SwaggerOperation(Summary = "Update DefectDetail ซ้อมงานเสจแล้ว ",
@@ -684,6 +685,13 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
 
                 callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
                 callTDefect.DocDueCloseDate = data.DocDueCloseDate;
+
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailByTDefectIDList_Sync(callTDefect.TDefectId);
+                for (int i = 0; i < callTDefectDetails.Count(); i++)
+                {
+                    callTDefectDetails[i].CustRoundAuditDueCloseDate = data.DocDueCloseDate;
+                }
+                bool update = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
                 // --------------------------------------------------------------------
                 
 

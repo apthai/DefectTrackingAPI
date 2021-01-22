@@ -500,6 +500,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+
+        public List<callTDefectDetail> GetcallTDefectDetailByTDefectIDList_Sync(int TDefectID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefectDetail " +
+                        "where TDefectID = @TDefectID And RowActive = 1  and CustRoundAuditDueCloseDate = null ";
+                    var result = conn.Query<callTDefectDetail>(sQuery, new { TDefectID = TDefectID }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetcallTDefectDetailByDetailIDList_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<CallTdefectDetailCustom> GetcallTDefectDetailShow_Sync(int TDefectID)
         {
             using (IDbConnection conn = WebConnection)
