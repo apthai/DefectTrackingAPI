@@ -147,8 +147,8 @@ namespace com.apthai.DefectAPI.CustomModel
     }
     public class CallTdefectMObj : callTDefect
     { 
-        public string Phase { get; set; }
-        public string Block { get; set; }
+        public string PhaseID { get; set; }
+        public string BlockID { get; set; }
         public string TowerID { get; set; }
         public string FloorID { get; set; }
         public string StatusShow { get; set; }
@@ -158,8 +158,8 @@ namespace com.apthai.DefectAPI.CustomModel
     }
     public class CallTdefectVendorMObj : callTDefect
     {
-        public string Phase { get; set; }
-        public string Block { get; set; }
+        public string PhaseID { get; set; }
+        public string BlockID { get; set; }
         public string TowerID { get; set; }
         public string FloorID { get; set; }
         public string StatusShow { get; set; }
