@@ -426,6 +426,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public CallTdefectVendorMObj GetCallTDefectVendorByUnitID_Sync(string ProjectCode, string UnitID)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefect c " +
+                        " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber  and c.ProductId = i.ProductID " +
+                        " left join View_UnitCustomer VC on i.UnitNumber = VC.UnitNumber and c.ProductId = VC.ProductID " +
+                        "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
+                    var result = conn.Query<CallTdefectVendorMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID = UnitID }).FirstOrDefault();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<GetCallTDefectByProjectObj> GetCallTDefectByProject_Sync(int ProductID)
         {
             using (IDbConnection conn = WebConnection)

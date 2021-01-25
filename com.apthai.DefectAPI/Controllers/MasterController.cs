@@ -842,7 +842,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //        data = "AccessKey is Invalid!"
                 //    };
                 //}
-                CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
+                CallTdefectVendorMObj callTDefect = _masterRepository.GetCallTDefectVendorByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
                     return new
@@ -878,10 +878,11 @@ namespace com.apthai.DefectAPI.Controllers
                         ReturnObj.Add(BFURL);
                     }
                 }
+                callTDefect.Resource = ReturnObj;
                 return new
                 {
                     success = true,
-                    data = ReturnObj
+                    data = callTDefect
                 };
 
             }

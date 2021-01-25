@@ -156,7 +156,19 @@ namespace com.apthai.DefectAPI.CustomModel
         public string CurrentCustomerLastName { get; set; }
         public bool IsNew { get; set; }
     }
-    
+    public class CallTdefectVendorMObj : callTDefect
+    {
+        public string Phase { get; set; }
+        public string Block { get; set; }
+        public string TowerID { get; set; }
+        public string FloorID { get; set; }
+        public string StatusShow { get; set; }
+        public string CurrentCustomerFirstName { get; set; }
+        public string CurrentCustomerLastName { get; set; }
+        public bool IsNew { get; set; }
+        public List<PicInDetailObj> Resource { get; set; }
+    }
+
     public class GetCallTDefectByProjectObj : Model.DefectAPI.callTDefect
     {
         public string Project { get; set; }
