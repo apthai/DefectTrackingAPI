@@ -953,10 +953,14 @@ namespace com.apthai.DefectAPI.Controllers
                     point.URL = points[i].ImageURL;
                     ReturnObj.Add(point);
                 }
+                FloorPlanImageObj Result = new FloorPlanImageObj();
+                Result.ProjectId = "10060";
+                Result.UnitId = "A01";
+                Result.URL = "http://appprod01.ap-crm.com/StorageResources/APDefect/Data/FloorPlan/P_70013/FLP70013-1-CL%20.jpg";
                 return new
                 {
                     success = true,
-                    data = ReturnObj
+                    data = Result
                 };
 
             }

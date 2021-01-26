@@ -30,6 +30,7 @@
       "launchBrowser": true,
       "launchUrl": "api/values",
       "environmentVariables": {
+        "ReportKey": "PortalReportViewerKey2021",
         "DefaultAuthorizeConnection": "Data Source=192.168.0.41;Initial Catalog=db_AuthorizationCenter;User ID=sa;Password=P@ssw0rd; Application Name=ApiSyncAuth",
         "DefaultSyncConnection": "Data Source=192.168.2.52;Initial Catalog=db_QIS_Sync;User ID=sa;Password=P@ssw0rd; Application Name=ApiSync",
         "AuthorizeEndpointUrlAddress": "http://192.168.0.40/authorizewebservice/Authorize.asmx?wsdl",

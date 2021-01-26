@@ -247,6 +247,43 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public bool? DocIsReqUnitReceiveAttachFile { get; set; }
     }
 
+    [Table("callTDefect_Bak_20200816_1227")]
+    public partial class callTDefectBak202008161227
+    {
+        public int TDefectId { get; set; }
+        public string RowState { get; set; }
+        public bool RowActive { get; set; }
+        public string Client_Id { get; set; }
+        public DateTime? Client_SyncDate { get; set; }
+        public string TDefectDocNo { get; set; }
+        public string TDefectStatus { get; set; }
+        public string TDefectSubStatus { get; set; }
+        public string ProductId { get; set; }
+        public string ItemId { get; set; }
+        public string DeviceId { get; set; }
+        public string CreateUserId { get; set; }
+        public string UpdateUserId { get; set; }
+        public int? CustRoundAuditNo_Rn { get; set; }
+        public DateTime? CustRoundAuditDate_Last { get; set; }
+        public string CustRoundAudit_JsonLog { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public string Desciption { get; set; }
+        public DateTime? DocOpenDate { get; set; }
+        public DateTime? DocDueCloseDate { get; set; }
+        public string MechanicId { get; set; }
+        public string MechanicName { get; set; }
+        public string SellerId { get; set; }
+        public string SallerName { get; set; }
+        public DateTime? DocReceiveUnitDate { get; set; }
+        public DateTime? DocDueTransferDate { get; set; }
+        public string ContactID { get; set; }
+        public string ContactName { get; set; }
+        public bool? DocIsActive { get; set; }
+        public bool? DocIsExternalAudit { get; set; }
+        public bool? DocIsReqUnitReceiveAttachFile { get; set; }
+    }
+
     [Table("callTDefect_bk_11Nov2015")]
     public partial class callTDefectbk11Nov2015
     {
@@ -365,6 +402,48 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
     public partial class callTDefectDetail
     {
         [Key]
+        public int TDefectDetailId { get; set; }
+        public string RowState { get; set; }
+        public bool RowActive { get; set; }
+        public string Client_Id { get; set; }
+        public DateTime? Client_SyncDate { get; set; }
+        public int TDefectId { get; set; }
+        public string TDefectDocNo { get; set; }
+        public string ProductId { get; set; }
+        public string ItemId { get; set; }
+        public string TDefectDetailStatus { get; set; }
+        public string TDefectDetailSubStatus { get; set; }
+        public string TDefectDetailDesc { get; set; }
+        public int? CallTypeId { get; set; }
+        public int? CallAreaId { get; set; }
+        public int? CallDescId { get; set; }
+        public int? CallPointId { get; set; }
+        public int? CallSubPointId { get; set; }
+        public string DeviceId { get; set; }
+        public string Tag { get; set; }
+        public string CreateUserId { get; set; }
+        public string UpdateUserId { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public string FloorPlan_ImageId { get; set; }
+        public double? FloorPlan_X { get; set; }
+        public double? FloorPlan_Y { get; set; }
+        public int? TaskNo { get; set; }
+        public string TaskMarkName { get; set; }
+        public string FloorPlanSet { get; set; }
+        public int? CustRoundAuditNo { get; set; }
+        public DateTime? CustRoundAuditDate { get; set; }
+        public DateTime? CustRoundAuditDueCloseDate { get; set; }
+        public bool? IsServerLockRow { get; set; }
+        public DateTime? TaskOpenDate { get; set; }
+        public DateTime? TaskProcessDate { get; set; }
+        public DateTime? TaskActualFinishDate { get; set; }
+        public DateTime? TaskActualCloseDate { get; set; }
+    }
+
+    [Table("callTDefectDetail_Bak_20200816_1227")]
+    public partial class callTDefectDetailBak202008161227
+    {
         public int TDefectDetailId { get; set; }
         public string RowState { get; set; }
         public bool RowActive { get; set; }
@@ -1513,6 +1592,49 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string major_name { get; set; }
     }
 
+    [Table("MobileAreaIcons")]
+    public partial class MobileAreaIcon
+    {
+        [Key]
+        public int AreaIconId { get; set; }
+        public int? CallAreaID { get; set; }
+        public int? CallTypeId { get; set; }
+        public string ImageName { get; set; }
+        public string ImageURL { get; set; }
+        public string AreaDisplayName { get; set; }
+    }
+
+    [Table("MobileFloorIcons")]
+    public partial class MobileFloorIcon
+    {
+        [Key]
+        public int FloorIconId { get; set; }
+        public string ImageName { get; set; }
+        public string ImageURL { get; set; }
+        public string PointName { get; set; }
+        public string Cate { get; set; }
+        public string FloorDisplayName { get; set; }
+    }
+
+    [Table("MobilePointIcons")]
+    public partial class MobilePointIcon
+    {
+        [Key]
+        public int _MobilePointIcon { get; set; }
+        public int? ComppointId { get; set; }
+        public string PointName { get; set; }
+        public string SubPoint { get; set; }
+        public string EndPoint { get; set; }
+        public string Cate { get; set; }
+        public string ChkMainPoint { get; set; }
+        public string FloorPlanSet { get; set; }
+        public string ProductTypeCate { get; set; }
+        public string ImageName { get; set; }
+        public string ImageURL { get; set; }
+        public string Point { get; set; }
+        public string PointDisplayName { get; set; }
+    }
+
     [Table("point")]
     public partial class point
     {
@@ -1643,16 +1765,6 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         [Key]
         public int reason_id { get; set; }
         public string _reason { get; set; }
-    }
-
-    [Table("ResourceTagCode")]
-    public partial class ResourceTagCode
-    {
-        [Key]
-        public int ResourceTagCodeID { get; set; }
-        public string _ResourceTagCode { get; set; }
-        public string Description { get; set; }
-        public int? ResourceType { get; set; }
     }
 
     [Table("Schema")]
@@ -1908,6 +2020,22 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string BookingNumber { get; set; }
     }
 
+    [Table("View_UnitCustomer_20200811_1523")]
+    public partial class ViewUnitCustomer202008111523
+    {
+        public string ProductID { get; set; }
+        public string UnitNumber { get; set; }
+        public string ContactID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime? TransferDate { get; set; }
+        public string Mobile { get; set; }
+        public int? SellerID { get; set; }
+        public string SellerFullName { get; set; }
+        public string ContractNumber { get; set; }
+        public string BookingNumber { get; set; }
+    }
+
     [Table("vw_Constructor")]
     public partial class vwConstructor
     {
@@ -1915,7 +2043,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string Project { get; set; }
         public string UnitNumber { get; set; }
         public string WBSNumber { get; set; }
-        public string M_CONSTRUCTOR_NAME { get; set; }
+        public int? M_CONSTRUCTOR_NAME { get; set; }
         public int? M_SAP_CODE { get; set; }
     }
 
@@ -1927,7 +2055,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string ContactID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime? TransferDate { get; set; }
+        public string TransferDate { get; set; }
         public string Mobile { get; set; }
         public int? SellerID { get; set; }
         public string SellerFullName { get; set; }
@@ -1937,46 +2065,46 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
     public partial class vwjobViewTempBlkUnit
     {
         public string ContractNumber { get; set; }
-        public DateTime? ContractDate { get; set; }
+        public string ContractDate { get; set; }
         public string BookingNumber { get; set; }
         public string ProductID { get; set; }
         public string UnitNumber { get; set; }
-        public double? IncreasingArea { get; set; }
-        public decimal? NetSalePrice { get; set; }
-        public decimal? PaidOtherContract { get; set; }
-        public decimal? TransferPayment { get; set; }
-        public decimal? TotalPayment { get; set; }
-        public string ContractType { get; set; }
-        public decimal? Contract2 { get; set; }
-        public DateTime? PaymentPeriodStart { get; set; }
-        public DateTime? PaymentPeriodEnd { get; set; }
+        public int? IncreasingArea { get; set; }
+        public int? NetSalePrice { get; set; }
+        public int? PaidOtherContract { get; set; }
+        public int? TransferPayment { get; set; }
+        public int? TotalPayment { get; set; }
+        public int? ContractType { get; set; }
+        public int? Contract2 { get; set; }
+        public int? PaymentPeriodStart { get; set; }
+        public int? PaymentPeriodEnd { get; set; }
         public int? DownPaymentPeriod { get; set; }
-        public decimal? DownPaymentPerMonth { get; set; }
-        public decimal? ExtraDownAmount { get; set; }
-        public string PromotionID { get; set; }
-        public string KasornContractNo { get; set; }
-        public DateTime? ApproveDate { get; set; }
-        public byte? Cancel { get; set; }
-        public DateTime? CancelDate { get; set; }
-        public string ModelID { get; set; }
-        public string PhaseID { get; set; }
-        public string SubPhaseID { get; set; }
-        public string BlockID { get; set; }
-        public decimal? AreaFromRE { get; set; }
+        public int? DownPaymentPerMonth { get; set; }
+        public int? ExtraDownAmount { get; set; }
+        public int? PromotionID { get; set; }
+        public int? KasornContractNo { get; set; }
+        public string ApproveDate { get; set; }
+        public int? Cancel { get; set; }
+        public string CancelDate { get; set; }
+        public int? ModelID { get; set; }
+        public int? PhaseID { get; set; }
+        public int? SubPhaseID { get; set; }
+        public int? BlockID { get; set; }
+        public double? AreaFromRE { get; set; }
         public string TowerID { get; set; }
-        public string FloorID { get; set; }
-        public DateTime? BookingDate { get; set; }
-        public string IntroducerID { get; set; }
-        public decimal? IntroducerAmount { get; set; }
+        public int? FloorID { get; set; }
+        public string BookingDate { get; set; }
+        public int? IntroducerID { get; set; }
+        public int? IntroducerAmount { get; set; }
         public string ProductName { get; set; }
-        public DateTime? KasornDate { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public int? KasornDate { get; set; }
+        public int? StartDate { get; set; }
+        public int? EndDate { get; set; }
         public string ContactID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string OldOwnerName { get; set; }
-        public string CurrentAddress { get; set; }
+        public int? CurrentAddress { get; set; }
         public string Moo { get; set; }
         public string Village { get; set; }
         public string Soi { get; set; }
@@ -1985,58 +2113,58 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string District { get; set; }
         public string Province { get; set; }
         public string PostCode { get; set; }
-        public string Phone { get; set; }
+        public int? Phone { get; set; }
         public string Mobile { get; set; }
-        public bool? Header { get; set; }
-        public decimal? ContractAmount { get; set; }
-        public decimal? DownAmount { get; set; }
-        public decimal? AreaFromPFB { get; set; }
-        public DateTime? TransferDate { get; set; }
-        public byte? CreditType { get; set; }
-        public double? PercentBooking { get; set; }
-        public double? PercentContract { get; set; }
-        public string ExtraDownPayment { get; set; }
-        public bool? isPaidCompleted { get; set; }
-        public decimal? RemainAmount { get; set; }
-        public int? UnitStatus { get; set; }
-        public bool? PreApprove { get; set; }
-        public string ContractReferent { get; set; }
-        public bool? ChangeUnit { get; set; }
-        public string PromotionDetail { get; set; }
+        public int? Header { get; set; }
+        public int? ContractAmount { get; set; }
+        public int? DownAmount { get; set; }
+        public double AreaFromPFB { get; set; }
+        public string TransferDate { get; set; }
+        public int? CreditType { get; set; }
+        public int? PercentBooking { get; set; }
+        public int? PercentContract { get; set; }
+        public int? ExtraDownPayment { get; set; }
+        public int? isPaidCompleted { get; set; }
+        public int? RemainAmount { get; set; }
+        public string UnitStatus { get; set; }
+        public int? PreApprove { get; set; }
+        public int? ContractReferent { get; set; }
+        public int? ChangeUnit { get; set; }
+        public int? PromotionDetail { get; set; }
         public int? CaditManagerID { get; set; }
-        public decimal? q { get; set; }
-        public decimal? w { get; set; }
-        public decimal? SpacialDiscount { get; set; }
-        public decimal? BoiDiscount { get; set; }
-        public decimal? EmployeeDiscount { get; set; }
-        public decimal? PheuksaPrice { get; set; }
-        public bool? IsBOI { get; set; }
+        public int? q { get; set; }
+        public int? w { get; set; }
+        public int? SpacialDiscount { get; set; }
+        public int? BoiDiscount { get; set; }
+        public int? EmployeeDiscount { get; set; }
+        public int? PheuksaPrice { get; set; }
+        public int? IsBOI { get; set; }
         public string Producttype { get; set; }
         public string BrandID { get; set; }
-        public decimal? PromotionDiscount { get; set; }
-        public double? PercentDownPayment { get; set; }
+        public int? PromotionDiscount { get; set; }
+        public int? PercentDownPayment { get; set; }
         public int? HomeNoReceivedDate { get; set; }
-        public string Remark { get; set; }
-        public decimal? TotalSellingPrice { get; set; }
-        public decimal? KasornPrice { get; set; }
-        public decimal? BookingAmount { get; set; }
-        public decimal? UnitIncreasingAreaPrice { get; set; }
-        public string BookingReceivedID { get; set; }
-        public decimal? SellingPrice { get; set; }
-        public bool? isNeedSpecialDis { get; set; }
-        public decimal? AdditionalDiscount { get; set; }
-        public string Subordinator { get; set; }
-        public decimal? PromotionPrice { get; set; }
-        public decimal? CashDiscount { get; set; }
-        public decimal? TransferDiscount { get; set; }
+        public int? Remark { get; set; }
+        public int? TotalSellingPrice { get; set; }
+        public int? KasornPrice { get; set; }
+        public int? BookingAmount { get; set; }
+        public int? UnitIncreasingAreaPrice { get; set; }
+        public int? BookingReceivedID { get; set; }
+        public int? SellingPrice { get; set; }
+        public int? isNeedSpecialDis { get; set; }
+        public int? AdditionalDiscount { get; set; }
+        public int? Subordinator { get; set; }
+        public int? PromotionPrice { get; set; }
+        public int? CashDiscount { get; set; }
+        public int? TransferDiscount { get; set; }
         public string CompanyID { get; set; }
         public string AddressNumber { get; set; }
-        public string ModelHomeThai { get; set; }
-        public string SBUID { get; set; }
-        public string BUID { get; set; }
+        public int? ModelHomeThai { get; set; }
+        public int? SBUID { get; set; }
+        public int? BUID { get; set; }
         public string PType { get; set; }
-        public int? AssetType { get; set; }
-        public DateTime? ExpireInsuranceDate { get; set; }
+        public string AssetType { get; set; }
+        public int? ExpireInsuranceDate { get; set; }
         public int? chkInsurance { get; set; }
         public string WBSNumber { get; set; }
     }
@@ -2422,7 +2550,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string ModelHomeThai { get; set; }
         public string ModelHomeEng { get; set; }
         public string ModelLayoutType { get; set; }
-        public decimal? AreaFromRE { get; set; }
+        public double? AreaFromRE { get; set; }
         public string PhaseBuildingName { get; set; }
         public string Phase { get; set; }
         public string Tower { get; set; }
@@ -2432,8 +2560,8 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string LastName { get; set; }
         public string CustomerFullName { get; set; }
         public string ContactTel { get; set; }
-        public DateTime? TransferDueDate { get; set; }
-        public DateTime? TransferDate { get; set; }
+        public string TransferDueDate { get; set; }
+        public string TransferDate { get; set; }
         public string BookingNumber { get; set; }
         public string ContractNumber { get; set; }
         public int? SellerID { get; set; }

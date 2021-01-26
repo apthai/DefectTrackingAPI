@@ -3002,7 +3002,9 @@ Description = "Access Key ใช้ในการเรียหใช้ Funct
                 //Content.Headers.Add("api_key", APApiKey);
                 //Content.Headers.Add("api_token", APApiToken);
                 string PostURL = Environment.GetEnvironmentVariable("ReportURL");
+                string ReportKey = Environment.GetEnvironmentVariable("ReportKey");
                 //PostURL = PostURL + "JWTUserLogin";
+                Content.Headers.Add("api_accesskey", ReportKey);
                 if (PostURL == null)
                 {
                     PostURL = UtilsProvider.AppSetting.AuthorizeURL ;

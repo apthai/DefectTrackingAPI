@@ -178,6 +178,12 @@ namespace com.apthai.DefectAPI.CustomModel
         public string FloorName { get; set; }
         public string URL { get; set; }
     }
+    public class FloorPlanImageObj
+    {
+        public string ProjectId { get; set; }
+        public string UnitId { get; set; }
+        public string URL { get; set; }
+    }
     public class CallTdefectDetailCustom : callTDefectDetail
     { 
         public string ComPoint_Id { get; set; }

@@ -247,6 +247,24 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public Model.DefectAPI.callTFloorPlanImage GetCallTFloorPlanImage_Sync(int? comppoint_id)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From Point " +
+                        " where comppoint_id = @comppoint_id  ";
+                    var result = conn.Query<Model.DefectAPI.callTFloorPlanImage>(sQuery, new { comppoint_id = comppoint_id }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
         public List<GetUnitByProjectReturnObj> GetUnitByProduct(string ProductID ,string SearchText)
         {
             using (IDbConnection conn = WebConnection)
