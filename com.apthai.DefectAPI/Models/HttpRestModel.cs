@@ -20,9 +20,9 @@ namespace com.apthai.DefectAPI.HttpRestModel
     }
     public partial class GetFloorPlan
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string AppCode { get; set; }
+        public string UnitID { get; set; }
+        public string ProjectNo { get; set; }
+        public string Floor { get; set; }
 
     }
     public partial class GenerateReportByTDefectId

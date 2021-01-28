@@ -94,7 +94,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(int UnitNumber , int Floor)
+        public callTFloorPlanImage GetUnitFloorPlanByUnitAndFloor(string UnitNumber , int Floor ,string ProjectNo)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -105,8 +105,8 @@ namespace com.apthai.DefectAPI.Repositories
                     {
                         sQuery = "select * from callTFloorPlanImage " +
                        " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
-                       " where L.UnitNumber = @UnitNumber And C.Floor = @Floor ";
-                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber}).ToList();
+                       " where L.UnitNumber = @UnitNumber And C.Floor = @Floor and L.ProductID = @ProductNo  ";
+                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber , ProjectNo = ProjectNo }).FirstOrDefault();
 
                         return result;
                     }
@@ -114,8 +114,8 @@ namespace com.apthai.DefectAPI.Repositories
                     {
                          sQuery = "select * from callTFloorPlanImage " +
                         " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
-                        " where L.UnitNumber = @UnitNumber ";
-                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber, Floor = Floor }).ToList();
+                        " where L.UnitNumber = @UnitNumber and L.ProductID = @ProductNo ";
+                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber, Floor = Floor, ProjectNo= ProjectNo }).FirstOrDefault();
 
                         return result;
                     }

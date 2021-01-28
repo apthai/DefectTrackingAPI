@@ -924,109 +924,60 @@ namespace com.apthai.DefectAPI.Controllers
 
         }
 
-        //[HttpPost]
-        //[Route("GetMasterFloorPlanImage")]
-        //public async Task<object> GetMasterFloorPlanImage([FromBody] )
-        //{
-        //    try
-        //    {
-        //        #region VerifyHeader
-        //        string ErrorHeader = "";
-        //        if (!VerifyHeader(out ErrorHeader))
-        //        {
-        //            return new
-        //            {
-        //                success = false,
-        //                data = ErrorHeader,
-        //                valid = false
-        //            };
-        //        }
-        //        #endregion
-        //        List<PointURL> points = _masterRepository.GetFloorDistinct("H");
-        //        List<pointCamel> ReturnObj = new List<pointCamel>();
-        //        for (int i = 0; i < points.Count(); i++)
-        //        {
-        //            pointCamel point = new pointCamel();
-        //            point.Cate = points[i].Cate;
-        //            point.ChkMainPoint = points[i].Chkmainpoint;
-        //            point.CompPointId = points[i].Comppoint_id;
-        //            point.EndPoint = points[i].End_point;
-        //            point.FloorPlantset = points[i].Floorplantset;
-        //            point.PointName = points[i].Point_name;
-        //            point.ProductTypeCate = points[i].Producttypecate;
-        //            point.Project = points[i].Project;
-        //            point.SubPoint = points[i].Sub_point;
-        //            point.URL = points[i].ImageURL;
-        //            ReturnObj.Add(point);
-        //        }
-        //        callTFloorPlanImage callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor();
-        //        FloorPlanImageObj Result = new FloorPlanImageObj();
-        //        Result.ProjectId = "10060";
-        //        Result.UnitId = "A01";
-        //        Result.URL = "http://appprod01.ap-crm.com/StorageResources/APDefect/Data/FloorPlan/P_70013/FLP70013-1-CL%20.jpg";
-        //        return new
-        //        {
-        //            success = true,
-        //            data = Result
-        //        };
+        [HttpPost]
+        [Route("GetMasterFloorPlanImage")]
+        public async Task<object> GetMasterFloorPlanImage([FromBody] GetFloorPlan data )
+        {
+            try
+            {
+                #region VerifyHeader
+                string ErrorHeader = "";
+                if (!VerifyHeader(out ErrorHeader))
+                {
+                    return new
+                    {
+                        success = false,
+                        data = ErrorHeader,
+                        valid = false
+                    };
+                }
+                #endregion
+                List<PointURL> points = _masterRepository.GetFloorDistinct("H");
+                List<pointCamel> ReturnObj = new List<pointCamel>();
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    pointCamel point = new pointCamel();
+                    point.Cate = points[i].Cate;
+                    point.ChkMainPoint = points[i].Chkmainpoint;
+                    point.CompPointId = points[i].Comppoint_id;
+                    point.EndPoint = points[i].End_point;
+                    point.FloorPlantset = points[i].Floorplantset;
+                    point.PointName = points[i].Point_name;
+                    point.ProductTypeCate = points[i].Producttypecate;
+                    point.Project = points[i].Project;
+                    point.SubPoint = points[i].Sub_point;
+                    point.URL = points[i].ImageURL;
+                    ReturnObj.Add(point);
+                }
+                callTFloorPlanImage callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID,Convert.ToInt32(data.Floor),data.ProjectNo);
+                FloorPlanImageObj Result = new FloorPlanImageObj();
+                Result.ProjectId = callTFloorPlanImage.ProductId;
+                Result.UnitId = data.UnitID;
+                Result.URL = "http://appprod01.ap-crm.com/StorageResources/APDefect/Data/FloorPlan/P_70013/FLP70013-1-CL%20.jpg";
+                return new
+                {
+                    success = true,
+                    data = Result
+                };
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, "Internal server error");
-        //    }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
 
-        //}
-        //[ApiExplorerSettings(IgnoreApi = true)]
-        //public async Task<string> GetQISFileStorageUrlAsync(int? StorageServerId, string FilePath)
-        //{
+        }
 
-
-        //    string url = "";
-
-
-        //    if (!StorageServerId.HasValue)
-        //        return url;
-
-        //    if (_QISStorageServer == null)
-        //        _QISStorageServer = (await _unitOfWork.MasterRepository.GetStorageServer()).ToList();
-
-
-        //    var storageServer = _QISStorageServer.Where(e => e.StorageServerId == StorageServerId).FirstOrDefault();
-
-        //    if (storageServer != null)
-        //    {
-        //        url = string.Format("{0}/{1}", storageServer.StorageServerRootUrl.TrimEnd('/'), FilePath.TrimStart('/'));
-        //    }
-        //    return url;
-
-
-        //}
-
-        //[ApiExplorerSettings(IgnoreApi = true)]
-        //public async Task<string> GetQISResourceStorageUrlAsync(int? StorageServerId, string FilePath)
-        //{
-
-        //    string path = "";
-
-        //    if (!StorageServerId.HasValue)
-        //        return path;
-
-        //    if (_QISStorageServer == null)
-        //        _QISStorageServer = (await _unitOfWork.MasterRepository.GetStorageServer()).ToList();
-
-        //    var storageServer = _QISStorageServer.Where(e => e.StorageServerId == StorageServerId).FirstOrDefault();
-
-        //    if (storageServer != null)
-        //    {
-        //        if (string.IsNullOrEmpty(FilePath))
-        //            path = storageServer.StorageServerRootUrl.TrimEnd('/');
-        //        else
-        //            path = string.Format("{0}/{1}", storageServer.StorageServerRootUrl.TrimEnd('/'), FilePath.TrimStart('/'));
-        //    }
-        //    return path;
-
-        //}
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public bool VerifyHeader(out string ErrorMsg)
