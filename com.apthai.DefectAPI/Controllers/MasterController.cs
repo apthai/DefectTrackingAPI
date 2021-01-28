@@ -673,10 +673,11 @@ namespace com.apthai.DefectAPI.Controllers
                 CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
+                    CallTdefectMObj a = new CallTdefectMObj();
                     return new
                     {
                         success = false,
-                        data = callTDefect,
+                        data = a,
                         message = "Cannot Find Any Defect Header!"
                     };
                 }
@@ -845,10 +846,11 @@ namespace com.apthai.DefectAPI.Controllers
                 CallTdefectVendorMObj callTDefect = _masterRepository.GetCallTDefectVendorByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
+                    CallTdefectVendorMObj a = new CallTdefectVendorMObj();
                     return new
                     {
                         success = false,
-                        data = callTDefect,
+                        data = a,
                         message = "Cannot Find Any Defect Header!"
                     };
                 }
