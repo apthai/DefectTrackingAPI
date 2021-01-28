@@ -27,6 +27,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<calldescription> GetCallDescriptionByCallAreaID_Sync(int CallAreaID);
         callTDefect GetCallTDefect_Sync(int TDefectID);
         CallTdefectCheckCustomer GetCallTDefectByUnitNumber_Sync(string UnitNumber);
+        CallTdefectCheckCustomer GetCallTDefectByUnitNumberAndProject_Sync(string UnitNumber, int ProductId);
         CallTdefectMObj GetCallTDefectByUnitID_Sync(string ProjectCode, string UnitID);
         CallTdefectVendorMObj GetCallTDefectVendorByUnitID_Sync(string ProjectCode, string UnitID);
         List<callTDefectDetail> GetcallTDefectDetail_Sync(int TDefectID);

@@ -240,7 +240,7 @@ namespace com.apthai.DefectAPI.Controllers
                     List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode);
                     for (int i = 0; i < callTDefects.Count(); i++)
                     {
-                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(callTDefects[i].UnitNumber);
+                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(callTDefects[i].UnitNumber,Convert.ToInt32(data.ProjectID));
                         if (callTDefect != null)
                         {
                             callTDefects[i].TDefectId = callTDefect.TDefectId;
@@ -275,7 +275,7 @@ namespace com.apthai.DefectAPI.Controllers
 
                     for (int i = 0; i < Units.Count(); i++)
                     {
-                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumber_Sync(Units[i].UnitNumber);
+                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(Units[i].UnitNumber,Convert.ToInt32(data.ProjectID));
                         if (callTDefect != null)
                         {
                             Units[i].TDefectId = callTDefect.TDefectId;
