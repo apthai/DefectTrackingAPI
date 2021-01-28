@@ -852,7 +852,7 @@ namespace com.apthai.DefectAPI.Controllers
                     a.Resource = new List<PicInDetailObj>();
                     return new
                     {
-                        success = true,
+                        success = false,
                         data = a,
                         message = "Cannot Find Any Defect Header!"
                     };
