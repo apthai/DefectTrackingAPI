@@ -949,6 +949,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 }
                 else
                 {
+                    ViewUnitCustomer viewUnitCustomer = _masterRepository.GetViewUnitCustomer(data.ItemId, data.ProductId);
                     callTDefect CreateDefect = new callTDefect();
                     CreateDefect.RowState = "Original";
                     CreateDefect.RowActive = true;
@@ -984,6 +985,14 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     CreateDefect.DocIsExternalAudit = true;
                     CreateDefect.DocIsReqUnitReceiveAttachFile = false;
                     long DefectID = 0;
+                    if (viewUnitCustomer != null)
+                    {
+                        CreateDefect.ContactName = viewUnitCustomer.FirstName + "  " + viewUnitCustomer.LastName;
+                    }
+                    else
+                    {
+                        CreateDefect.ContactName = "";
+                    }
                     bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
                     CreateDefect.TDefectId = Convert.ToInt32(DefectID);
                     // --------------------------------------------------------------------
