@@ -674,6 +674,7 @@ namespace com.apthai.DefectAPI.Controllers
                 if (callTDefect == null)
                 {
                     GetCallTransactionDefectObj a = new GetCallTransactionDefectObj();
+                    a.callTDefect = new CallTdefectMObj();
                     a.callTDefectDetail = new List<CallTdefectDetailCustomShow>();
                     return new
                     {
@@ -848,6 +849,7 @@ namespace com.apthai.DefectAPI.Controllers
                 if (callTDefect == null)
                 {
                     GetCallTransactionDefectObj a = new GetCallTransactionDefectObj();
+                    a.callTDefect = new CallTdefectMObj();
                     a.callTDefectDetail = new List<CallTdefectDetailCustomShow>();
                     return new
                     {
@@ -928,18 +930,18 @@ namespace com.apthai.DefectAPI.Controllers
         //{
         //    try
         //    {
-        //        //#region VerifyHeader
-        //        //string ErrorHeader = "";
-        //        //if (!VerifyHeader(out ErrorHeader))
-        //        //{
-        //        //    return new
-        //        //    {
-        //        //        success = false,
-        //        //        data = ErrorHeader ,
-        //        //        valid = false
-        //        //    };
-        //        //}
-        //        //#endregion
+        //        #region VerifyHeader
+        //        string ErrorHeader = "";
+        //        if (!VerifyHeader(out ErrorHeader))
+        //        {
+        //            return new
+        //            {
+        //                success = false,
+        //                data = ErrorHeader,
+        //                valid = false
+        //            };
+        //        }
+        //        #endregion
         //        List<PointURL> points = _masterRepository.GetFloorDistinct("H");
         //        List<pointCamel> ReturnObj = new List<pointCamel>();
         //        for (int i = 0; i < points.Count(); i++)
