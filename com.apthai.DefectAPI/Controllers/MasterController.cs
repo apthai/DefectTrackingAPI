@@ -673,7 +673,8 @@ namespace com.apthai.DefectAPI.Controllers
                 CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
-                    CallTdefectMObj a = new CallTdefectMObj();
+                    GetCallTransactionDefectObj a = new GetCallTransactionDefectObj();
+                    a.callTDefectDetail = new List<CallTdefectDetailCustomShow>();
                     return new
                     {
                         success = false,
@@ -846,7 +847,8 @@ namespace com.apthai.DefectAPI.Controllers
                 CallTdefectVendorMObj callTDefect = _masterRepository.GetCallTDefectVendorByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
-                    CallTdefectVendorMObj a = new CallTdefectVendorMObj();
+                    GetCallTransactionDefectObj a = new GetCallTransactionDefectObj();
+                    a.callTDefectDetail = new List<CallTdefectDetailCustomShow>();
                     return new
                     {
                         success = false,
