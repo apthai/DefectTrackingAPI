@@ -94,6 +94,38 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(int UnitNumber , int Floor)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "";
+                    if (Floor == 0)
+                    {
+                        sQuery = "select * from callTFloorPlanImage " +
+                       " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
+                       " where L.UnitNumber = @UnitNumber And C.Floor = @Floor ";
+                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber}).ToList();
+
+                        return result;
+                    }
+                    else
+                    {
+                         sQuery = "select * from callTFloorPlanImage " +
+                        " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
+                        " where L.UnitNumber = @UnitNumber ";
+                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber, Floor = Floor }).ToList();
+
+                        return result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetUnitFloorPlanByUnitAndFloor() :: Error ", ex);
+                }
+            }
+        }
         public List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId)
         {
             using (IDbConnection conn = WebConnection)

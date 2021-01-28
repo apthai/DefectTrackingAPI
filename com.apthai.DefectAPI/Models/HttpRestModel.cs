@@ -18,6 +18,13 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string AppCode { get; set; }
 
     }
+    public partial class GetFloorPlan
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string AppCode { get; set; }
+
+    }
     public partial class GenerateReportByTDefectId
     {
         public int? TDefectId { get; set; } 

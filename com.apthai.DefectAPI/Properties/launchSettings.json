@@ -34,7 +34,7 @@
         "DefaultAuthorizeConnection": "Data Source=192.168.0.41;Initial Catalog=db_AuthorizationCenter;User ID=sa;Password=P@ssw0rd; Application Name=ApiSyncAuth",
         "DefaultSyncConnection": "Data Source=192.168.2.52;Initial Catalog=db_QIS_Sync;User ID=sa;Password=P@ssw0rd; Application Name=ApiSync",
         "AuthorizeEndpointUrlAddress": "http://192.168.0.40/authorizewebservice/Authorize.asmx?wsdl",
-        "DefaultConnection": "Data Source=192.168.0.41;Initial Catalog=defecttracking_20201007;User ID=sa;Password=P@ssw0rd; Application Name=WebAPI_com.apthai.CoreApp",
+        "DefaultConnection": "Data Source=192.168.0.41;Initial Catalog=defecttracking;User ID=sa;Password=P@ssw0rd; Application Name=WebAPI_com.apthai.CoreApp",
         "AuthenticationURL": "http://58.137.32.228/DotNetCoreAuth/Api/authorize/",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "BaseURL": "http://test-defectapi.apthai.com"
