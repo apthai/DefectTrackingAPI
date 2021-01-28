@@ -849,7 +849,7 @@ namespace com.apthai.DefectAPI.Controllers
                 if (callTDefect == null)
                 {
                     CallTdefectVendorMObj a = new CallTdefectVendorMObj();
-                    callTDefect.Resource = new List<PicInDetailObj>();
+                    a.Resource = new List<PicInDetailObj>();
                     return new
                     {
                         success = false,
