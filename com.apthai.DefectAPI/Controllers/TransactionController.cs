@@ -1668,6 +1668,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         callResourceDate.ResourceTagCode = data.ResourceTagCode;
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
+                        callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                         callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
