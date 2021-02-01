@@ -1402,17 +1402,19 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -1568,17 +1570,19 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -1734,17 +1738,19 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -1900,17 +1906,19 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2075,17 +2083,19 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2249,17 +2259,19 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2423,17 +2435,19 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2597,17 +2611,19 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             }
             else
             {
+                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = "[]",
+                    data = x,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2806,20 +2822,21 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                 }
                 else
                 {
+                    callResource x = new callResource();
                     return new
                     {
                         success = false,
-                        data = "[]",
+                        data = x,
                         message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                     };
                 }
             }
             //callResource callResourceDate = new callResource();
-            
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2979,20 +2996,21 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                 }
                 else
                 {
+                    callResource x = new callResource();
                     return new
                     {
                         success = false,
-                        data = "[]",
+                        data = x,
                         message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                     };
                 }
             }
             //callResource callResourceDate = new callResource();
-
+            callResource Result = new callResource();
             return new
             {
                 success = true,
-                data = "[]",
+                data = Result,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
