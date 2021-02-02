@@ -713,6 +713,38 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         }
 
         [HttpPost]
+        [Route("UpdateDefectHeaderCustomerNotSign")]
+        [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
+Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน โดยจะเอา DocDueCloseDate ปัจจุบันไป ใสใน AuditCustRoundAuditDate_last ")]
+        public async Task<object> UpdateDefectHeaderCustomerNotSign([FromBody] UpdateDefectHeaderCustomerNotSign data)
+        {
+            try
+            {
+
+                callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
+
+                callTDefect.UpdateDate = data.UpdateDate;
+                // --------------------------------------------------------------------
+
+
+                var inserttdefectdetail = _transactionRepository.UpdateTdefect(callTDefect);
+
+
+                return new
+                {
+                    success = true,
+                    data = callTDefect
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+        [HttpPost]
         [Route("DeleteeDefectDetail")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
         Description = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ตอนเลิอกปฎิทิน ครั้งแรก คือ พึ่งมีรายการซ้อม ")]
@@ -1398,7 +1430,6 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         //}
                     }
                 }
-
             }
             else
             {
