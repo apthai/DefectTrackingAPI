@@ -246,7 +246,6 @@ namespace com.apthai.DefectAPI.HttpRestModel
     public partial class UpdateDefectHeaderCustomerNotSign
     {
         public int TDefectID { get; set; }
-        public DateTime UpdateDate { get; set; }
     }
     public class CreateDefectListObj
     {

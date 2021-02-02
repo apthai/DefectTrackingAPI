@@ -723,7 +723,7 @@ Description = "Update วันที่ลูกค้าจะเข้าม�
 
                 callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
 
-                callTDefect.UpdateDate = data.UpdateDate;
+                callTDefect.UpdateDate = DateTime.Now;
                 // --------------------------------------------------------------------
 
 
