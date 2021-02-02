@@ -877,10 +877,13 @@ namespace com.apthai.DefectAPI.Controllers
 
                     for (int i = 0; i < callResources.Count(); i++)
                     {
-                        PicInDetailObj BFURL = new PicInDetailObj();
-                        BFURL.URL = WebBaseUrl + "/" + callResources[i].FilePath;
-                        BFURL.ResourceId = callResources[i].ResourceId;
-                        ReturnObj.Add(BFURL);
+                        if (callResources[i].ResourceType != 1) // ไม่เอา ลานเซ็นมา
+                        {
+                            PicInDetailObj BFURL = new PicInDetailObj();
+                            BFURL.URL = WebBaseUrl + "/" + callResources[i].FilePath;
+                            BFURL.ResourceId = callResources[i].ResourceId;
+                            ReturnObj.Add(BFURL);
+                        }
                     }
                 }
                 callTDefect.Resource = ReturnObj;
