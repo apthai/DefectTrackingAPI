@@ -856,7 +856,7 @@ namespace com.apthai.DefectAPI.Controllers
                 ReturnObj.callTDefect = callTDefect;
 
                 ReturnObj.callTDefectDetail = DefectDetailCustomList;
-                Return.Add(ReturnObj);
+                //Return.Add(ReturnObj);
 
                 return new
                 {
