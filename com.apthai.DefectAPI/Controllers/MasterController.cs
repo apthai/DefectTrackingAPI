@@ -1032,6 +1032,7 @@ namespace com.apthai.DefectAPI.Controllers
                 LCSignature lCSignature = new LCSignature();
                 if (Signature == null)
                 {
+
                     List<CustomerSignature> a = new List<CustomerSignature>();
                     return new
                     {
