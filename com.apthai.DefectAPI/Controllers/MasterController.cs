@@ -698,48 +698,48 @@ namespace com.apthai.DefectAPI.Controllers
                 }
                 // ----------- Get Signature From CallResource -----------------------
 
-                List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(callTDefect.TDefectId);
-                CustomerSignature customerSignature = new CustomerSignature();
-                for (int i = 0; i < Signature.Count(); i++)
-                {
-                    if (Signature[i].ResourceTagCode == "SAL-LC-AF")
-                    {
-                        string a = JsonConvert.SerializeObject(Signature[i]);
-                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
-                    else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
-                    {
-                        string a = JsonConvert.SerializeObject(Signature[i]);
-                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
-                    else if (Signature[i].ResourceTagCode == "CUST-AF")
-                    {
-                        string a = JsonConvert.SerializeObject(Signature[i]);
-                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
-                    else if (Signature[i].ResourceTagCode == "CUST-BF")
-                    {
-                        string a = JsonConvert.SerializeObject(Signature[i]);
-                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
-                    else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
-                    {
-                        string a = JsonConvert.SerializeObject(Signature[i]);
-                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
-                    else if (Signature[i].ResourceTagCode == "CON-MGR-BF")
-                    {
-                        string a = JsonConvert.SerializeObject(Signature[i]);
-                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
-                }
-                List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
+                //List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(callTDefect.TDefectId);
+                //CustomerSignature customerSignature = new CustomerSignature();
+                //for (int i = 0; i < Signature.Count(); i++)
+                //{
+                //    if (Signature[i].ResourceTagCode == "SAL-LC-AF")
+                //    {
+                //        string a = JsonConvert.SerializeObject(Signature[i]);
+                //        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                //        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                //    }
+                //    else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
+                //    {
+                //        string a = JsonConvert.SerializeObject(Signature[i]);
+                //        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                //        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                //    }
+                //    else if (Signature[i].ResourceTagCode == "CUST-AF")
+                //    {
+                //        string a = JsonConvert.SerializeObject(Signature[i]);
+                //        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                //        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                //    }
+                //    else if (Signature[i].ResourceTagCode == "CUST-BF")
+                //    {
+                //        string a = JsonConvert.SerializeObject(Signature[i]);
+                //        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                //        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                //    }
+                //    else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
+                //    {
+                //        string a = JsonConvert.SerializeObject(Signature[i]);
+                //        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                //        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                //    }
+                //    else if (Signature[i].ResourceTagCode == "CON-MGR-BF")
+                //    {
+                //        string a = JsonConvert.SerializeObject(Signature[i]);
+                //        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                //        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                //    }
+                //}
+                //List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
                
                 List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect.TDefectId);
                 List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
@@ -997,6 +997,94 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     success = true,
                     data = Result
+                };
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        [Route("GetTDefectSignature")]
+        public async Task<object> GetTDefectSignature([FromBody] GetTDefectSignature data)
+        {
+            try
+            {
+                #region VerifyHeader
+                string ErrorHeader = "";
+                if (!VerifyHeader(out ErrorHeader))
+                {
+                    return new
+                    {
+                        success = false,
+                        data = ErrorHeader,
+                        valid = false
+                    };
+                }
+                #endregion
+                string WebCRMUrl = Environment.GetEnvironmentVariable("WebURL");
+                string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
+                List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(data.TDefectId ?? 0);
+                GetTDefectSignatureObj ReturnObj = new GetTDefectSignatureObj();
+                CustomerSignature customerSignature = new CustomerSignature();
+                SESignature sESignature = new SESignature();
+                LCSignature lCSignature = new LCSignature();
+                if (Signature == null)
+                {
+                    List<CustomerSignature> a = new List<CustomerSignature>();
+                    return new
+                    {
+                        success = false,
+                        data = a
+                    };
+                }
+                for (int i = 0; i < Signature.Count(); i++)
+                {
+                    if (Signature[i].ResourceTagCode == "SAL-LC-AF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        lCSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        lCSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        lCSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        lCSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CUST-AF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CUST-BF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        sESignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        sESignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CON-MGR-BF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        sESignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        sESignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                }
+                ReturnObj.CustomerSignature = customerSignature;
+                ReturnObj.SESignature = sESignature;
+                ReturnObj.LCSignature = lCSignature;
+                return new
+                {
+                    success = true,
+                    data = ReturnObj
                 };
             }
             catch (Exception ex)

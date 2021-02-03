@@ -23,7 +23,10 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string UnitID { get; set; }
         public string ProjectNo { get; set; }
         public string Floor { get; set; }
-
+    }
+    public partial class GetTDefectSignature
+    {
+        public int? TDefectId { get; set; }
     }
     public partial class GenerateReportByTDefectId
     {

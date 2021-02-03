@@ -159,11 +159,18 @@ namespace com.apthai.DefectAPI.CustomModel
         public SESignature SESignature { get; set; }
         public LCSignature LCSignature { get; set; }
     }
+    public class GetTDefectSignatureObj
+    {
+        public CustomerSignature CustomerSignature { get; set; }
+        public SESignature SESignature { get; set; }
+        public LCSignature LCSignature { get; set; }
+    }
     public class CustomerSignature
     { 
         public CallresouceWithURL BeforeSig { get; set; }
         public CallresouceWithURL AfterSig { get; set; }
     }
+
     public class SESignature
     {
         public CallresouceWithURL BeforeSig { get; set; }
