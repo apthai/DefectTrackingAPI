@@ -670,6 +670,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //        data = "AccessKey is Invalid!"
                 //    };
                 //}
+                string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
                 CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
@@ -694,6 +695,49 @@ namespace com.apthai.DefectAPI.Controllers
                 else if (callTDefect.TDefectStatus == "001")
                 {
                     callTDefect.StatusShow = "Close";
+                }
+                // ----------- Get Signature From CallResource -----------------------
+
+                List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(callTDefect.TDefectId);
+                CustomerSignature customerSignature = new CustomerSignature();
+                for (int i = 0; i < Signature.Count(); i++)
+                {
+                    if (Signature[i].ResourceTagCode == "SAL-LC-AF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CUST-AF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CUST-BF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
+                    else if (Signature[i].ResourceTagCode == "CON-MGR-BF")
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
                 }
                 List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
                
@@ -772,7 +816,6 @@ namespace com.apthai.DefectAPI.Controllers
 
                     List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
-                    string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
                     List<PicInDetailObj> BFObject = new List<PicInDetailObj>();
                     List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
                     if (BF.Count > 0)
@@ -944,42 +987,23 @@ namespace com.apthai.DefectAPI.Controllers
                     };
                 }
                 #endregion
-                List<PointURL> points = _masterRepository.GetFloorDistinct("H");
-                List<pointCamel> ReturnObj = new List<pointCamel>();
-                for (int i = 0; i < points.Count(); i++)
-                {
-                    pointCamel point = new pointCamel();
-                    point.Cate = points[i].Cate;
-                    point.ChkMainPoint = points[i].Chkmainpoint;
-                    point.CompPointId = points[i].Comppoint_id;
-                    point.EndPoint = points[i].End_point;
-                    point.FloorPlantset = points[i].Floorplantset;
-                    point.PointName = points[i].Point_name;
-                    point.ProductTypeCate = points[i].Producttypecate;
-                    point.Project = points[i].Project;
-                    point.SubPoint = points[i].Sub_point;
-                    point.URL = points[i].ImageURL;
-                    ReturnObj.Add(point);
-                }
+                string WebUrl = Environment.GetEnvironmentVariable("WebURL");
                 callTFloorPlanImage callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID,Convert.ToInt32(data.Floor),data.ProjectNo);
                 FloorPlanImageObj Result = new FloorPlanImageObj();
                 Result.ProjectId = callTFloorPlanImage.ProductId;
                 Result.UnitId = data.UnitID;
-                Result.URL = "http://appprod01.ap-crm.com/StorageResources/APDefect/Data/FloorPlan/P_70013/FLP70013-1-CL%20.jpg";
+                Result.URL = WebUrl + callTFloorPlanImage.FilePath;
                 return new
                 {
                     success = true,
                     data = Result
                 };
-
             }
             catch (Exception ex)
             {
                 return StatusCode(500, "Internal server error");
             }
-
         }
-
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public bool VerifyHeader(out string ErrorMsg)

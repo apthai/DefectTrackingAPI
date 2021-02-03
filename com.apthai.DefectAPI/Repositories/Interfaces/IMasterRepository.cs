@@ -19,6 +19,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         callTFloorPlanImage GetUnitFloorPlanByUnitAndFloor(string UnitNumber, int Floor , string ProjectNo);
         List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId);
         List<callResource> GetCallResourceByTdefect(int TDefectId);
+        List<callResource> GetSignatureByTdefectID(int TDefectId);
         List<callResource> GetCallResourceBeforeByTdefectDetailID(int TDefectDetailId);
         List<callResource> GetCallResourceAfterByTdefectDetailID(int TDefectDetailId);
         ICONEntFormsProduct GetProductDataFromCRM_Sync(string ProductID);

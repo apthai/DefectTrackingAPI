@@ -105,7 +105,7 @@ namespace com.apthai.DefectAPI.Repositories
                     {
                         sQuery = "select * from callTFloorPlanImage " +
                        " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
-                       " where L.UnitNumber = @UnitNumber And C.Floor = @Floor and L.ProductID = @ProductNo  ";
+                       " where L.UnitNumber = @UnitNumber And C.Floor = @Floor and L.ProductID = @ProductNo and FloorPlanImageId like '%@ProductNo%'  ";
                         var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber , ProjectNo = ProjectNo }).FirstOrDefault();
 
                         return result;
@@ -161,6 +161,25 @@ namespace com.apthai.DefectAPI.Repositories
                 catch (Exception ex)
                 {
                     throw new Exception("MasterRepository.GetCallResourceByTdefectDetailID() :: Error ", ex);
+                }
+            }
+        }
+        public List<callResource> GetSignatureByTdefectID(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectId = @TDefectId and ResourceType = 1 ";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectId = TDefectId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetSignatureByTdefectID() :: Error ", ex);
                 }
             }
         }
