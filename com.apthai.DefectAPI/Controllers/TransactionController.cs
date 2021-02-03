@@ -722,7 +722,7 @@ Description = "Update วันที่ลูกค้าจะเข้าม�
             {
 
                 callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
-
+                callTDefect.DocIsReqUnitReceiveAttachFile = true;
                 callTDefect.UpdateDate = DateTime.Now;
                 // --------------------------------------------------------------------
 
