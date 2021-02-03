@@ -52,40 +52,40 @@ namespace com.apthai.DefectAPI.Controllers
             _authorizeService = authorizeService;
         }
 
-        [HttpPost]
-        [Route("GetAllSignatureByCallTDefectID")]
-        public async Task<object> GetAllSignatureByCallTDefectID([FromBody] int TDefectID )
-        {
-            try
-            {
-                //#region VerifyHeader
-                //string ErrorHeader = "";
-                //if (!VerifyHeader(out ErrorHeader))
-                //{
-                //    return new
-                //    {
-                //        success = false,
-                //        data = ErrorHeader ,
-                //        valid = false
-                //    };
-                //}
-                //#endregion
-                List<callResource> callResources = _masterRepository.GetSignatureCallResourceByTdefectID(TDefectID);
+        //[HttpPost]
+        //[Route("GetAllSignatureByCallTDefectID")]
+        //public async Task<object> GetAllSignatureByCallTDefectID([FromBody] int TDefectID )
+        //{
+        //    try
+        //    {
+        //        //#region VerifyHeader
+        //        //string ErrorHeader = "";
+        //        //if (!VerifyHeader(out ErrorHeader))
+        //        //{
+        //        //    return new
+        //        //    {
+        //        //        success = false,
+        //        //        data = ErrorHeader ,
+        //        //        valid = false
+        //        //    };
+        //        //}
+        //        //#endregion
+        //        List<callResource> callResources = _masterRepository.GetSignatureCallResourceByTdefectID(TDefectID);
                 
-                return new
-                {
-                    success = true,
-                    data = callResources
-                };
+        //        return new
+        //        {
+        //            success = true,
+        //            data = callResources
+        //        };
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return StatusCode(500, "Internal server error");
-            }
+        //        return StatusCode(500, "Internal server error");
+        //    }
 
-        }
+        //}
 
         [HttpPost]
         [Route("GetCallTypewithArea")]
