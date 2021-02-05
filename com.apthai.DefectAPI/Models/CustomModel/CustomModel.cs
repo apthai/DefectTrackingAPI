@@ -169,6 +169,7 @@ namespace com.apthai.DefectAPI.CustomModel
     { 
         public CallresouceWithURL BeforeSig { get; set; }
         public CallresouceWithURL AfterSig { get; set; }
+        public CallresouceWithURL ReceiveSig { get; set; }
     }
 
     public class SESignature

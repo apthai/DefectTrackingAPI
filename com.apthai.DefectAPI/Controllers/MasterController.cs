@@ -1066,6 +1066,12 @@ namespace com.apthai.DefectAPI.Controllers
                         customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
                     }
+                    else if (Signature[i].ResourceTagCode == "CUST-RECE)
+                    {
+                        string a = JsonConvert.SerializeObject(Signature[i]);
+                        customerSignature.ReceiveSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
+                        customerSignature.ReceiveSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                    }
                     else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
