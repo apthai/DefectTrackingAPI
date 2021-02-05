@@ -1082,6 +1082,34 @@ namespace com.apthai.DefectAPI.Controllers
                 ReturnObj.CustomerSignature = customerSignature;
                 ReturnObj.SESignature = sESignature;
                 ReturnObj.LCSignature = lCSignature;
+                // --------------- กัน Object แตก ของ บอม --------------------
+                if (ReturnObj.CustomerSignature.AfterSig == null)
+                {
+                    ReturnObj.CustomerSignature.AfterSig = new CallresouceWithURL();
+                }
+                if (ReturnObj.CustomerSignature.BeforeSig == null)
+                {
+                    ReturnObj.CustomerSignature.BeforeSig = new CallresouceWithURL();
+                }
+
+                if (ReturnObj.LCSignature.AfterSig == null)
+                {
+                    ReturnObj.LCSignature.AfterSig = new CallresouceWithURL();
+                }
+                if (ReturnObj.LCSignature.BeforeSig == null)
+                {
+                    ReturnObj.LCSignature.BeforeSig = new CallresouceWithURL();
+                }
+
+                if (ReturnObj.SESignature.AfterSig == null)
+                {
+                    ReturnObj.SESignature.AfterSig = new CallresouceWithURL();
+                }
+                if (ReturnObj.SESignature.BeforeSig == null)
+                {
+                    ReturnObj.SESignature.BeforeSig = new CallresouceWithURL();
+                }
+                //-----------------------------------------------------------
                 return new
                 {
                     success = true,
