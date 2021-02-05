@@ -2483,7 +2483,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             };
         }
 
-        [HttpPost("uploadAcceptSignature")]
+        [HttpPost("uploadReceiveSignature")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพของลายเซ็นลูกค้าเวลาเซ็นรับบ้าน",
 Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
@@ -2563,16 +2563,9 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.FileLength = size;
                         callResourceDate.CreateDate = DateTime.Now;
                         callResourceDate.RowState = "Original";
-                        callResourceDate.ResourceType = 2;
+                        callResourceDate.ResourceType = 6;
                         callResourceDate.ResourceTagSubCode = "1";
-                        if (data.IsBF == true)
-                        {
-                            callResourceDate.ResourceTagCode = "CON-MGR-BF";
-                        }
-                        else
-                        {
-                            callResourceDate.ResourceTagCode = "CON-MGR-AF";
-                        }
+                        callResourceDate.ResourceTagCode = "CUST-RECE";
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
                         callResourceDate.TDefectDetailId = 0;
