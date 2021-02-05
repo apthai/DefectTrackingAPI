@@ -1098,6 +1098,11 @@ namespace com.apthai.DefectAPI.Controllers
                     ReturnObj.CustomerSignature.BeforeSig = new CallresouceWithURL();
                 }
 
+                if (ReturnObj.CustomerSignature.ReceiveSig == null)
+                {
+                    ReturnObj.CustomerSignature.ReceiveSig = new CallresouceWithURL();
+                }
+
                 if (ReturnObj.LCSignature.AfterSig == null)
                 {
                     ReturnObj.LCSignature.AfterSig = new CallresouceWithURL();
