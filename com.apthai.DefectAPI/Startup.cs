@@ -106,7 +106,7 @@ namespace com.apthai.DefectAPI
             services.AddMvc()
               .AddJsonOptions(options =>
               {
-                  // options.SerializerSettings.DateFormatString = "yyyy-MM-ddTHH:mm:ss";
+                  options.SerializerSettings.DateFormatString = "yyyy-MM-ddTHH:mm:ss";
                   options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                   options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                   options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local; //RoundtripKind;
