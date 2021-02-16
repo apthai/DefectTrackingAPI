@@ -996,6 +996,7 @@ namespace com.apthai.DefectAPI.Controllers
                     Result.ProjectId = callTFloorPlanImage[i].ProductId;
                     Result.UnitId = data.UnitID;
                     Result.URL = WebUrl + callTFloorPlanImage[i].FilePath;
+                    Result.Floor = callTFloorPlanImage[i].Floor;
                     ResultObj.Add(Result);
                 }
                 

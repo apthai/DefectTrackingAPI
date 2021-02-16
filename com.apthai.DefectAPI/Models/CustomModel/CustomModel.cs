@@ -209,6 +209,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string ProjectId { get; set; }
         public string UnitId { get; set; }
         public string URL { get; set; }
+        public string Floor { get; set; }
     }
     public class CallTdefectDetailCustom : callTDefectDetail
     { 
