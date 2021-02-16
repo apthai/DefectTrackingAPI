@@ -976,16 +976,16 @@ namespace com.apthai.DefectAPI.Controllers
             try
             {
                 #region VerifyHeader
-                string ErrorHeader = "";
-                if (!VerifyHeader(out ErrorHeader))
-                {
-                    return new
-                    {
-                        success = false,
-                        data = ErrorHeader,
-                        valid = false
-                    };
-                }
+                //string ErrorHeader = "";
+                //if (!VerifyHeader(out ErrorHeader))
+                //{
+                //    return new
+                //    {
+                //        success = false,
+                //        data = ErrorHeader,
+                //        valid = false
+                //    };
+                //}
                 #endregion
                 string WebUrl = Environment.GetEnvironmentVariable("WebURL");
                 callTFloorPlanImage callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID,Convert.ToInt32(data.Floor),data.ProjectNo);
