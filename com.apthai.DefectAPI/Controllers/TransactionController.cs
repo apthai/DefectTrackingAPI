@@ -2867,11 +2867,11 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
 
 
         [HttpPost]
-        [Route("uploadFloorPlanPictureList")]
+        [Route("uploadFloorPlanPicture")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
 Description = "Upload รูปภาพของรายการ TDefectDetail After แบบหลายๆรูปพร้อมกัน")]
-        public async Task<object> uploadFloorPlanPictureList([FromForm] ParamUploadImageAfterList data)
+        public async Task<object> uploadFloorPlanPicture([FromForm] ParamUploadFloorPlan data)
         {
             int a = 0;
             //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
@@ -2949,8 +2949,8 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
                             callResourceDate.FileLength = size;
                             callResourceDate.CreateDate = DateTime.Now;
                             callResourceDate.RowState = "Original";
-                            callResourceDate.ResourceType = 7;
-                            callResourceDate.ResourceTagCode = "AF-RP";
+                            callResourceDate.ResourceType = 9;
+                            callResourceDate.ResourceTagCode = data.Floor;
                             callResourceDate.ResourceGroupSet = null;
                             callResourceDate.ResourceGroupOrder = 0;
                             callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
