@@ -988,15 +988,21 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 #endregion
                 string WebUrl = Environment.GetEnvironmentVariable("WebURL");
-                callTFloorPlanImage callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID,Convert.ToInt32(data.Floor),data.ProjectNo);
-                FloorPlanImageObj Result = new FloorPlanImageObj();
-                Result.ProjectId = callTFloorPlanImage.ProductId;
-                Result.UnitId = data.UnitID;
-                Result.URL = WebUrl + callTFloorPlanImage.FilePath;
+                List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID,Convert.ToInt32(data.Floor),data.ProjectNo);
+                List<FloorPlanImageObj> ResultObj = new List<FloorPlanImageObj>();
+                for (int i = 0; i < callTFloorPlanImage.Count(); i++)
+                {
+                    FloorPlanImageObj Result = new FloorPlanImageObj();
+                    Result.ProjectId = callTFloorPlanImage[i].ProductId;
+                    Result.UnitId = data.UnitID;
+                    Result.URL = WebUrl + callTFloorPlanImage[i].FilePath;
+                    ResultObj.Add(Result);
+                }
+                
                 return new
                 {
                     success = true,
-                    data = Result
+                    data = ResultObj
                 };
             }
             catch (Exception ex)

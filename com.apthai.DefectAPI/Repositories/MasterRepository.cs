@@ -94,7 +94,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public callTFloorPlanImage GetUnitFloorPlanByUnitAndFloor(string UnitNumber , int Floor ,string ProjectNo)
+        public List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(string UnitNumber , int Floor ,string ProjectNo)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -103,10 +103,10 @@ namespace com.apthai.DefectAPI.Repositories
                     string sQuery = "";
                     if (Floor == 0)
                     {
-                        sQuery = "select * from callTFloorPlanImage " +
+                        sQuery = "select * from callTFloorPlanImage C " +
                        " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
-                       " where L.UnitNumber = @UnitNumber And C.Floor = @Floor and L.ProductID = @ProductNo and FloorPlanImageId like '%@ProductNo%'  ";
-                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber , ProjectNo = ProjectNo }).FirstOrDefault();
+                       " where L.UnitNumber = @UnitNumber and L.ProductID = @ProductNo and FloorPlanImageId like '%"+ ProjectNo + "%'  ";
+                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber , ProductNo = ProjectNo }).ToList();
 
                         return result;
                     }
@@ -115,7 +115,7 @@ namespace com.apthai.DefectAPI.Repositories
                          sQuery = "select * from callTFloorPlanImage " +
                         " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
                         " where L.UnitNumber = @UnitNumber and L.ProductID = @ProductNo ";
-                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber, Floor = Floor, ProjectNo= ProjectNo }).FirstOrDefault();
+                        var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber, ProjectNo= ProjectNo }).ToList();
 
                         return result;
                     }
