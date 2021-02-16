@@ -104,7 +104,7 @@ namespace com.apthai.DefectAPI.Repositories
                     if (Floor == 0)
                     {
                         sQuery = "select * from callTFloorPlanImage C " +
-                       " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType " +
+                       " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType and C.ProductId = L.ProductID " +
                        " where L.UnitNumber = @UnitNumber and L.ProductID = @ProductNo and FloorPlanImageId like '%"+ ProjectNo + "%'  ";
                         var result = conn.Query<callTFloorPlanImage>(sQuery, new { UnitNumber = UnitNumber , ProductNo = ProjectNo }).ToList();
 
