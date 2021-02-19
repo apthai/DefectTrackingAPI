@@ -808,7 +808,7 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         obj.StatusShow = "Finish";
                     }
-                    else if (obj.TDefectDetailStatus == "001")
+                    else if (callTDefect.TDefectDetailStatus == "004" || callTDefect.TDefectDetailStatus == "005")
                     {
                         obj.StatusShow = "Close";
                     }
