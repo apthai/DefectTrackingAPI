@@ -692,7 +692,7 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     callTDefect.StatusShow = "Finish";
                 }
-                else if (callTDefect.TDefectStatus == "001")
+                else if (callTDefect.TDefectStatus == "004" || callTDefect.TDefectStatus == "005" )
                 {
                     callTDefect.StatusShow = "Close";
                 }
@@ -988,23 +988,32 @@ namespace com.apthai.DefectAPI.Controllers
                 //}
                 #endregion
                 string WebUrl = Environment.GetEnvironmentVariable("WebURL");
-                List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID,Convert.ToInt32(data.Floor),data.ProjectNo);
-                List<FloorPlanImageObj> ResultObj = new List<FloorPlanImageObj>();
-                for (int i = 0; i < callTFloorPlanImage.Count(); i++)
+                //List<callResource> CheckIsPlanDraw = _masterRepository.
+                if (true)
                 {
-                    FloorPlanImageObj Result = new FloorPlanImageObj();
-                    Result.ProjectId = callTFloorPlanImage[i].ProductId;
-                    Result.UnitId = data.UnitID;
-                    Result.URL = WebUrl + callTFloorPlanImage[i].FilePath;
-                    Result.Floor = callTFloorPlanImage[i].Floor;
-                    ResultObj.Add(Result);
+                    List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID, Convert.ToInt32(data.Floor), data.ProjectNo);
+                    List<FloorPlanImageObj> ResultObj = new List<FloorPlanImageObj>();
+                    for (int i = 0; i < callTFloorPlanImage.Count(); i++)
+                    {
+                        FloorPlanImageObj Result = new FloorPlanImageObj();
+                        Result.ProjectId = callTFloorPlanImage[i].ProductId;
+                        Result.UnitId = data.UnitID;
+                        Result.URL = WebUrl + callTFloorPlanImage[i].FilePath;
+                        Result.Floor = callTFloorPlanImage[i].Floor;
+                        ResultObj.Add(Result);
+                    }
+
+                    return new
+                    {
+                        success = true,
+                        data = ResultObj
+                    };
+                }
+                else
+                {
+
                 }
                 
-                return new
-                {
-                    success = true,
-                    data = ResultObj
-                };
             }
             catch (Exception ex)
             {
