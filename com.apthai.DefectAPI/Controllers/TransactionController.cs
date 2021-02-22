@@ -521,6 +521,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             {
 
                 callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailId);
+                callTDefect callTDefect = _masterRepository.GetCallTDefectByTDefectId_Sync(callTDefectDetail.TDefectId.ToString());
                 // --------------------------------------------------------------------
                 callTDefectDetail.RowState = "Original";
                 callTDefectDetail.RowActive = true;
@@ -553,7 +554,9 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callTDefectDetail.TDefectId = data.TDefectId;
                 callTDefectDetail.TDefectDetailDesc = data.TDefectDetailDesc;
                 var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
-
+                callTDefect.UpdateDate = DateTime.Now;
+                callTDefect.UpdateUserId = data.UserID;
+                var UpdateHeader = _transactionRepository.UpdateTdefect(callTDefect);
 
                 return new
                 {

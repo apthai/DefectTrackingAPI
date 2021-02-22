@@ -495,6 +495,23 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public callTDefect GetCallTDefectByTDefectId_Sync(string TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefect  " +
+                        "where TDefectId = @TDefectId  ";
+                    var result = conn.Query<callTDefect>(sQuery, new { TDefectId = TDefectId }).FirstOrDefault();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallAreaByProductCat_Sync() :: Error ", ex);
+                }
+            }
+        }
         public CallTdefectMObj GetCallTDefectByUnitID_Sync(string ProjectCode,string UnitID)
         {
             using (IDbConnection conn = WebConnection)
