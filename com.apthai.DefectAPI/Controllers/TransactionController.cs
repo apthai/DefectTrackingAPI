@@ -3222,7 +3222,7 @@ Description = "Access Key ใช้ในการเรียหใช้ Funct
         {
             try
             {
-
+                //http://192.168.0.209/ReportPortalViewer_API/api/CrystalReport/GenPDF
                 var client = new HttpClient();
                 var Content = new StringContent(JsonConvert.SerializeObject(data));
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");

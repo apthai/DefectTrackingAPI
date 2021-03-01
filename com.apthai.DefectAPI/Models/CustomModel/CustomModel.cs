@@ -516,5 +516,29 @@ namespace com.apthai.DefectAPI.CustomModel
         public int? Sequence { get; set; }
         public string URL { get; set; }
     }
+    public partial class GeneratePDFParam
+    {
+        public string Folder { get; set; }
+        public string FileName { get; set; }
+        public string DatabaseName { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public List<Parameters> parameters { get; set; }
+    }
+    public partial class Parameters
+    {
+        public FirstRootSubParameters First {get;set;}
+        public SecondRootSubParameters Second { get; set; }
+    }
+    public partial class FirstRootSubParameters
+    {
+        public string Name { get; set; } // TDfectID
+        public string Value { get; set; } = "111";
+    }
+    public partial class SecondRootSubParameters
+    {
+        public string Name { get; set; } // CustRoundAuditNo
+        public string Value { get; set; } = "1";
+    }
 }
 
