@@ -849,6 +849,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         {
             try
             {
+                
                 List<callTDefectDetail> UpdateLists = new List<callTDefectDetail>();
                 for (int i = 0; i < data.TDefectDetailIDList.Count(); i++)
                 {
@@ -866,6 +867,12 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     callTDefectDetail.TDefectDetailStatus = "005";
 
                     UpdateLists.Add(callTDefectDetail);
+                }
+                for (int i = 0; i < UpdateLists.Count(); i++)
+                {
+                    callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(UpdateLists[i].TDefectId);
+                    callTDefect.UpdateDate = DateTime.Now;
+                    bool UpdateTdefect = _transactionRepository.UpdateTdefect(callTDefect);
                 }
                 var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(UpdateLists);
 
@@ -899,6 +906,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                         data = ErrorMsg
                     };
                 }
+                data.callTDefect.UpdateDate = DateTime.Now;
                 bool insertTDefect = _transactionRepository.InsertTdefect(data.callTDefect);
                 bool insertDefectDetail = _transactionRepository.InsertTdefectDetailList(data.callTDefectDetails);
                 return new
