@@ -126,7 +126,8 @@ namespace com.apthai.DefectAPI.Controllers
                 if (data.TDefectId != 0)
                 {
                     callTDefectDetail LatestdefectDetail = _masterRepository.GetcallTDefectDetailByTDefectID_Sync(data.TDefectId);
-
+                    DateTime Today = DateTime.Now;
+                    DateTime LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString());
 
                     string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
@@ -157,7 +158,12 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.TaskNo = taskNo;
                     tDefectDetail.TaskMarkName = "DummyData";
                     tDefectDetail.FloorPlanSet = data.FloorPlanSet;
-                    tDefectDetail.CustRoundAuditNo = 1;
+
+                    if (LatestTxnDate.Date < Today.Date)
+                        tDefectDetail.CustRoundAuditNo = LatestdefectDetail.CustRoundAuditNo + 1;
+                    else
+                        tDefectDetail.CustRoundAuditNo = 1;
+
                     tDefectDetail.CustRoundAuditDate = DateTime.Now;
                     tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
                     tDefectDetail.IsServerLockRow = false;
@@ -271,8 +277,7 @@ namespace com.apthai.DefectAPI.Controllers
 
                                 }
                             }
-                            DateTime Today = DateTime.Now;
-                            DateTime LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString()) ;
+                            
                             if (LatestTxnDate.Date < Today.Date)
                             {
                                 List<callResource> callResources = _masterRepository.GetCallResourceAllSignatureByTdefect(data.TDefectId);
