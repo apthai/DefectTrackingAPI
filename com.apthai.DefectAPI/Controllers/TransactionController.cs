@@ -287,6 +287,7 @@ namespace com.apthai.DefectAPI.Controllers
                                 }
                                 var InactiveCallResource = _transactionRepository.UpdateCallResource(callResources);
                             }
+
                         }
                         else
                         {

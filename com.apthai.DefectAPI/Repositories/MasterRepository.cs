@@ -153,7 +153,7 @@ namespace com.apthai.DefectAPI.Repositories
                 {
 
                     string sQuery = "select * from callResource " +
-                        " where TDefectId = @TDefectId ";
+                        " where TDefectId = @TDefectId and Active = 1 ";
                     var result = conn.Query<callResource>(sQuery, new { TDefectId = TDefectId }).ToList();
                     return result;
 
