@@ -19,6 +19,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(string UnitNumber, int Floor , string ProjectNo);
         List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId);
         List<callResource> GetCallResourceByTdefect(int TDefectId);
+        List<callResource> GetCallResourceAllSignatureByTdefect(int TDefectId);
         List<callResource> GetSignatureByTdefectID(int TDefectId);
         List<callResource> GetCallResourceBeforeByTdefectDetailID(int TDefectDetailId);
         List<callResource> GetCallResourceAfterByTdefectDetailID(int TDefectDetailId);
@@ -43,5 +44,6 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         Model.DefectAPISync.vwProject GetVwProjects(string ProjectID);
         List<Tower> GetTowersByProject(string ProjectID);
         Model.DefectAPI.point GetCallPointByPointID_Sync(int? comppoint_id);
+        callTDefectDetail GetcallTDefectDetailByTDefectID_Sync(int TDefectId);
     }
 }

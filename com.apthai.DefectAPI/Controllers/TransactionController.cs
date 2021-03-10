@@ -125,6 +125,9 @@ namespace com.apthai.DefectAPI.Controllers
 
                 if (data.TDefectId != 0)
                 {
+                    callTDefectDetail LatestdefectDetail = _masterRepository.GetcallTDefectDetailByTDefectID_Sync(data.TDefectId);
+
+
                     string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
                     callTDefectDetail tDefectDetail = new callTDefectDetail();
@@ -268,7 +271,17 @@ namespace com.apthai.DefectAPI.Controllers
 
                                 }
                             }
-
+                            DateTime Today = DateTime.Now;
+                            DateTime LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString()) ;
+                            if (LatestTxnDate.Date < Today.Date)
+                            {
+                                List<callResource> callResources = _masterRepository.GetCallResourceAllSignatureByTdefect(data.TDefectId);
+                                for (int i = 0; i < callResources.Count(); i++)
+                                {
+                                    callResources[i].Active = false;
+                                }
+                                var InactiveCallResource = _transactionRepository.UpdateCallResource(callResources);
+                            }
                         }
                         else
                         {
@@ -484,7 +497,6 @@ namespace com.apthai.DefectAPI.Controllers
 
                                 }
                             }
-
                         }
                         else
                         {

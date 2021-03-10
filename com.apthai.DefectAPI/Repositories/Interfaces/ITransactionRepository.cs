@@ -14,6 +14,7 @@ namespace com.apthai.DefectAPI.Repositories
         bool UpdateTdefectDetail(callTDefectDetail defectDetail);
         bool UpdateTdefectDetailList(List<callTDefectDetail> defectDetailList);
         bool UpdateTdefect(callTDefect callTDefect);
+        bool UpdateCallResource(List<callResource> callResources);
         bool InsertTdefectDetail(callTDefect defectDetail, ref long DefectID);
         bool InsertTdefectDetailList(List<callTDefectDetail> defectDetails);
         bool InsertTdefect(callTDefect callTDefect);

@@ -164,6 +164,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+        public List<callResource> GetCallResourceAllSignatureByTdefect(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectId = @TDefectId and and ResourceType = 1 ";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectId = TDefectId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetCallResourceByTdefectDetailID() :: Error ", ex);
+                }
+            }
+        }
         public List<callResource> GetSignatureByTdefectID(int TDefectId)
         {
             using (IDbConnection conn = WebConnection)
@@ -748,6 +767,24 @@ namespace com.apthai.DefectAPI.Repositories
                 catch (Exception ex)
                 {
                     throw new Exception("MasterRepository.GetVwProjects() :: Error ", ex);
+                }
+            }
+        }
+        public callTDefectDetail GetcallTDefectDetailByTDefectID_Sync(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = "Select * From callTDefectDetail " +
+                        "where TDefectId = @TDefectId And RowActive = 1 Order by TDefectId Desc ";
+                    var result = conn.Query<callTDefectDetail>(sQuery, new { TDefectId = TDefectId }).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetcallTDefectDetailByTDefectID_Sync() :: Error ", ex);
                 }
             }
         }
