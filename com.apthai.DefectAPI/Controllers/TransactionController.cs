@@ -127,7 +127,12 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     callTDefectDetail LatestdefectDetail = _masterRepository.GetcallTDefectDetailByTDefectID_Sync(data.TDefectId);
                     DateTime Today = DateTime.Now;
-                    DateTime LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString());
+                    DateTime LatestTxnDate = Convert.ToDateTime(DateTime.Now.ToShortDateString()) ;
+                    if (LatestdefectDetail != null)
+                    {
+                        LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString());
+                    }
+                    
 
                     string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
