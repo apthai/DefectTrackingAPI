@@ -672,7 +672,7 @@ namespace com.apthai.DefectAPI.Repositories
                                     "left join callarea on callTDefectDetail.CallAreaId = callarea.callarea_id " +
                                     "left join point on callTDefectDetail.CallPointId = point.comppoint_id and callTDefectDetail.CallSubPointId = point.cate " +
                                     "left join callStaComplain on callStaComplain.IdStaComplain = callTDefectDetail.TDefectDetailStatus "+ 
-                        "where callTDefectDetail.TDefectID = @TDefectID And callTDefectDetail.RowActive = 1 ";
+                        "where callTDefectDetail.TDefectID = @TDefectID And callTDefectDetail.RowActive = 1 order by 1 desc ";
                     var result = conn.Query<CallTdefectDetailCustom>(sQuery, new { TDefectID = TDefectID }).ToList();
                     return result;
 
