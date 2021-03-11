@@ -237,7 +237,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //#endregion
                 if (data.IsRecent == true)
                 {
-                    List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode);
+                    List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode,data.ProjectID);
                     for (int i = 0; i < callTDefects.Count(); i++)
                     {
                         CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(callTDefects[i].UnitNumber,Convert.ToInt32(data.ProjectID));

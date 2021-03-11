@@ -156,6 +156,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.DeviceId = data.DeviceId;
                     tDefectDetail.Tag = null;
                     tDefectDetail.CreateUserId = data.UserID;
+                    tDefectDetail.CreateDate = DateTime.Now;
                     tDefectDetail.UpdateDate = DateTime.Now;
                     tDefectDetail.FloorPlan_ImageId = null;
                     tDefectDetail.FloorPlan_X = 0;

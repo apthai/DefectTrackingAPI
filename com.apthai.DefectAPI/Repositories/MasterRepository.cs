@@ -540,7 +540,7 @@ namespace com.apthai.DefectAPI.Repositories
                     string sQuery = "Select * From callTDefect c " +
                         " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber  and c.ProductId = i.ProductID " +
                         " left join View_UnitCustomer VC on i.UnitNumber = VC.UnitNumber and c.ProductId = VC.ProductID " +
-                        "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
+                        "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 order by 1 desc ";
                     var result = conn.Query<CallTdefectMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID= UnitID }).FirstOrDefault();
                     return result;
                 }
@@ -559,7 +559,7 @@ namespace com.apthai.DefectAPI.Repositories
                     string sQuery = "Select * From callTDefect c " +
                         " left join ICON_EntForms_Unit i on c.ItemId = i.UnitNumber  and c.ProductId = i.ProductID " +
                         " left join View_UnitCustomer VC on i.UnitNumber = VC.UnitNumber and c.ProductId = VC.ProductID " +
-                        "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 ";
+                        "where c.ProductId = @ProjectCode and c.ItemId = @UnitID And c.DocIsActive = 1 Order by 1 desc";
                     var result = conn.Query<CallTdefectVendorMObj>(sQuery, new { ProjectCode = ProjectCode, UnitID = UnitID }).FirstOrDefault();
                     return result;
                 }
@@ -683,7 +683,7 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode)
+        public List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode,string ProjectID)
         {
             using (IDbConnection conn = WebConnection)
             {
@@ -691,8 +691,9 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     string sQuery = "select top 20 * from View_UnitCustomer where productID in " +
                                     " (Select top 20 ProductId From callTDefect " +
-                                    " where ( UpdateUserID = @EmpCode or CreateUserId = @EmpCode ) And DocIsActive = 1 Order by 1 desc) AND TransferDate is null order by 1 desc";
-                    var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { EmpCode = EmpCode }).ToList();
+                                    " where ( UpdateUserID = @EmpCode or CreateUserId = @EmpCode ) And DocIsActive = 1 and ProductID = @ProjectID Order by 1 desc)" +
+                                    " AND TransferDate is null order by 1 desc";
+                    var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { EmpCode = EmpCode , ProjectID = ProjectID }).ToList();
                     return result;
 
                 }
