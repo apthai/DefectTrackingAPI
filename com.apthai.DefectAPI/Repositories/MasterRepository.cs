@@ -689,10 +689,9 @@ namespace com.apthai.DefectAPI.Repositories
             {
                 try
                 {
-                    string sQuery = "select top 20 * from View_UnitCustomer where productID in " +
-                                    " (Select top 20 ProductId From callTDefect " +
-                                    " where ( UpdateUserID = @EmpCode or CreateUserId = @EmpCode ) And DocIsActive = 1 and ProductID = @ProjectID Order by 1 desc)" +
-                                    " AND TransferDate is null order by 1 desc";
+                    string sQuery = " select top 20 View_UnitCustomer.* from View_UnitCustomer " +
+                                    " left join callTDefect on View_UnitCustomer.ProductID = callTDefect.ProductId and View_UnitCustomer.UnitNumber = callTDefect.ItemId " +
+                                    " where View_UnitCustomer.ProductID = @ProjectID and ( UpdateUserId = @EmpCode or CreateUserId = @EmpCode ) order by UpdateDate desc ";
                     var result = conn.Query<GetUnitByProjectReturnObj>(sQuery, new { EmpCode = EmpCode , ProjectID = ProjectID }).ToList();
                     return result;
 
