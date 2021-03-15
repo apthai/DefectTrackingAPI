@@ -407,6 +407,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.FloorPlan_X = 0;
                     tDefectDetail.FloorPlan_Y = 0;
                     tDefectDetail.TaskNo = taskNo;
+                    tDefectDetail.CreateDate = DateTime.Now;
                     tDefectDetail.TaskMarkName = "DummyData";
                     tDefectDetail.FloorPlanSet = data.FloorPlanSet;
                     tDefectDetail.CustRoundAuditNo = 1;
