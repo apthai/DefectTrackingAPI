@@ -23,7 +23,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Description { get; set; }
         public string ResourceTagCode { get; set; }
         public string ProjectCode { get; set; }
-        public string  UnitNo { get; set; }
+        public string UnitNo { get; set; }
         public string SerialNo { get; set; }
         public string DeviceID { get; set; }
         public IFormFile Files { get; set; }
@@ -93,7 +93,8 @@ namespace com.apthai.DefectAPI.CustomModel
         public string DeviceID { get; set; }
         public IFormFile Files { get; set; }
         public bool IsBF { get; set; }
-
+        public string EmpCode { get; set; }
+        public string DefectType { get; set; }
     }
     public partial class TDefectDetailWithStatus : callTDefectDetail
     {
@@ -101,7 +102,7 @@ namespace com.apthai.DefectAPI.CustomModel
 
     }
     public partial class CallresouceWithURL : callResource
-    { 
+    {
         public string URL { get; set; }
     }
     public partial class callTDefectWithStatus : callTDefect
@@ -110,7 +111,7 @@ namespace com.apthai.DefectAPI.CustomModel
 
     }
     public partial class CallTdefectCheckCustomer : callTDefect
-    { 
+    {
         public string CurrentCustomerFirstName { get; set; }
         public string CurrentCustomerLastName { get; set; }
     }
@@ -146,7 +147,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public List<CallTdefectDetailCustomShow> callTDefectDetail { get; set; }
     }
     public class CallTdefectMObj : callTDefect
-    { 
+    {
         public string PhaseID { get; set; }
         public string BlockID { get; set; }
         public string TowerID { get; set; }
@@ -166,7 +167,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public LCSignature LCSignature { get; set; }
     }
     public class CustomerSignature
-    { 
+    {
         public CallresouceWithURL BeforeSig { get; set; }
         public CallresouceWithURL AfterSig { get; set; }
         public CallresouceWithURL ReceiveSig { get; set; }
@@ -199,7 +200,7 @@ namespace com.apthai.DefectAPI.CustomModel
     {
         public string Project { get; set; }
     }
-    public class FloorObj 
+    public class FloorObj
     {
         public string FloorName { get; set; }
         public string URL { get; set; }
@@ -212,7 +213,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Floor { get; set; }
     }
     public class CallTdefectDetailCustom : callTDefectDetail
-    { 
+    {
         public string ComPoint_Id { get; set; }
         public string Point_Name { get; set; }
         public string Sub_Point { get; set; }
@@ -261,7 +262,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string StatusShow { get; set; }
     }
     public partial class PicInDetailObj
-    { 
+    {
         public string URL { get; set; }
         public int ResourceId { get; set; }
     }
@@ -352,7 +353,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string URL { get; set; }
     }
     public partial class PointURL : Point
-    { 
+    {
         public string ImageURL { get; set; }
     }
     public class GetUnitByProjectReturnObj : ViewUnitCustomer
@@ -527,7 +528,7 @@ namespace com.apthai.DefectAPI.CustomModel
     }
     public partial class Parameters
     {
-        public FirstRootSubParameters First {get;set;}
+        public FirstRootSubParameters First { get; set; }
         public SecondRootSubParameters Second { get; set; }
     }
     public partial class FirstRootSubParameters
