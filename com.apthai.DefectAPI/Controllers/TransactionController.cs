@@ -740,6 +740,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
 
         }
 
+
         [HttpPost]
         [Route("UpdateDefectHeaderCustomerNotSign")]
         [SwaggerOperation(Summary = "Update วันที่ลูกค้าจะเข้ามาตรวจบ้านบน Defect Header ",
@@ -2523,9 +2524,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพของลายเซ็นลูกค้าเวลาเซ็นรับบ้าน",
 Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
-        public async Task<object> uploadAcceptSignature([FromForm] ParamUploadImageCusSignature data)
+        public async Task<object> uploadReceiveSignature([FromForm] ParamUploadImageCusSignature data)
         {
-            int a = 0;
             //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
             //string StroageID = base._appSetting.StorageServerId.ToString();
 
@@ -2617,57 +2617,57 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         //TresourceData[i].StorageServerId = StorageData.StorageServerId;
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
-                        //if (InsertResult == true)
-                        //{
-                        //SuccessUploadCount++;
-                        //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
-                        //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
-                        //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
-                        //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
-                        //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
-                        //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
-                        //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
-                        //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
-                        //TresourceTransfer.UnitId = TresourceData[i].UnitId;
-                        ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
-                        //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
-                        //TresourceTransfer.Description = TresourceData[i].Description;
-                        //TresourceTransfer.IsActive = TresourceData[i].IsActive;
-                        //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
-                        //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
-                        //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
-                        //TresourceTransfer.DetailId = TresourceData[i].DetailId;
-                        //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
-                        //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
-                        //TresourceTransfer.Tag = TresourceData[i].Tag;
-                        //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
-                        //TresourceTransfer.RowState = TresourceData[i].RowState;
-                        //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
-                        //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
-                        //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
-                        //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
-                        //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
-                        //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                        //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
-                        //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                        //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
-                        //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
-                        //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
-                        //TresourceTransfer.FileLength = TresourceData[i].FileLength;
-                        //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
-                        //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
-                        //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
-                        //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
-                        //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
-                        //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
-                        //TresourceTransfer.TagState = TresourceData[i].TagState;
-                        //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
-
-                        //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
-                        //}
+                        callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
+                        if (defectModel == null)
+                        {
+                            ViewUnitCustomer viewUnitCustomer = _masterRepository.GetViewUnitCustomer(data.UnitNo, data.ProjectCode);
+                            callTDefect CreateDefect = new callTDefect();
+                            CreateDefect.RowState = "Original";
+                            CreateDefect.RowActive = true;
+                            CreateDefect.Client_Id = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "-" +
+                                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
+                            CreateDefect.Client_SyncDate = DateTime.Now;
+                            CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "/" +
+                                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
+                            CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
+                            CreateDefect.TDefectSubStatus = null;
+                            CreateDefect.ProductId = data.ProjectCode;
+                            CreateDefect.ItemId = data.UnitNo;
+                            CreateDefect.DeviceId = data.DeviceID;
+                            CreateDefect.CreateUserId = data.EmpCode;
+                            CreateDefect.UpdateUserId = null;
+                            CreateDefect.CustRoundAuditNo_Rn = 1;
+                            CreateDefect.CustRoundAuditDate_Last = DateTime.Now;
+                            CreateDefect.CustRoundAudit_JsonLog = null;
+                            CreateDefect.CreateDate = DateTime.Now;
+                            CreateDefect.UpdateDate = null;
+                            CreateDefect.Desciption = "0 Defect";
+                            CreateDefect.DocOpenDate = DateTime.Now;
+                            CreateDefect.DocDueCloseDate = DateTime.Now.AddDays(14);
+                            CreateDefect.MechanicId = null;
+                            CreateDefect.MechanicName = null;
+                            CreateDefect.SellerId = null;
+                            CreateDefect.SallerName = null;
+                            CreateDefect.DocReceiveUnitDate = DateTime.Now;
+                            CreateDefect.DocDueTransferDate = DateTime.Now;
+                            CreateDefect.ContactID = null;
+                            if (viewUnitCustomer != null)
+                            {
+                                CreateDefect.ContactName = viewUnitCustomer.FirstName + "  " + viewUnitCustomer.LastName;
+                            }
+                            else
+                            {
+                                CreateDefect.ContactName = "";
+                            }
+                            CreateDefect.DocIsActive = true;
+                            CreateDefect.DocIsExternalAudit = false;
+                            CreateDefect.DocIsReqUnitReceiveAttachFile = false;
+                            long DefectID = 0;
+                            bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
+                            CreateDefect.TDefectId = Convert.ToInt32(DefectID);
+                        }
                     }
                 }
-
             }
             else
             {
