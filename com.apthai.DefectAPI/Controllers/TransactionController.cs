@@ -1998,34 +1998,22 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
         public async Task<object> uploadSignature([FromForm] ParamUploadImageCusSignature data)
         {
-            int a = 0;
-            //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
-            //string StroageID = base._appSetting.StorageServerId.ToString();
-
-            //com.apthai.QISAPINETCore.Model.QIS.MStorageServer StorageData = _ResourceRepo.GetStorageServerDetail(StroageID);
-
-            //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
-            int count = 0;
-
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
-                // -- New ---- for Docker
                 var yearPath = DateTime.Now.Year;
                 var MonthPath = DateTime.Now.Month;
-                var dirPath1 = $"{yearPath}/{MonthPath}";
-                int dataPath = 0;
-                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads", dirPath1);
+                var dirPath1 = $"{yearPath}/{MonthPath}";     
+                var uploads = String.Format("{0}/{1}/{2}/Inkpad/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
+
 
                 string FileBinary;
 
 
                 long size = data.Files.Length;
-                string FileExtension = Path.GetExtension(data.Files.FileName);  // -------------- > Get File Extention
-                var fileName = data.Files.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+                var fileName = data.Files.FileName;
 
-                var dirPath = $"{yearPath}\\M{dataPath}";
 
                 // --- New Docker ----
                 if (!Directory.Exists(uploads))
@@ -2061,15 +2049,9 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                     }
 
-                    // -- -End New -----
-                    //if (System.IO.File.Exists(savePath.FullName))
                     if (System.IO.File.Exists(filePath))
                     {
-                        string FileExtention = Path.GetExtension(filePath);
-                        // ----- Old -----
-                        //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
-                        // ----- New Docker -----
-                        callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
+                        callResourceDate.FilePath = callResourceDate.FilePath = String.Format("{0}/{1}/Inkpad/{2}", data.ProjectCode, data.UnitNo, fileName);
                         callResourceDate.FileLength = size;
                         callResourceDate.CreateDate = DateTime.Now;
                         callResourceDate.RowState = "Original";
@@ -2092,6 +2074,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.Active = true;
 
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
+                        SuccessUploadCount++;
                         var requestMode = new RequestReportModel()
                         {
                             Folder = "defect",
@@ -2169,11 +2152,11 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                                 callResourcePDF.Active = true;
 
                                 bool insetPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                                SuccessUploadCount++;
                             }
                         }
                     }
                 }
-
             }
             else
             {
