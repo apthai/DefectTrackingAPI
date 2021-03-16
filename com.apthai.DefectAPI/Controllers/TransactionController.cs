@@ -2616,7 +2616,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         //TresourceData[i].RowSyncDate = DateTime.Now;
                         //TresourceData[i].StorageServerId = StorageData.StorageServerId;
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
                         callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
                         if (defectModel == null)
                         {
