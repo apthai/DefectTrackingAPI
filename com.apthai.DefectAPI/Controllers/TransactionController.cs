@@ -28,6 +28,8 @@ using com.apthai.CoreApp.Data.Services;
 using com.apthai.DefectAPI.HttpRestModel;
 using Microsoft.Extensions.Primitives;
 using Swashbuckle.AspNetCore.Annotations;
+using static com.apthai.DefectAPI.CustomModel.RequestReportModel;
+using System.Text;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -43,7 +45,6 @@ namespace com.apthai.DefectAPI.Controllers
         private readonly ISyncRepository _syncRepository;
         //private List<MStorageServer> _QISStorageServer;
         protected AppSettings _appSetting;
-
         public TransactionController(IAuthorizeService authorizeService, ITransactionRepository transactionRepository, ISyncRepository syncRepository)
         {
 
@@ -127,12 +128,12 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     callTDefectDetail LatestdefectDetail = _masterRepository.GetcallTDefectDetailByTDefectID_Sync(data.TDefectId);
                     DateTime Today = DateTime.Now;
-                    DateTime LatestTxnDate = Convert.ToDateTime(DateTime.Now.ToShortDateString()) ;
+                    DateTime LatestTxnDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
                     if (LatestdefectDetail != null)
                     {
                         LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString());
                     }
-                    
+
 
                     string DefectDocNo = "DefectDetail-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "-" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
@@ -283,7 +284,7 @@ namespace com.apthai.DefectAPI.Controllers
 
                                 }
                             }
-                            
+
                             if (LatestTxnDate.Date < Today.Date)
                             {
                                 List<callResource> callResources = _masterRepository.GetCallResourceAllSignatureByTdefect(data.TDefectId);
@@ -613,7 +614,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
 
                 var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
 
-               
+
                 return new
                 {
                     success = true,
@@ -721,7 +722,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 }
                 bool update = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
                 // --------------------------------------------------------------------
-                
+
 
                 var inserttdefectdetail = _transactionRepository.UpdateTdefect(callTDefect);
 
@@ -875,7 +876,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
         {
             try
             {
-                
+
                 List<callTDefectDetail> UpdateLists = new List<callTDefectDetail>();
                 for (int i = 0; i < data.TDefectDetailIDList.Count(); i++)
                 {
@@ -2089,62 +2090,87 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
                         callResourceDate.Active = true;
-                        //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                        //TresourceData[i].FileLength = size;
-                        //TresourceData[i].CreatedDate = DateTime.Now;
-                        //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
-                        //TresourceData[i].RowSyncDate = DateTime.Now;
-                        //TresourceData[i].StorageServerId = StorageData.StorageServerId;
+
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
+                        var requestMode = new RequestReportModel()
+                        {
+                            Folder = "defect",
+                            FileName = "RPT_ReceiveUnit",
+                            Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
+                            DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
+                            UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
+                            Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
+                            Parameters = new List<ParameterReport>()
+                            {
+                               new ParameterReport(){Name="@TDefectId",Value=callResourceDate.TDefectId.ToString()},
+                               new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
+                            }
+                        };
+                        var client = new HttpClient();
+                        var urlReport = UtilsProvider.AppSetting.ReportURL;
+                        var reportApiKey = Environment.GetEnvironmentVariable("ReportApiKey") ?? UtilsProvider.AppSetting.ReportApiKey;
+                        var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
+                        Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                        Content.Headers.Add("api_accesskey", reportApiKey);
+                        var response = await client.PostAsync(urlReport, Content);
 
-                        //if (InsertResult == true)
-                        //{
-                        //SuccessUploadCount++;
-                        //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
-                        //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
-                        //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
-                        //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
-                        //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
-                        //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
-                        //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
-                        //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
-                        //TresourceTransfer.UnitId = TresourceData[i].UnitId;
-                        ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
-                        //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
-                        //TresourceTransfer.Description = TresourceData[i].Description;
-                        //TresourceTransfer.IsActive = TresourceData[i].IsActive;
-                        //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
-                        //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
-                        //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
-                        //TresourceTransfer.DetailId = TresourceData[i].DetailId;
-                        //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
-                        //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
-                        //TresourceTransfer.Tag = TresourceData[i].Tag;
-                        //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
-                        //TresourceTransfer.RowState = TresourceData[i].RowState;
-                        //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
-                        //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
-                        //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
-                        //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
-                        //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
-                        //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                        //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
-                        //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                        //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
-                        //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
-                        //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
-                        //TresourceTransfer.FileLength = TresourceData[i].FileLength;
-                        //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
-                        //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
-                        //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
-                        //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
-                        //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
-                        //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
-                        //TresourceTransfer.TagState = TresourceData[i].TagState;
-                        //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
+                        ResponsetReportModel resultObject = new ResponsetReportModel();
+                        if (response.IsSuccessStatusCode)
+                        {
+                            response.EnsureSuccessStatusCode();
+                            var result = await response.Content.ReadAsStringAsync();
+                            resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                        }
 
-                        //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
-                        //}
+                        if (resultObject.Success)
+                        {
+                            var uploadPDFPath = String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
+                            if (!Directory.Exists(uploadPDFPath))
+                            {
+                                Directory.CreateDirectory(uploadPDFPath);
+                            }
+
+                            var filePDFPath = Path.Combine(String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo), resultObject.FileName);
+                            using (HttpClient clientDownload = new HttpClient())
+                            {
+                                using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
+                                using (HttpContent content = resDownload.Content)
+                                {
+                                    // ... Read the string.
+                                    var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                                    System.IO.File.WriteAllBytes(filePDFPath, result);
+                                }
+                            }
+
+
+                            if (System.IO.File.Exists(filePDFPath))
+                            {
+                                callResource callResourcePDF = new callResource();
+                                callResourcePDF.FilePath = String.Format("{0}/{1}/DefectDoc/{2}",data.ProjectCode,data.UnitNo, resultObject.FileName);
+                                callResourcePDF.FileLength = 0;
+                                callResourcePDF.CreateDate = DateTime.Now;
+                                callResourcePDF.RowState = "Original";
+                                callResourcePDF.ResourceType = 1;
+                                callResourcePDF.ResourceTagSubCode = "1";
+                                if (data.IsBF == true)
+                                {
+                                    callResourcePDF.ResourceTagCode = "CUST-BF";
+                                }
+                                else
+                                {
+                                    callResourcePDF.ResourceTagCode = "CUST-AF";
+                                }
+                                callResourcePDF.ResourceGroupSet = null;
+                                callResourcePDF.ResourceGroupOrder = 0;
+                                callResourcePDF.TDefectDetailId = 0;
+                                callResourcePDF.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
+                                callResourcePDF.ProjectNo = data.ProjectCode;
+                                callResourcePDF.SerialNo = data.UnitNo;
+                                callResourcePDF.Active = true;
+
+                                bool insetPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                            }
+                        }
                     }
                 }
 
@@ -2346,7 +2372,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [HttpPost("uploadSignatureManager")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพลานเซ็นของ Manager หรือ ",
-Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
+        Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
         public async Task<object> uploadSignatureManager([FromForm] ParamUploadImageCusSignature data)
         {
             int a = 0;
@@ -2523,7 +2549,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [HttpPost("uploadReceiveSignature")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพของลายเซ็นลูกค้าเวลาเซ็นรับบ้าน",
-Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
+        Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
         public async Task<object> uploadReceiveSignature([FromForm] ParamUploadImageCusSignature data)
         {
             //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
@@ -2691,7 +2717,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Route("DefectUploadedList")]
         [Consumes("multipart/form-data")]
         [SwaggerOperation(Summary = "ดึงข้อมูล รุปภาพ ของรายการ DefectDetail ด้วย DefectDetailID",
-Description = "ดึงข้อมูล รุปภาพทั้งหมด ของรายการ DefectDetail ด้วย DefectDetailID แยก Type ด้วย ResourceTagCode")]
+        Description = "ดึงข้อมูล รุปภาพทั้งหมด ของรายการ DefectDetail ด้วย DefectDetailID แยก Type ด้วย ResourceTagCode")]
         public async Task<object> DefectUploadList([FromForm] GetDefectUploadListParam data)
         {
             try
@@ -2732,7 +2758,7 @@ Description = "ดึงข้อมูล รุปภาพทั้งหม�
         [Route("uploadAfterPictureList")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
-Description = "Upload รูปภาพของรายการ TDefectDetail After แบบหลายๆรูปพร้อมกัน")]
+        Description = "Upload รูปภาพของรายการ TDefectDetail After แบบหลายๆรูปพร้อมกัน")]
         public async Task<object> uploadAfterPictureList([FromForm] ParamUploadImageAfterList data)
         {
             int a = 0;
@@ -2905,7 +2931,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
         [Route("uploadFloorPlanPicture")]
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
-Description = "Upload รูปภาพของรายการ TDefectDetail After แบบหลายๆรูปพร้อมกัน")]
+        Description = "Upload รูปภาพของรายการ TDefectDetail After แบบหลายๆรูปพร้อมกัน")]
         public async Task<object> uploadFloorPlanPicture([FromForm] ParamUploadFloorPlan data)
         {
             int a = 0;
@@ -3249,7 +3275,7 @@ Description = "Upload รูปภาพของรายการ TDefectDetai
         [HttpPost]
         [Route("DefectReport")]
         [SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
-Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
+        Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
         public async Task<object> DefectReport([FromBody] GenerateReportByTDefectId data)
         {
             try
@@ -3266,7 +3292,7 @@ Description = "Access Key ใช้ในการเรียหใช้ Funct
                 Content.Headers.Add("api_accesskey", ReportKey);
                 if (PostURL == null)
                 {
-                    PostURL = UtilsProvider.AppSetting.AuthorizeURL ;
+                    PostURL = UtilsProvider.AppSetting.AuthorizeURL;
                 }
                 var Respond = await client.PostAsync(PostURL, Content);
                 if (Respond.StatusCode != System.Net.HttpStatusCode.OK)

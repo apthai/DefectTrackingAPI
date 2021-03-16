@@ -541,5 +541,28 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Name { get; set; } // CustRoundAuditNo
         public string Value { get; set; } = "1";
     }
+
+    public partial class RequestReportModel
+    {
+        public string Folder { get; set; }
+        public string FileName { get; set; }
+        public string Server { get; set; }
+        public string DatabaseName { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public List<ParameterReport> Parameters { get; set; }
+        public class ParameterReport
+        {
+            public string Name { get; set; }
+            public string Value { get; set; }
+        }
+    }
+    public partial class ResponsetReportModel
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; }
+        public string URL { get; set; }
+        public string FileName { get; set; }
+    }
 }
 

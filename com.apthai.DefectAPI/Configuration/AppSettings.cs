@@ -19,5 +19,10 @@ namespace com.apthai.DefectAPI.Configuration
         public string ApiToken { get; set; }
         public string AuthorizeURL { get; set; }
         public string ReportURL { get; set; }
+        public string ReportServer { get; set; }
+        public string ReportUserName { get; set; }
+        public string ReportPassword { get; set; }
+        public string ReportDataBase { get; set; }
+        public string ReportApiKey { get; set; }
     }
 }
