@@ -2004,7 +2004,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             {
                 var yearPath = DateTime.Now.Year;
                 var MonthPath = DateTime.Now.Month;
-                var dirPath1 = $"{yearPath}/{MonthPath}";     
+                var dirPath1 = $"{yearPath}/{MonthPath}";
                 var uploads = String.Format("{0}/{1}/{2}/Inkpad/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
 
 
@@ -2074,87 +2074,14 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.Active = true;
 
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-                        SuccessUploadCount++;
-                        var requestMode = new RequestReportModel()
+
+                        bool resultUpload = await GenerateReport(new ParamReportModel()
                         {
-                            Folder = "defect",
-                            FileName = "RPT_ReceiveUnit",
-                            Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
-                            DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
-                            UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
-                            Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
-                            Parameters = new List<ParameterReport>()
-                            {
-                               new ParameterReport(){Name="@TDefectId",Value=callResourceDate.TDefectId.ToString()},
-                               new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
-                            }
-                        };
-                        var client = new HttpClient();
-                        var urlReport = UtilsProvider.AppSetting.ReportURL;
-                        var reportApiKey = Environment.GetEnvironmentVariable("ReportApiKey") ?? UtilsProvider.AppSetting.ReportApiKey;
-                        var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
-                        Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                        Content.Headers.Add("api_accesskey", reportApiKey);
-                        var response = await client.PostAsync(urlReport, Content);
-
-                        ResponsetReportModel resultObject = new ResponsetReportModel();
-                        if (response.IsSuccessStatusCode)
-                        {
-                            response.EnsureSuccessStatusCode();
-                            var result = await response.Content.ReadAsStringAsync();
-                            resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-                        }
-
-                        if (resultObject.Success)
-                        {
-                            var uploadPDFPath = String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
-                            if (!Directory.Exists(uploadPDFPath))
-                            {
-                                Directory.CreateDirectory(uploadPDFPath);
-                            }
-
-                            var filePDFPath = Path.Combine(String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo), resultObject.FileName);
-                            using (HttpClient clientDownload = new HttpClient())
-                            {
-                                using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
-                                using (HttpContent content = resDownload.Content)
-                                {
-                                    // ... Read the string.
-                                    var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                                    System.IO.File.WriteAllBytes(filePDFPath, result);
-                                }
-                            }
-
-
-                            if (System.IO.File.Exists(filePDFPath))
-                            {
-                                callResource callResourcePDF = new callResource();
-                                callResourcePDF.FilePath = String.Format("{0}/{1}/DefectDoc/{2}",data.ProjectCode,data.UnitNo, resultObject.FileName);
-                                callResourcePDF.FileLength = 0;
-                                callResourcePDF.CreateDate = DateTime.Now;
-                                callResourcePDF.RowState = "Original";
-                                callResourcePDF.ResourceType = 1;
-                                callResourcePDF.ResourceTagSubCode = "1";
-                                if (data.IsBF == true)
-                                {
-                                    callResourcePDF.ResourceTagCode = "CUST-BF";
-                                }
-                                else
-                                {
-                                    callResourcePDF.ResourceTagCode = "CUST-AF";
-                                }
-                                callResourcePDF.ResourceGroupSet = null;
-                                callResourcePDF.ResourceGroupOrder = 0;
-                                callResourcePDF.TDefectDetailId = 0;
-                                callResourcePDF.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
-                                callResourcePDF.ProjectNo = data.ProjectCode;
-                                callResourcePDF.SerialNo = data.UnitNo;
-                                callResourcePDF.Active = true;
-
-                                bool insetPDF = _syncRepository.InsertCallResource(callResourcePDF);
-                                SuccessUploadCount++;
-                            }
-                        }
+                            IsBF = data.IsBF,
+                            ProjectCode = data.ProjectCode,
+                            TDefectId = Int32.Parse(data.TDefectID),
+                            UnitNo = data.UnitNo
+                        });
                     }
                 }
             }
@@ -2535,12 +2462,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
         public async Task<object> uploadReceiveSignature([FromForm] ParamUploadImageCusSignature data)
         {
-            //List<TResource> TresourceData = JsonConvert.DeserializeObject<List<TResource>>(data.Resource);
-            //string StroageID = base._appSetting.StorageServerId.ToString();
-
-            //com.apthai.QISAPINETCore.Model.QIS.MStorageServer StorageData = _ResourceRepo.GetStorageServerDetail(StroageID);
-
-            //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
 
@@ -2552,7 +2473,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 var MonthPath = DateTime.Now.Month;
                 var dirPath1 = $"{yearPath}/{MonthPath}";
                 int dataPath = 0;
-                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads", dirPath1);
+                var uploads = String.Format("{0}/{1}/{2}/Inkpad/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
 
                 string FileBinary;
 
@@ -2596,15 +2517,10 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                     }
 
-                    // -- -End New -----
-                    //if (System.IO.File.Exists(savePath.FullName))
                     if (System.IO.File.Exists(filePath))
                     {
                         string FileExtention = Path.GetExtension(filePath);
-                        // ----- Old -----
-                        //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
-                        // ----- New Docker -----
-                        callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
+                        callResourceDate.FilePath = callResourceDate.FilePath = String.Format("{0}/{1}/Inkpad/{2}", data.ProjectCode, data.UnitNo, fileName);
                         callResourceDate.FileLength = size;
                         callResourceDate.CreateDate = DateTime.Now;
                         callResourceDate.RowState = "Original";
@@ -2618,12 +2534,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.ProjectNo = data.ProjectCode;
                         callResourceDate.SerialNo = data.UnitNo;
                         callResourceDate.Active = true;
-                        //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                        //TresourceData[i].FileLength = size;
-                        //TresourceData[i].CreatedDate = DateTime.Now;
-                        //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
-                        //TresourceData[i].RowSyncDate = DateTime.Now;
-                        //TresourceData[i].StorageServerId = StorageData.StorageServerId;
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                         callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
                         if (defectModel == null)
@@ -2673,6 +2583,14 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             long DefectID = 0;
                             bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
                             CreateDefect.TDefectId = Convert.ToInt32(DefectID);
+
+                            bool resultUpload = await GenerateReport(new ParamReportModel()
+                            {
+                                IsBF = data.IsBF,
+                                ProjectCode = data.ProjectCode,
+                                TDefectId = Int32.Parse(data.TDefectID),
+                                UnitNo = data.UnitNo
+                            });
                         }
                     }
                 }
@@ -3398,6 +3316,97 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
         //}
 
+        private async Task<bool> GenerateReport(ParamReportModel model)
+        {
+            try
+            {
+                bool insertPDF = false;
+                var requestMode = new RequestReportModel()
+                {
+                    Folder = "defect",
+                    FileName = "RPT_ReceiveUnit",
+                    Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
+                    DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
+                    UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
+                    Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
+                    Parameters = new List<ParameterReport>()
+                            {
+                               new ParameterReport(){Name="@TDefectId",Value=model.TDefectId.ToString()},
+                               new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
+                            }
+                };
+                var client = new HttpClient();
+                var urlReport = UtilsProvider.AppSetting.ReportURL;
+                var reportApiKey = Environment.GetEnvironmentVariable("ReportApiKey") ?? UtilsProvider.AppSetting.ReportApiKey;
+                var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
+                Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                Content.Headers.Add("api_accesskey", reportApiKey);
+                var response = await client.PostAsync(urlReport, Content);
+
+                ResponsetReportModel resultObject = new ResponsetReportModel();
+                if (response.IsSuccessStatusCode)
+                {
+                    response.EnsureSuccessStatusCode();
+                    var result = await response.Content.ReadAsStringAsync();
+                    resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                }
+
+                if (resultObject.Success)
+                {
+                    var uploadPDFPath = String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, model.ProjectCode, model.UnitNo);
+                    if (!Directory.Exists(uploadPDFPath))
+                    {
+                        Directory.CreateDirectory(uploadPDFPath);
+                    }
+
+                    var filePDFPath = Path.Combine(String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, model.ProjectCode, model.UnitNo), resultObject.FileName);
+                    using (HttpClient clientDownload = new HttpClient())
+                    {
+                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
+                        using (HttpContent content = resDownload.Content)
+                        {
+                            // ... Read the string.
+                            var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                            System.IO.File.WriteAllBytes(filePDFPath, result);
+                        }
+                    }
+
+
+                    if (System.IO.File.Exists(filePDFPath))
+                    {
+                        callResource callResourcePDF = new callResource();
+                        callResourcePDF.FilePath = String.Format("{0}/{1}/DefectDoc/{2}", model.ProjectCode, model.UnitNo, resultObject.FileName);
+                        callResourcePDF.FileLength = 0;
+                        callResourcePDF.CreateDate = DateTime.Now;
+                        callResourcePDF.RowState = "Original";
+                        callResourcePDF.ResourceType = 1;
+                        callResourcePDF.ResourceTagSubCode = "1";
+                        if (model.IsBF == true)
+                        {
+                            callResourcePDF.ResourceTagCode = "CUST-BF";
+                        }
+                        else
+                        {
+                            callResourcePDF.ResourceTagCode = "CUST-AF";
+                        }
+                        callResourcePDF.ResourceGroupSet = null;
+                        callResourcePDF.ResourceGroupOrder = 0;
+                        callResourcePDF.TDefectDetailId = 0;
+                        callResourcePDF.TDefectId = (int)model.TDefectId;
+                        callResourcePDF.ProjectNo = model.ProjectCode;
+                        callResourcePDF.SerialNo = model.UnitNo;
+                        callResourcePDF.Active = true;
+
+                        insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                    }
+                }
+                return insertPDF;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 
 

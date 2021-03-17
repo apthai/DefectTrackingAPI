@@ -564,5 +564,13 @@ namespace com.apthai.DefectAPI.CustomModel
         public string URL { get; set; }
         public string FileName { get; set; }
     }
+
+    public partial class ParamReportModel
+    {
+        public int TDefectId { get; set; }
+        public string ProjectCode { get; set; }
+        public string UnitNo { get; set; }
+        public bool IsBF { get; set; }
+    }
 }
 
