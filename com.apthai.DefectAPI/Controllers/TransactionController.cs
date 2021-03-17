@@ -3405,21 +3405,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourcePDF.FileLength = 0;
                         callResourcePDF.CreateDate = DateTime.Now;
                         callResourcePDF.RowState = "Original";
-                        callResourcePDF.ResourceType = model.ResourceType;
+                        callResourcePDF.ResourceType = 8;
                         callResourcePDF.ResourceTagSubCode = "1";
-                        if (model.IsBF == true)
-                        {
-                            callResourcePDF.ResourceTagCode = "CUST-BF";
-                        }
-                        else
-                        {
-                            callResourcePDF.ResourceTagCode = "CUST-AF";
-                        }
-
-                        if(model.ResourceType == 6)
-                        {
-                            callResourcePDF.ResourceTagCode = "CUST-RECE";
-                        }
                         callResourcePDF.ResourceGroupSet = null;
                         callResourcePDF.ResourceGroupOrder = 0;
                         callResourcePDF.TDefectDetailId = 0;
