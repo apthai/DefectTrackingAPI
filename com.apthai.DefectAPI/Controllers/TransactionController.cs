@@ -2081,8 +2081,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             IsBF = data.IsBF,
                             ProjectCode = data.ProjectCode,
                             TDefectId = Int32.Parse(data.TDefectID),
-                            UnitNo = data.UnitNo,
-                            ResourceType = 8
+                            UnitNo = data.UnitNo
                         });
                         pathUrlSig = callResourceDate.FilePath;
                     }
@@ -2604,8 +2603,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             IsBF = data.IsBF,
                             ProjectCode = data.ProjectCode,
                             TDefectId = Int32.Parse(data.TDefectID),
-                            UnitNo = data.UnitNo,
-                            ResourceType = 6
+                            UnitNo = data.UnitNo
                         });
 
                         pathUrlSig = callResourceDate.FilePath;

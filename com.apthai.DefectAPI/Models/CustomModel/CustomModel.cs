@@ -571,8 +571,6 @@ namespace com.apthai.DefectAPI.CustomModel
         public string ProjectCode { get; set; }
         public string UnitNo { get; set; }
         public bool IsBF { get; set; }
-        public int ResourceType { get; set; }
-
     }
 }
 
