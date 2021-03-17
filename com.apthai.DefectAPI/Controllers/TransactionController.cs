@@ -2014,7 +2014,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 long size = data.Files.Length;
                 var fileName = data.Files.FileName;
 
-
                 // --- New Docker ----
                 if (!Directory.Exists(uploads))
                 {
