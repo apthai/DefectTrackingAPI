@@ -1996,7 +1996,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
 Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
-        public async Task<object> uploadSignature([FromForm] ParamUploadImageCusSignature data)
+        public async Task<object> uploadSignature([FromForm] ParamUploadImageCusSignature    data)
         {
             int SuccessUploadCount = 0;
             callResource callResourceDate = new callResource();
@@ -2057,6 +2057,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.RowState = "Original";
                         callResourceDate.ResourceType = 1;
                         callResourceDate.ResourceTagSubCode = "1";
+                        callResourceDate.ResourceMineType = data.Files.ContentType;
                         if (data.IsBF == true)
                         {
                             callResourceDate.ResourceTagCode = "CUST-BF";
@@ -2527,6 +2528,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourceDate.ResourceType = 6;
                         callResourceDate.ResourceTagSubCode = "1";
                         callResourceDate.ResourceTagCode = "CUST-RECE";
+                        callResourceDate.ResourceMineType = data.Files.ContentType;
                         callResourceDate.ResourceGroupSet = null;
                         callResourceDate.ResourceGroupOrder = 0;
                         callResourceDate.TDefectDetailId = 0;
@@ -2584,14 +2586,15 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
                             CreateDefect.TDefectId = Convert.ToInt32(DefectID);
 
-                            bool resultUpload = await GenerateReport(new ParamReportModel()
-                            {
-                                IsBF = data.IsBF,
-                                ProjectCode = data.ProjectCode,
-                                TDefectId = Int32.Parse(data.TDefectID),
-                                UnitNo = data.UnitNo
-                            });
+
                         }
+                        bool resultUpload = await GenerateReport(new ParamReportModel()
+                        {
+                            IsBF = data.IsBF,
+                            ProjectCode = data.ProjectCode,
+                            TDefectId = Int32.Parse(data.TDefectID),
+                            UnitNo = data.UnitNo
+                        });
                     }
                 }
             }
