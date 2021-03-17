@@ -2082,7 +2082,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             ProjectCode = data.ProjectCode,
                             TDefectId = Int32.Parse(data.TDefectID),
                             UnitNo = data.UnitNo,
-                            ResourceType = 1
+                            ResourceType = 8
                         });
                         pathUrlSig = callResourceDate.FilePath;
                     }
