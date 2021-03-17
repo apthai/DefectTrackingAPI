@@ -1999,6 +1999,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         public async Task<object> uploadSignature([FromForm] ParamUploadImageCusSignature    data)
         {
             int SuccessUploadCount = 0;
+            var pathUrlSig = "";
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -2075,13 +2076,15 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                         bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
-                        bool resultUpload = await GenerateReport(new ParamReportModel()
+                        var resultUploadPDF = await GenerateReport(new ParamReportModel()
                         {
                             IsBF = data.IsBF,
                             ProjectCode = data.ProjectCode,
                             TDefectId = Int32.Parse(data.TDefectID),
-                            UnitNo = data.UnitNo
+                            UnitNo = data.UnitNo,
+                            ResourceType = 1
                         });
+                        pathUrlSig = callResourceDate.FilePath;
                     }
                 }
             }
@@ -2095,11 +2098,20 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
-            callResource Result = new callResource();
+            if (String.IsNullOrEmpty(pathUrlSig))
+            {
+                return new
+                {
+                    success = false,
+                    data = pathUrlSig,
+                    message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
+                };
+            }
+
             return new
             {
                 success = true,
-                data = Result,
+                data = pathUrlSig,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2464,7 +2476,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             int SuccessUploadCount = 0;
             int count = 0;
-
+            var pathUrlSig = "";
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -2587,31 +2599,43 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                         }
-                        bool resultUpload = await GenerateReport(new ParamReportModel()
+                        var resultUploadPDF = await GenerateReport(new ParamReportModel()
                         {
                             IsBF = data.IsBF,
                             ProjectCode = data.ProjectCode,
                             TDefectId = Int32.Parse(data.TDefectID),
-                            UnitNo = data.UnitNo
+                            UnitNo = data.UnitNo,
+                            ResourceType = 6
                         });
+
+                        pathUrlSig = callResourceDate.FilePath;
                     }
                 }
             }
             else
             {
-                callResource x = new callResource();
                 return new
                 {
                     success = false,
-                    data = x,
+                    data = pathUrlSig,
+                    message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
+                };
+            }        
+
+            if (String.IsNullOrEmpty(pathUrlSig))
+            {
+                return new
+                {
+                    success = false,
+                    data = pathUrlSig,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
             }
-            callResource Result = new callResource();
+
             return new
             {
                 success = true,
-                data = Result,
+                data = pathUrlSig,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -3381,7 +3405,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourcePDF.FileLength = 0;
                         callResourcePDF.CreateDate = DateTime.Now;
                         callResourcePDF.RowState = "Original";
-                        callResourcePDF.ResourceType = 1;
+                        callResourcePDF.ResourceType = model.ResourceType;
                         callResourcePDF.ResourceTagSubCode = "1";
                         if (model.IsBF == true)
                         {
@@ -3390,6 +3414,11 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         else
                         {
                             callResourcePDF.ResourceTagCode = "CUST-AF";
+                        }
+
+                        if(model.ResourceType == 6)
+                        {
+                            callResourcePDF.ResourceTagCode = "CUST-RECE";
                         }
                         callResourcePDF.ResourceGroupSet = null;
                         callResourcePDF.ResourceGroupOrder = 0;
@@ -3400,6 +3429,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         callResourcePDF.Active = true;
 
                         insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                        return insertPDF;
                     }
                 }
                 return insertPDF;
