@@ -6,9 +6,10 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using com.apthai.DefectAPI;
 using com.apthai.DefectAPI.CustomModel;
+using Microsoft.AspNetCore.Http;
 using Minio;
 
-namespace com.apthai.APTimeStamp.Services
+namespace com.apthai.DefectAPI.Services
 {
     public partial class MinioServices 
     {
@@ -308,6 +309,33 @@ namespace com.apthai.APTimeStamp.Services
                                         }
                                     });
             return pathTempFile + tempFilename;
+        }
+
+        public async Task<FileUploadResult> UploadFile(IFormFile file, string dirPath, string fileName)
+        {
+            MinioClient minio;           
+            if (_withSSL == true)
+                minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey).WithSSL();
+            else
+                minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey);
+
+            bool bucketExisted = await minio.BucketExistsAsync(_defaultBucket);
+            if (!bucketExisted)
+                await minio.MakeBucketAsync(_defaultBucket);
+
+            var stream = file.OpenReadStream();
+            string objectName = $"{dirPath}" + "/" + $"{fileName}";
+            await minio.PutObjectAsync(_defaultBucket, objectName, stream, file.Length, file.ContentType);
+
+            // expire in 1 day
+            var url = await minio.PresignedGetObjectAsync(_defaultBucket, objectName, (int)TimeSpan.FromHours(_expireHours).TotalSeconds);
+            url = ReplaceWithPublicURL(url);
+            return new FileUploadResult()
+            {
+                Name = objectName,
+                BucketName = _defaultBucket,
+                Url = url
+            };
         }
 
         private string ReplaceWithPublicURL(string url)

@@ -33,7 +33,7 @@
         "Minio_TempBucket": "upload",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ReportUserName": "sa",
-        "Minio_Endpoint": "192.168.2.2910000",
+        "Minio_Endpoint": "192.168.2.29:10000",
         "ReportPassword": "P@ssw0rd"
       }
     },
