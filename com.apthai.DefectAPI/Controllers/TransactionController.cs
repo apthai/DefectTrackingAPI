@@ -1996,7 +1996,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Consumes("multipart/form-data")] // บอก Swagger ว่าเป็น Multipath 
         [SwaggerOperation(Summary = "Uploadรูปภาพ หรือ ไฟล์ PDF",
 Description = "ลบข้อมูล T_resource จาก Database ของ Qis-SYnc")]
-        public async Task<object> uploadSignature([FromForm] ParamUploadImageCusSignature    data)
+        public async Task<object> uploadSignature([FromForm] ParamUploadImageCusSignature data)
         {
             int SuccessUploadCount = 0;
             var pathUrlSig = "";
@@ -2618,7 +2618,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     data = pathUrlSig,
                     message = string.Format(" Upload File Fail Error Binary is Null : 0 Uploaded")
                 };
-            }        
+            }
 
             if (String.IsNullOrEmpty(pathUrlSig))
             {
