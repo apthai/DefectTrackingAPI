@@ -3361,10 +3361,10 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 };
                 var client = new HttpClient();
                 var urlReport = UtilsProvider.AppSetting.ReportURL;
-                var reportApiKey = Environment.GetEnvironmentVariable("ReportApiKey") ?? UtilsProvider.AppSetting.ReportApiKey;
+                var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
                 var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                Content.Headers.Add("api_accesskey", reportApiKey);
+                Content.Headers.Add("api_accesskey", reportKey);
                 var response = await client.PostAsync(urlReport, Content);
 
                 ResponsetReportModel resultObject = new ResponsetReportModel();
