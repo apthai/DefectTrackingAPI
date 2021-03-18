@@ -24,5 +24,11 @@ namespace com.apthai.DefectAPI.Configuration
         public string ReportPassword { get; set; }
         public string ReportDataBase { get; set; }
         public string ReportApiKey { get; set; }
+        public string MinioEndpoint { get; set; }
+        public string MinioAccessKey { get; set; }
+        public string MinioSecretKey { get; set; }
+        public string MinioDefaultBucket { get; set; }
+        public string MinioTempBucketName { get; set; }
+        public string MinioWithSSL { get; set; }
     }
 }

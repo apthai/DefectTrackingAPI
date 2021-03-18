@@ -572,5 +572,12 @@ namespace com.apthai.DefectAPI.CustomModel
         public string UnitNo { get; set; }
         public bool IsBF { get; set; }
     }
+
+    public partial class FileUploadResult
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string BucketName { get; set; }
+    }
 }
 
