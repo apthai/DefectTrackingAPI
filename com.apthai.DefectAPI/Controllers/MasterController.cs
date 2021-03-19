@@ -670,7 +670,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //        data = "AccessKey is Invalid!"
                 //    };
                 //}
-                string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
+                string WebBaseUrl = Environment.GetEnvironmentVariable("Minio_Endpoint");
                 CallTdefectMObj callTDefect = _masterRepository.GetCallTDefectByUnitID_Sync(data.ProjectCode, data.UnitNo);
                 if (callTDefect == null)
                 {
