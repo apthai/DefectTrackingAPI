@@ -2710,7 +2710,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                     string FileBinary;
 
-
+                    var resultMinio = await minio.UploadFile(data.Files[i], dirPath1, data.Files[i].FileName);
                     long size = data.Files[i].Length;
                     string FileExtension = Path.GetExtension(data.Files[i].FileName);  // -------------- > Get File Extention
                     var fileName = data.Files[i].FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
@@ -2772,6 +2772,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             callResourceDate.ProjectNo = data.ProjectCode;
                             callResourceDate.SerialNo = data.UnitNo;
                             callResourceDate.Active = true;
+                            callResourceDate.Description = JsonConvert.SerializeObject(resultMinio).ToString();
                             //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                             //TresourceData[i].FileLength = size;
                             //TresourceData[i].CreatedDate = DateTime.Now;
