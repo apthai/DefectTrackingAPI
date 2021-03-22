@@ -2032,7 +2032,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         string extension = Path.GetExtension(filePath);
                         string path = Path.GetDirectoryName(filePath);
                         string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
+                        string tempFileName = string.Format("{0}({1})", fileNameOnly,extension);
                         newFullPath = Path.Combine(path, tempFileName + extension);
                         using (var fileStream = new FileStream(newFullPath, FileMode.Create))
                         {

@@ -44,20 +44,34 @@
       "environmentVariables": {
         "ReportKey": "PortalReportViewerKey2021",
         "DefaultAuthorizeConnection": "Data Source=192.168.0.41;Initial Catalog=db_AuthorizationCenter;User ID=sa;Password=P@ssw0rd; Application Name=ApiSyncAuth",
+        "Minio_WithSSL": "Value",
         "DefaultSyncConnection": "Data Source=192.168.2.52;Initial Catalog=db_QIS_Sync;User ID=sa;Password=P@ssw0rd; Application Name=ApiSync",
+        "Minio_SecretKey": "Cd63MdJwZ5+AtlawzSQBqpdPwIRmYtKzmarO6XMI",
         "AuthorizeEndpointUrlAddress": "http://192.168.0.40/authorizewebservice/Authorize.asmx?wsdl",
         "WebUrl": "http://192.168.0.17/CRM3Phase2/",
+        "Minio_AccessKey": "JRMZI4PG5IALUWZ2VO6I",
         "DefaultConnection": "Data Source=192.168.0.41;Initial Catalog=defecttracking;User ID=sa;Password=P@ssw0rd; Application Name=WebAPI_com.apthai.CoreApp",
+        "Minio_DefaultBucket": "upload",
         "AuthenticationURL": "http://58.137.32.228/DotNetCoreAuth/Api/authorize/",
+        "Minio_TempBucket": "upload",
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "BaseURL": "http://test-defectapi.apthai.com"
+        "BaseURL": "http://test-defectapi.apthai.com",
+        "Minio_Endpoint": "192.168.2.29:10000"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values"
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values",
+      "environmentVariables": {
+        "Minio_WithSSL": "false",
+        "Minio_SecretKey": "Cd63MdJwZ5+AtlawzSQBqpdPwIRmYtKzmarO6XMI",
+        "Minio_AccessKey": "JRMZI4PG5IALUWZ2VO6I",
+        "Minio_DefaultBucket": "upload",
+        "Minio_TempBucket": "upload",
+        "Minio_Endpoint": "192.168.2.29:10000"
+      }
     }
   }
 }
