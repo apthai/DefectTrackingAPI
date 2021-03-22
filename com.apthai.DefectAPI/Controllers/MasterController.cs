@@ -852,19 +852,16 @@ namespace com.apthai.DefectAPI.Controllers
         }
 
         [HttpPost]
-        [Route("GetDefectDetail")]
-        public async Task<object> GetDefectDetail([FromBody] callTDefectDetailObj data)
+        [Route("GetDefectImagesDetail")]
+        public async Task<object> GetDefectImagesDetail([FromBody] callTDefectImagesDetailObj data)
         {
             try
             {
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
-                callTDefectDetail callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
+                CallTDefectImagesDetailModel returnModel = new CallTDefectImagesDetailModel();
 
-                CallTDefectDetailModel returnModel = new CallTDefectDetailModel();
-                returnModel.CallTDefectDetail = callTDefectDetails;
-
-                List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails.TDefectDetailId);
-                List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails.TDefectDetailId);
+                List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(data.TDefectDetailID);
+                List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(data.TDefectDetailID);
                 List<PicInDetailObj> BFObject = new List<PicInDetailObj>();
                 List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
                 minio = new MinioServices();

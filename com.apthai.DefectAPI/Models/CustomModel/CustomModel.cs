@@ -582,9 +582,8 @@ namespace com.apthai.DefectAPI.CustomModel
         public string BucketName { get; set; }
     }
 
-    public partial class CallTDefectDetailModel
+    public partial class CallTDefectImagesDetailModel
     {
-        public callTDefectDetail CallTDefectDetail { get; set;}
         public List<PicInDetailObj> BeforePic { get; set; }
         public List<PicInDetailObj> AfterPic { get; set; }
 

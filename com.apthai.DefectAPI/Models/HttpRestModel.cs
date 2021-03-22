@@ -171,7 +171,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
     {
         public int TDefectID { get; set; }
     }
-    public class callTDefectDetailObj
+    public class callTDefectImagesDetailObj
     {
         public int TDefectDetailID { get; set; }
     }
