@@ -110,7 +110,6 @@ namespace com.apthai.DefectAPI.Services
             try
             {
 
-
                 MinioClient minio;
                 if (_withSSL)
                     minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey).WithSSL();

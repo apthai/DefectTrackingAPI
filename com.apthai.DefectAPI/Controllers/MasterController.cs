@@ -867,13 +867,14 @@ namespace com.apthai.DefectAPI.Controllers
                 List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails.TDefectDetailId);
                 List<PicInDetailObj> BFObject = new List<PicInDetailObj>();
                 List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
+                minio = new MinioServices();
                 if (BF.Count > 0)
                 {
 
                     for (int i = 0; i < BF.Count(); i++)
                     {
                         PicInDetailObj BFURL = new PicInDetailObj();
-                        BFURL.URL = await minio.GetFileUrlAsync(bucketName, BF[i].FilePath);
+                        BFURL.URL = await minio.GetFileUrlAsync(bucketName, BF[0].FilePath);
                         BFURL.ResourceId = BF[i].ResourceId;
                         BFObject.Add(BFURL);
                     }
