@@ -859,7 +859,7 @@ namespace com.apthai.DefectAPI.Controllers
             {
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 callTDefectDetail callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
-                
+
                 CallTDefectDetailModel returnModel = new CallTDefectDetailModel();
                 returnModel.CallTDefect = callTDefectDetails;
 
@@ -869,7 +869,7 @@ namespace com.apthai.DefectAPI.Controllers
                 List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
                 if (BF.Count > 0)
                 {
-                 
+
                     for (int i = 0; i < BF.Count(); i++)
                     {
                         PicInDetailObj BFURL = new PicInDetailObj();
