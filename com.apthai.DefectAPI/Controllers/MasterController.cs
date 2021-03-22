@@ -27,6 +27,7 @@ using com.apthai.CoreApp.Data.Services;
 using com.apthai.DefectAPI.HttpRestModel;
 using Microsoft.Extensions.Primitives;
 using Swashbuckle.AspNetCore.Annotations;
+using com.apthai.DefectAPI.Services;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -39,6 +40,7 @@ namespace com.apthai.DefectAPI.Controllers
         private readonly IMasterRepository _masterRepository;
         //private List<MStorageServer> _QISStorageServer;
         protected AppSettings _appSetting;
+        MinioServices minio;
 
         public MasterController(IAuthorizeService authorizeService)
         {
@@ -71,7 +73,7 @@ namespace com.apthai.DefectAPI.Controllers
         //        //}
         //        //#endregion
         //        List<callResource> callResources = _masterRepository.GetSignatureCallResourceByTdefectID(TDefectID);
-                
+
         //        return new
         //        {
         //            success = true,
@@ -237,10 +239,10 @@ namespace com.apthai.DefectAPI.Controllers
                 //#endregion
                 if (data.IsRecent == true)
                 {
-                    List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode,data.ProjectID);
+                    List<GetUnitByProjectReturnObj> callTDefects = _masterRepository.GetRecentcallTDefect_Sync(data.EmpCode, data.ProjectID);
                     for (int i = 0; i < callTDefects.Count(); i++)
                     {
-                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(callTDefects[i].UnitNumber,Convert.ToInt32(data.ProjectID));
+                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(callTDefects[i].UnitNumber, Convert.ToInt32(data.ProjectID));
                         if (callTDefect != null)
                         {
                             callTDefects[i].TDefectId = callTDefect.TDefectId;
@@ -260,7 +262,7 @@ namespace com.apthai.DefectAPI.Controllers
                             callTDefects[i].TDefectId = 0;
                             callTDefects[i].IsNew = true;
                         }
-                        
+
                     }
 
                     return new
@@ -275,7 +277,7 @@ namespace com.apthai.DefectAPI.Controllers
 
                     for (int i = 0; i < Units.Count(); i++)
                     {
-                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(Units[i].UnitNumber,Convert.ToInt32(data.ProjectID));
+                        CallTdefectCheckCustomer callTDefect = _masterRepository.GetCallTDefectByUnitNumberAndProject_Sync(Units[i].UnitNumber, Convert.ToInt32(data.ProjectID));
                         if (callTDefect != null)
                         {
                             Units[i].TDefectId = callTDefect.TDefectId;
@@ -295,7 +297,7 @@ namespace com.apthai.DefectAPI.Controllers
                             Units[i].TDefectId = 0;
                             Units[i].IsNew = true;
                         }
-                        
+
                     }
 
                     return new
@@ -692,7 +694,7 @@ namespace com.apthai.DefectAPI.Controllers
                 {
                     callTDefect.StatusShow = "Finish";
                 }
-                else if (callTDefect.TDefectStatus == "004" || callTDefect.TDefectStatus == "005" )
+                else if (callTDefect.TDefectStatus == "004" || callTDefect.TDefectStatus == "005")
                 {
                     callTDefect.StatusShow = "Close";
                 }
@@ -740,7 +742,7 @@ namespace com.apthai.DefectAPI.Controllers
                 //    }
                 //}
                 //List<GetCallTransactionDefectObj> Return = new List<GetCallTransactionDefectObj>();
-               
+
                 List<CallTdefectDetailCustom> callTDefectDetails = _masterRepository.GetcallTDefectDetailShow_Sync(callTDefect.TDefectId);
                 List<CallTdefectDetailCustomShow> DefectDetailCustomList = new List<CallTdefectDetailCustomShow>();
                 for (int a = 0; a < callTDefectDetails.Count(); a++)
@@ -816,40 +818,16 @@ namespace com.apthai.DefectAPI.Controllers
 
                     List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
                     List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails[a].TDefectDetailId);
-                    List<PicInDetailObj> BFObject = new List<PicInDetailObj>();
-                    List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
                     if (BF.Count > 0)
                     {
-                        
-                        for (int i = 0; i < BF.Count(); i++)
-                        {
-                            PicInDetailObj BFURL = new PicInDetailObj();
-                            BFURL.URL = WebBaseUrl + "/" + BF[i].FilePath;
-                            BFURL.ResourceId = BF[i].ResourceId;
-                            BFObject.Add(BFURL);
-                        }
-                        obj.BeforePic = BFObject;
+                        obj.IsHasBFPic = true;
                     }
-                    else
-                    {
-                        obj.BeforePic = new List<PicInDetailObj>();
-                    }
+
                     if (AF.Count > 0)
                     {
-                        for (int i = 0; i < AF.Count(); i++)
-                        {
-                            PicInDetailObj AFURL = new PicInDetailObj();
-                            AFURL.URL = WebBaseUrl + "/" + AF[i].FilePath;
-                            AFURL.ResourceId = AF[i].ResourceId;
-                            AFObject.Add(AFURL);
-                        }
-                        obj.AfterPic = AFObject;
+                        obj.IsHasAFPic = true;
                     }
-                    else
-                    {
-                        obj.AfterPic = new List<PicInDetailObj>();
 
-                    }
                     DefectDetailCustomList.Add(obj);
                 }
                 GetCallTransactionDefectObj ReturnObj = new GetCallTransactionDefectObj();
@@ -871,6 +849,68 @@ namespace com.apthai.DefectAPI.Controllers
                 return StatusCode(500, "Internal server error");
             }
 
+        }
+
+        [HttpPost]
+        [Route("GetDefectDetail")]
+        public async Task<object> GetDefectDetail([FromBody] callTDefectDetailObj data)
+        {
+            try
+            {
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                callTDefectDetail callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
+                
+                CallTDefectDetailModel returnModel = new CallTDefectDetailModel();
+                returnModel.CallTDefect = callTDefectDetails;
+
+                List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails.TDefectDetailId);
+                List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails.TDefectDetailId);
+                List<PicInDetailObj> BFObject = new List<PicInDetailObj>();
+                List<PicInDetailObj> AFObject = new List<PicInDetailObj>();
+                if (BF.Count > 0)
+                {
+                 
+                    for (int i = 0; i < BF.Count(); i++)
+                    {
+                        PicInDetailObj BFURL = new PicInDetailObj();
+                        BFURL.URL = await minio.GetFileUrlAsync(bucketName, BF[i].FilePath);
+                        BFURL.ResourceId = BF[i].ResourceId;
+                        BFObject.Add(BFURL);
+                    }
+                    returnModel.BeforePic = BFObject;
+                }
+                else
+                {
+                    returnModel.BeforePic = new List<PicInDetailObj>();
+                }
+                if (AF.Count > 0)
+                {
+                    for (int i = 0; i < AF.Count(); i++)
+                    {
+                        PicInDetailObj AFURL = new PicInDetailObj();
+                        AFURL.URL = await minio.GetFileUrlAsync(bucketName, AF[i].FilePath);
+                        AFURL.ResourceId = AF[i].ResourceId;
+                        AFObject.Add(AFURL);
+                    }
+                    returnModel.AfterPic = AFObject;
+                }
+                else
+                {
+                    returnModel.AfterPic = new List<PicInDetailObj>();
+
+                }
+                return new
+                {
+                    success = true,
+                    data = returnModel
+                };
+            }
+
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpPost]
@@ -916,7 +956,7 @@ namespace com.apthai.DefectAPI.Controllers
                 string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
                 List<PicInDetailObj> ReturnObj = new List<PicInDetailObj>();
                 if (callResources.Count > 0)
-                    {
+                {
 
                     for (int i = 0; i < callResources.Count(); i++)
                     {
@@ -971,7 +1011,7 @@ namespace com.apthai.DefectAPI.Controllers
 
         [HttpPost]
         [Route("GetMasterFloorPlanImage")]
-        public async Task<object> GetMasterFloorPlanImage([FromBody] GetFloorPlan data )
+        public async Task<object> GetMasterFloorPlanImage([FromBody] GetFloorPlan data)
         {
             try
             {
@@ -1013,7 +1053,7 @@ namespace com.apthai.DefectAPI.Controllers
                 {
 
                 }
-                
+
             }
             catch (Exception ex)
             {
