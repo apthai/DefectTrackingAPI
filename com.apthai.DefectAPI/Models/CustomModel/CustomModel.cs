@@ -260,6 +260,8 @@ namespace com.apthai.DefectAPI.CustomModel
         public List<PicInDetailObj> BeforePic { get; set; }
         public List<PicInDetailObj> AfterPic { get; set; }
         public string StatusShow { get; set; }
+        public bool IsHasBFPic { get; set; }
+        public bool IsHasAFPic { get; set; }
     }
     public partial class PicInDetailObj
     {
@@ -578,6 +580,14 @@ namespace com.apthai.DefectAPI.CustomModel
         public string Name { get; set; }
         public string Url { get; set; }
         public string BucketName { get; set; }
+    }
+
+    public partial class CallTDefectDetailModel
+    {
+        public callTDefectDetail CallTDefect { get; set;}
+        public List<PicInDetailObj> BeforePic { get; set; }
+        public List<PicInDetailObj> AfterPic { get; set; }
+
     }
 }
 

@@ -107,17 +107,26 @@ namespace com.apthai.DefectAPI.Services
 
         public async Task<string> GetFileUrlAsync(string bucket, string name)
         {
-            MinioClient minio;
-            if (_withSSL)
-                minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey).WithSSL();
-            else
-                minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey);
+            try
+            {
 
-            var url = await minio.PresignedGetObjectAsync(bucket, name, (int)TimeSpan.FromHours(_expireHours).TotalSeconds);
-            //url = (!string.IsNullOrEmpty(_publicURL)) ? url.Replace(_minioEndpoint, _publicURL) : url;
-            url = ReplaceWithPublicURL(url);
 
-            return url;
+                MinioClient minio;
+                if (_withSSL)
+                    minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey).WithSSL();
+                else
+                    minio = new MinioClient(_minioEndpoint, _minioAccessKey, _minioSecretKey);
+
+                var url = await minio.PresignedGetObjectAsync(bucket, name, (int)TimeSpan.FromHours(_expireHours).TotalSeconds);
+                //url = (!string.IsNullOrEmpty(_publicURL)) ? url.Replace(_minioEndpoint, _publicURL) : url;
+                url = ReplaceWithPublicURL(url);
+
+                return url;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
         }
 
         public async Task<Stream> GetStreamFromUrlAsync(string url)
