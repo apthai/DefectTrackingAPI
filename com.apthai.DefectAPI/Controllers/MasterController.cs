@@ -861,7 +861,7 @@ namespace com.apthai.DefectAPI.Controllers
                 callTDefectDetail callTDefectDetails = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
 
                 CallTDefectDetailModel returnModel = new CallTDefectDetailModel();
-                returnModel.CallTDefect = callTDefectDetails;
+                returnModel.CallTDefectDetail = callTDefectDetails;
 
                 List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(callTDefectDetails.TDefectDetailId);
                 List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(callTDefectDetails.TDefectDetailId);
@@ -874,7 +874,7 @@ namespace com.apthai.DefectAPI.Controllers
                     for (int i = 0; i < BF.Count(); i++)
                     {
                         PicInDetailObj BFURL = new PicInDetailObj();
-                        BFURL.URL = await minio.GetFileUrlAsync(bucketName, BF[0].FilePath);
+                        BFURL.URL = await minio.GetFileUrlAsync(bucketName, BF[i].FilePath);
                         BFURL.ResourceId = BF[i].ResourceId;
                         BFObject.Add(BFURL);
                     }
