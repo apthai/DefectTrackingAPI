@@ -584,7 +584,7 @@ namespace com.apthai.DefectAPI.CustomModel
 
     public partial class CallTDefectDetailModel
     {
-        public callTDefectDetail CallTDefect { get; set;}
+        public callTDefectDetail CallTDefectDetail { get; set;}
         public List<PicInDetailObj> BeforePic { get; set; }
         public List<PicInDetailObj> AfterPic { get; set; }
 
