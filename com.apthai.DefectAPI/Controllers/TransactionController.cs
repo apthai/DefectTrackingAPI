@@ -1728,90 +1728,48 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
-                var yearPath = DateTime.Now.Year;
-                var MonthPath = DateTime.Now.Month;
-                var dirPath1 = $"{yearPath}/{MonthPath}";
-                var uploads = String.Format("{0}/{1}/{2}/Inkpad/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
-
-
-                string FileBinary;
-
-
-                long size = data.Files.Length;
+                var path = $"{data.ProjectCode}/{data.UnitNo}/Inkpad";
                 var fileName = data.Files.FileName;
+                var resultMinio = await minio.UploadFile(data.Files, path, fileName);
+                long size = data.Files.Length;
 
-                // --- New Docker ----
-                if (!Directory.Exists(uploads))
+
+                callResourceDate.FilePath = callResourceDate.FilePath = String.Format("{0}/{1}/Inkpad/{2}", data.ProjectCode, data.UnitNo, fileName);
+                callResourceDate.FileLength = size;
+                callResourceDate.CreateDate = DateTime.Now;
+                callResourceDate.RowState = "Original";
+                callResourceDate.ResourceType = 1;
+                callResourceDate.ResourceTagSubCode = "1";
+                callResourceDate.ResourceMineType = data.Files.ContentType;
+                if (data.IsBF == true)
                 {
-                    Directory.CreateDirectory(uploads);
+                    callResourceDate.ResourceTagCode = "CUST-BF";
                 }
-                if (data.Files.Length > 0)
+                else
                 {
-                    var filePath = Path.Combine(uploads, data.Files.FileName);
-                    var message = "";
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
-                        string extension = Path.GetExtension(filePath);
-                        string path = Path.GetDirectoryName(filePath);
-                        string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly, extension);
-                        newFullPath = Path.Combine(path, tempFileName + extension);
-                        using (var fileStream = new FileStream(newFullPath, FileMode.Create))
-                        {
-                            message = data.Files.Length.ToString();
-                            await data.Files.CopyToAsync(fileStream);
-                            fileName = tempFileName + extension;
-
-                        }
-                    }
-                    else
-                    {
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
-                        {
-                            message = data.Files.Length.ToString();
-                            await data.Files.CopyToAsync(fileStream);
-                        }
-                    }
-
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        callResourceDate.FilePath = callResourceDate.FilePath = String.Format("{0}/{1}/Inkpad/{2}", data.ProjectCode, data.UnitNo, fileName);
-                        callResourceDate.FileLength = size;
-                        callResourceDate.CreateDate = DateTime.Now;
-                        callResourceDate.RowState = "Original";
-                        callResourceDate.ResourceType = 1;
-                        callResourceDate.ResourceTagSubCode = "1";
-                        callResourceDate.ResourceMineType = data.Files.ContentType;
-                        if (data.IsBF == true)
-                        {
-                            callResourceDate.ResourceTagCode = "CUST-BF";
-                        }
-                        else
-                        {
-                            callResourceDate.ResourceTagCode = "CUST-AF";
-                        }
-                        callResourceDate.ResourceGroupSet = null;
-                        callResourceDate.ResourceGroupOrder = 0;
-                        callResourceDate.TDefectDetailId = 0;
-                        callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
-                        callResourceDate.ProjectNo = data.ProjectCode;
-                        callResourceDate.SerialNo = data.UnitNo;
-                        callResourceDate.Active = true;
-
-                        bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
-                        var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                        {
-                            IsBF = data.IsBF,
-                            ProjectCode = data.ProjectCode,
-                            TDefectId = Int32.Parse(data.TDefectID),
-                            UnitNo = data.UnitNo
-                        });
-                        pathUrlSig = callResourceDate.FilePath;
-                    }
+                    callResourceDate.ResourceTagCode = "CUST-AF";
                 }
+                callResourceDate.ResourceGroupSet = null;
+                callResourceDate.ResourceGroupOrder = 0;
+                callResourceDate.TDefectDetailId = 0;
+                callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
+                callResourceDate.ProjectNo = data.ProjectCode;
+                callResourceDate.SerialNo = data.UnitNo;
+                callResourceDate.Active = true;
+
+                bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
+
+                var resultUploadPDF = await GenerateReport(new ParamReportModel()
+                {
+                    IsBF = data.IsBF,
+                    ProjectCode = data.ProjectCode,
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    UnitNo = data.UnitNo
+                });
+                pathUrlSig = callResourceDate.FilePath;
+
             }
+
             else
             {
                 callResource x = new callResource();
