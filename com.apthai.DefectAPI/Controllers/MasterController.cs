@@ -1079,11 +1079,13 @@ namespace com.apthai.DefectAPI.Controllers
                 #endregion
                 string WebCRMUrl = Environment.GetEnvironmentVariable("WebURL");
                 string WebBaseUrl = Environment.GetEnvironmentVariable("BaseURL");
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(data.TDefectId ?? 0);
                 GetTDefectSignatureObj ReturnObj = new GetTDefectSignatureObj();
                 CustomerSignature customerSignature = new CustomerSignature();
                 SESignature sESignature = new SESignature();
                 LCSignature lCSignature = new LCSignature();
+                minio = new MinioServices();
                 if (Signature == null)
                 {
 
@@ -1100,43 +1102,43 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         lCSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        lCSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
-                    }
+                        lCSignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                    }                 
                     else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         lCSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        lCSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                        lCSignature.BeforeSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
                     }
                     else if (Signature[i].ResourceTagCode == "CUST-AF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                        customerSignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
                     }
                     else if (Signature[i].ResourceTagCode == "CUST-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                        customerSignature.BeforeSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
                     }
                     else if (Signature[i].ResourceTagCode == "CUST-RECE")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         customerSignature.ReceiveSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        customerSignature.ReceiveSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                        customerSignature.ReceiveSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
                     }
                     else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         sESignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        sESignature.AfterSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                        sESignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
                     }
                     else if (Signature[i].ResourceTagCode == "CON-MGR-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         sESignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
-                        sESignature.BeforeSig.URL = WebBaseUrl + "/" + Signature[i].FilePath;
+                        sESignature.BeforeSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
                     }
                 }
                 ReturnObj.CustomerSignature = customerSignature;
