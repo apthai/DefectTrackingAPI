@@ -2583,140 +2583,85 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-            for (int i = 0; i < data.Files.Count(); i++)
+            var path = $"{data.ProjectCode}/{data.UnitNo}";
+
+            foreach (var elFile in data.Files)
             {
-                if (data.Files != null)
+                if (elFile != null)
                 {
-                    // -- New ---- for Docker
-                    var yearPath = DateTime.Now.Year;
-                    var MonthPath = DateTime.Now.Month;
-                    var dirPath1 = $"{yearPath}/{MonthPath}";
-                    int dataPath = 0;
-                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads", dirPath1);
+                    var fileName = elFile.FileName;
+                    var resultMinio = await minio.UploadFile(elFile, path, fileName);
+                    long size = elFile.Length;
 
-                    string FileBinary;
+                    callResource callResourceDate = new callResource();
+                    callResourceDate.FilePath = $"{path}/{fileName}";
+                    callResourceDate.FileLength = size;
+                    callResourceDate.CreateDate = DateTime.Now;
+                    callResourceDate.RowState = "Original";
+                    callResourceDate.ResourceType = 9;
+                    callResourceDate.ResourceTagCode = data.Floor;
+                    callResourceDate.ResourceGroupSet = null;
+                    callResourceDate.ResourceGroupOrder = 0;
+                    callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
+                    callResourceDate.ProjectNo = data.ProjectCode;
+                    callResourceDate.SerialNo = data.UnitNo;
+                    callResourceDate.Active = true;
+                    //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
+                    //TresourceData[i].FileLength = size;
+                    //TresourceData[i].CreatedDate = DateTime.Now;
+                    //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
+                    //TresourceData[i].RowSyncDate = DateTime.Now;
+                    //TresourceData[i].StorageServerId = StorageData.StorageServerId;
+                    bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
+                    //if (InsertResult == true)
+                    //{
+                    //SuccessUploadCount++;
+                    //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
+                    //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
+                    //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
+                    //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
+                    //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
+                    //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
+                    //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
+                    //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
+                    //TresourceTransfer.UnitId = TresourceData[i].UnitId;
+                    ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
+                    //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
+                    //TresourceTransfer.Description = TresourceData[i].Description;
+                    //TresourceTransfer.IsActive = TresourceData[i].IsActive;
+                    //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
+                    //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
+                    //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
+                    //TresourceTransfer.DetailId = TresourceData[i].DetailId;
+                    //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
+                    //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
+                    //TresourceTransfer.Tag = TresourceData[i].Tag;
+                    //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
+                    //TresourceTransfer.RowState = TresourceData[i].RowState;
+                    //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
+                    //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
+                    //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
+                    //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
+                    //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
+                    //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
+                    //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
+                    //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
+                    //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
+                    //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
+                    //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
+                    //TresourceTransfer.FileLength = TresourceData[i].FileLength;
+                    //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
+                    //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
+                    //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
+                    //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
+                    //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
+                    //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
+                    //TresourceTransfer.TagState = TresourceData[i].TagState;
+                    //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
 
-                    long size = data.Files[i].Length;
-                    string FileExtension = Path.GetExtension(data.Files[i].FileName);  // -------------- > Get File Extention
-                    var fileName = data.Files[i].FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
-
-                    var dirPath = $"{yearPath}\\M{dataPath}";
-
-                    // --- New Docker ----
-                    if (!Directory.Exists(uploads))
-                    {
-                        Directory.CreateDirectory(uploads);
-                    }
-                    if (data.Files[i].Length > 0)
-                    {
-                        var filePath = Path.Combine(uploads, data.Files[i].FileName);
-                        var message = "";
-                        if (System.IO.File.Exists(filePath))
-                        {
-                            string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
-                            string extension = Path.GetExtension(filePath);
-                            string path = Path.GetDirectoryName(filePath);
-                            string newFullPath = filePath;
-                            string tempFileName = string.Format("{0}({1})", fileNameOnly, Guid.NewGuid().ToString());
-                            newFullPath = Path.Combine(path, tempFileName + extension);
-                            using (var fileStream = new FileStream(newFullPath, FileMode.Create))
-                            {
-                                message = data.Files[i].Length.ToString();
-                                await data.Files[i].CopyToAsync(fileStream);
-                                fileName = tempFileName + extension;
-
-                            }
-                        }
-                        else
-                        {
-                            using (var fileStream = new FileStream(filePath, FileMode.Create))
-                            {
-                                message = data.Files[i].Length.ToString();
-                                await data.Files[i].CopyToAsync(fileStream);
-                            }
-                        }
-
-                        // -- -End New -----
-                        //if (System.IO.File.Exists(savePath.FullName))
-                        if (System.IO.File.Exists(filePath))
-                        {
-                            callResource callResourceDate = new callResource();
-                            string FileExtention = Path.GetExtension(filePath);
-                            // ----- Old -----
-                            //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
-                            // ----- New Docker -----
-                            callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                            callResourceDate.FileLength = size;
-                            callResourceDate.CreateDate = DateTime.Now;
-                            callResourceDate.RowState = "Original";
-                            callResourceDate.ResourceType = 9;
-                            callResourceDate.ResourceTagCode = data.Floor;
-                            callResourceDate.ResourceGroupSet = null;
-                            callResourceDate.ResourceGroupOrder = 0;
-                            callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
-                            callResourceDate.ProjectNo = data.ProjectCode;
-                            callResourceDate.SerialNo = data.UnitNo;
-                            callResourceDate.Active = true;
-                            //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                            //TresourceData[i].FileLength = size;
-                            //TresourceData[i].CreatedDate = DateTime.Now;
-                            //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
-                            //TresourceData[i].RowSyncDate = DateTime.Now;
-                            //TresourceData[i].StorageServerId = StorageData.StorageServerId;
-                            bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
-                            //if (InsertResult == true)
-                            //{
-                            //SuccessUploadCount++;
-                            //Model.QIS.TResource TresourceTransfer = new Model.QIS.TResource();
-                            //TresourceTransfer.ResourceType = TresourceData[i].ResourceType;
-                            //TresourceTransfer.ResourceTagCode = TresourceData[i].ResourceTagCode;
-                            //TresourceTransfer.ResourceTagSubCode = TresourceData[i].ResourceTagSubCode;
-                            //TresourceTransfer.ResourceGroupSet = TresourceData[i].ResourceGroupSet;
-                            //TresourceTransfer.ResourceGroupOrder = TresourceData[i].ResourceGroupOrder;
-                            //TresourceTransfer.ResourceMineType = TresourceData[i].ResourceMineType;
-                            //TresourceTransfer.ProjectId = TresourceData[i].ProjectId;
-                            //TresourceTransfer.UnitId = TresourceData[i].UnitId;
-                            ////TresourceTransfer.FilePath = _appSetting.PictureRootURL + TresourceData[i].FilePath;
-                            //TresourceTransfer.FilePath = Environment.GetEnvironmentVariable("PictureRootURL") + TresourceData[i].FilePath;
-                            //TresourceTransfer.Description = TresourceData[i].Description;
-                            //TresourceTransfer.IsActive = TresourceData[i].IsActive;
-                            //TresourceTransfer.StorageServerId = TresourceData[i].StorageServerId;
-                            //TresourceTransfer.PhaseId = TresourceData[i].PhaseId;
-                            //TresourceTransfer.HeaderId = TresourceData[i].HeaderId;
-                            //TresourceTransfer.DetailId = TresourceData[i].DetailId;
-                            //TresourceTransfer.UDetailId = TresourceData[i].UDetailId;
-                            //TresourceTransfer.UDetail_RowClientId = TresourceData[i].UDetail_RowClientId;
-                            //TresourceTransfer.Tag = TresourceData[i].Tag;
-                            //TresourceTransfer.RowClientId = TresourceData[i].RowClientId;
-                            //TresourceTransfer.RowState = TresourceData[i].RowState;
-                            //TresourceTransfer.RowVersion = TresourceData[i].RowVersion;
-                            //TresourceTransfer.RowSyncDate = TresourceData[i].RowSyncDate;
-                            //TresourceTransfer.CreateDeviceId = TresourceData[i].CreateDeviceId;
-                            //TresourceTransfer.CreateUserId = TresourceData[i].CreateUserId;
-                            //TresourceTransfer.ModifiedDeviceId = TresourceData[i].ModifiedDeviceId;
-                            //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                            //TresourceTransfer.CreatedDate = TresourceData[i].CreatedDate;
-                            //TresourceTransfer.ModifiedUserId = TresourceData[i].ModifiedUserId;
-                            //TresourceTransfer.UFHeaderId = TresourceData[i].UFHeaderId;
-                            //TresourceTransfer.UHeaderId = TresourceData[i].UHeaderId;
-                            //TresourceTransfer.UFDetailId = TresourceData[i].UFDetailID;
-                            //TresourceTransfer.FileLength = TresourceData[i].FileLength;
-                            //TresourceTransfer.UPhaseId = TresourceData[i].UPhaseId;
-                            //TresourceTransfer.UPhase_RowClientId = TresourceData[i].UPhase_RowClientId;
-                            //TresourceTransfer.UHeader_RowClientId = TresourceData[i].UHeader_RowClientId;
-                            //TresourceTransfer.UFPhase_RowClientId = TresourceData[i].UFPhase_RowClientId;
-                            //TresourceTransfer.UFHeader_RowClientId = TresourceData[i].UFHeader_RowClientId;
-                            //TresourceTransfer.UFDetail_RowClientId = TresourceData[i].UFDetail_RowClientId;
-                            //TresourceTransfer.TagState = TresourceData[i].TagState;
-                            //TresourceTransfer.ClientDataType = TresourceData[i].ClientDataType;
-
-                            //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
-                            //}
-                        }
-                    }
-
+                    //bool InsertResultWeb = _ResourceRepo.InsertTResourceWeb(TresourceTransfer);
+                    //}                       
                 }
                 else
                 {
@@ -2729,7 +2674,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     };
                 }
             }
-            //callResource callResourceDate = new callResource();
             callResource Result = new callResource();
             return new
             {
@@ -2738,6 +2682,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
+
 
         [HttpPost]
         [Route("uploadBeforePictureList")]
@@ -2795,7 +2740,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [HttpPost]
         [Route("DefectReport")]
         [SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
-    Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
+        Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
         public async Task<object> DefectReport([FromBody] GenerateReportByTDefectId data)
         {
             try
