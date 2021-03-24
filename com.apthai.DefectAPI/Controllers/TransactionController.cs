@@ -2204,136 +2204,87 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
-                // -- New ---- for Docker
-                var yearPath = DateTime.Now.Year;
-                var MonthPath = DateTime.Now.Month;
-                var dirPath1 = $"{yearPath}/{MonthPath}";
-                int dataPath = 0;
-                var uploads = String.Format("{0}/{1}/{2}/Inkpad/", _hostingEnvironment.WebRootPath, data.ProjectCode, data.UnitNo);
-
-                string FileBinary;
-
-
+                var path = $"{data.ProjectCode}/{data.UnitNo}/Inkpad";
+                var fileName = data.Files.FileName;
+                var resultMinio = await minio.UploadFile(data.Files, path, fileName);
                 long size = data.Files.Length;
-                string FileExtension = Path.GetExtension(data.Files.FileName);  // -------------- > Get File Extention
-                var fileName = data.Files.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
 
-                var dirPath = $"{yearPath}\\M{dataPath}";
-
-                // --- New Docker ----
-                if (!Directory.Exists(uploads))
+                callResourceDate.FilePath = $"{path}/{fileName}";
+                callResourceDate.FileLength = size;
+                callResourceDate.CreateDate = DateTime.Now;
+                callResourceDate.RowState = "Original";
+                callResourceDate.ResourceType = 6;
+                callResourceDate.ResourceTagSubCode = "1";
+                callResourceDate.ResourceTagCode = "CUST-RECE";
+                callResourceDate.ResourceMineType = data.Files.ContentType;
+                callResourceDate.ResourceGroupSet = null;
+                callResourceDate.ResourceGroupOrder = 0;
+                callResourceDate.TDefectDetailId = 0;
+                callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
+                callResourceDate.ProjectNo = data.ProjectCode;
+                callResourceDate.SerialNo = data.UnitNo;
+                callResourceDate.Active = true;
+                bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
+                callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
+                if (defectModel == null)
                 {
-                    Directory.CreateDirectory(uploads);
-                }
-                if (data.Files.Length > 0)
-                {
-                    var filePath = Path.Combine(uploads, data.Files.FileName);
-                    var message = "";
-                    if (System.IO.File.Exists(filePath))
+                    ViewUnitCustomer viewUnitCustomer = _masterRepository.GetViewUnitCustomer(data.UnitNo, data.ProjectCode);
+                    callTDefect CreateDefect = new callTDefect();
+                    CreateDefect.RowState = "Original";
+                    CreateDefect.RowActive = true;
+                    CreateDefect.Client_Id = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "-" +
+                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
+                    CreateDefect.Client_SyncDate = DateTime.Now;
+                    CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "/" +
+                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
+                    CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
+                    CreateDefect.TDefectSubStatus = null;
+                    CreateDefect.ProductId = data.ProjectCode;
+                    CreateDefect.ItemId = data.UnitNo;
+                    CreateDefect.DeviceId = data.DeviceID;
+                    CreateDefect.CreateUserId = data.EmpCode;
+                    CreateDefect.UpdateUserId = null;
+                    CreateDefect.CustRoundAuditNo_Rn = 1;
+                    CreateDefect.CustRoundAuditDate_Last = DateTime.Now;
+                    CreateDefect.CustRoundAudit_JsonLog = null;
+                    CreateDefect.CreateDate = DateTime.Now;
+                    CreateDefect.UpdateDate = null;
+                    CreateDefect.Desciption = "0 Defect";
+                    CreateDefect.DocOpenDate = DateTime.Now;
+                    CreateDefect.DocDueCloseDate = DateTime.Now.AddDays(14);
+                    CreateDefect.MechanicId = null;
+                    CreateDefect.MechanicName = null;
+                    CreateDefect.SellerId = null;
+                    CreateDefect.SallerName = null;
+                    CreateDefect.DocReceiveUnitDate = DateTime.Now;
+                    CreateDefect.DocDueTransferDate = DateTime.Now;
+                    CreateDefect.ContactID = null;
+                    if (viewUnitCustomer != null)
                     {
-                        string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
-                        string extension = Path.GetExtension(filePath);
-                        string path = Path.GetDirectoryName(filePath);
-                        string newFullPath = filePath;
-                        string tempFileName = string.Format("{0}({1})", fileNameOnly);
-                        newFullPath = Path.Combine(path, tempFileName + extension);
-                        using (var fileStream = new FileStream(newFullPath, FileMode.Create))
-                        {
-                            message = data.Files.Length.ToString();
-                            await data.Files.CopyToAsync(fileStream);
-                            fileName = tempFileName + extension;
-                        }
+                        CreateDefect.ContactName = viewUnitCustomer.FirstName + "  " + viewUnitCustomer.LastName;
                     }
                     else
                     {
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
-                        {
-                            message = data.Files.Length.ToString();
-                            await data.Files.CopyToAsync(fileStream);
-                        }
+                        CreateDefect.ContactName = "";
                     }
-
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        string FileExtention = Path.GetExtension(filePath);
-                        callResourceDate.FilePath = callResourceDate.FilePath = String.Format("{0}/{1}/Inkpad/{2}", data.ProjectCode, data.UnitNo, fileName);
-                        callResourceDate.FileLength = size;
-                        callResourceDate.CreateDate = DateTime.Now;
-                        callResourceDate.RowState = "Original";
-                        callResourceDate.ResourceType = 6;
-                        callResourceDate.ResourceTagSubCode = "1";
-                        callResourceDate.ResourceTagCode = "CUST-RECE";
-                        callResourceDate.ResourceMineType = data.Files.ContentType;
-                        callResourceDate.ResourceGroupSet = null;
-                        callResourceDate.ResourceGroupOrder = 0;
-                        callResourceDate.TDefectDetailId = 0;
-                        callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
-                        callResourceDate.ProjectNo = data.ProjectCode;
-                        callResourceDate.SerialNo = data.UnitNo;
-                        callResourceDate.Active = true;
-                        bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-                        callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
-                        if (defectModel == null)
-                        {
-                            ViewUnitCustomer viewUnitCustomer = _masterRepository.GetViewUnitCustomer(data.UnitNo, data.ProjectCode);
-                            callTDefect CreateDefect = new callTDefect();
-                            CreateDefect.RowState = "Original";
-                            CreateDefect.RowActive = true;
-                            CreateDefect.Client_Id = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "-" +
-                                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
-                            CreateDefect.Client_SyncDate = DateTime.Now;
-                            CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "/" +
-                                                    DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
-                            CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
-                            CreateDefect.TDefectSubStatus = null;
-                            CreateDefect.ProductId = data.ProjectCode;
-                            CreateDefect.ItemId = data.UnitNo;
-                            CreateDefect.DeviceId = data.DeviceID;
-                            CreateDefect.CreateUserId = data.EmpCode;
-                            CreateDefect.UpdateUserId = null;
-                            CreateDefect.CustRoundAuditNo_Rn = 1;
-                            CreateDefect.CustRoundAuditDate_Last = DateTime.Now;
-                            CreateDefect.CustRoundAudit_JsonLog = null;
-                            CreateDefect.CreateDate = DateTime.Now;
-                            CreateDefect.UpdateDate = null;
-                            CreateDefect.Desciption = "0 Defect";
-                            CreateDefect.DocOpenDate = DateTime.Now;
-                            CreateDefect.DocDueCloseDate = DateTime.Now.AddDays(14);
-                            CreateDefect.MechanicId = null;
-                            CreateDefect.MechanicName = null;
-                            CreateDefect.SellerId = null;
-                            CreateDefect.SallerName = null;
-                            CreateDefect.DocReceiveUnitDate = DateTime.Now;
-                            CreateDefect.DocDueTransferDate = DateTime.Now;
-                            CreateDefect.ContactID = null;
-                            if (viewUnitCustomer != null)
-                            {
-                                CreateDefect.ContactName = viewUnitCustomer.FirstName + "  " + viewUnitCustomer.LastName;
-                            }
-                            else
-                            {
-                                CreateDefect.ContactName = "";
-                            }
-                            CreateDefect.DocIsActive = true;
-                            CreateDefect.DocIsExternalAudit = false;
-                            CreateDefect.DocIsReqUnitReceiveAttachFile = false;
-                            long DefectID = 0;
-                            bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
-                            CreateDefect.TDefectId = Convert.ToInt32(DefectID);
+                    CreateDefect.DocIsActive = true;
+                    CreateDefect.DocIsExternalAudit = false;
+                    CreateDefect.DocIsReqUnitReceiveAttachFile = false;
+                    long DefectID = 0;
+                    bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
+                    CreateDefect.TDefectId = Convert.ToInt32(DefectID);
 
 
-                        }
-                        var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                        {
-                            IsBF = data.IsBF,
-                            ProjectCode = data.ProjectCode,
-                            TDefectId = Int32.Parse(data.TDefectID),
-                            UnitNo = data.UnitNo
-                        });
-
-                        pathUrlSig = callResourceDate.FilePath;
-                    }
                 }
+                var resultUploadPDF = await GenerateReport(new ParamReportModel()
+                {
+                    IsBF = data.IsBF,
+                    ProjectCode = data.ProjectCode,
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    UnitNo = data.UnitNo
+                });
+
+                pathUrlSig = callResourceDate.FilePath;
             }
             else
             {
