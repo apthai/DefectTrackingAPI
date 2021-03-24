@@ -211,82 +211,27 @@ namespace com.apthai.DefectAPI.Controllers
                         callResource callResourceDate = new callResource();
                         if (data.Files != null)
                         {
-                            // -- New ---- for Docker
-                            var yearPath = DateTime.Now.Year;
-                            var MonthPath = DateTime.Now.Month;
-                            var dirPath1 = $"{yearPath}/{MonthPath}";
-                            int dataPath = 0;
-                            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads", dirPath1);
 
-                            string FileBinary;
-
-
+                            var path = $"{data.ProductId}/{data.ItemId}";
+                            var fileName = data.Files.FileName;
+                            var resultMinio = await minio.UploadFile(data.Files, path, fileName);
                             long size = data.Files.Length;
-                            string FileExtension = Path.GetExtension(data.Files.FileName);  // -------------- > Get File Extention
-                            var fileName = data.Files.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+                            var message = "";
 
-                            var dirPath = $"{yearPath}\\M{dataPath}";
-
-                            // --- New Docker ----
-                            if (!Directory.Exists(uploads))
-                            {
-                                Directory.CreateDirectory(uploads);
-                            }
-                            if (data.Files.Length > 0)
-                            {
-                                var filePath = Path.Combine(uploads, data.Files.FileName);
-                                var message = "";
-                                if (System.IO.File.Exists(filePath))
-                                {
-                                    string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
-                                    string extension = Path.GetExtension(filePath);
-                                    string path = Path.GetDirectoryName(filePath);
-                                    string newFullPath = filePath;
-                                    string tempFileName = string.Format("{0}({1})", fileNameOnly, extension);
-                                    newFullPath = Path.Combine(path, tempFileName + extension);
-                                    using (var fileStream = new FileStream(newFullPath, FileMode.Create))
-                                    {
-                                        message = data.Files.Length.ToString();
-                                        await data.Files.CopyToAsync(fileStream);
-                                        fileName = tempFileName + extension;
-
-                                    }
-                                }
-                                else
-                                {
-                                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                                    {
-                                        message = data.Files.Length.ToString();
-                                        await data.Files.CopyToAsync(fileStream);
-                                    }
-                                }
-
-                                // -- -End New -----
-                                //if (System.IO.File.Exists(savePath.FullName))
-                                if (System.IO.File.Exists(filePath))
-                                {
-                                    string FileExtention = Path.GetExtension(filePath);
-                                    // ----- Old -----
-                                    //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
-                                    // ----- New Docker -----
-                                    callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                                    callResourceDate.FileLength = size;
-                                    callResourceDate.CreateDate = DateTime.Now;
-                                    callResourceDate.RowState = "Original";
-                                    callResourceDate.ResourceType = 3;
-                                    callResourceDate.ResourceTagCode = "BF-RP";
-                                    callResourceDate.ResourceGroupSet = null;
-                                    callResourceDate.ResourceGroupOrder = 0;
-                                    callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
-                                    callResourceDate.ProjectNo = data.ProductId;
-                                    callResourceDate.SerialNo = data.ItemId;
-                                    callResourceDate.Active = true;
-                                    callResourceDate.RowState = "AddNew";
-
-                                    bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
-                                }
-                            }
+                            callResourceDate.FilePath = $"{path}/{fileName}";
+                            callResourceDate.FileLength = size;
+                            callResourceDate.CreateDate = DateTime.Now;
+                            callResourceDate.RowState = "Original";
+                            callResourceDate.ResourceType = 3;
+                            callResourceDate.ResourceTagCode = "BF-RP";
+                            callResourceDate.ResourceGroupSet = null;
+                            callResourceDate.ResourceGroupOrder = 0;
+                            callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
+                            callResourceDate.ProjectNo = data.ProductId;
+                            callResourceDate.SerialNo = data.ItemId;
+                            callResourceDate.Active = true;
+                            callResourceDate.RowState = "AddNew";
+                            bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
                             if (LatestTxnDate.Date < Today.Date)
                             {
@@ -297,7 +242,6 @@ namespace com.apthai.DefectAPI.Controllers
                                 }
                                 var InactiveCallResource = _transactionRepository.UpdateCallResource(callResources);
                             }
-
                         }
                         else
                         {
@@ -434,93 +378,34 @@ namespace com.apthai.DefectAPI.Controllers
                         callResource callResourceDate = new callResource();
                         if (data.Files != null)
                         {
-                            // -- New ---- for Docker
-                            var yearPath = DateTime.Now.Year;
-                            var MonthPath = DateTime.Now.Month;
-                            var dirPath1 = $"{yearPath}/{MonthPath}";
-                            int dataPath = 0;
-                            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "data", "uploads", dirPath1);
 
-                            string FileBinary;
-
-
+                            var path = $"{data.ProductId}/{data.ItemId}";
+                            var fileName = data.Files.FileName;
+                            var resultMinio = await minio.UploadFile(data.Files, path, fileName);
                             long size = data.Files.Length;
-                            string FileExtension = Path.GetExtension(data.Files.FileName);  // -------------- > Get File Extention
-                            var fileName = data.Files.FileName;// string.Format("{0}{1}" , DateTime.Now.ToString("DDMMyy") , Path.GetExtension(formFile.FileName)); //Path.GetFileName(Path.GetTempFileName());
+                            var message = "";
 
-                            var dirPath = $"{yearPath}\\M{dataPath}";
-
-                            // --- New Docker ----
-                            if (!Directory.Exists(uploads))
-                            {
-                                Directory.CreateDirectory(uploads);
-                            }
-                            if (data.Files.Length > 0)
-                            {
-                                var filePath = Path.Combine(uploads, data.Files.FileName);
-                                var message = "";
-                                if (System.IO.File.Exists(filePath))
-                                {
-                                    string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
-                                    string extension = Path.GetExtension(filePath);
-                                    string path = Path.GetDirectoryName(filePath);
-                                    string newFullPath = filePath;
-                                    string tempFileName = string.Format("{0}({1})", fileNameOnly, extension);
-                                    newFullPath = Path.Combine(path, tempFileName + extension);
-                                    using (var fileStream = new FileStream(newFullPath, FileMode.Create))
-                                    {
-                                        message = data.Files.Length.ToString();
-                                        await data.Files.CopyToAsync(fileStream);
-                                        fileName = tempFileName + extension;
-
-                                    }
-                                }
-                                else
-                                {
-                                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                                    {
-                                        message = data.Files.Length.ToString();
-                                        await data.Files.CopyToAsync(fileStream);
-                                    }
-                                }
-
-                                // -- -End New -----
-                                //if (System.IO.File.Exists(savePath.FullName))
-                                if (System.IO.File.Exists(filePath))
-                                {
-                                    string FileExtention = Path.GetExtension(filePath);
-                                    // ----- Old -----
-                                    //TresourceData[i].FilePath = "data\\uploads\\" + dirPath + "\\" + fileName;
-                                    // ----- New Docker -----
-                                    callResourceDate.FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                                    callResourceDate.FileLength = size;
-                                    callResourceDate.CreateDate = DateTime.Now;
-                                    callResourceDate.RowState = "Original";
-                                    callResourceDate.ResourceType = 2;
-                                    callResourceDate.ResourceTagCode = "BF-RP";
-                                    callResourceDate.ResourceGroupSet = null;
-                                    callResourceDate.ResourceGroupOrder = 0;
-                                    callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
-                                    callResourceDate.ProjectNo = data.ProductId;
-                                    callResourceDate.SerialNo = data.ItemId;
-                                    callResourceDate.Active = true;
-                                    //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
-                                    //TresourceData[i].FileLength = size;
-                                    //TresourceData[i].CreatedDate = DateTime.Now;
-                                    //TresourceData[i].CreateUserId = Convert.ToInt32(data.UserID);
-                                    //TresourceData[i].RowSyncDate = DateTime.Now;
-                                    //TresourceData[i].StorageServerId = StorageData.StorageServerId;
-                                    bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
-                                }
-                            }
+                            callResourceDate.FilePath = $"{path}/{fileName}";
+                            callResourceDate.FileLength = size;
+                            callResourceDate.CreateDate = DateTime.Now;
+                            callResourceDate.RowState = "Original";
+                            callResourceDate.ResourceType = 3;
+                            callResourceDate.ResourceTagCode = "BF-RP";
+                            callResourceDate.ResourceGroupSet = null;
+                            callResourceDate.ResourceGroupOrder = 0;
+                            callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
+                            callResourceDate.ProjectNo = data.ProductId;
+                            callResourceDate.SerialNo = data.ItemId;
+                            callResourceDate.Active = true;
+                            callResourceDate.RowState = "AddNew";
+                            bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                         }
                         else
                         {
                             return new
                             {
                                 success = true,
-                                data = CreateDefect,
+                                data = tDefectDetail,
                                 message = string.Format("Create Defect Detail Success!")
                             };
                         }
