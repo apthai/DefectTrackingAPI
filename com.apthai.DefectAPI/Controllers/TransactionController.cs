@@ -31,6 +31,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using static com.apthai.DefectAPI.CustomModel.RequestReportModel;
 using System.Text;
 using com.apthai.DefectAPI.Services;
+using Microsoft.AspNetCore.Http.Internal;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -1224,7 +1225,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-
+            minio = new MinioServices();
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -1503,7 +1504,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-
+            minio = new MinioServices();
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -1617,7 +1618,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-
+            minio = new MinioServices();
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -1726,6 +1727,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             int SuccessUploadCount = 0;
             var pathUrlSig = "";
             callResource callResourceDate = new callResource();
+            minio = new MinioServices();
             if (data.Files != null)
             {
                 var path = $"{data.ProjectCode}/{data.UnitNo}/Inkpad";
@@ -1734,7 +1736,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 long size = data.Files.Length;
 
 
-                callResourceDate.FilePath = callResourceDate.FilePath = String.Format("{0}/{1}/Inkpad/{2}", data.ProjectCode, data.UnitNo, fileName);
+                callResourceDate.FilePath = $"{path}/{fileName}";
                 callResourceDate.FileLength = size;
                 callResourceDate.CreateDate = DateTime.Now;
                 callResourceDate.RowState = "Original";
@@ -1812,6 +1814,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
+            minio = new MinioServices();
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -1931,7 +1934,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-
+            minio = new MinioServices();
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
@@ -2046,6 +2049,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             int count = 0;
             var pathUrlSig = "";
             callResource callResourceDate = new callResource();
+            minio = new MinioServices();
             if (data.Files != null)
             {
                 var path = $"{data.ProjectCode}/{data.UnitNo}/Inkpad";
@@ -2208,7 +2212,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             int SuccessUploadCount = 0;
             var path = $"{data.ProjectCode}/{data.UnitNo}";
-
+            minio = new MinioServices();
             foreach (var elFile in data.Files)
             {
                 if (elFile != null)
@@ -2270,7 +2274,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             int SuccessUploadCount = 0;
             int count = 0;
             var path = $"{data.ProjectCode}/{data.UnitNo}";
-
+            minio = new MinioServices();
             foreach (var elFile in data.Files)
             {
                 if (elFile != null)
@@ -2378,7 +2382,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             int SuccessUploadCount = 0;
             var path = $"{data.ProjectCode}/{data.UnitNo}";
-
+            minio = new MinioServices();
             foreach (var elFile in data.Files)
             {
                 if (elFile != null)
@@ -2569,6 +2573,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             try
             {
+                minio = new MinioServices();
                 bool insertPDF = false;
                 var requestMode = new RequestReportModel()
                 {
@@ -2602,13 +2607,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                 if (resultObject.Success)
                 {
-                    var uploadPDFPath = String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, model.ProjectCode, model.UnitNo);
-                    if (!Directory.Exists(uploadPDFPath))
-                    {
-                        Directory.CreateDirectory(uploadPDFPath);
-                    }
-
-                    var filePDFPath = Path.Combine(String.Format("{0}/{1}/{2}/DefectDoc/", _hostingEnvironment.WebRootPath, model.ProjectCode, model.UnitNo), resultObject.FileName);
+                    var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDoc";
                     using (HttpClient clientDownload = new HttpClient())
                     {
                         using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
@@ -2616,31 +2615,34 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         {
                             // ... Read the string.
                             var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                            System.IO.File.WriteAllBytes(filePDFPath, result);
+                            Stream stream = new MemoryStream(result);
+                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                            {
+                                Headers = new HeaderDictionary(),
+                                ContentType = "application/pdf"
+                            };
+                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
                         }
                     }
 
+                    callResource callResourcePDF = new callResource();
+                    callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
+                    callResourcePDF.FileLength = 0;
+                    callResourcePDF.CreateDate = DateTime.Now;
+                    callResourcePDF.RowState = "Original";
+                    callResourcePDF.ResourceType = 8;
+                    callResourcePDF.ResourceTagSubCode = "1";
+                    callResourcePDF.ResourceGroupSet = null;
+                    callResourcePDF.ResourceGroupOrder = 0;
+                    callResourcePDF.TDefectDetailId = 0;
+                    callResourcePDF.TDefectId = (int)model.TDefectId;
+                    callResourcePDF.ProjectNo = model.ProjectCode;
+                    callResourcePDF.SerialNo = model.UnitNo;
+                    callResourcePDF.Active = true;
 
-                    if (System.IO.File.Exists(filePDFPath))
-                    {
-                        callResource callResourcePDF = new callResource();
-                        callResourcePDF.FilePath = String.Format("{0}/{1}/DefectDoc/{2}", model.ProjectCode, model.UnitNo, resultObject.FileName);
-                        callResourcePDF.FileLength = 0;
-                        callResourcePDF.CreateDate = DateTime.Now;
-                        callResourcePDF.RowState = "Original";
-                        callResourcePDF.ResourceType = 8;
-                        callResourcePDF.ResourceTagSubCode = "1";
-                        callResourcePDF.ResourceGroupSet = null;
-                        callResourcePDF.ResourceGroupOrder = 0;
-                        callResourcePDF.TDefectDetailId = 0;
-                        callResourcePDF.TDefectId = (int)model.TDefectId;
-                        callResourcePDF.ProjectNo = model.ProjectCode;
-                        callResourcePDF.SerialNo = model.UnitNo;
-                        callResourcePDF.Active = true;
+                    insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                    return insertPDF;
 
-                        insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
-                        return insertPDF;
-                    }
                 }
                 return insertPDF;
             }
