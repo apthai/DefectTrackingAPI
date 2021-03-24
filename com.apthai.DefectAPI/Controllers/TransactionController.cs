@@ -1812,7 +1812,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
