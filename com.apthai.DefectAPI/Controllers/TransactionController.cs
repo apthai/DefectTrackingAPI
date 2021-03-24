@@ -2525,7 +2525,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
             foreach (var elFile in data.Files)
             {
-                if (data.Files != null)
+                if (elFile != null)
                 {
                     var fileName = elFile.FileName;
                     var resultMinio = await minio.UploadFile(elFile, path, fileName);
@@ -2751,7 +2751,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
             foreach (var elFile in data.Files)
             {
-                if (data.Files != null)
+                if (elFile != null)
                 {
                     var fileName = elFile.FileName;
                     var resultMinio = await minio.UploadFile(elFile, path, fileName);
