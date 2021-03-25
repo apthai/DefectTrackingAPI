@@ -2296,6 +2296,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.ProjectNo = data.ProjectCode;
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
+                    callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
