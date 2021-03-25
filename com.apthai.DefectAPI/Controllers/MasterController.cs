@@ -1027,7 +1027,7 @@ namespace com.apthai.DefectAPI.Controllers
                 #endregion
 
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
-                string webUrl = Environment.GetEnvironmentVariable("WebUrl");
+                string webUrl = Environment.GetEnvironmentVariable("WebURL");
                 List<callResource> CheckIsPlanDraw = _masterRepository.GetFloorPlanByTdefectID(data.TDefectID);
                 List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID, data.Floor, data.ProjectNo); // master
                
