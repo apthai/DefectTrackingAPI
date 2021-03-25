@@ -1032,8 +1032,8 @@ namespace com.apthai.DefectAPI.Controllers
                 List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID, data.Floor, data.ProjectNo); // master
                
                 List<FloorPlanImageObj> ResultObj = new List<FloorPlanImageObj>();
-
-                foreach(var floorPlan in callTFloorPlanImage)
+                minio = new MinioServices();
+                foreach (var floorPlan in callTFloorPlanImage)
                 {
                     var getFloorRs = CheckIsPlanDraw.Where(w => w.ResourceTagCode == floorPlan.Floor).ToList();
                     if(getFloorRs.Count > 0)
