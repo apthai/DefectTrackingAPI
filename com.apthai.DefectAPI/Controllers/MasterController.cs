@@ -1025,32 +1025,43 @@ namespace com.apthai.DefectAPI.Controllers
                 //    };
                 //}
                 #endregion
-                string WebUrl = Environment.GetEnvironmentVariable("WebURL");
-                //List<callResource> CheckIsPlanDraw = _masterRepository.
-                if (true)
+
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                string webUrl = Environment.GetEnvironmentVariable("WebUrl");
+                List<callResource> CheckIsPlanDraw = _masterRepository.GetFloorPlanByTdefectID(data.TDefectID);
+                List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID, data.Floor, data.ProjectNo); // master
+               
+                List<FloorPlanImageObj> ResultObj = new List<FloorPlanImageObj>();
+
+                foreach(var floorPlan in callTFloorPlanImage)
                 {
-                    List<callTFloorPlanImage> callTFloorPlanImage = _masterRepository.GetUnitFloorPlanByUnitAndFloor(data.UnitID, Convert.ToInt32(data.Floor), data.ProjectNo);
-                    List<FloorPlanImageObj> ResultObj = new List<FloorPlanImageObj>();
-                    for (int i = 0; i < callTFloorPlanImage.Count(); i++)
+                    var getFloorRs = CheckIsPlanDraw.Where(w => w.ResourceTagCode == floorPlan.Floor).ToList();
+                    if(getFloorRs.Count > 0)
                     {
+                        var latestFloor = getFloorRs.OrderByDescending(o => o.ResourceId).FirstOrDefault();
                         FloorPlanImageObj Result = new FloorPlanImageObj();
-                        Result.ProjectId = callTFloorPlanImage[i].ProductId;
-                        Result.UnitId = data.UnitID;
-                        Result.URL = WebUrl + callTFloorPlanImage[i].FilePath;
-                        Result.Floor = callTFloorPlanImage[i].Floor;
+                        Result.ProjectId = latestFloor.ProjectNo;
+                        Result.UnitId = latestFloor.SerialNo;
+                        Result.URL = await minio.GetFileUrlAsync(bucketName, latestFloor.FilePath);
+                        Result.Floor = floorPlan.Floor;
                         ResultObj.Add(Result);
                     }
-
-                    return new
+                    else
                     {
-                        success = true,
-                        data = ResultObj
-                    };
+                        FloorPlanImageObj Result = new FloorPlanImageObj();
+                        Result.ProjectId = floorPlan.ProductId;
+                        Result.UnitId = floorPlan.UnitLayoutType;
+                        Result.URL = webUrl + floorPlan.FilePath;
+                        Result.Floor = floorPlan.Floor;
+                        ResultObj.Add(Result);
+                    }
                 }
-                else
-                {
 
-                }
+                return new
+                {
+                    success = true,
+                    data = ResultObj
+                };
 
             }
             catch (Exception ex)
@@ -1251,7 +1262,7 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         success = false,
                         data = new CallTDefectPdfDocumentModel(),
-                        ErrorMsg = "Invalid User Defect Documeny"
+                        ErrorMsg = "Invalid User Defect Document"
                     };
 
                 return new

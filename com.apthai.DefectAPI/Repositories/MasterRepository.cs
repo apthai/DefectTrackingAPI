@@ -94,14 +94,14 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
-        public List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(string UnitNumber , int Floor ,string ProjectNo)
+        public List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(string UnitNumber , string Floor ,string ProjectNo)
         {
             using (IDbConnection conn = WebConnection)
             {
                 try
                 {
                     string sQuery = "";
-                    if (Floor == 0)
+                    if (Floor.Equals("0"))
                     {
                         sQuery = "select * from callTFloorPlanImage C " +
                        " left join ICON_EntForms_Unit L on C.UnitLayoutType = L.UnitLayoutType and C.ProductId = L.ProductID " +
@@ -805,6 +805,26 @@ namespace com.apthai.DefectAPI.Repositories
                 catch (Exception ex)
                 {
                     throw new Exception("MasterRepository.GetDefectPdfDocument() :: Error ", ex);
+                }
+            }
+        }
+
+        public List<callResource> GetFloorPlanByTdefectID(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+
+                    string sQuery = "select * from callResource " +
+                        " where TDefectId = @TDefectId and Active = 1 AND  ResourceType = 9";
+                    var result = conn.Query<callResource>(sQuery, new { TDefectId = TDefectId }).ToList();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetFloorPlanByTdefectID() :: Error ", ex);
                 }
             }
         }
