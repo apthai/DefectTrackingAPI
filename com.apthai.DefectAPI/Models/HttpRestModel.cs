@@ -280,4 +280,9 @@ namespace com.apthai.DefectAPI.HttpRestModel
     {
         public int ProductID { get; set; }
     }
+    public partial class GetPdfReportByTDefectId
+    {
+        public int TDefectId { get; set; }
+
+    }
 }

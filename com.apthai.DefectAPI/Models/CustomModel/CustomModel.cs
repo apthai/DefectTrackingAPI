@@ -588,5 +588,10 @@ namespace com.apthai.DefectAPI.CustomModel
         public List<PicInDetailObj> AfterPic { get; set; }
 
     }
+
+    public partial class CallTDefectPdfDocumentModel
+    {
+        public string FilePath { get; set; }
+    }
 }
 

@@ -1103,7 +1103,7 @@ namespace com.apthai.DefectAPI.Controllers
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         lCSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         lCSignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
-                    }                 
+                    }
                     else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
@@ -1234,7 +1234,36 @@ namespace com.apthai.DefectAPI.Controllers
             ErrorMsg = "SomeThing Wrong with Header Contact Developer ASAP";
             return false;
         }
+
+        [HttpPost("GetDefectPdfDocument")]
+        public async Task<object> GetDefectPdfDocument([FromBody] GetPdfReportByTDefectId model)
+        {
+            try
+            {
+                var result = _masterRepository.GetDefectPdfDocument(model.TDefectId);
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                minio = new MinioServices();
+                CallTDefectPdfDocumentModel returnModel = new CallTDefectPdfDocumentModel();
+                if (!String.IsNullOrEmpty(result))
+                    returnModel.FilePath = await minio.GetFileUrlAsync(bucketName, result);
+                else
+                    return new
+                    {
+                        success = false,
+                        data = new CallTDefectPdfDocumentModel(),
+                        ErrorMsg = "Invalid User Defect Documeny"
+                    };
+
+                return new
+                {
+                    success = true,
+                    data = returnModel
+                };
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
-
-
 }

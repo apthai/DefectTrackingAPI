@@ -16,7 +16,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<PointURL> GetFloorDistinct(string CateType);
         List<callResource> GetSignatureCallResourceByTdefectID(int TDefectId);
         List<Callarea> GetCallAreaByProductCat_Sync(string ProductTypeCate);
-        List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(string UnitNumber, int Floor , string ProjectNo);
+        List<callTFloorPlanImage> GetUnitFloorPlanByUnitAndFloor(string UnitNumber, int Floor, string ProjectNo);
         List<callResource> GetCallResourceByTdefectDetailID(int TDefectDetailId);
         List<callResource> GetCallResourceByTdefect(int TDefectId);
         List<callResource> GetCallResourceAllSignatureByTdefect(int TDefectId);
@@ -38,12 +38,13 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         List<callTDefectDetail> GetcallTDefectDetailByDetailIDList_Sync(string TDefectDetailIDList);
         List<callTDefectDetail> GetcallTDefectDetailByTDefectIDList_Sync(int TDefectID);
         List<CallTdefectDetailCustom> GetcallTDefectDetailShow_Sync(int TDefectID);
-        List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode,string ProjectID);
+        List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode, string ProjectID);
         List<GetCallTDefectByProjectObj> GetCallTDefectByProject_Sync(int ProductID);
         List<Floor> GetFloorsByProjectTower(string ProjectID, string TowerID);
         Model.DefectAPISync.vwProject GetVwProjects(string ProjectID);
         List<Tower> GetTowersByProject(string ProjectID);
         Model.DefectAPI.point GetCallPointByPointID_Sync(int? comppoint_id);
         callTDefectDetail GetcallTDefectDetailByTDefectID_Sync(int TDefectId);
+        string GetDefectPdfDocument(int TDefectId);
     }
 }

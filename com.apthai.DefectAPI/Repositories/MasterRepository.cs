@@ -788,5 +788,25 @@ namespace com.apthai.DefectAPI.Repositories
                 }
             }
         }
+
+        public string GetDefectPdfDocument(int TDefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string sQuery = String.Format(@"SELECT TOP 1 FilePath FROM callResource 
+                                                    where TDefectId = {0} and ResourceType = 8
+                                                    ORDER BY CreateDate DESC", TDefectId.ToString());
+                    var result = conn.Query<string>(sQuery).FirstOrDefault();
+                    return result;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("MasterRepository.GetDefectPdfDocument() :: Error ", ex);
+                }
+            }
+        }
     }
 }
