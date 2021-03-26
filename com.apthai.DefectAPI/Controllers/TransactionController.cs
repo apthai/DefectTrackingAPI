@@ -213,7 +213,7 @@ namespace com.apthai.DefectAPI.Controllers
                         if (data.Files != null)
                         {
 
-                            var path = $"{data.ProductId}/{data.ItemId}";
+                            var path = $"{data.ProductId}/{data.ItemId}/Before";
                             var fileName = data.Files.FileName;
                             var resultMinio = await minio.UploadFile(data.Files, path, fileName);
                             long size = data.Files.Length;
@@ -380,7 +380,7 @@ namespace com.apthai.DefectAPI.Controllers
                         if (data.Files != null)
                         {
 
-                            var path = $"{data.ProductId}/{data.ItemId}";
+                            var path = $"{data.ProductId}/{data.ItemId}/Before";
                             var fileName = data.Files.FileName;
                             var resultMinio = await minio.UploadFile(data.Files, path, fileName);
                             long size = data.Files.Length;
@@ -1508,7 +1508,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
             callResource callResourceDate = new callResource();
             if (data.Files != null)
             {
-                var path = $"{data.ProjectCode}/{data.UnitNo}";
+                var path = $"{data.ProjectCode}/{data.UnitNo}/PDF";
                 var fileName = data.Files.FileName;
                 var resultMinio = await minio.UploadFile(data.Files, path, fileName);
                 long size = data.Files.Length;
@@ -2211,7 +2211,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         public async Task<object> uploadAfterPictureList([FromForm] ParamUploadImageAfterList data)
         {
             int SuccessUploadCount = 0;
-            var path = $"{data.ProjectCode}/{data.UnitNo}";
+            var path = $"{data.ProjectCode}/{data.UnitNo}/After";
             minio = new MinioServices();
             foreach (var elFile in data.Files)
             {
@@ -2273,7 +2273,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //var UploadLoctaion = StorageData.StoragePhysicalPath;
             int SuccessUploadCount = 0;
             int count = 0;
-            var path = $"{data.ProjectCode}/{data.UnitNo}";
+            var path = $"{data.ProjectCode}/{data.UnitNo}/FloorPlan";
             minio = new MinioServices();
             foreach (var elFile in data.Files)
             {
@@ -2382,7 +2382,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         public async Task<object> uploadBeforePictureList([FromForm] ParamUploadImageAfterList data)
         {
             int SuccessUploadCount = 0;
-            var path = $"{data.ProjectCode}/{data.UnitNo}";
+            var path = $"{data.ProjectCode}/{data.UnitNo}/Before";
             minio = new MinioServices();
             foreach (var elFile in data.Files)
             {
@@ -2608,7 +2608,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                 if (resultObject.Success)
                 {
-                    var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDoc";
+                    var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
                     using (HttpClient clientDownload = new HttpClient())
                     {
                         using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
