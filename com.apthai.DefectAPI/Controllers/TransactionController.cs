@@ -2605,7 +2605,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     var result = await response.Content.ReadAsStringAsync();
                     resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
                 }
-
+                long sizeFile = 0;
                 if (resultObject.Success)
                 {
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
@@ -2622,13 +2622,14 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                                 Headers = new HeaderDictionary(),
                                 ContentType = "application/pdf"
                             };
+                            sizeFile = file.Length;
                             var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
                         }
                     }
 
                     callResource callResourcePDF = new callResource();
                     callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
-                    callResourcePDF.FileLength = 0;
+                    callResourcePDF.FileLength = sizeFile;
                     callResourcePDF.CreateDate = DateTime.Now;
                     callResourcePDF.RowState = "Original";
                     callResourcePDF.ResourceType = 8;
