@@ -2574,8 +2574,24 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             try
             {
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 minio = new MinioServices();
                 bool insertPDF = false;
+                List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(model.TDefectId);
+                string lcSigAf = Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").FirstOrDefault().FilePath : null;
+                string cusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().FilePath : null;
+                string cusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().FilePath : null;
+                string conSigBf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").FirstOrDefault().FilePath : null;
+                string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
+                string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
+
+                string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
+                string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
+                string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
+                string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
+                string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
+                string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
+
                 var requestMode = new RequestReportModel()
                 {
                     Folder = "defect",
@@ -2588,6 +2604,12 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             {
                                new ParameterReport(){Name="@TDefectId",Value=model.TDefectId.ToString()},
                                new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
+                               new ParameterReport(){Name="@CON_MGR_AF_URL",Value=conSigAfFilePath},
+                               new ParameterReport(){Name="@CON_MGR_BF_URL",Value=conSigBfFilePath},
+                               new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
+                               new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
+                               new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
+                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
                             }
                 };
                 var client = new HttpClient();
