@@ -70,7 +70,7 @@ namespace com.apthai.DefectAPI.Controllers
                         };
                     }
 
-                List<vwUserProject> data = Respond.Content.ReadAsAsync<List<vwUserProject>>().Result;
+                List<CustomModel.vwUserProject> data = Respond.Content.ReadAsAsync<List<CustomModel.vwUserProject>>().Result;
                 List<DefectUserProject> Projects = new List<DefectUserProject>();
                 for (int i = 0; i < data.Count(); i++)
                 {
@@ -184,7 +184,7 @@ namespace com.apthai.DefectAPI.Controllers
                 Return.SysAppCode = Result.SysAppCode;
                 Return.SysUserData = JsonConvert.DeserializeObject<UserModel>(Result.SysUserData);
                 Return.SysUserId = Result.SysUserId;
-                Return.SysUserRoles = JsonConvert.DeserializeObject<vwUserRole>(Result.SysUserRoles);
+                Return.SysUserRoles = JsonConvert.DeserializeObject<CustomModel.vwUserRole>(Result.SysUserRoles);
                 Return.Token = Result.Token;
                 Return.UserApp = JsonConvert.DeserializeObject<List<vwUserApp>>(Result.UserApp);
                 Return.UserPrincipalName = Result.UserPrincipalName;
@@ -330,7 +330,7 @@ namespace com.apthai.DefectAPI.Controllers
                 Return.SysAppCode = Result.SysAppCode;
                 Return.SysUserData = JsonConvert.DeserializeObject<UserModel>(Result.SysUserData);
                 Return.SysUserId = Result.SysUserId;
-                Return.SysUserRoles = JsonConvert.DeserializeObject<vwUserRole>(Result.SysUserRoles);
+                Return.SysUserRoles = JsonConvert.DeserializeObject<CustomModel.vwUserRole>(Result.SysUserRoles);
                 Return.Token = Result.Token;
                 Return.UserApp = JsonConvert.DeserializeObject<List<vwUserApp>>(Result.UserApp);
                 Return.UserPrincipalName = Result.UserPrincipalName;

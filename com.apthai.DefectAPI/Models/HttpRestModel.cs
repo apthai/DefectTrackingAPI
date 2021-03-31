@@ -130,7 +130,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         public string AuthenticationProvider { get; set; }
         public string SysUserId { get; set; }
         public UserModel SysUserData { get; set; }
-        public vwUserRole SysUserRoles { get; set; }
+        public CustomModel.vwUserRole SysUserRoles { get; set; }
         public string SysAppCode { get; set; }
         public string AppUserRole { get; set; }
         public List<UserProjectType> UserProject { get; set; }
