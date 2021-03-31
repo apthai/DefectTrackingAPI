@@ -2643,7 +2643,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Content.Headers.Add("api_accesskey", reportKey);
-                var response = await client.PostAsync(urlReport, Content);
+                client.Timeout = new TimeSpan(0, 0, 1000);
+                 var response = await client.PostAsync(urlReport, Content);
 
                 ResponsetReportModel resultObject = new ResponsetReportModel();
                 if (response.IsSuccessStatusCode)
