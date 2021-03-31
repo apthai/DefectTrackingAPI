@@ -2772,8 +2772,10 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     response.EnsureSuccessStatusCode();
                     var result = await response.Content.ReadAsStringAsync();
                     resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+
                 }
 
+                var ss = await LoadFile(resultObject.URL);
                 var clientDL = new HttpClient();
                 long sizeFile = 0;
                 var fullUrl = "";
@@ -2781,30 +2783,29 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
 
-                    clientDL.Timeout = new TimeSpan(0, 0, 1000);
-                    HttpResponseMessage resDownload = await clientDL.GetAsync(resultObject.URL);
-                    try
-                    {
-                        using (HttpContent content = resDownload.Content)
-                        {
-                            // ... Read the string.
-                            var result = await content.ReadAsByteArrayAsync();
-                            Stream stream = new MemoryStream(result);
-                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                            {
-                                Headers = new HeaderDictionary(),
-                                ContentType = "application/pdf"
-                            };
-                            sizeFile = file.Length;
-                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                            fullUrl = resultMinio.Url;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        return ex.Message;
-                    }
-
+                    //clientDL.Timeout = new TimeSpan(0, 0, 1000);
+                    //HttpResponseMessage resDownload = await clientDL.GetAsync(resultObject.URL);
+                    //try
+                    //{
+                    //    using (HttpContent content = resDownload.Content)
+                    //    {
+                    //        // ... Read the string.
+                    //        var result = await content.ReadAsByteArrayAsync();
+                    //        Stream stream = new MemoryStream(result);
+                    //        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                    //        {
+                    //            Headers = new HeaderDictionary(),
+                    //            ContentType = "application/pdf"
+                    //        };
+                    //        sizeFile = file.Length;
+                    //        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                    //        fullUrl = resultMinio.Url;
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    return ex.Message;
+                    //}
 
                     callResource callResourcePDF = new callResource();
                     callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
@@ -2823,7 +2824,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourcePDF.FullFilePath = fullUrl;
                     callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
-                    return "";
+                    return ss.ToString();
 
                 }
                 return "";
