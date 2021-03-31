@@ -1251,7 +1251,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1535,7 +1535,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1652,7 +1652,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.FullFilePath = resultMinio.Url;
-                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1771,7 +1771,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
                 var resultUploadPDF = await GenerateReport(new ParamReportModel()
@@ -1979,7 +1979,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2091,7 +2091,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
                 if (defectModel == null)
@@ -2328,7 +2328,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.Active = true;
                     callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                     callResourceDate.FullFilePath = resultMinio.Url;
-                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2438,7 +2438,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.FullFilePath = resultMinio.Url;
-                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
+                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 }
                 else
@@ -2653,7 +2653,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Content.Headers.Add("api_accesskey", reportKey);
                 client.Timeout = new TimeSpan(1, 0, 0);
-                 var response = await client.PostAsync(urlReport, Content);
+                var response = await client.PostAsync(urlReport, Content);
 
                 ResponsetReportModel resultObject = new ResponsetReportModel();
                 if (response.IsSuccessStatusCode)
@@ -2669,22 +2669,22 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
 
                     client.Timeout = new TimeSpan(0, 0, 1000);
-                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true))
-                        using (HttpContent content = resDownload.Content)
+                    using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true))
+                    using (HttpContent content = resDownload.Content)
+                    {
+                        // ... Read the string.
+                        var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        Stream stream = new MemoryStream(result);
+                        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
                         {
-                            // ... Read the string.
-                            var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                            Stream stream = new MemoryStream(result);
-                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                            {
-                                Headers = new HeaderDictionary(),
-                                ContentType = "application/pdf"
-                            };
-                            sizeFile = file.Length;
-                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                            fullUrl = resultMinio.Url;
-                        }
-                    
+                            Headers = new HeaderDictionary(),
+                            ContentType = "application/pdf"
+                        };
+                        sizeFile = file.Length;
+                        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                        fullUrl = resultMinio.Url;
+                    }
+
 
                     callResource callResourcePDF = new callResource();
                     callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
@@ -2701,7 +2701,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourcePDF.SerialNo = model.UnitNo;
                     callResourcePDF.Active = true;
                     callResourcePDF.FullFilePath = fullUrl;
-                    callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6);;
+                    callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
                     return insertPDF;
 
@@ -2782,20 +2782,27 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
 
                     clientDL.Timeout = new TimeSpan(0, 0, 1000);
-                    HttpResponseMessage resDownload = await clientDL.GetAsync(resultObject.URL).ConfigureAwait(true);
-                    using (HttpContent content = resDownload.Content)
+                    HttpResponseMessage resDownload = await clientDL.GetAsync(resultObject.URL);
+                    try
                     {
-                        // ... Read the string.
-                        var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                        Stream stream = new MemoryStream(result);
-                        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                        using (HttpContent content = resDownload.Content)
                         {
-                            Headers = new HeaderDictionary(),
-                            ContentType = "application/pdf"
-                        };
-                        sizeFile = file.Length;
-                        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                        fullUrl = resultMinio.Url;
+                            // ... Read the string.
+                            var result = await content.ReadAsByteArrayAsync();
+                            Stream stream = new MemoryStream(result);
+                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                            {
+                                Headers = new HeaderDictionary(),
+                                ContentType = "application/pdf"
+                            };
+                            sizeFile = file.Length;
+                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                            fullUrl = resultMinio.Url;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
                     }
 
 
@@ -2836,25 +2843,31 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             try
             {
-                var client = new HttpClient();
-                using (HttpClient clientDownload = new HttpClient())
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+
+                //minio = new MinioServices();
+                //var result = await minio.DownLoadToTempFileAsync(bucketName,"",data);
+
+
+                var clientDL = new HttpClient();
+                long sizeFile = 0;
+                var fullUrl = "";
+                clientDL.Timeout = new TimeSpan(0, 0, 1000);
+                HttpResponseMessage resDownload = await clientDL.GetAsync(data);
+                using (HttpContent content = resDownload.Content)
                 {
-                    client.Timeout = new TimeSpan(0, 0, 1000);
-                    using (HttpResponseMessage resDownload = await client.GetAsync(data).ConfigureAwait(true))
-                    using (HttpContent content = resDownload.Content)
+                    // ... Read the string.
+                    var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                    Stream stream = new MemoryStream(result);
+                    var file = new FormFile(stream, 0, stream.Length, null, "test")
                     {
-                        // ... Read the string.
-                        var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                        Stream stream = new MemoryStream(result);
-                        var file = new FormFile(stream, 0, stream.Length, null, "Test")
-                        {
-                            Headers = new HeaderDictionary(),
-                            ContentType = "application/pdf"
-                        };
-                        return  file.Length;
-                       
-                    }
+                        Headers = new HeaderDictionary(),
+                        ContentType = "application/pdf"
+                    };
+                    sizeFile = file.Length;
+
                 }
+                return sizeFile;
             }
             catch (Exception ex)
             {
