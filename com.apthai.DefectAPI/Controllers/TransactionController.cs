@@ -232,6 +232,8 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.SerialNo = data.ItemId;
                             callResourceDate.Active = true;
                             callResourceDate.RowState = "AddNew";
+                            callResourceDate.FullFilePath = resultMinio.Url;
+                            callResourceDate.ExpirePathDate = DateTime.Now;
                             bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
                             if (LatestTxnDate.Date < Today.Date)
@@ -399,6 +401,8 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.SerialNo = data.ItemId;
                             callResourceDate.Active = true;
                             callResourceDate.RowState = "AddNew";
+                            callResourceDate.FullFilePath = resultMinio.Url;
+                            callResourceDate.ExpirePathDate = DateTime.Now;
                             bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                         }
                         else
@@ -1246,6 +1250,8 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1410,6 +1416,8 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     callResourceDate.ProjectNo = data.ProjectCode;
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
+                    callResourceDate.FullFilePath = resultMinio.Url;
+                    callResourceDate.ExpirePathDate = DateTime.Now;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1526,6 +1534,8 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1641,6 +1651,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.ProjectNo = data.ProjectCode;
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
+                    callResourceDate.FullFilePath = resultMinio.Url;
+                    callResourceDate.ExpirePathDate = DateTime.Now;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1758,7 +1770,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
-
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
                 var resultUploadPDF = await GenerateReport(new ParamReportModel()
@@ -1844,6 +1857,10 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1963,6 +1980,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2072,6 +2091,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
+                callResourceDate.FullFilePath = resultMinio.Url;
+                callResourceDate.ExpirePathDate = DateTime.Now;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
                 if (defectModel == null)
@@ -2234,6 +2255,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.ProjectNo = data.ProjectCode;
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
+                    callResourceDate.FullFilePath = resultMinio.Url;
+                    callResourceDate.ExpirePathDate = DateTime.Now;
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 }
                 else
@@ -2297,6 +2320,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
+                    callResourceDate.FullFilePath = resultMinio.Url;
+                    callResourceDate.ExpirePathDate = DateTime.Now;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2405,6 +2430,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.ProjectNo = data.ProjectCode;
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
+                    callResourceDate.FullFilePath = resultMinio.Url;
+                    callResourceDate.ExpirePathDate = DateTime.Now;
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 }
                 else
@@ -2628,6 +2655,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
                 }
                 long sizeFile = 0;
+                var fullUrl = "";
                 if (resultObject.Success)
                 {
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
@@ -2646,6 +2674,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             };
                             sizeFile = file.Length;
                             var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                            fullUrl = resultMinio.Url;
                         }
                     }
 
@@ -2663,7 +2692,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourcePDF.ProjectNo = model.ProjectCode;
                     callResourcePDF.SerialNo = model.UnitNo;
                     callResourcePDF.Active = true;
-
+                    callResourcePDF.FullFilePath = fullUrl;
+                    callResourcePDF.ExpirePathDate = DateTime.Now;
                     insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
                     return insertPDF;
 

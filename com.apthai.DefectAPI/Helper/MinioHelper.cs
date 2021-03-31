@@ -13,7 +13,7 @@ namespace com.apthai.DefectAPI.Services
 {
     public partial class MinioServices 
     {
-        private int _expireHours = 24;
+        private int _expireHours = 168;
         public string _minioEndpoint;
         public string _minioAccessKey;
         public string _minioSecretKey;
