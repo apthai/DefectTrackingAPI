@@ -1251,7 +1251,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1535,7 +1535,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1652,7 +1652,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.FullFilePath = resultMinio.Url;
-                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -1771,7 +1771,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
 
                 var resultUploadPDF = await GenerateReport(new ParamReportModel()
@@ -1979,7 +1979,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                 //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                 //TresourceData[i].FileLength = size;
                 //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2065,6 +2065,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             int SuccessUploadCount = 0;
             int count = 0;
             var pathUrlSig = "";
+            var reusult = "";
             callResource callResourceDate = new callResource();
             minio = new MinioServices();
             if (data.Files != null)
@@ -2090,7 +2091,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 callTDefect defectModel = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectID);
                 if (defectModel == null)
@@ -2143,7 +2144,15 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                 }
-                var resultUploadPDF = await GenerateReport(new ParamReportModel()
+                //var resultUploadPDF = await GenerateReport(new ParamReportModel()
+                //{
+                //    IsBF = data.IsBF,
+                //    ProjectCode = data.ProjectCode,
+                //    TDefectId = Int32.Parse(data.TDefectID),
+                //    UnitNo = data.UnitNo
+                //});
+
+                reusult = await TestGenerateReport(new ParamReportModel()
                 {
                     IsBF = data.IsBF,
                     ProjectCode = data.ProjectCode,
@@ -2176,7 +2185,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             return new
             {
                 success = true,
-                data = pathUrlSig,
+                data = reusult,
                 message = string.Format(" Upload File Success : {0} Uploaded  ", SuccessUploadCount)
             };
         }
@@ -2319,7 +2328,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.Active = true;
                     callResourceDate.TDefectId = data.TDefectID == "" ? 0 : Convert.ToInt32(data.TDefectID);
                     callResourceDate.FullFilePath = resultMinio.Url;
-                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
@@ -2429,7 +2438,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.FullFilePath = resultMinio.Url;
-                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                    callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);;
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 }
                 else
@@ -2641,7 +2650,117 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 var urlReport = UtilsProvider.AppSetting.ReportURL;
                 var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
                 var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
-                var s = JsonConvert.SerializeObject(requestMode);
+                Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                Content.Headers.Add("api_accesskey", reportKey);
+                client.Timeout = new TimeSpan(1, 0, 0);
+                 var response = await client.PostAsync(urlReport, Content);
+
+                ResponsetReportModel resultObject = new ResponsetReportModel();
+                if (response.IsSuccessStatusCode)
+                {
+                    response.EnsureSuccessStatusCode();
+                    var result = await response.Content.ReadAsStringAsync();
+                    resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                }
+                long sizeFile = 0;
+                var fullUrl = "";
+                if (resultObject.Success)
+                {
+                    var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
+
+                    client.Timeout = new TimeSpan(0, 0, 1000);
+                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true))
+                        using (HttpContent content = resDownload.Content)
+                        {
+                            // ... Read the string.
+                            var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                            Stream stream = new MemoryStream(result);
+                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                            {
+                                Headers = new HeaderDictionary(),
+                                ContentType = "application/pdf"
+                            };
+                            sizeFile = file.Length;
+                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                            fullUrl = resultMinio.Url;
+                        }
+                    
+
+                    callResource callResourcePDF = new callResource();
+                    callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
+                    callResourcePDF.FileLength = sizeFile;
+                    callResourcePDF.CreateDate = DateTime.Now;
+                    callResourcePDF.RowState = "Original";
+                    callResourcePDF.ResourceType = 8;
+                    callResourcePDF.ResourceTagSubCode = "1";
+                    callResourcePDF.ResourceGroupSet = null;
+                    callResourcePDF.ResourceGroupOrder = 0;
+                    callResourcePDF.TDefectDetailId = 0;
+                    callResourcePDF.TDefectId = (int)model.TDefectId;
+                    callResourcePDF.ProjectNo = model.ProjectCode;
+                    callResourcePDF.SerialNo = model.UnitNo;
+                    callResourcePDF.Active = true;
+                    callResourcePDF.FullFilePath = fullUrl;
+                    callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6);;
+                    insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                    return insertPDF;
+
+                }
+                return insertPDF;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+        private async Task<string> TestGenerateReport(ParamReportModel model)
+        {
+            try
+            {
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                minio = new MinioServices();
+                bool insertPDF = false;
+                List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(model.TDefectId);
+                string lcSigAf = Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").FirstOrDefault().FilePath : null;
+                string cusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().FilePath : null;
+                string cusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().FilePath : null;
+                string conSigBf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").FirstOrDefault().FilePath : null;
+                string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
+                string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
+
+                string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
+                string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
+                string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
+                string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
+                string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
+                string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
+
+                var requestMode = new RequestReportModel()
+                {
+                    Folder = "defect",
+                    FileName = "RPT_ReceiveUnit",
+                    Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
+                    DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
+                    UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
+                    Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
+                    Parameters = new List<ParameterReport>()
+                            {
+                               new ParameterReport(){Name="@TDefectId",Value=model.TDefectId.ToString()},
+                               new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
+                               new ParameterReport(){Name="@CON_MGR_AF_URL",Value=conSigAfFilePath},
+                               new ParameterReport(){Name="@CON_MGR_BF_URL",Value=conSigBfFilePath},
+                               new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
+                               new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
+                               new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
+                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
+                            }
+                };
+                var client = new HttpClient();
+                var urlReport = UtilsProvider.AppSetting.ReportURL;
+                var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
+                var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Content.Headers.Add("api_accesskey", reportKey);
                 client.Timeout = new TimeSpan(1, 0, 0);
@@ -2695,14 +2814,14 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourcePDF.FullFilePath = fullUrl;
                     callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
-                    return insertPDF;
+                    return "";
 
                 }
-                return insertPDF;
+                return "";
             }
             catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
@@ -2730,8 +2849,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             Headers = new HeaderDictionary(),
                             ContentType = "application/pdf"
                         };
-                        return file.Length;
-
+                        return  file.Length;
+                       
                     }
                 }
             }
