@@ -2641,9 +2641,10 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 var urlReport = UtilsProvider.AppSetting.ReportURL;
                 var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
                 var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
+                var s = JsonConvert.SerializeObject(requestMode);
                 Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Content.Headers.Add("api_accesskey", reportKey);
-                client.Timeout = new TimeSpan(0, 0, 1000);
+                client.Timeout = new TimeSpan(1, 0, 0);
                  var response = await client.PostAsync(urlReport, Content);
 
                 ResponsetReportModel resultObject = new ResponsetReportModel();
