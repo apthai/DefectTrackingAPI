@@ -2780,7 +2780,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
 
                     client.Timeout = new TimeSpan(0, 0, 1000);
-                    using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true))
+                    HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true);
                     using (HttpContent content = resDownload.Content)
                     {
                         // ... Read the string.
