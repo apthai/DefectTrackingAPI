@@ -2661,7 +2661,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
                     using (HttpClient clientDownload = new HttpClient())
                     {
-                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
+                        clientDownload.Timeout = new TimeSpan(0, 0, 1000);
+                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true))
                         using (HttpContent content = resDownload.Content)
                         {
                             // ... Read the string.
@@ -2703,6 +2704,41 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+
+        [HttpGet]
+        [Route("DefectReport")]
+        [SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
+        Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
+        public async Task<object> LoadFile(string data)
+        {
+            try
+            {
+                var client = new HttpClient();
+                using (HttpClient clientDownload = new HttpClient())
+                {
+                    client.Timeout = new TimeSpan(0, 0, 1000);
+                    using (HttpResponseMessage resDownload = await client.GetAsync(data).ConfigureAwait(true))
+                    using (HttpContent content = resDownload.Content)
+                    {
+                        // ... Read the string.
+                        var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        Stream stream = new MemoryStream(result);
+                        var file = new FormFile(stream, 0, stream.Length, null, "Test")
+                        {
+                            Headers = new HeaderDictionary(),
+                            ContentType = "application/pdf"
+                        };
+                        return  file.Length;
+                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error :: " + ex.Message);
             }
         }
     }
