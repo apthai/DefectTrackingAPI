@@ -2144,21 +2144,21 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                 }
-                //var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                //{
-                //    IsBF = data.IsBF,
-                //    ProjectCode = data.ProjectCode,
-                //    TDefectId = Int32.Parse(data.TDefectID),
-                //    UnitNo = data.UnitNo
-                //});
-
-                reusult = await TestGenerateReport(new ParamReportModel()
+                var resultUploadPDF = await GenerateReport(new ParamReportModel()
                 {
                     IsBF = data.IsBF,
                     ProjectCode = data.ProjectCode,
                     TDefectId = Int32.Parse(data.TDefectID),
                     UnitNo = data.UnitNo
                 });
+
+                //reusult = await TestGenerateReport(new ParamReportModel()
+                //{
+                //    IsBF = data.IsBF,
+                //    ProjectCode = data.ProjectCode,
+                //    TDefectId = Int32.Parse(data.TDefectID),
+                //    UnitNo = data.UnitNo
+                //});
 
                 pathUrlSig = callResourceDate.FilePath;
             }
@@ -2670,7 +2670,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     using (HttpClient client = new HttpClient())
                     {
-                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
+                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL))
                         using (HttpContent content = resDownload.Content)
                         {
                             // ... Read the string.
@@ -2807,27 +2807,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
                         fullUrl = resultMinio.Url;
                         //}
-                    }
-
-
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(resultObject.URL.ToString());
-                        client.DefaultRequestHeaders.Accept.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                        HttpResponseMessage response = await client.GetAsync(resultObject.URL.ToString());
-
-                        if (response.IsSuccessStatusCode)
-                        {
-                            System.Net.Http.HttpContent content = response.Content;
-                            var contentStream = await content.ReadAsStreamAsync(); // get the actual content stream
-                            var file = File(contentStream, "application/pdf", resultObject.FileName);
-                            return file.FileStream.Length.ToString();
-                        }
-                        else
-                        {
-                            throw new FileNotFoundException();
-                        }
                     }
 
 
