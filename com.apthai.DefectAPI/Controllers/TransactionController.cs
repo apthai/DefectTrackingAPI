@@ -2144,21 +2144,21 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                 }
-                var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                {
-                    IsBF = data.IsBF,
-                    ProjectCode = data.ProjectCode,
-                    TDefectId = Int32.Parse(data.TDefectID),
-                    UnitNo = data.UnitNo
-                });
-
-                //reusult = await TestGenerateReport(new ParamReportModel()
+                //var resultUploadPDF = await GenerateReport(new ParamReportModel()
                 //{
                 //    IsBF = data.IsBF,
                 //    ProjectCode = data.ProjectCode,
                 //    TDefectId = Int32.Parse(data.TDefectID),
                 //    UnitNo = data.UnitNo
                 //});
+
+                reusult = await TestGenerateReport(new ParamReportModel()
+                {
+                    IsBF = data.IsBF,
+                    ProjectCode = data.ProjectCode,
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    UnitNo = data.UnitNo
+                });
 
                 pathUrlSig = callResourceDate.FilePath;
             }
@@ -2659,7 +2659,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     {
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
-                        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);                 
                     }
                     client.Dispose();
                 }
@@ -2775,6 +2775,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
                         resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                        return result.ToString();
                     }
                     client.Dispose();
                 }
