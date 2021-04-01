@@ -2869,30 +2869,19 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             try
             {
-                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
-
-                //minio = new MinioServices();
-                //var result = await minio.DownLoadToTempFileAsync(bucketName,"",data);
-
-
-                var clientDL = new HttpClient();
-                long sizeFile = 0;
-                var fullUrl = "";
-                HttpResponseMessage resDownload = await clientDL.GetAsync(data).ConfigureAwait(false);
-                using (HttpContent content = resDownload.Content)
+                using (HttpClient client = new HttpClient())
                 {
-                    // ... Read the string.
-                    var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                    Stream stream = new MemoryStream(result);
+                    var resDownload = await client.GetByteArrayAsync(data);
+                    return resDownload.Length.ToString();
+                    Stream stream = new MemoryStream(resDownload);
                     var file = new FormFile(stream, 0, stream.Length, null, "test")
+                    //var file = new FormFile(resDownload, 0, resDownload.Length, null, resultObject.FileName)
+
                     {
                         Headers = new HeaderDictionary(),
                         ContentType = "application/pdf"
                     };
-                    sizeFile = file.Length;
-
                 }
-                return sizeFile;
             }
             catch (Exception ex)
             {
