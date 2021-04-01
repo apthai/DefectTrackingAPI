@@ -2781,13 +2781,13 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     urlPdf = WebUtility.UrlDecode(resultObject.URL);
 
                 }
-                await Task.Delay(5000);
+                await Task.Delay(2000);
                 client = new HttpClient();
                 var url1 = "http://192.168.2.29:9900/pdf/defect/rpt_receiveunit/RPT_ReceiveUnit_20210401_0b2b8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FECUGD9JAXS4F6KF14PH%2F20210401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210401T063059Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&&X-Amz-Signature=2817532fba61fc8cbc5bc061acc2c976cdb6dee7d751d0322a54aeb295043e47";
                 var url2 = "http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210401_0bf85.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065124Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=5a2e4d489c0a26f38fde613446316ba542e4b0abfeb42b4d60171ff4aec06f39";
                 var url3 = "http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210331_eb0e2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065159Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=de9fae5574973cfcdc836fa9211bf0da55ab4484a896b49bf94ebb9c9c574152";
                 var url4 = urlPdf;
-                var url5 = resultObject.URL;
+                var url5 = resultObject.URL.ToString();
                 HttpResponseMessage resDownload1 = await client.GetAsync(url1).ConfigureAwait(false);
                 HttpResponseMessage resDownload2 = await client.GetAsync(url2).ConfigureAwait(false);
                 HttpResponseMessage resDownload3 = await client.GetAsync(url3).ConfigureAwait(false);
@@ -2795,8 +2795,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 HttpResponseMessage resDownload5 = await client.GetAsync("http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210401_0bf85.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065124Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=5a2e4d489c0a26f38fde613446316ba542e4b0abfeb42b4d60171ff4aec06f39").ConfigureAwait(false);
                 HttpResponseMessage resDownload6 = await client.GetAsync("http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210331_eb0e2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065159Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=de9fae5574973cfcdc836fa9211bf0da55ab4484a896b49bf94ebb9c9c574152").ConfigureAwait(false);
                 HttpResponseMessage resDownload7 = await client.GetAsync(url4).ConfigureAwait(false);
-                HttpResponseMessage resDownload8 = await client.GetAsync(url5).ConfigureAwait(false);
-                HttpResponseMessage resDownload9 =  client.GetAsync(resultObject.URL).GetAwaiter().GetResult(); 
+                HttpResponseMessage resDownload8 = await client.GetAsync(url5.ToString()).ConfigureAwait(false);
 
                 return JsonConvert.SerializeObject(new
                 {
@@ -2808,7 +2807,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     content6 = resDownload6.Content.Headers.ContentLength.ToString(),
                     content7 = resDownload7.Content.Headers.ContentLength.ToString(),
                     content8 = resDownload8.Content.Headers.ContentLength.ToString(),
-                    content9 = resDownload9.Content.Headers.ContentLength.ToString(),
                     url = resultObject.URL,
                     json = resultObject
                 });
