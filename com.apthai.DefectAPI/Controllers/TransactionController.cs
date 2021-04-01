@@ -2760,6 +2760,9 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                             }
                 };
                 var urlPdf = "";
+                long sizeFile = 0;
+                var fullUrl = "";
+                var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
                 ResponsetReportModel resultObject = new ResponsetReportModel();
                 using (HttpClient client = new HttpClient())
                 {
@@ -2777,20 +2780,13 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
                         urlPdf = resultObject.URL;
                     }
+
                     client.Dispose();
-                }
 
-                long sizeFile = 0;
-                var fullUrl = "";
-                var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
-
-                if (resultObject.Success)
-                {
-                    using (HttpClient client = new HttpClient())
+                    if (resultObject.Success)
                     {
                         //HttpResponseMessage resDownload = await client.GetAsync("http://192.168.2.29:9900/pdf/defect/rpt_receiveunit/RPT_ReceiveUnit_20210401_0b2b8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FECUGD9JAXS4F6KF14PH%2F20210401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210401T063059Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&&X-Amz-Signature=2817532fba61fc8cbc5bc061acc2c976cdb6dee7d751d0322a54aeb295043e47").ConfigureAwait(false);
                         HttpResponseMessage resDownload = await client.GetAsync(urlPdf).ConfigureAwait(false);
-
                         using (HttpContent content = resDownload.Content)
                         {
                             // ... Read the string.
@@ -2807,6 +2803,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         }
                         client.Dispose();
                     }
+                }
 
 
                     callResource callResourcePDF = new callResource();
