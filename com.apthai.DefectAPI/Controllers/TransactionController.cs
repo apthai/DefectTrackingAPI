@@ -2199,7 +2199,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             try
             {
-
                 callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
 
                 if (callTDefectDetail != null)
