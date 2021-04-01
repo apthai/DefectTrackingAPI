@@ -2654,7 +2654,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
                     Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                     Content.Headers.Add("api_accesskey", reportKey);
-                    client.Timeout = new TimeSpan(0, 0, 1000);
                     var response = await client.PostAsync(urlReport, Content);
                     if (response.IsSuccessStatusCode)
                     {
@@ -2671,8 +2670,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     using (HttpClient client = new HttpClient())
                     {
-                        client.Timeout = new TimeSpan(0, 0, 1000);
-                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(true))
+                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false))
                         using (HttpContent content = resDownload.Content)
                         {
                             // ... Read the string.
