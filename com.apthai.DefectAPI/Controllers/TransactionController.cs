@@ -2764,25 +2764,25 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 var fullUrl = "";
                 var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
                 ResponsetReportModel resultObject = new ResponsetReportModel();
-                using (HttpClient client = new HttpClient())
-                {
-                    var urlReport = UtilsProvider.AppSetting.ReportURL;
-                    var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
-                    var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
-                    Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                    Content.Headers.Add("api_accesskey", reportKey);
-                    client.Timeout = new TimeSpan(0, 0, 1000);
-                    var response = await client.PostAsync(urlReport, Content);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        response.EnsureSuccessStatusCode();
-                        var result = await response.Content.ReadAsStringAsync();
-                        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-                        urlPdf = WebUtility.UrlDecode(resultObject.URL);
-                    }
+                //using (HttpClient client = new HttpClient())
+                //{
+                //    var urlReport = UtilsProvider.AppSetting.ReportURL;
+                //    var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
+                //    var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
+                //    Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                //    Content.Headers.Add("api_accesskey", reportKey);
+                //    client.Timeout = new TimeSpan(0, 0, 1000);
+                //    var response = await client.PostAsync(urlReport, Content);
+                //    if (response.IsSuccessStatusCode)
+                //    {
+                //        response.EnsureSuccessStatusCode();
+                //        var result = await response.Content.ReadAsStringAsync();
+                //        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                //        urlPdf = WebUtility.UrlDecode(resultObject.URL);
+                //    }
 
-                    client.Dispose();
-                }
+                //    client.Dispose();
+                //}
 
                 using (HttpClient client = new HttpClient())
                 {
