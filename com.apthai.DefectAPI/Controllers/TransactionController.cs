@@ -2759,7 +2759,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                                new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
                             }
                 };
-                var urlPdf = "";
+                Uri urlPdf ;
                 long sizeFile = 0;
                 var fullUrl = "";
                 var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
@@ -2778,7 +2778,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
                         resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-                        urlPdf = resultObject.URL;
+                        urlPdf = new Uri(resultObject.URL, UriKind.Absolute);
                     }
 
                     client.Dispose();
