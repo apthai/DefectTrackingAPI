@@ -2663,6 +2663,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     }
                     client.Dispose();
                 }
+                await Task.Delay(2000);
                 long sizeFile = 0;
                 var fullUrl = "";
                 var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
