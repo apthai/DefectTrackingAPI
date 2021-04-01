@@ -2775,7 +2775,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
                         resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-                        return result.ToString();
                     }
                     client.Dispose();
                 }
