@@ -2784,27 +2784,50 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 long sizeFile = 0;
                 var fullUrl = "";
                 var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
-                using (HttpClient client = new HttpClient())
+
+                if (resultObject.Success)
                 {
-                    if (resultObject.Success)
-                    {                    
-                        client.Timeout = new TimeSpan(0, 0, 1000);
-                        HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL);
-                        using (HttpContent content = resDownload.Content)
+                    //using (HttpClient client = new HttpClient())
+                    //{
+                    //    client.Timeout = new TimeSpan(0, 0, 1000);
+                    //    HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL);
+                    //    using (HttpContent content = resDownload.Content)
+                    //    {
+                    //        // ... Read the string.
+                    //        var result = await content.ReadAsByteArrayAsync();
+                    //        Stream stream = new MemoryStream(result);
+                    //        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                    //        {
+                    //            Headers = new HeaderDictionary(),
+                    //            ContentType = "application/pdf"
+                    //        };
+                    //        sizeFile = file.Length;
+                    //        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                    //        fullUrl = resultMinio.Url;
+                    //    }
+                    //}
+
+
+                    using (HttpClient client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri(resultObject.URL.ToString());
+                        client.DefaultRequestHeaders.Accept.Clear();
+                        client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        HttpResponseMessage response = await client.GetAsync(resultObject.URL.ToString());
+
+                        if (response.IsSuccessStatusCode)
                         {
-                            // ... Read the string.
-                            var result = await content.ReadAsByteArrayAsync();
-                            Stream stream = new MemoryStream(result);
-                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                            {
-                                Headers = new HeaderDictionary(),
-                                ContentType = "application/pdf"
-                            };
-                            sizeFile = file.Length;
-                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                            fullUrl = resultMinio.Url;
+                            System.Net.Http.HttpContent content = response.Content;
+                            var contentStream = await content.ReadAsStreamAsync(); // get the actual content stream
+                            var file = File(contentStream, "application/pdf", resultObject.FileName);
+                            return file.FileStream.Length.ToString();
+                        }
+                        else
+                        {
+                            throw new FileNotFoundException();
                         }
                     }
+
 
                     callResource callResourcePDF = new callResource();
                     callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
@@ -2825,8 +2848,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
 
                     return sizeFile.ToString();
-
                 }
+
                 return "";
             }
             catch (Exception ex)
