@@ -2149,7 +2149,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     IsBF = data.IsBF,
                     ProjectCode = data.ProjectCode,
                     TDefectId = Int32.Parse(data.TDefectID),
-                    UnitNo = data.UnitNo
+                    UnitNo = data.UnitNo 
                 });
 
                 //reusult = await TestGenerateReport(new ParamReportModel()
