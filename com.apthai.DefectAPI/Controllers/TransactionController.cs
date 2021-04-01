@@ -2659,7 +2659,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     {
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
-                        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);                 
+                        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
                     }
                     client.Dispose();
                 }
@@ -2775,7 +2775,11 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
                         resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+<<<<<<< Updated upstream
                         return result.ToString();
+=======
+
+>>>>>>> Stashed changes
                     }
                     client.Dispose();
                 }
@@ -2786,28 +2790,29 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                 if (resultObject.Success)
                 {
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
                     using (HttpClient client = new HttpClient())
                     {
-                        var resDownload = await client.GetByteArrayAsync(resultObject.URL);
-                        return resDownload.Length.ToString();
-                        //using (HttpContent content = resDownload.Content)
-                        //{
-                        // ... Read the string.
-                        //var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                        Stream stream = new MemoryStream(resDownload);
-                        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                        //var file = new FormFile(resDownload, 0, resDownload.Length, null, resultObject.FileName)
-
+                        HttpResponseMessage resDownload = await client.GetAsync("http://192.168.2.29:9900/pdf/defect/rpt_receiveunit/RPT_ReceiveUnit_20210401_0b2b8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FECUGD9JAXS4F6KF14PH%2F20210401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210401T063059Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&&X-Amz-Signature=2817532fba61fc8cbc5bc061acc2c976cdb6dee7d751d0322a54aeb295043e47").ConfigureAwait(false);
+                        using (HttpContent content = resDownload.Content)
                         {
-                            Headers = new HeaderDictionary(),
-                            ContentType = "application/pdf"
-                        };
-                        sizeFile = file.Length;
-                        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                        fullUrl = resultMinio.Url;
-                        //}
+                            // ... Read the string.
+                            var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                            Stream stream = new MemoryStream(result);
+                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                            {
+                                Headers = new HeaderDictionary(),
+                                ContentType = "application/pdf"
+                            };
+                            sizeFile = file.Length;
+                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                            fullUrl = resultMinio.Url;
+                        }
+                        client.Dispose();
                     }
 
 
