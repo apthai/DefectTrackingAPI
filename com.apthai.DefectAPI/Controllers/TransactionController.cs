@@ -2795,7 +2795,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 HttpResponseMessage resDownload6 = await client.GetAsync("http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210331_eb0e2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065159Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=de9fae5574973cfcdc836fa9211bf0da55ab4484a896b49bf94ebb9c9c574152").ConfigureAwait(false);
                 HttpResponseMessage resDownload7 = await client.GetAsync(url4).ConfigureAwait(false);
                 HttpResponseMessage resDownload8 = await client.GetAsync(url5).ConfigureAwait(false);
-                HttpResponseMessage resDownload9 =  client.GetAsync(resultObject.URL).Result;
+                HttpResponseMessage resDownload9 =  client.GetAsync(resultObject.URL).GetAwaiter().GetResult();
 
                 return JsonConvert.SerializeObject(new
                 {
