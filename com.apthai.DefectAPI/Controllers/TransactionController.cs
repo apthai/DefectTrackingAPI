@@ -2706,7 +2706,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
                     return insertPDF;
-
                 }
                 return insertPDF;
             }
