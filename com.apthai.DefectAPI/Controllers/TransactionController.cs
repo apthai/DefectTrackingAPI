@@ -2144,21 +2144,21 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                 }
-                //var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                //{
-                //    IsBF = data.IsBF,
-                //    ProjectCode = data.ProjectCode,
-                //    TDefectId = Int32.Parse(data.TDefectID),
-                //    UnitNo = data.UnitNo
-                //});
-
-                reusult = await TestGenerateReport(new ParamReportModel()
+                var resultUploadPDF = await GenerateReport(new ParamReportModel()
                 {
                     IsBF = data.IsBF,
                     ProjectCode = data.ProjectCode,
                     TDefectId = Int32.Parse(data.TDefectID),
                     UnitNo = data.UnitNo
                 });
+
+                //reusult = await TestGenerateReport(new ParamReportModel()
+                //{
+                //    IsBF = data.IsBF,
+                //    ProjectCode = data.ProjectCode,
+                //    TDefectId = Int32.Parse(data.TDefectID),
+                //    UnitNo = data.UnitNo
+                //});
 
                 pathUrlSig = callResourceDate.FilePath;
             }
@@ -2670,7 +2670,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     using (HttpClient client = new HttpClient())
                     {
-                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL))
+                        using (HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL.ToString()))
                         using (HttpContent content = resDownload.Content)
                         {
                             // ... Read the string.
