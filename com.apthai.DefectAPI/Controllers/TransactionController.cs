@@ -2785,24 +2785,28 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                 if (resultObject.Success)
                 {
+
+
                     using (HttpClient client = new HttpClient())
                     {
-                        HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL).ConfigureAwait(false);
-                        return resDownload.Content.Headers.ContentLength.ToString();
-                        using (HttpContent content = resDownload.Content)
+                        var resDownload = await client.GetByteArrayAsync(resultObject.URL);
+                        return resDownload.Length.ToString();
+                        //using (HttpContent content = resDownload.Content)
+                        //{
+                        // ... Read the string.
+                        //var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        Stream stream = new MemoryStream(resDownload);
+                        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                        //var file = new FormFile(resDownload, 0, resDownload.Length, null, resultObject.FileName)
+
                         {
-                            // ... Read the string.
-                            var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                            Stream stream = new MemoryStream(result);
-                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                            {
-                                Headers = new HeaderDictionary(),
-                                ContentType = "application/pdf"
-                            };
-                            sizeFile = file.Length;
-                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                            fullUrl = resultMinio.Url;
-                        }
+                            Headers = new HeaderDictionary(),
+                            ContentType = "application/pdf"
+                        };
+                        sizeFile = file.Length;
+                        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                        fullUrl = resultMinio.Url;
+                        //}
                     }
 
 
@@ -2874,8 +2878,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 var clientDL = new HttpClient();
                 long sizeFile = 0;
                 var fullUrl = "";
-                clientDL.Timeout = new TimeSpan(0, 0, 1000);
-                HttpResponseMessage resDownload = await clientDL.GetAsync(data);
+                HttpResponseMessage resDownload = await clientDL.GetAsync(data).ConfigureAwait(false);
                 using (HttpContent content = resDownload.Content)
                 {
                     // ... Read the string.
