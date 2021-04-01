@@ -2759,7 +2759,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                                new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
                             }
                 };
-                Uri urlPdf ;
+                Uri urlPdf =  new Uri("");
                 long sizeFile = 0;
                 var fullUrl = "";
                 var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
@@ -2778,7 +2778,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
                         resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-                        urlPdf = new Uri(resultObject.URL, UriKind.Absolute);
+                        urlPdf = new Uri(resultObject.URL);
                     }
 
                     client.Dispose();
@@ -2806,26 +2806,26 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 }
 
 
-                    callResource callResourcePDF = new callResource();
-                    callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
-                    callResourcePDF.FileLength = sizeFile;
-                    callResourcePDF.CreateDate = DateTime.Now;
-                    callResourcePDF.RowState = "Original";
-                    callResourcePDF.ResourceType = 8;
-                    callResourcePDF.ResourceTagSubCode = "1";
-                    callResourcePDF.ResourceGroupSet = null;
-                    callResourcePDF.ResourceGroupOrder = 0;
-                    callResourcePDF.TDefectDetailId = 0;
-                    callResourcePDF.TDefectId = (int)model.TDefectId;
-                    callResourcePDF.ProjectNo = model.ProjectCode;
-                    callResourcePDF.SerialNo = model.UnitNo;
-                    callResourcePDF.Active = true;
-                    callResourcePDF.FullFilePath = fullUrl;
-                    callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
-                    insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                callResource callResourcePDF = new callResource();
+                callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
+                callResourcePDF.FileLength = sizeFile;
+                callResourcePDF.CreateDate = DateTime.Now;
+                callResourcePDF.RowState = "Original";
+                callResourcePDF.ResourceType = 8;
+                callResourcePDF.ResourceTagSubCode = "1";
+                callResourcePDF.ResourceGroupSet = null;
+                callResourcePDF.ResourceGroupOrder = 0;
+                callResourcePDF.TDefectDetailId = 0;
+                callResourcePDF.TDefectId = (int)model.TDefectId;
+                callResourcePDF.ProjectNo = model.ProjectCode;
+                callResourcePDF.SerialNo = model.UnitNo;
+                callResourcePDF.Active = true;
+                callResourcePDF.FullFilePath = fullUrl;
+                callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
 
-                    return sizeFile.ToString();
-                }
+                return sizeFile.ToString();
+
 
                 return "";
             }
@@ -2834,7 +2834,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 return ex.Message;
             }
         }
-
 
         [HttpGet]
         [Route("DefectReport")]
