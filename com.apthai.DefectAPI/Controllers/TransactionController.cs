@@ -2144,21 +2144,21 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                 }
-                //var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                //{
-                //    IsBF = data.IsBF,
-                //    ProjectCode = data.ProjectCode,
-                //    TDefectId = Int32.Parse(data.TDefectID),
-                //    UnitNo = data.UnitNo
-                //});
-
-                reusult = await TestGenerateReport(new ParamReportModel()
+                var resultUploadPDF = await GenerateReport(new ParamReportModel()
                 {
                     IsBF = data.IsBF,
                     ProjectCode = data.ProjectCode,
                     TDefectId = Int32.Parse(data.TDefectID),
                     UnitNo = data.UnitNo
                 });
+
+                //reusult = await TestGenerateReport(new ParamReportModel()
+                //{
+                //    IsBF = data.IsBF,
+                //    ProjectCode = data.ProjectCode,
+                //    TDefectId = Int32.Parse(data.TDefectID),
+                //    UnitNo = data.UnitNo
+                //});
 
                 pathUrlSig = callResourceDate.FilePath;
             }
@@ -2787,25 +2787,25 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
                 if (resultObject.Success)
                 {
-                    //using (HttpClient client = new HttpClient())
-                    //{
-                    //    client.Timeout = new TimeSpan(0, 0, 1000);
-                    //    HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL);
-                    //    using (HttpContent content = resDownload.Content)
-                    //    {
-                    //        // ... Read the string.
-                    //        var result = await content.ReadAsByteArrayAsync();
-                    //        Stream stream = new MemoryStream(result);
-                    //        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                    //        {
-                    //            Headers = new HeaderDictionary(),
-                    //            ContentType = "application/pdf"
-                    //        };
-                    //        sizeFile = file.Length;
-                    //        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                    //        fullUrl = resultMinio.Url;
-                    //    }
-                    //}
+                    using (HttpClient client = new HttpClient())
+                    {
+                        client.Timeout = new TimeSpan(0, 0, 1000);
+                        HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL);
+                        using (HttpContent content = resDownload.Content)
+                        {
+                            // ... Read the string.
+                            var result = await content.ReadAsByteArrayAsync();
+                            Stream stream = new MemoryStream(result);
+                            var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                            {
+                                Headers = new HeaderDictionary(),
+                                ContentType = "application/pdf"
+                            };
+                            sizeFile = file.Length;
+                            var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                            fullUrl = resultMinio.Url;
+                        }
+                    }
 
 
                     using (HttpClient client = new HttpClient())
