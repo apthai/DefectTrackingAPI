@@ -37,10 +37,10 @@ namespace com.apthai.DefectAPI
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
-            .UseKestrel(o => { 
-                o.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10);
+            .UseKestrel(o => {
+                o.Limits.KeepAliveTimeout = new TimeSpan(0, 10, 0);
                 o.Limits.MaxRequestBodySize = 30 * 1024 * 1024;
-                o.Limits.RequestHeadersTimeout  = TimeSpan.FromMinutes(10);
+                o.Limits.RequestHeadersTimeout  = new TimeSpan(0, 10, 0);
             });
 
     }
