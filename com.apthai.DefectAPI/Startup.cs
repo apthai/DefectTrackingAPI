@@ -81,6 +81,7 @@ namespace com.apthai.DefectAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+           
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
@@ -345,6 +346,30 @@ namespace com.apthai.DefectAPI
 
             }
         }
+
+
+        //public static async Task BackgroundGenerateReport()
+        //{
+        //    try
+        //    {
+        //        Console.WriteLine("RecurringJobTestHangFire_Master Running.. at " + DateTime.Now.ToString() + " " + TimeZoneInfo.Local.ToString());
+
+        //        var repSync = new SyncRepository(UtilsProvider.HostingEnvironment, UtilsProvider.Config);
+
+        //        await repSync.GenerateReport();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        while (ex.InnerException != null)
+        //            ex = ex.InnerException;
+
+        //        var ilog = UtilsProvider.ApplicationLogging.CreateLogger<Startup>();
+        //        ilog.LogError("RecurringJobDaily_Master Error :: " + ex.Message);
+
+        //        throw ex;
+
+        //    }
+        //}
     }
 
     public class HangFireAuthorizationFilter : IDashboardAuthorizationFilter

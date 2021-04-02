@@ -32,6 +32,7 @@ using static com.apthai.DefectAPI.CustomModel.RequestReportModel;
 using System.Text;
 using com.apthai.DefectAPI.Services;
 using Microsoft.AspNetCore.Http.Internal;
+using Hangfire;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -2584,116 +2585,118 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Route("GenerateReport")]
         [SwaggerOperation(Summary = "Generate Report Defect",
         Description = "")]
-        public async Task<bool> GenerateReport([FromBody]ParamReportModel model)
+        public async Task GenerateReport([FromBody]ParamReportModel model)
         {
             try
             {
-                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
-                minio = new MinioServices();
-                bool insertPDF = false;
-                List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(model.TDefectId);
-                string lcSigAf = Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").FirstOrDefault().FilePath : null;
-                string cusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().FilePath : null;
-                string cusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().FilePath : null;
-                string conSigBf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").FirstOrDefault().FilePath : null;
-                string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
-                string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
+                //await Task.Run(BackgroundJob.Enqueue(() => _syncRepository.GenerateReport(model)));
+                await Task.Run(() => BackgroundJob.Enqueue(() => _syncRepository.GenerateReport(model)));
+                //string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                //minio = new MinioServices();
+                //bool insertPDF = false;
+                //List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(model.TDefectId);
+                //string lcSigAf = Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").FirstOrDefault().FilePath : null;
+                //string cusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().FilePath : null;
+                //string cusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().FilePath : null;
+                //string conSigBf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").FirstOrDefault().FilePath : null;
+                //string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
+                //string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
 
-                string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
-                string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
-                string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
-                string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
-                string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
-                string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
+                //string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
+                //string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
+                //string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
+                //string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
+                //string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
+                //string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
 
-                var requestMode = new RequestReportModel()
-                {
-                    Folder = "defect",
-                    FileName = "RPT_ReceiveUnit",
-                    Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
-                    DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
-                    UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
-                    Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
-                    Parameters = new List<ParameterReport>()
-                            {
-                               new ParameterReport(){Name="@TDefectId",Value=model.TDefectId.ToString()},
-                               new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
-                               new ParameterReport(){Name="@CON_MGR_AF_URL",Value=conSigAfFilePath},
-                               new ParameterReport(){Name="@CON_MGR_BF_URL",Value=conSigBfFilePath},
-                               new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
-                               new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
-                               new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
-                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
-                            }
-                };
-                ResponsetReportModel resultObject = new ResponsetReportModel();
-                using (HttpClient client = new HttpClient())
-                {
-                    client.Timeout = new TimeSpan(0, 0, 1000);
-                    var urlReport = UtilsProvider.AppSetting.ReportURL;
-                    var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
-                    var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
-                    Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                    Content.Headers.Add("api_accesskey", reportKey);
-                    var response = await client.PostAsync(urlReport, Content);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        response.EnsureSuccessStatusCode();
-                        var result = await response.Content.ReadAsStringAsync();
-                        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-                    }
-                    client.Dispose();
-                }
-                await Task.Delay(3000);
-                long sizeFile = 0;
-                var fullUrl = "";
-                var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
-                if (resultObject.Success)
-                {
-                    using (HttpClient client = new HttpClient())
-                    {
-                        HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL.ToString()).ConfigureAwait(false);
-                        HttpContent content = resDownload.Content;
+                //var requestMode = new RequestReportModel()
+                //{
+                //    Folder = "defect",
+                //    FileName = "RPT_ReceiveUnit",
+                //    Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
+                //    DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
+                //    UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
+                //    Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
+                //    Parameters = new List<ParameterReport>()
+                //            {
+                //               new ParameterReport(){Name="@TDefectId",Value=model.TDefectId.ToString()},
+                //               new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
+                //               new ParameterReport(){Name="@CON_MGR_AF_URL",Value=conSigAfFilePath},
+                //               new ParameterReport(){Name="@CON_MGR_BF_URL",Value=conSigBfFilePath},
+                //               new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
+                //               new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
+                //               new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
+                //               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
+                //            }
+                //};
+                //ResponsetReportModel resultObject = new ResponsetReportModel();
+                //using (HttpClient client = new HttpClient())
+                //{
+                //    client.Timeout = new TimeSpan(0, 0, 1000);
+                //    var urlReport = UtilsProvider.AppSetting.ReportURL;
+                //    var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
+                //    var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
+                //    Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                //    Content.Headers.Add("api_accesskey", reportKey);
+                //    var response = await client.PostAsync(urlReport, Content);
+                //    if (response.IsSuccessStatusCode)
+                //    {
+                //        response.EnsureSuccessStatusCode();
+                //        var result = await response.Content.ReadAsStringAsync();
+                //        resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
+                //    }
+                //    client.Dispose();
+                //}
+                //await Task.Delay(3000);
+                //long sizeFile = 0;
+                //var fullUrl = "";
+                //var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
+                //if (resultObject.Success)
+                //{
+                //    using (HttpClient client = new HttpClient())
+                //    {
+                //        HttpResponseMessage resDownload = await client.GetAsync(resultObject.URL.ToString()).ConfigureAwait(false);
+                //        HttpContent content = resDownload.Content;
 
-                        // ... Read the string.
-                        var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                        Stream stream = new MemoryStream(result);
-                        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-                        {
-                            Headers = new HeaderDictionary(),
-                            ContentType = "application/pdf"
-                        };
-                        sizeFile = file.Length;
-                        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-                        fullUrl = resultMinio.Url;
+                //        ... Read the string.
+                //        var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                //        Stream stream = new MemoryStream(result);
+                //        var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
+                //        {
+                //            Headers = new HeaderDictionary(),
+                //            ContentType = "application/pdf"
+                //        };
+                //        sizeFile = file.Length;
+                //        var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
+                //        fullUrl = resultMinio.Url;
 
-                        client.Dispose();
-                    }
+                //        client.Dispose();
+                //    }
 
-                    callResource callResourcePDF = new callResource();
-                    callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
-                    callResourcePDF.FileLength = sizeFile;
-                    callResourcePDF.CreateDate = DateTime.Now;
-                    callResourcePDF.RowState = "Original";
-                    callResourcePDF.ResourceType = 8;
-                    callResourcePDF.ResourceTagSubCode = "1";
-                    callResourcePDF.ResourceGroupSet = null;
-                    callResourcePDF.ResourceGroupOrder = 0;
-                    callResourcePDF.TDefectDetailId = 0;
-                    callResourcePDF.TDefectId = (int)model.TDefectId;
-                    callResourcePDF.ProjectNo = model.ProjectCode;
-                    callResourcePDF.SerialNo = model.UnitNo;
-                    callResourcePDF.Active = true;
-                    callResourcePDF.FullFilePath = fullUrl;
-                    callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
-                    insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
-                    return insertPDF;
-                }
-                return insertPDF;
+                //    callResource callResourcePDF = new callResource();
+                //    callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
+                //    callResourcePDF.FileLength = sizeFile;
+                //    callResourcePDF.CreateDate = DateTime.Now;
+                //    callResourcePDF.RowState = "Original";
+                //    callResourcePDF.ResourceType = 8;
+                //    callResourcePDF.ResourceTagSubCode = "1";
+                //    callResourcePDF.ResourceGroupSet = null;
+                //    callResourcePDF.ResourceGroupOrder = 0;
+                //    callResourcePDF.TDefectDetailId = 0;
+                //    callResourcePDF.TDefectId = (int)model.TDefectId;
+                //    callResourcePDF.ProjectNo = model.ProjectCode;
+                //    callResourcePDF.SerialNo = model.UnitNo;
+                //    callResourcePDF.Active = true;
+                //    callResourcePDF.FullFilePath = fullUrl;
+                //    callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                //    insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
+                //    return insertPDF;
+                //}
+                //return insertPDF;
             }
             catch (Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
         
