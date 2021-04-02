@@ -2149,7 +2149,11 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     })));
 
                 }
-
+                else
+                {
+                    defectModel.TDefectStatus = "005";
+                    bool update = _transactionRepository.UpdateTdefect(defectModel);
+                }
                 pathUrlSig = callResourceDate.FilePath;
             }
             else
