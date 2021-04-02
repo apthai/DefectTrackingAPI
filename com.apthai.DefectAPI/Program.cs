@@ -49,6 +49,8 @@ namespace com.apthai.DefectAPI
             try
             {
                 CreateWebHostBuilder(args).Build().Run();
+
+
             }
             finally
             {
@@ -66,21 +68,21 @@ namespace com.apthai.DefectAPI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseIISIntegration()
-             .UseSerilog()
-             .UseStartup<Startup>()
+            .UseStartup<Startup>()
+            //.UseIISIntegration()
             .UseKestrel(o => { o.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10); });
+            //.UseSerilog()
+          
+  
 
+    //public static IWebHost BuildWebHost(string[] args, IConfiguration config) =>
+    //    WebHost.CreateDefaultBuilder(args)
+    //                    .UseConfiguration(config)
+    //                    //.UseKestrel(e=>e.)
+    //                    .UseContentRoot(Directory.GetCurrentDirectory())
+    //                    .UseIISIntegration()
+    //                    .UseStartup<Startup>()
+    //                    .Build();
 
-
-        //public static IWebHost BuildWebHost(string[] args, IConfiguration config) =>
-        //    WebHost.CreateDefaultBuilder(args)
-        //                    .UseConfiguration(config)
-        //                    //.UseKestrel(e=>e.)
-        //                    .UseContentRoot(Directory.GetCurrentDirectory())
-        //                    .UseIISIntegration()
-        //                    .UseStartup<Startup>()
-        //                    .Build();
-
-    }
+}
 }
