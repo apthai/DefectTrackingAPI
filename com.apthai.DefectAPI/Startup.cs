@@ -101,7 +101,6 @@ namespace com.apthai.DefectAPI
                                                                        .AllowCredentials()
                                                                        ));
 
-            
 
             services.AddMvc()
               .AddJsonOptions(options =>
@@ -135,7 +134,7 @@ namespace com.apthai.DefectAPI
             //});
 
             services.AddSwaggerGen(c =>
-            {
+            {   
                 //c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
                 c.SwaggerDoc("v1", new Info
                 {
@@ -144,7 +143,7 @@ namespace com.apthai.DefectAPI
                     Description = "Defect Tracking Resful API Document",
                     TermsOfService = "None",
                     Contact = new Contact { Name = "IT Department", Email = "", Url = "it@apthai.com" },
-                    License = new License { Name = "IT Department", Url = "https://apthai.com" }
+                    License = new License { Name = "IT Department", Url = "https://apthai.com" }                   
                 });
                 c.EnableAnnotations();
 
