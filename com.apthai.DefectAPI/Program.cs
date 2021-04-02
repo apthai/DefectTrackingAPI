@@ -13,7 +13,7 @@ namespace com.apthai.DefectAPI
         public IConfigurationRoot Configuration { get; set; }
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Build().Run();
 
             Log.Logger = new LoggerConfiguration()
                   .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
