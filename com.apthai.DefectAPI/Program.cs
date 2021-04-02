@@ -42,6 +42,5 @@ namespace com.apthai.DefectAPI
                 o.Limits.MaxRequestBodySize = 30 * 1024 * 1024;
                 o.Limits.RequestHeadersTimeout  = new TimeSpan(0, 10, 0);
             });
-
     }
 }
