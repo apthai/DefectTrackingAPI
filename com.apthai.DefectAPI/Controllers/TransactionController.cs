@@ -2584,7 +2584,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         [Route("GenerateReport")]
         [SwaggerOperation(Summary = "Generate Report Defect",
         Description = "")]
-        public async Task<bool> GenerateReport(ParamReportModel model)
+        public async Task<bool> GenerateReport([FromBody]ParamReportModel model)
         {
             try
             {
