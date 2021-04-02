@@ -1772,15 +1772,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
                 callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
-                bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
-                var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                {
-                    IsBF = data.IsBF,
-                    ProjectCode = data.ProjectCode,
-                    TDefectId = Int32.Parse(data.TDefectID),
-                    UnitNo = data.UnitNo
-                });
+                bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);             
                 pathUrlSig = callResourceDate.FilePath;
 
             }
@@ -2144,22 +2136,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
 
                 }
-                var resultUploadPDF = await GenerateReport(new ParamReportModel()
-                {
-                    IsBF = data.IsBF,
-                    ProjectCode = data.ProjectCode,
-                    TDefectId = Int32.Parse(data.TDefectID),
-                    UnitNo = data.UnitNo
-                });
-
-                //reusult = await TestGenerateReport(new ParamReportModel()
-                //{
-                //    IsBF = data.IsBF,
-                //    ProjectCode = data.ProjectCode,
-                //    TDefectId = Int32.Parse(data.TDefectID),
-                //    UnitNo = data.UnitNo
-                //});
-
+               
                 pathUrlSig = callResourceDate.FilePath;
             }
             else
@@ -2603,7 +2580,11 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
         //}
 
-        private async Task<bool> GenerateReport(ParamReportModel model)
+        [HttpPost]
+        [Route("GenerateReport")]
+        [SwaggerOperation(Summary = "Generate Report Defect",
+        Description = "")]
+        public async Task<bool> GenerateReport(ParamReportModel model)
         {
             try
             {
@@ -2648,6 +2629,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 ResponsetReportModel resultObject = new ResponsetReportModel();
                 using (HttpClient client = new HttpClient())
                 {
+                    client.Timeout = new TimeSpan(0, 0, 1000);
                     var urlReport = UtilsProvider.AppSetting.ReportURL;
                     var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
                     var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
@@ -2662,7 +2644,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     }
                     client.Dispose();
                 }
-                await Task.Delay(2000);
+                await Task.Delay(3000);
                 long sizeFile = 0;
                 var fullUrl = "";
                 var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
@@ -2714,156 +2696,10 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 return false;
             }
         }
-
-
-        //private async Task<string> TestGenerateReport(ParamReportModel model)
-        //{
-        //    try
-        //    {
-        //        string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
-        //        minio = new MinioServices();
-        //        bool insertPDF = false;
-        //        List<callResource> Signature = _masterRepository.GetSignatureByTdefectID(model.TDefectId);
-        //        string lcSigAf = Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "SAL-LC-AF").FirstOrDefault().FilePath : null;
-        //        string cusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().FilePath : null;
-        //        string cusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().FilePath : null;
-        //        string conSigBf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-BF").FirstOrDefault().FilePath : null;
-        //        string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
-        //        string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
-
-        //        string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
-        //        string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
-        //        string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
-        //        string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
-        //        string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
-        //        string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
-
-        //        var requestMode = new RequestReportModel()
-        //        {
-        //            Folder = "defect",
-        //            FileName = "RPT_ReceiveUnit",
-        //            Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
-        //            DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
-        //            UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
-        //            Password = Environment.GetEnvironmentVariable("ReportPassword") ?? UtilsProvider.AppSetting.ReportPassword,
-        //            Parameters = new List<ParameterReport>()
-        //                    {
-        //                       new ParameterReport(){Name="@TDefectId",Value=model.TDefectId.ToString()},
-        //                       new ParameterReport(){Name="@CustRoundAuditNo",Value="1"},
-        //                       new ParameterReport(){Name="@CON_MGR_AF_URL",Value=conSigAfFilePath},
-        //                       new ParameterReport(){Name="@CON_MGR_BF_URL",Value=conSigBfFilePath},
-        //                       new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
-        //                       new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
-        //                       new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
-        //                       new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
-        //                    }
-        //        };
-        //        var urlPdf = "";
-        //        long sizeFile = 0;
-        //        var fullUrl = "";
-        //        var path = $"{model.ProjectCode}/{model.UnitNo}/DefectDocument";
-        //        ResponsetReportModel resultObject = new ResponsetReportModel();
-        //        HttpClient client = new HttpClient();
-
-        //        var urlReport = UtilsProvider.AppSetting.ReportURL;
-        //        var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
-        //        var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
-        //        Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-        //        Content.Headers.Add("api_accesskey", reportKey);
-        //        client.Timeout = new TimeSpan(0, 0, 1000);
-        //        var response = await client.PostAsync(urlReport, Content);
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            response.EnsureSuccessStatusCode();
-        //            var result = await response.Content.ReadAsStringAsync();
-        //            resultObject = JsonConvert.DeserializeObject<ResponsetReportModel>(result);
-        //            urlPdf = WebUtility.UrlDecode(resultObject.URL);
-
-        //        }
-        //        await Task.Delay(2000);
-        //        client = new HttpClient();
-        //        var url1 = "http://192.168.2.29:9900/pdf/defect/rpt_receiveunit/RPT_ReceiveUnit_20210401_0b2b8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FECUGD9JAXS4F6KF14PH%2F20210401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210401T063059Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&&X-Amz-Signature=2817532fba61fc8cbc5bc061acc2c976cdb6dee7d751d0322a54aeb295043e47";
-        //        var url2 = "http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210401_0bf85.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065124Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=5a2e4d489c0a26f38fde613446316ba542e4b0abfeb42b4d60171ff4aec06f39";
-        //        var url3 = "http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210331_eb0e2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065159Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=de9fae5574973cfcdc836fa9211bf0da55ab4484a896b49bf94ebb9c9c574152";
-        //        var url4 = urlPdf;
-        //        var url5 = resultObject.URL.ToString();
-        //        HttpResponseMessage resDownload1 = await client.GetAsync(url1).ConfigureAwait(false);
-        //        HttpResponseMessage resDownload2 = await client.GetAsync(url2).ConfigureAwait(false);
-        //        HttpResponseMessage resDownload3 = await client.GetAsync(url3).ConfigureAwait(false);
-        //        HttpResponseMessage resDownload4 = await client.GetAsync("http://192.168.2.29:9900/pdf/defect/rpt_receiveunit/RPT_ReceiveUnit_20210401_0b2b8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FECUGD9JAXS4F6KF14PH%2F20210401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210401T063059Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&&X-Amz-Signature=2817532fba61fc8cbc5bc061acc2c976cdb6dee7d751d0322a54aeb295043e47").ConfigureAwait(false);
-        //        HttpResponseMessage resDownload5 = await client.GetAsync("http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210401_0bf85.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065124Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=5a2e4d489c0a26f38fde613446316ba542e4b0abfeb42b4d60171ff4aec06f39").ConfigureAwait(false);
-        //        HttpResponseMessage resDownload6 = await client.GetAsync("http://192.168.2.29:9002/agm/data_backup/RPT_ReceiveUnit_20210331_eb0e2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AGXCU4XC1F9RMR1Q7NIF%2F20210401%2F%2Fs3%2Faws4_request&X-Amz-Date=20210401T065159Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=de9fae5574973cfcdc836fa9211bf0da55ab4484a896b49bf94ebb9c9c574152").ConfigureAwait(false);
-        //        HttpResponseMessage resDownload7 = await client.GetAsync(url4).ConfigureAwait(false);
-        //        HttpResponseMessage resDownload8 = await client.GetAsync(url5.ToString()).ConfigureAwait(false);
-
-        //        return JsonConvert.SerializeObject(new
-        //        {
-        //            content1 = resDownload1.Content.Headers.ContentLength.ToString(),
-        //            content2 = resDownload2.Content.Headers.ContentLength.ToString(),
-        //            content3 = resDownload3.Content.Headers.ContentLength.ToString(),
-        //            content4 = resDownload4.Content.Headers.ContentLength.ToString(),
-        //            content5 = resDownload5.Content.Headers.ContentLength.ToString(),
-        //            content6 = resDownload6.Content.Headers.ContentLength.ToString(),
-        //            content7 = resDownload7.Content.Headers.ContentLength.ToString(),
-        //            content8 = resDownload8.Content.Headers.ContentLength.ToString(),
-        //            url = resultObject.URL,
-        //            json = resultObject
-        //        });
-
-
-        //        if (resultObject.Success)
-        //        {
-        //            client = new HttpClient();
-
-        //            //HttpResponseMessage resDownload = await client.GetAsync("http://192.168.2.29:9900/pdf/defect/rpt_receiveunit/RPT_ReceiveUnit_20210401_0b2b8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=FECUGD9JAXS4F6KF14PH%2F20210401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210401T063059Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&&X-Amz-Signature=2817532fba61fc8cbc5bc061acc2c976cdb6dee7d751d0322a54aeb295043e47").ConfigureAwait(false);
-        //            HttpResponseMessage resDownload = await client.GetAsync(urlPdf).ConfigureAwait(false);
-        //            return resDownload.Content.Headers.ContentLength.ToString();
-        //            using (HttpContent content = resDownload.Content)
-        //            {
-        //                // ... Read the string.
-        //                var result = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-        //                Stream stream = new MemoryStream(result);
-        //                var file = new FormFile(stream, 0, stream.Length, null, resultObject.FileName)
-        //                {
-        //                    Headers = new HeaderDictionary(),
-        //                    ContentType = "application/pdf"
-        //                };
-        //                sizeFile = file.Length;
-        //                var resultMinio = await minio.UploadFile(file, path, resultObject.FileName);
-        //                fullUrl = resultMinio.Url;
-        //            }
-        //        }
-
-        //        callResource callResourcePDF = new callResource();
-        //        callResourcePDF.FilePath = $"{path}/{resultObject.FileName}";
-        //        callResourcePDF.FileLength = sizeFile;
-        //        callResourcePDF.CreateDate = DateTime.Now;
-        //        callResourcePDF.RowState = "Original";
-        //        callResourcePDF.ResourceType = 8;
-        //        callResourcePDF.ResourceTagSubCode = "1";
-        //        callResourcePDF.ResourceGroupSet = null;
-        //        callResourcePDF.ResourceGroupOrder = 0;
-        //        callResourcePDF.TDefectDetailId = 0;
-        //        callResourcePDF.TDefectId = (int)model.TDefectId;
-        //        callResourcePDF.ProjectNo = model.ProjectCode;
-        //        callResourcePDF.SerialNo = model.UnitNo;
-        //        callResourcePDF.Active = true;
-        //        callResourcePDF.FullFilePath = fullUrl;
-        //        callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
-        //        insertPDF = _syncRepository.InsertCallResource(callResourcePDF);
-
-        //        return sizeFile.ToString();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ex.Message;
-        //    }
-        //}
+        
 
         [HttpGet]
-        [Route("DefectReport")]
-        [SwaggerOperation(Summary = "Log In เข้าสู้ระบบเพื่อรับ Access Key ",
-        Description = "Access Key ใช้ในการเรียหใช้ Function ต่างๆ เพื่อไม่ให้ User Login หลายเครื่องในเวลาเดียวกัน")]
+        [Route("TestLoadFile")]
         public async Task<object> LoadFile(string data)
         {
             try

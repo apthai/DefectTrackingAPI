@@ -571,8 +571,7 @@ namespace com.apthai.DefectAPI.CustomModel
     {
         public int TDefectId { get; set; }
         public string ProjectCode { get; set; }
-        public string UnitNo { get; set; }
-        public bool IsBF { get; set; }
+        public string UnitNo { get; set; }       
     }
 
     public partial class FileUploadResult

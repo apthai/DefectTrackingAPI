@@ -54,7 +54,7 @@ namespace com.apthai.DefectAPI
             {
                 Log.CloseAndFlush();
             }
-            
+
             //var config = new ConfigurationBuilder()
             //      .SetBasePath(Directory.GetCurrentDirectory())
             //      .AddJsonFile("hosting.json", optional: true)
@@ -68,7 +68,8 @@ namespace com.apthai.DefectAPI
             WebHost.CreateDefaultBuilder(args)
             .UseIISIntegration()
              .UseSerilog()
-             .UseStartup<Startup>();
+             .UseStartup<Startup>()
+            .UseKestrel(o => { o.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10); });
 
 
 
