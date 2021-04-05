@@ -33,6 +33,7 @@ using System.Text;
 using com.apthai.DefectAPI.Services;
 using Microsoft.AspNetCore.Http.Internal;
 using Hangfire;
+using System.Diagnostics;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -2104,7 +2105,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     CreateDefect.Client_SyncDate = DateTime.Now;
                     CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "/" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
-                    CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
+                    CreateDefect.TDefectStatus = "003"; // หน้าจะเท่ากับ Open
                     CreateDefect.TDefectSubStatus = null;
                     CreateDefect.ProductId = data.ProjectCode;
                     CreateDefect.ItemId = data.UnitNo;
@@ -2124,7 +2125,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     CreateDefect.SellerId = null;
                     CreateDefect.SallerName = null;
                     CreateDefect.DocReceiveUnitDate = DateTime.Now;
-                    CreateDefect.DocDueTransferDate = DateTime.Now;
+                    //CreateDefect.DocDueTransferDate = DateTime.Now;
                     CreateDefect.ContactID = null;
                     if (viewUnitCustomer != null)
                     {
@@ -2140,21 +2141,20 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     long DefectID = 0;
                     bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
                     CreateDefect.TDefectId = Convert.ToInt32(DefectID);
-
-                    await Task.Run(() => BackgroundJob.Enqueue(() => _syncRepository.GenerateReport(new ParamReportModel()
-                    {
-                        ProjectCode = data.ProjectCode,
-                        UnitNo = data.UnitNo,
-                        TDefectId = Int32.Parse(data.TDefectID)
-                    })));
-
                 }
                 else
                 {
-                    defectModel.TDefectStatus = "005";
+                    defectModel.DocReceiveUnitDate = DateTime.Now;
+                    defectModel.TDefectStatus = "003";
                     bool update = _transactionRepository.UpdateTdefect(defectModel);
                 }
                 pathUrlSig = callResourceDate.FilePath;
+                await Task.Run(() => BackgroundJob.Enqueue(() => _syncRepository.GenerateReport(new ParamReportModel()
+                {
+                    ProjectCode = data.ProjectCode,
+                    UnitNo = data.UnitNo,
+                    TDefectId = Int32.Parse(data.TDefectID)
+                })));
             }
             else
             {
@@ -2612,23 +2612,28 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
 
         [HttpGet]
         [Route("TestLoadFile")]
-        public async Task<object> LoadFile(string data)
+        public async Task<object> LoadFile(int id)
         {
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    var resDownload = await client.GetByteArrayAsync(data);
-                    return resDownload.Length.ToString();
-                    Stream stream = new MemoryStream(resDownload);
-                    var file = new FormFile(stream, 0, stream.Length, null, "test")
-                    //var file = new FormFile(resDownload, 0, resDownload.Length, null, resultObject.FileName)
+                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(id);
+                List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(id);
 
-                    {
-                        Headers = new HeaderDictionary(),
-                        ContentType = "application/pdf"
-                    };
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
+                for (int i = 0; i < BF.Count(); i++)
+                {
+                    await minio.GetFileUrlAsync(bucketName, BF[i].FilePath);
                 }
+
+                for (int i = 0; i < AF.Count(); i++)
+                {
+                    await minio.GetFileUrlAsync(bucketName, AF[i].FilePath);
+                }
+                stopWatch.Stop();
+                TimeSpan ts = stopWatch.Elapsed;
+                return ts;
             }
             catch (Exception ex)
             {
