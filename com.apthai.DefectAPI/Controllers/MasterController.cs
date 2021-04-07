@@ -1044,13 +1044,15 @@ namespace com.apthai.DefectAPI.Controllers
                         Result.UnitId = latestFloor.SerialNo;
                         Result.URL = await minio.GetFileUrlAsync(bucketName, latestFloor.FilePath);
                         Result.Floor = floorPlan.Floor;
+                        Result.PlanLayoutType = floorPlan.UnitLayoutType;
                         ResultObj.Add(Result);
                     }
                     else
                     {
                         FloorPlanImageObj Result = new FloorPlanImageObj();
                         Result.ProjectId = floorPlan.ProductId;
-                        Result.UnitId = floorPlan.UnitLayoutType;
+                        Result.UnitId = data.UnitID;
+                        Result.PlanLayoutType = floorPlan.UnitLayoutType;
                         Result.URL = webUrl + floorPlan.FilePath;
                         Result.Floor = floorPlan.Floor;
                         ResultObj.Add(Result);
