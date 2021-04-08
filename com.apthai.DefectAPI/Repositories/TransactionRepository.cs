@@ -258,7 +258,7 @@ namespace com.apthai.DefectAPI.Repositories
                     var queryString = String.Format(
                         @"Update callResource 
                         set Active = 0 
-                        where TDefectId = {0} and (ResourceTagCode like 'CUST-AF' OR ResourceTagCode like 'CUST-BF')", TdefectId.ToString());
+                        where TDefectId = {0} and (ResourceType = 1 or ResourceType = 6 ) AND Active = 1", TdefectId.ToString());
                     var result = conn.Query(queryString);
                 }
 
