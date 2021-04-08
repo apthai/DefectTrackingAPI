@@ -265,7 +265,8 @@ namespace com.apthai.DefectAPI.Repositories
 
                     var listResource = conn.Query<callResource>(queryString).ToList();
 
-                    foreach(var element in listResource)
+                    minio = new MinioServices();
+                    foreach (var element in listResource)
                     {
                         element.FullFilePath =  await minio.GetFileUrlAsync(bucketName, element.FilePath);
                         element.ExpirePathDate = DateTime.Now.AddDays(6);
