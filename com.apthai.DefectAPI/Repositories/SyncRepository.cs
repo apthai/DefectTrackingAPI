@@ -135,6 +135,7 @@ namespace com.apthai.DefectAPI.Repositories
         {
             try
             {
+                await UpdatePathUrlFile(model.TDefectId);
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 minio = new MinioServices();
                 bool insertPDF = false;
@@ -244,7 +245,44 @@ namespace com.apthai.DefectAPI.Repositories
             }
         }
 
+        private async Task<bool> UpdatePathUrlFile(int TdefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                    var queryString = String.Format(@"SELECT
+	                                callResource.*
+                                FROM
+	                                dbo.callTDefectDetail
+	                                INNER JOIN
+	                                dbo.callResource
+	                                ON 
+		                                callTDefectDetail.TDefectDetailId = callResource.TDefectDetailId
+                                WHERE
+	                                callTDefectDetail.TDefectId = {0}", TdefectId.ToString());
 
+                    var listResource = conn.Query<callResource>(queryString).ToList();
+
+                    foreach(var element in listResource)
+                    {
+                        element.FullFilePath =  await minio.GetFileUrlAsync(bucketName, element.FilePath);
+                        element.ExpirePathDate = DateTime.Now.AddDays(6);
+                    }
+
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
+
+                    var result = conn.Update(listResource, tran);
+                    tran.Commit();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
     }
-
 }

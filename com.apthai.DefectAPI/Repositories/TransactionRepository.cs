@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace com.apthai.DefectAPI.Repositories
 {
-    public class TransactionRepository : BaseRepository , ITransactionRepository
+    public class TransactionRepository : BaseRepository, ITransactionRepository
     {
 
         private readonly IConfiguration _config;
@@ -38,12 +38,12 @@ namespace com.apthai.DefectAPI.Repositories
         //        return result;
         //    }
         //}
-        public AccessKeyControl CheckUserAccessKey(string EmpCode , string AccessKey)
+        public AccessKeyControl CheckUserAccessKey(string EmpCode, string AccessKey)
         {
             using (IDbConnection conn = WebConnection)
             {
                 conn.Open();
-                var result = conn.Query<AccessKeyControl>("select * from AccessKeyControl WITH(NOLOCK) where EmpCode=@EmpCode and AccessKey=@AccessKey", new { EmpCode = EmpCode, AccessKey=AccessKey }).FirstOrDefault();
+                var result = conn.Query<AccessKeyControl>("select * from AccessKeyControl WITH(NOLOCK) where EmpCode=@EmpCode and AccessKey=@AccessKey", new { EmpCode = EmpCode, AccessKey = AccessKey }).FirstOrDefault();
 
                 return result;
             }
@@ -88,7 +88,7 @@ namespace com.apthai.DefectAPI.Repositories
                 throw ex;
             }
         }
-        public bool InsertTdefectDetail(callTDefect defectDetail,ref long DefectID)
+        public bool InsertTdefectDetail(callTDefect defectDetail, ref long DefectID)
         {
             try
             {
@@ -246,6 +246,26 @@ namespace com.apthai.DefectAPI.Repositories
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void UpdateInActiveSignature(int TdefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    var queryString = String.Format(
+                        @"Update callResource 
+                        set Active = 0 
+                        where TDefectId = {0} and (ResourceTagCode like 'CUST-AF' OR ResourceTagCode like 'CUST-BF')", TdefectId.ToString());
+                    var result = conn.Query(queryString);
+                }
+
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
     }

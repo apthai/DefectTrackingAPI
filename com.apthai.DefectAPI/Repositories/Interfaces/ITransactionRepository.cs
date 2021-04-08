@@ -18,6 +18,7 @@ namespace com.apthai.DefectAPI.Repositories
         bool InsertTdefectDetail(callTDefect defectDetail, ref long DefectID);
         bool InsertTdefectDetailList(List<callTDefectDetail> defectDetails);
         bool InsertTdefect(callTDefect callTDefect);
+        void UpdateInActiveSignature(int TdefectId);
        //Task<List<vwUser>> GetAllUser();
        // Model.QISAuth.vwUser GetUserData(int UserID);
 

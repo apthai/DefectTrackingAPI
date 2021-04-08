@@ -237,7 +237,6 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.FullFilePath = resultMinio.Url;
                             callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
                             bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
                             if (LatestTxnDate.Date < Today.Date)
                             {
                                 List<callResource> callResources = _masterRepository.GetCallResourceAllSignatureByTdefect(data.TDefectId);
@@ -250,6 +249,7 @@ namespace com.apthai.DefectAPI.Controllers
                         }
                         else
                         {
+                            _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                             return new
                             {
                                 success = true,
@@ -259,7 +259,7 @@ namespace com.apthai.DefectAPI.Controllers
                         }
 
                     }
-
+                    _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                     return new
                     {
                         success = true,
@@ -409,6 +409,7 @@ namespace com.apthai.DefectAPI.Controllers
                         }
                         else
                         {
+                            _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                             return new
                             {
                                 success = true,
@@ -417,7 +418,7 @@ namespace com.apthai.DefectAPI.Controllers
                             };
                         }
                     }
-
+                    _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                     return new
                     {
                         success = true,
@@ -1773,7 +1774,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 pathUrlSig = callResourceDate.FilePath;
 
@@ -1781,7 +1782,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     ProjectCode = data.ProjectCode,
                     UnitNo = data.UnitNo,
-                    TDefectId = Int32.Parse(data.TDefectID)
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    ProjectType = data.ProjectType
                 })));
             }
 
@@ -2153,7 +2155,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     ProjectCode = data.ProjectCode,
                     UnitNo = data.UnitNo,
-                    TDefectId = Int32.Parse(data.TDefectID)
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    ProjectType = data.ProjectType
                 })));
             }
             else
@@ -2596,8 +2599,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         //    return path;
 
         //}
-
-        private async Task GenerateReport([FromBody] ParamReportModel model)
+        [HttpPost("GenerateReport")]
+        public async Task GenerateReport([FromBody] ParamReportModel model)
         {
             try
             {
@@ -2607,40 +2610,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             {
                 throw ex;
             }
-        }
-
-
-        [HttpGet]
-        [Route("TestLoadFile")]
-        public async Task<object> LoadFile(int id)
-        {
-            try
-            {
-                string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
-                List<callResource> BF = _masterRepository.GetCallResourceBeforeByTdefectDetailID(id);
-                List<callResource> AF = _masterRepository.GetCallResourceAfterByTdefectDetailID(id);
-
-                Stopwatch stopWatch = new Stopwatch();
-                stopWatch.Start();
-                for (int i = 0; i < BF.Count(); i++)
-                {
-                    await minio.GetFileUrlAsync(bucketName, BF[i].FilePath);
-                }
-
-                for (int i = 0; i < AF.Count(); i++)
-                {
-                    await minio.GetFileUrlAsync(bucketName, AF[i].FilePath);
-                }
-                stopWatch.Stop();
-                TimeSpan ts = stopWatch.Elapsed;
-                return ts;
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error :: " + ex.Message);
-            }
-        }
+        }       
     }
-
-
 }

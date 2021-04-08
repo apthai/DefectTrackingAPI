@@ -95,6 +95,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public bool IsBF { get; set; }
         public string EmpCode { get; set; }
         public string DefectType { get; set; }
+        public string ProjectType { get; set; }
     }
     public partial class TDefectDetailWithStatus : callTDefectDetail
     {
@@ -573,6 +574,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public int TDefectId { get; set; }
         public string ProjectCode { get; set; }
         public string UnitNo { get; set; }
+        public string ProjectType { get; set; }
     }
 
     public partial class FileUploadResult
