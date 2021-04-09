@@ -135,6 +135,15 @@ namespace com.apthai.DefectAPI.Repositories
         {
             try
             {
+                var projectType = "Vertical";
+                var reportName = "RPT_ReceiveUnit";
+                if (model.ProjectType.Equals("H"))
+                {
+                    projectType = "Horizontal";
+                    reportName = "RPT_ReceiveUnit_H";
+                }
+
+
                 await UpdatePathUrlFile(model.TDefectId);
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 minio = new MinioServices();
@@ -157,7 +166,7 @@ namespace com.apthai.DefectAPI.Repositories
                 var requestMode = new RequestReportModel()
                 {
                     Folder = "defect",
-                    FileName = "RPT_ReceiveUnit",
+                    FileName = reportName,
                     Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
                     DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
                     UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
@@ -171,7 +180,8 @@ namespace com.apthai.DefectAPI.Repositories
                                new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
                                new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
                                new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
-                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
+                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath},
+                               new ParameterReport(){Name="@Unit_Type",Value=projectType}
                             }
                 };
                 ResponsetReportModel resultObject = new ResponsetReportModel();
@@ -268,7 +278,7 @@ namespace com.apthai.DefectAPI.Repositories
                     minio = new MinioServices();
                     foreach (var element in listResource)
                     {
-                        element.FullFilePath =  await minio.GetFileUrlAsync(bucketName, element.FilePath);
+                        element.FullFilePath = await minio.GetFileUrlAsync(bucketName, element.FilePath);
                         element.ExpirePathDate = DateTime.Now.AddDays(6);
                     }
 
