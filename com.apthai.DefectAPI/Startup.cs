@@ -354,7 +354,6 @@ namespace com.apthai.DefectAPI
             try
             {
                 Console.WriteLine("RecurringJobTestHangFire_Master Running.. at " + DateTime.Now.ToString() + " " + TimeZoneInfo.Local.ToString());
-
                 var repSync = new SyncRepository(UtilsProvider.HostingEnvironment, UtilsProvider.Config);
 
                 await repSync.GenerateReport(new CustomModel.ParamReportModel { 
