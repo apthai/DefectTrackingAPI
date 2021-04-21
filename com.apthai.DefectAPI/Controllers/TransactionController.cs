@@ -170,7 +170,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.FloorPlan_Y = 0;
                     tDefectDetail.TaskNo = taskNo;
                     tDefectDetail.TaskMarkName = "DummyData";
-                    tDefectDetail.FloorPlanSet = data.FloorPlanSet;
+                    tDefectDetail.FloorPlanSet = data.DefectType == "V" ? "1" : data.FloorPlanSet;
 
                     if (LatestTxnDate.Date < Today.Date)
                         tDefectDetail.CustRoundAuditNo = LatestdefectDetail.CustRoundAuditNo + 1;
