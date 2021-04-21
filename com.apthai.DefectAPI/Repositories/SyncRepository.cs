@@ -135,13 +135,17 @@ namespace com.apthai.DefectAPI.Repositories
         {
             try
             {
-                var reportName = "RPT_ReceiveUnit";
-                if (model.ProjectType.Equals("H"))
+                var reportName = "RPT_ReceiveUnit"; 
+                if (model.ProjectType.Equals("V"))
                 {
                     reportName = "RPT_ReceiveUnit_H";
                 }
 
+                // V แนวสูง
+                // H แนวราบ
 
+                // RPT_ReceiveUnit_H แนวสูง
+                // RPT_ReceiveUnit   แนวราบ
                 await UpdatePathUrlFile(model.TDefectId);
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 minio = new MinioServices();
