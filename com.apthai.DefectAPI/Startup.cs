@@ -285,7 +285,9 @@ namespace com.apthai.DefectAPI
 
             var manager = new RecurringJobManager();
             //manager.AddOrUpdate("core-daily_sync_master", Job.FromExpression(() => RecurringJobDaily_Master()), Cron.Daily(23 - 2, 30)); // 2 AM
-            manager.AddOrUpdate("TestHangFireJobs", Job.FromExpression(() => RecurringJobTestHangFire_Master()), Cron.Minutely()); // 2 AM
+            //manager.AddOrUpdate("TestGenerate", Job.FromExpression(() => RecurringJobTestHangFire_Master()), Cron.Minutely()); // 2 AM
+            manager.AddOrUpdate("TestHangFireJobs", Job.FromExpression(() => TestGenarate()), Cron.Never()); // 2 AM
+
             //manager.AddOrUpdate("TestHangFireJobs_2", Job.FromExpression(() => RecurringJobTestHangFire_Master()), Cron.MinuteInterval(4)); // 2 AM
             ////var manager = new RecurringJobManager();
             //manager.AddOrUpdate("core-daily_sync_master", Job.FromExpression(() => RecurringJobDaily_Master()), Cron.Daily(2-4)); // 2 AM
@@ -345,7 +347,34 @@ namespace com.apthai.DefectAPI
                 throw ex;
 
             }
-        }     
+        }
+
+        public static async Task TestGenarate()
+        {
+            try
+            {
+                Console.WriteLine("RecurringJobTestHangFire_Master Running.. at " + DateTime.Now.ToString() + " " + TimeZoneInfo.Local.ToString());
+                var repSync = new SyncRepository(UtilsProvider.HostingEnvironment, UtilsProvider.Config);
+
+                await repSync.GenerateReport(new CustomModel.ParamReportModel { 
+                    UnitNo = "C01",
+                    TDefectId = 44489,
+                    ProjectCode =  "10060",
+                    ProjectType = "H"
+                });
+            }
+            catch (Exception ex)
+            {
+                while (ex.InnerException != null)
+                    ex = ex.InnerException;
+
+                var ilog = UtilsProvider.ApplicationLogging.CreateLogger<Startup>();
+                ilog.LogError("RecurringJobDaily_Master Error :: " + ex.Message);
+
+                throw ex;
+
+            }
+        }
     }
 
     public class HangFireAuthorizationFilter : IDashboardAuthorizationFilter
@@ -359,6 +388,4 @@ namespace com.apthai.DefectAPI
 
         }
     }
-
-
 }

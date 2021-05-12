@@ -135,6 +135,18 @@ namespace com.apthai.DefectAPI.Repositories
         {
             try
             {
+                var reportName = "RPT_ReceiveUnit"; 
+                if (model.ProjectType.Equals("V"))
+                {
+                    reportName = "RPT_ReceiveUnit_H";
+                }
+
+                // V แนวสูง
+                // H แนวราบ
+
+                // RPT_ReceiveUnit_H แนวสูง
+                // RPT_ReceiveUnit   แนวราบ
+                await UpdatePathUrlFile(model.TDefectId);
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 minio = new MinioServices();
                 bool insertPDF = false;
@@ -156,7 +168,7 @@ namespace com.apthai.DefectAPI.Repositories
                 var requestMode = new RequestReportModel()
                 {
                     Folder = "defect",
-                    FileName = "RPT_ReceiveUnit",
+                    FileName = reportName,
                     Server = Environment.GetEnvironmentVariable("ReportServer") ?? UtilsProvider.AppSetting.ReportServer,
                     DatabaseName = Environment.GetEnvironmentVariable("ReportDataBase") ?? UtilsProvider.AppSetting.ReportDataBase,
                     UserName = Environment.GetEnvironmentVariable("ReportUserName") ?? UtilsProvider.AppSetting.ReportUserName,
@@ -244,7 +256,45 @@ namespace com.apthai.DefectAPI.Repositories
             }
         }
 
+        private async Task<bool> UpdatePathUrlFile(int TdefectId)
+        {
+            using (IDbConnection conn = WebConnection)
+            {
+                try
+                {
+                    string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
+                    var queryString = String.Format(@"SELECT
+	                                callResource.*
+                                FROM
+	                                dbo.callTDefectDetail
+	                                INNER JOIN
+	                                dbo.callResource
+	                                ON 
+		                                callTDefectDetail.TDefectDetailId = callResource.TDefectDetailId
+                                WHERE
+	                                callTDefectDetail.TDefectId = {0}", TdefectId.ToString());
 
+                    var listResource = conn.Query<callResource>(queryString).ToList();
+
+                    minio = new MinioServices();
+                    foreach (var element in listResource)
+                    {
+                        element.FullFilePath = await minio.GetFileUrlAsync(bucketName, element.FilePath);
+                        element.ExpirePathDate = DateTime.Now.AddDays(6);
+                    }
+
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
+
+                    var result = conn.Update(listResource, tran);
+                    tran.Commit();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
     }
-
 }

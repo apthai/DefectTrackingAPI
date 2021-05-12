@@ -33,6 +33,7 @@ using System.Text;
 using com.apthai.DefectAPI.Services;
 using Microsoft.AspNetCore.Http.Internal;
 using Hangfire;
+using System.Diagnostics;
 
 namespace com.apthai.DefectAPI.Controllers
 {
@@ -169,7 +170,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.FloorPlan_Y = 0;
                     tDefectDetail.TaskNo = taskNo;
                     tDefectDetail.TaskMarkName = "DummyData";
-                    tDefectDetail.FloorPlanSet = data.FloorPlanSet;
+                    tDefectDetail.FloorPlanSet = data.DefectType == "V" ? "1" : data.FloorPlanSet;
 
                     if (LatestTxnDate.Date < Today.Date)
                         tDefectDetail.CustRoundAuditNo = LatestdefectDetail.CustRoundAuditNo + 1;
@@ -237,7 +238,6 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.FullFilePath = resultMinio.Url;
                             callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
                             bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
-
                             if (LatestTxnDate.Date < Today.Date)
                             {
                                 List<callResource> callResources = _masterRepository.GetCallResourceAllSignatureByTdefect(data.TDefectId);
@@ -250,6 +250,7 @@ namespace com.apthai.DefectAPI.Controllers
                         }
                         else
                         {
+                            _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                             return new
                             {
                                 success = true,
@@ -259,7 +260,7 @@ namespace com.apthai.DefectAPI.Controllers
                         }
 
                     }
-
+                    _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                     return new
                     {
                         success = true,
@@ -409,6 +410,7 @@ namespace com.apthai.DefectAPI.Controllers
                         }
                         else
                         {
+                            _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                             return new
                             {
                                 success = true,
@@ -417,7 +419,7 @@ namespace com.apthai.DefectAPI.Controllers
                             };
                         }
                     }
-
+                    _transactionRepository.UpdateInActiveSignature(data.TDefectId);
                     return new
                     {
                         success = true,
@@ -1776,7 +1778,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.Active = true;
                 callResourceDate.StorageServerId = 1400;
                 callResourceDate.FullFilePath = resultMinio.Url;
-                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
+                callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 pathUrlSig = callResourceDate.FilePath;
 
@@ -1784,7 +1786,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 {
                     ProjectCode = data.ProjectCode,
                     UnitNo = data.UnitNo,
-                    TDefectId = Int32.Parse(data.TDefectID)
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    ProjectType = data.ProjectType
                 })));
             }
 
@@ -2111,7 +2114,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     CreateDefect.Client_SyncDate = DateTime.Now;
                     CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProjectCode + "-" + data.UnitNo + "/" +
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
-                    CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
+                    CreateDefect.TDefectStatus = "003"; // หน้าจะเท่ากับ Open
                     CreateDefect.TDefectSubStatus = null;
                     CreateDefect.ProductId = data.ProjectCode;
                     CreateDefect.ItemId = data.UnitNo;
@@ -2131,7 +2134,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     CreateDefect.SellerId = null;
                     CreateDefect.SallerName = null;
                     CreateDefect.DocReceiveUnitDate = DateTime.Now;
-                    CreateDefect.DocDueTransferDate = DateTime.Now;
+                    //CreateDefect.DocDueTransferDate = DateTime.Now;
                     CreateDefect.ContactID = null;
                     if (viewUnitCustomer != null)
                     {
@@ -2147,21 +2150,21 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     long DefectID = 0;
                     bool InsertData = _transactionRepository.InsertTdefectDetail(CreateDefect, ref DefectID);
                     CreateDefect.TDefectId = Convert.ToInt32(DefectID);
-
-                    await Task.Run(() => BackgroundJob.Enqueue(() => _syncRepository.GenerateReport(new ParamReportModel()
-                    {
-                        ProjectCode = data.ProjectCode,
-                        UnitNo = data.UnitNo,
-                        TDefectId = Int32.Parse(data.TDefectID)
-                    })));
-
                 }
                 else
                 {
-                    defectModel.TDefectStatus = "005";
+                    defectModel.DocReceiveUnitDate = DateTime.Now;
+                    defectModel.TDefectStatus = "003";
                     bool update = _transactionRepository.UpdateTdefect(defectModel);
                 }
                 pathUrlSig = callResourceDate.FilePath;
+                await Task.Run(() => BackgroundJob.Enqueue(() => _syncRepository.GenerateReport(new ParamReportModel()
+                {
+                    ProjectCode = data.ProjectCode,
+                    UnitNo = data.UnitNo,
+                    TDefectId = Int32.Parse(data.TDefectID),
+                    ProjectType = data.ProjectType
+                })));
             }
             else
             {
@@ -2606,8 +2609,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         //    return path;
 
         //}
-
-        private async Task GenerateReport([FromBody] ParamReportModel model)
+        [HttpPost("GenerateReport")]
+        public async Task GenerateReport([FromBody] ParamReportModel model)
         {
             try
             {
@@ -2617,35 +2620,6 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             {
                 throw ex;
             }
-        }
-
-
-        [HttpGet]
-        [Route("TestLoadFile")]
-        public async Task<object> LoadFile(string data)
-        {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    var resDownload = await client.GetByteArrayAsync(data);
-                    return resDownload.Length.ToString();
-                    Stream stream = new MemoryStream(resDownload);
-                    var file = new FormFile(stream, 0, stream.Length, null, "test")
-                    //var file = new FormFile(resDownload, 0, resDownload.Length, null, resultObject.FileName)
-
-                    {
-                        Headers = new HeaderDictionary(),
-                        ContentType = "application/pdf"
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error :: " + ex.Message);
-            }
-        }
+        }       
     }
-
-
 }
