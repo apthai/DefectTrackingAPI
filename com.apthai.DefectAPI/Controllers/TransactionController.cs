@@ -227,6 +227,7 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.RowState = "Original";
                             callResourceDate.ResourceType = 3;
                             callResourceDate.ResourceTagCode = "BF-RP";
+                            callResourceDate.ResourceTagSubCode = "1";
                             callResourceDate.ResourceGroupSet = null;
                             callResourceDate.ResourceGroupOrder = 0;
                             callResourceDate.StorageServerId = 1400;
@@ -397,6 +398,8 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.RowState = "Original";
                             callResourceDate.ResourceType = 3;
                             callResourceDate.ResourceTagCode = "BF-RP";
+                            callResourceDate.StorageServerId = 1400;
+                            callResourceDate.ResourceTagSubCode = "1";
                             callResourceDate.ResourceGroupSet = null;
                             callResourceDate.ResourceGroupOrder = 0;
                             callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
