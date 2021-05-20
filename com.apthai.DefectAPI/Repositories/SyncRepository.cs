@@ -238,6 +238,7 @@ namespace com.apthai.DefectAPI.Repositories
                     callResourcePDF.ResourceTagCode = "1";
                     callResourcePDF.ResourceTagSubCode = "1";
                     callResourcePDF.ResourceGroupSet = null;
+                    callResourcePDF.StorageServerId = 1400;
                     callResourcePDF.ResourceGroupOrder = 0;
                     callResourcePDF.TDefectDetailId = 0;
                     callResourcePDF.TDefectId = (int)model.TDefectId;
@@ -255,6 +256,30 @@ namespace com.apthai.DefectAPI.Repositories
             {
                 throw ex;
             }
+        }
+
+        public string ReplaceWithPublicURL(string url)
+        {
+            //string _minioEndpoint = "http://192.168.2.29:9001";
+            string _minioEndpoint = Environment.GetEnvironmentVariable("Minio_Endpoint");
+            if (_minioEndpoint == null)
+            {
+                _minioEndpoint = UtilsProvider.AppSetting.MinioEndpoint;
+            }
+            //string _tempBucket = "timeattendence";
+            string PublicMinioURL = Environment.GetEnvironmentVariable("MinioPublicEndpoint");
+            if (PublicMinioURL == null)
+            {
+                PublicMinioURL = UtilsProvider.AppSetting.MinioPublicEndpoint;
+            }
+            if (!string.IsNullOrEmpty(PublicMinioURL))
+            {
+                url = url.Replace("https://", "");
+                url = url.Replace("http://", "");
+
+                url = url.Replace(_minioEndpoint, PublicMinioURL);
+            }
+            return url;
         }
 
         private async Task<bool> UpdatePathUrlFile(int TdefectId)

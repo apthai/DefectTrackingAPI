@@ -30,5 +30,6 @@ namespace com.apthai.DefectAPI.Configuration
         public string MinioDefaultBucket { get; set; }
         public string MinioTempBucketName { get; set; }
         public string MinioWithSSL { get; set; }
+        public string MinioPublicEndpoint { get; set; }
     }
 }

@@ -2215,6 +2215,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     CallresouceWithURL callresouceWithURL = new CallresouceWithURL();
                     callresouceWithURL = JsonConvert.DeserializeObject<CallresouceWithURL>(Json);
                     callresouceWithURL.URL = Environment.GetEnvironmentVariable("BaseURL") + "/" + callresouceWithURL.FilePath;
+                    callresouceWithURL.URL = ReplaceWithPublicURL(callresouceWithURL.URL);
                     return new
                     {
                         success = true,
@@ -2560,6 +2561,30 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             //VendorData = new APIITVendor();
             ErrorMsg = "SomeThing Wrong with Header Contact Developer ASAP";
             return false;
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public string ReplaceWithPublicURL(string url)
+        {
+            //string _minioEndpoint = "http://192.168.2.29:9001";
+            string _minioEndpoint = Environment.GetEnvironmentVariable("Minio_Endpoint");
+            if (_minioEndpoint == null)
+            {
+                _minioEndpoint = UtilsProvider.AppSetting.MinioEndpoint;
+            }
+            //string _tempBucket = "timeattendence";
+            string PublicMinioURL = Environment.GetEnvironmentVariable("MinioPublicEndpoint");
+            if (PublicMinioURL == null)
+            {
+                PublicMinioURL = UtilsProvider.AppSetting.MinioPublicEndpoint;
+            }
+            if (!string.IsNullOrEmpty(PublicMinioURL))
+            {
+                url = url.Replace("https://", "");
+                url = url.Replace("http://", "");
+
+                url = url.Replace(_minioEndpoint, PublicMinioURL);
+            }
+            return url;
         }
 
         //[ApiExplorerSettings(IgnoreApi = true)]
