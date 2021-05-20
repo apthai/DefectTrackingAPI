@@ -235,6 +235,7 @@ namespace com.apthai.DefectAPI.Repositories
                     callResourcePDF.CreateDate = DateTime.Now;
                     callResourcePDF.RowState = "Original";
                     callResourcePDF.ResourceType = 8;
+                    callResourcePDF.ResourceTagCode = "1";
                     callResourcePDF.ResourceTagSubCode = "1";
                     callResourcePDF.ResourceGroupSet = null;
                     callResourcePDF.ResourceGroupOrder = 0;
