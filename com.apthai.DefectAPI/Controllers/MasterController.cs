@@ -872,6 +872,7 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         PicInDetailObj BFURL = new PicInDetailObj();
                         BFURL.URL = await minio.GetFileUrlAsync(bucketName, BF[i].FilePath);
+                        BFURL.URL = ReplaceWithPublicURL(BFURL.URL);
                         BFURL.ResourceId = BF[i].ResourceId;
                         BFObject.Add(BFURL);
                     }
@@ -887,6 +888,7 @@ namespace com.apthai.DefectAPI.Controllers
                     {
                         PicInDetailObj AFURL = new PicInDetailObj();
                         AFURL.URL = await minio.GetFileUrlAsync(bucketName, AF[i].FilePath);
+                        AFURL.URL = ReplaceWithPublicURL(AFURL.URL);
                         AFURL.ResourceId = AF[i].ResourceId;
                         AFObject.Add(AFURL);
                     }
@@ -1043,6 +1045,7 @@ namespace com.apthai.DefectAPI.Controllers
                         Result.ProjectId = latestFloor.ProjectNo;
                         Result.UnitId = latestFloor.SerialNo;
                         Result.URL = await minio.GetFileUrlAsync(bucketName, latestFloor.FilePath);
+                        Result.URL = ReplaceWithPublicURL(Result.URL);
                         Result.Floor = floorPlan.Floor;
                         Result.PlanLayoutType = floorPlan.UnitLayoutType;
                         ResultObj.Add(Result);
@@ -1116,42 +1119,49 @@ namespace com.apthai.DefectAPI.Controllers
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         lCSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         lCSignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        lCSignature.AfterSig.URL = ReplaceWithPublicURL(lCSignature.AfterSig.URL);
                     }
                     else if (Signature[i].ResourceTagCode == "SAL-LC-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         lCSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         lCSignature.BeforeSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        lCSignature.BeforeSig.URL = ReplaceWithPublicURL(lCSignature.BeforeSig.URL);
                     }
                     else if (Signature[i].ResourceTagCode == "CUST-AF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         customerSignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         customerSignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        customerSignature.AfterSig.URL = ReplaceWithPublicURL(customerSignature.AfterSig.URL);
                     }
                     else if (Signature[i].ResourceTagCode == "CUST-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         customerSignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         customerSignature.BeforeSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        customerSignature.BeforeSig.URL = ReplaceWithPublicURL(customerSignature.BeforeSig.URL);
                     }
                     else if (Signature[i].ResourceTagCode == "CUST-RECE")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         customerSignature.ReceiveSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         customerSignature.ReceiveSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        customerSignature.ReceiveSig.URL = ReplaceWithPublicURL(customerSignature.ReceiveSig.URL);
                     }
                     else if (Signature[i].ResourceTagCode == "CON-MGR-AF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         sESignature.AfterSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         sESignature.AfterSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        sESignature.AfterSig.URL = ReplaceWithPublicURL(sESignature.AfterSig.URL);
                     }
                     else if (Signature[i].ResourceTagCode == "CON-MGR-BF")
                     {
                         string a = JsonConvert.SerializeObject(Signature[i]);
                         sESignature.BeforeSig = JsonConvert.DeserializeObject<CallresouceWithURL>(a);
                         sESignature.BeforeSig.URL = await minio.GetFileUrlAsync(bucketName, Signature[i].FilePath);
+                        sESignature.BeforeSig.URL = ReplaceWithPublicURL(sESignature.BeforeSig.URL);
                     }
                 }
                 ReturnObj.CustomerSignature = customerSignature;
@@ -1277,6 +1287,30 @@ namespace com.apthai.DefectAPI.Controllers
             {
                 return StatusCode(500, "Internal server error");
             }
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public string ReplaceWithPublicURL(string url)
+        {
+            //string _minioEndpoint = "http://192.168.2.29:9001";
+            string _minioEndpoint = Environment.GetEnvironmentVariable("Minio_Endpoint");
+            if (_minioEndpoint == null)
+            {
+                _minioEndpoint = UtilsProvider.AppSetting.MinioEndpoint;
+            }
+            //string _tempBucket = "timeattendence";
+            string PublicMinioURL = Environment.GetEnvironmentVariable("MinioPublicEndpoint");
+            if (PublicMinioURL == null)
+            {
+                PublicMinioURL = UtilsProvider.AppSetting.MinioPublicEndpoint;
+            }
+            if (!string.IsNullOrEmpty(PublicMinioURL))
+            {
+                url = url.Replace("https://", "");
+                url = url.Replace("http://", "");
+
+                url = url.Replace(_minioEndpoint, PublicMinioURL);
+            }
+            return url;
         }
     }
 }
