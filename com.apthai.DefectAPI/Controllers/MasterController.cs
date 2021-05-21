@@ -1268,7 +1268,10 @@ namespace com.apthai.DefectAPI.Controllers
                 minio = new MinioServices();
                 CallTDefectPdfDocumentModel returnModel = new CallTDefectPdfDocumentModel();
                 if (!String.IsNullOrEmpty(result))
+                {
                     returnModel.FilePath = await minio.GetFileUrlAsync(bucketName, result);
+                    returnModel.FilePath = ReplaceWithPublicURL(returnModel.FilePath);
+                }
                 else
                     return new
                     {
