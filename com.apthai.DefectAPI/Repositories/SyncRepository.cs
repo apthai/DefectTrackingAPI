@@ -166,7 +166,7 @@ namespace com.apthai.DefectAPI.Repositories
                 if (orderCusSignature.Count() == 2)
                 {
                     if (orderCusSignature[1].ResourceTagCode == "CUST-RECE")
-                    {                   
+                    {
                         if (model.ProjectType.Equals("V"))
                         {
                             reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
@@ -192,7 +192,7 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                 }
                 else if (orderCusSignature.Count() == 3)
-                 {
+                {
                     if (orderCusSignature[2].ResourceTagCode == "CUST-RECE")
                     {
 
@@ -234,7 +234,8 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
+                        var sign = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault();
+                        var signDatetime = sign != null ? sign.CreateDate : null;
                         cusReDatetime = signDatetime != null ? signDatetime.Value.ToString("d/M/yyyy") : "";
                         if (model.ProjectType.Equals("V"))
                         {
