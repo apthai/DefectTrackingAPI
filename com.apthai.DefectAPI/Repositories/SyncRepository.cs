@@ -1,4 +1,4 @@
-﻿using Dapper;
+using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -166,9 +166,35 @@ namespace com.apthai.DefectAPI.Repositories
                 if (orderCusSignature.Count() == 2)
                 {
                     if (orderCusSignature[1].ResourceTagCode == "CUST-RECE")
+                    {                   
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
+                        }
+                    }
+                    else
                     {
                         var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
                         cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal";
+                        }
+                    }
+                }
+                else if (orderCusSignature.Count() == 3)
+                 {
+                    if (orderCusSignature[2].ResourceTagCode == "CUST-RECE")
+                    {
 
                         if (model.ProjectType.Equals("V"))
                         {
@@ -181,33 +207,8 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal";
-                        }
-                    }
-                }
-                else if (orderCusSignature.Count() == 3)
-                {
-                    if (orderCusSignature[2].ResourceTagCode == "CUST-RECE")
-                    {
                         var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
                         cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
-                        }
-                    }
-                    else
-                    {
                         if (model.ProjectType.Equals("V"))
                         {
                             reportName = "RPT_ReceiveUnit_Vertical";
@@ -222,8 +223,6 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (orderCusSignature[0].ResourceTagCode == "CUST-RECE")
                     {
-                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
-                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
                         if (model.ProjectType.Equals("V"))
                         {
                             reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
@@ -235,6 +234,8 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
+                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
+                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
                         if (model.ProjectType.Equals("V"))
                         {
                             reportName = "RPT_ReceiveUnit_Vertical";
