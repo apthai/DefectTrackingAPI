@@ -235,7 +235,7 @@ namespace com.apthai.DefectAPI.Repositories
                     else
                     {
                         var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
-                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+                        cusReDatetime = signDatetime != null ? signDatetime.Value.ToString("d/M/yyyy") : "";
                         if (model.ProjectType.Equals("V"))
                         {
                             reportName = "RPT_ReceiveUnit_Vertical";
