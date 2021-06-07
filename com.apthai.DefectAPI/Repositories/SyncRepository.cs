@@ -159,7 +159,7 @@ namespace com.apthai.DefectAPI.Repositories
                 string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
                 string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
 
-                var listCus = new List<string>() { "CUST", "CUST-AF", "CUST-RECE" };
+                var listCus = new List<string>() { "CUST-BF", "CUST-AF", "CUST-RECE" };
                 var orderCusSignature = Signature.Where(w => listCus.Contains(w.ResourceTagCode)).OrderBy(o => o.CreateDate).ToList();
 
                 var cusReDatetime = "";
