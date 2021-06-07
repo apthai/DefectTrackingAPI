@@ -21,6 +21,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using System.Globalization;
 
 namespace com.apthai.DefectAPI.Repositories
 {
@@ -135,10 +136,10 @@ namespace com.apthai.DefectAPI.Repositories
         {
             try
             {
-                var reportName = "RPT_ReceiveUnit"; 
+                var reportName = "RPT_ReceiveUnit_Horizontal";
                 if (model.ProjectType.Equals("V"))
                 {
-                    reportName = "RPT_ReceiveUnit_H";
+                    reportName = "RPT_ReceiveUnit_Vertical";
                 }
 
                 // V แนวสูง
@@ -158,12 +159,101 @@ namespace com.apthai.DefectAPI.Repositories
                 string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
                 string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
 
+                var listCus = new List<string>() { "CUST", "CUST-AF", "CUST-RECE" };
+                var orderCusSignature = Signature.Where(w => listCus.Contains(w.ResourceTagCode)).OrderBy(o => o.CreateDate).ToList();
+
+                var cusReDatetime = "";
+                if (orderCusSignature.Count() == 2)
+                {
+                    if (orderCusSignature[1].ResourceTagCode == "CUST-RECE")
+                    {
+                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
+                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
+                        }
+                    }
+                    else
+                    {
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal";
+                        }
+                    }
+                }
+                else if (orderCusSignature.Count() == 3)
+                {
+                    if (orderCusSignature[2].ResourceTagCode == "CUST-RECE")
+                    {
+                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
+                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
+                        }
+                    }
+                    else
+                    {
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal";
+                        }
+                    }
+                }
+                else
+                {
+                    if (orderCusSignature[0].ResourceTagCode == "CUST-RECE")
+                    {
+                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
+                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
+                        }
+                    }
+                    else
+                    {
+                        if (model.ProjectType.Equals("V"))
+                        {
+                            reportName = "RPT_ReceiveUnit_Vertical";
+                        }
+                        else
+                        {
+                            reportName = "RPT_ReceiveUnit_Horizontal";
+                        }
+                    }
+                }
+
                 string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
                 string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
                 string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
                 string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
                 string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
                 string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
+
+
 
                 var requestMode = new RequestReportModel()
                 {
@@ -182,7 +272,8 @@ namespace com.apthai.DefectAPI.Repositories
                                new ParameterReport(){Name="@CUST_AF_URL",Value=cusSigAfFilePath},
                                new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
                                new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
-                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath}
+                               new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath},
+                               new ParameterReport(){Name="@CUS_RECE_SIGN_DATE",Value=cusReDatetime}
                             }
                 };
                 ResponsetReportModel resultObject = new ResponsetReportModel();
