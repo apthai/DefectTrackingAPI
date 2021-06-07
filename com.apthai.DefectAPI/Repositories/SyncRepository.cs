@@ -178,8 +178,12 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
-                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+                        var sign = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault();
+
+                        if (sign != null)
+                        {
+                            cusReDatetime = sign.CreateDate.Value.ToString("d/M/yyyy");
+                        }
 
                         if (model.ProjectType.Equals("V"))
                         {
@@ -207,8 +211,12 @@ namespace com.apthai.DefectAPI.Repositories
                     }
                     else
                     {
-                        var signDatetime = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate;
-                        cusReDatetime = signDatetime.Value.ToString("d/M/yyyy");
+                        var sign = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault();
+
+                        if (sign != null)
+                        {
+                            cusReDatetime = sign.CreateDate.Value.ToString("d/M/yyyy");
+                        }
                         if (model.ProjectType.Equals("V"))
                         {
                             reportName = "RPT_ReceiveUnit_Vertical";
