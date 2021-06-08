@@ -159,106 +159,61 @@ namespace com.apthai.DefectAPI.Repositories
                 string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
                 string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
 
-                var listCus = new List<string>() { "CUST-BF", "CUST-AF", "CUST-RECE" };
-                var orderCusSignature = Signature.Where(w => listCus.Contains(w.ResourceTagCode)).OrderBy(o => o.CreateDate).ToList();
 
-                var cusReDatetime = "";
-                if (orderCusSignature.Count() == 2)
+                var dateCusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().CreateDate : null;
+                var dateCusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().CreateDate : null;
+                var dateCusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate : null;
+
+                string cusReDatetime = "";
+                string cusBfDatetime = "";
+                string cusAfDatetime = "";
+
+                if (dateCusSigBf != null)
                 {
-                    if (orderCusSignature[1].ResourceTagCode == "CUST-RECE")
-                    {
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
-                        }
-                    }
-                    else
-                    {
-                        var sign = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault();
-
-                        if (sign != null)
-                        {
-                            cusReDatetime = sign.CreateDate.Value.ToString("d/M/yyyy");
-                        }
-
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal";
-                        }
-                    }
+                    cusReDatetime = dateCusSigBf.Value.ToString("dd/MM/yyyy");
                 }
-                else if (orderCusSignature.Count() == 3)
-                {
-                    if (orderCusSignature[2].ResourceTagCode == "CUST-RECE")
-                    {
 
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
-                        }
+                if (dateCusSigAf != null)
+                {
+                    cusBfDatetime = dateCusSigAf.Value.ToString("dd/MM/yyyy");
+                }
+
+                if (dateCusSigRe != null)
+                {
+                    cusAfDatetime = dateCusSigRe.Value.ToString("dd/MM/yyyy");
+                }
+
+                if (model.ProjectType.Equals("V"))
+                {
+                    if (model.SignatureType == "CUST-BF")
+                    {
+                        reportName = "RPT_ReceiveUnit_Vertical_CUST_BF";
+                    }
+                    else if (model.SignatureType == "CUST-AF")
+                    {
+                        reportName = "RPT_ReceiveUnit_Vertical_CUST_AF";
                     }
                     else
                     {
-                        var sign = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault();
-
-                        if (sign != null)
-                        {
-                            cusReDatetime = sign.CreateDate.Value.ToString("d/M/yyyy");
-                        }
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal";
-                        }
+                        reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
                     }
                 }
                 else
                 {
-                    if (orderCusSignature[0].ResourceTagCode == "CUST-RECE")
+                    if (model.SignatureType == "CUST-BF")
                     {
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
-                        }
+                        reportName = "RPT_ReceiveUnit_Vertical_CUST_BF";
+                    }
+                    else if (model.SignatureType == "CUST-AF")
+                    {
+                        reportName = "RPT_ReceiveUnit_Vertical_CUST_AF";
                     }
                     else
                     {
-                        var sign = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault();
-
-                        if(sign != null)
-                        {
-                            cusReDatetime = sign.CreateDate.Value.ToString("d/M/yyyy");
-                        }                       
-                        if (model.ProjectType.Equals("V"))
-                        {
-                            reportName = "RPT_ReceiveUnit_Vertical";
-                        }
-                        else
-                        {
-                            reportName = "RPT_ReceiveUnit_Horizontal";
-                        }
+                        reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
                     }
                 }
-
+              
                 string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
                 string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
                 string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
@@ -286,6 +241,8 @@ namespace com.apthai.DefectAPI.Repositories
                                new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
                                new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
                                new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath},
+                               new ParameterReport(){Name="@CUS_BF_SIGN_DATE",Value=cusBfDatetime},
+                               new ParameterReport(){Name="@CUS_AF_SIGN_DATE",Value=cusAfDatetime},
                                new ParameterReport(){Name="@CUS_RECE_SIGN_DATE",Value=cusReDatetime}
                             }
                 };
