@@ -136,17 +136,10 @@ namespace com.apthai.DefectAPI.Repositories
         {
             try
             {
-                var reportName = "RPT_ReceiveUnit_Horizontal";
-                if (model.ProjectType.Equals("V"))
-                {
-                    reportName = "RPT_ReceiveUnit_Vertical";
-                }
-
+                var reportName = "";
+                
                 // V แนวสูง
                 // H แนวราบ
-
-                // RPT_ReceiveUnit_H แนวสูง
-                // RPT_ReceiveUnit   แนวราบ
                 await UpdatePathUrlFile(model.TDefectId);
                 string bucketName = Environment.GetEnvironmentVariable("Minio_DefaultBucket") ?? UtilsProvider.AppSetting.MinioDefaultBucket;
                 minio = new MinioServices();
@@ -159,14 +152,16 @@ namespace com.apthai.DefectAPI.Repositories
                 string conSigAf = Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CON-MGR-AF").FirstOrDefault().FilePath : null;
                 string cusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().FilePath : null;
 
+                var listCus = new List<string>() { "CUST-BF", "CUST-AF", "CUST-RECE" };
+                var orderCusSignature = Signature.Where(w => listCus.Contains(w.ResourceTagCode)).OrderBy(o => o.CreateDate).ToList();
 
                 var dateCusSigBf = Signature.Where(w => w.ResourceTagCode == "CUST-BF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-BF").FirstOrDefault().CreateDate : null;
                 var dateCusSigAf = Signature.Where(w => w.ResourceTagCode == "CUST-AF").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-AF").FirstOrDefault().CreateDate : null;
                 var dateCusSigRe = Signature.Where(w => w.ResourceTagCode == "CUST-RECE").Any() ? Signature.Where(w => w.ResourceTagCode == "CUST-RECE").FirstOrDefault().CreateDate : null;
 
-                string cusReDatetime = "";
                 string cusBfDatetime = "";
                 string cusAfDatetime = "";
+                string cusReDatetime = "";
 
                 if (dateCusSigBf != null)
                 {
@@ -180,7 +175,23 @@ namespace com.apthai.DefectAPI.Repositories
 
                 if (dateCusSigRe != null)
                 {
-                    cusAfDatetime = dateCusSigRe.Value.ToString("dd/MM/yyyy");
+                    cusReDatetime = string.Format("ลูกค้าเช็นต์รับบ้านแล้ว {0}", dateCusSigRe.Value.ToString("dd/MM/yyyy"));
+                }
+
+
+                string alternativeDate = "";
+                var indexCusRe = orderCusSignature.FindIndex(w => w.ResourceTagCode == "CUST-RECE");
+                if (indexCusRe != 0)
+                {
+                    if (orderCusSignature[indexCusRe - 1].ResourceTagCode == "CUST-BF")
+                    {
+                        alternativeDate = string.Format("ลูกค้าเช็นต์ก่อนซ่อมแล้ว {0}", cusBfDatetime);
+                    }
+
+                    if (orderCusSignature[indexCusRe - 1].ResourceTagCode == "CUST-AF")
+                    {
+                        alternativeDate = string.Format("ลูกค้าเช็นต์หลังซ่อมแล้ว {0}", cusAfDatetime);
+                    }
                 }
 
                 if (model.ProjectType.Equals("V"))
@@ -202,26 +213,24 @@ namespace com.apthai.DefectAPI.Repositories
                 {
                     if (model.SignatureType == "CUST-BF")
                     {
-                        reportName = "RPT_ReceiveUnit_Vertical_CUST_BF";
+                        reportName = "RPT_ReceiveUnit_Horizontal_CUST_BF";
                     }
                     else if (model.SignatureType == "CUST-AF")
                     {
-                        reportName = "RPT_ReceiveUnit_Vertical_CUST_AF";
+                        reportName = "RPT_ReceiveUnit_Horizontal_CUST_AF";
                     }
                     else
                     {
-                        reportName = "RPT_ReceiveUnit_Vertical_CUST_RECE";
+                        reportName = "RPT_ReceiveUnit_Horizontal_CUST_RECE";
                     }
                 }
-              
+
                 string lcSigAffilePath = String.IsNullOrEmpty(lcSigAf) ? null : await minio.GetFileUrlAsync(bucketName, lcSigAf);
                 string cusSigBfFilePath = String.IsNullOrEmpty(cusSigBf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigBf);
                 string cusSigAfFilePath = String.IsNullOrEmpty(cusSigAf) ? null : await minio.GetFileUrlAsync(bucketName, cusSigAf);
                 string conSigBfFilePath = String.IsNullOrEmpty(conSigBf) ? null : await minio.GetFileUrlAsync(bucketName, conSigBf);
                 string conSigAfFilePath = String.IsNullOrEmpty(conSigAf) ? null : await minio.GetFileUrlAsync(bucketName, conSigAf);
                 string cusSigReFilePath = String.IsNullOrEmpty(cusSigRe) ? null : await minio.GetFileUrlAsync(bucketName, cusSigRe);
-
-
 
                 var requestMode = new RequestReportModel()
                 {
@@ -241,8 +250,7 @@ namespace com.apthai.DefectAPI.Repositories
                                new ParameterReport(){Name="@CUST_BF_URL",Value=cusSigBfFilePath},
                                new ParameterReport(){Name="@CUST_RECE",Value=cusSigReFilePath},
                                new ParameterReport(){Name="@SAL_LC_AF",Value=lcSigAffilePath},
-                               new ParameterReport(){Name="@CUS_BF_SIGN_DATE",Value=cusBfDatetime},
-                               new ParameterReport(){Name="@CUS_AF_SIGN_DATE",Value=cusAfDatetime},
+                               new ParameterReport(){Name="@ALTERNATIVE_DATE",Value=alternativeDate},
                                new ParameterReport(){Name="@CUS_RECE_SIGN_DATE",Value=cusReDatetime}
                             }
                 };
