@@ -573,7 +573,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailIDList[i].TDefectDetailID);
                     // --------------------------------------------------------------------
                     callTDefectDetail.TDefectDetailStatus = "003";
-
+                    callTDefectDetail.TaskActualFinishDate = DateTime.Now;
                     UpdateLists.Add(callTDefectDetail);
                 }
                 var inserttdefectdetail = _transactionRepository.UpdateTdefectDetailList(UpdateLists);
@@ -814,7 +814,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailIDList[i].TDefectDetailID);
                     // --------------------------------------------------------------------
                     callTDefectDetail.TDefectDetailStatus = "005";
-
+                    callTDefectDetail.TaskActualCloseDate = DateTime.Now;
                     UpdateLists.Add(callTDefectDetail);
                 }
                 for (int i = 0; i < UpdateLists.Count(); i++)
