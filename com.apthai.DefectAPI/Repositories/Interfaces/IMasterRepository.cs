@@ -37,6 +37,7 @@ namespace com.apthai.DefectAPI.Repositories.Interfaces
         callTDefectDetail GetcallTDefectDetailByDetailID_Sync(int TDefectDetailID);
         List<callTDefectDetail> GetcallTDefectDetailByDetailIDList_Sync(string TDefectDetailIDList);
         List<callTDefectDetail> GetcallTDefectDetailByTDefectIDList_Sync(int TDefectID);
+        List<callTDefectDetail> GetcallTDefectDetailStatusNotClodeByTDefectIDList_Sync(int TDefectID);
         List<CallTdefectDetailCustom> GetcallTDefectDetailShow_Sync(int TDefectID);
         List<GetUnitByProjectReturnObj> GetRecentcallTDefect_Sync(string EmpCode, string ProjectID);
         List<GetCallTDefectByProjectObj> GetCallTDefectByProject_Sync(int ProductID);
