@@ -128,6 +128,26 @@ namespace com.apthai.DefectAPI.Repositories
                 throw ex;
             }
         }
+        public long InsertCustRoundAuditLog(callTDefectCustRoundAuditLog auditLog)
+        {
+            try
+            {
+                using (IDbConnection conn = WebConnection)
+                {
+                    conn.Open();
+                    var tran = conn.BeginTransaction(IsolationLevel.ReadUncommitted);
+
+                    long result = conn.Insert(auditLog, tran);
+                    tran.Commit();
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool UpdateTdefectDetail(callTDefectDetail defectDetail)
         {
             try

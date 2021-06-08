@@ -132,9 +132,11 @@ namespace com.apthai.DefectAPI.Controllers
 
                 if (data.TDefectId != 0)
                 {
+                    bool IncreaseRound = false;
                     callTDefectDetail LatestdefectDetail = _masterRepository.GetcallTDefectDetailByTDefectID_Sync(data.TDefectId);
                     DateTime Today = DateTime.Now;
                     DateTime LatestTxnDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                    callTDefect callTDefect = _masterRepository.GetCallTDefectByTDefectId_Sync(data.TDefectId.ToString());
                     if (LatestdefectDetail != null)
                     {
                         LatestTxnDate = Convert.ToDateTime(LatestdefectDetail.CreateDate.Value.ToShortDateString());
@@ -150,7 +152,7 @@ namespace com.apthai.DefectAPI.Controllers
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
                     tDefectDetail.Client_SyncDate = DateTime.Now;
                     tDefectDetail.TDefectId = data.TDefectId;
-                    tDefectDetail.TDefectDocNo = DefectDocNo;
+                    tDefectDetail.TDefectDocNo = callTDefect.TDefectDocNo;
                     tDefectDetail.ProductId = data.ProductId;
                     tDefectDetail.ItemId = data.ItemId;
                     tDefectDetail.TDefectDetailStatus = "001";
@@ -173,12 +175,15 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.FloorPlanSet = data.DefectType == "V" ? "1" : data.FloorPlanSet;
 
                     if (LatestTxnDate.Date < Today.Date)
+                    {
                         tDefectDetail.CustRoundAuditNo = LatestdefectDetail.CustRoundAuditNo + 1;
+                        IncreaseRound = true;
+                    }
                     else
                         tDefectDetail.CustRoundAuditNo = 1;
 
-                    tDefectDetail.CustRoundAuditDate = DateTime.Now;
-                    tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
+                    tDefectDetail.CustRoundAuditDate = null;//DateTime.Now;
+                    tDefectDetail.CustRoundAuditDueCloseDate = null;//DateTime.Now.AddDays(20);
                     tDefectDetail.IsServerLockRow = false;
                     tDefectDetail.TaskOpenDate = DateTime.Now;
                     tDefectDetail.TaskProcessDate = null;
@@ -262,6 +267,15 @@ namespace com.apthai.DefectAPI.Controllers
 
                     }
                     _transactionRepository.UpdateInActiveSignature(data.TDefectId);
+                    if (IncreaseRound)
+                    {
+                        callTDefectCustRoundAuditLog auditLog = new callTDefectCustRoundAuditLog();
+                        auditLog.TDefectId = data.TDefectId;
+                        //int Round = tDefectDetail.CustRoundAuditNo ?? 0 ;
+                        auditLog.RoundAuditNo = tDefectDetail.CustRoundAuditNo ?? 0;
+                        auditLog.RoundAuditDate = DateTime.Now;
+                        long InsertAuditLog = _transactionRepository.InsertCustRoundAuditLog(auditLog);
+                    }
                     return new
                     {
                         success = true,
@@ -278,7 +292,7 @@ namespace com.apthai.DefectAPI.Controllers
                                             DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "") + Guid.NewGuid();
                     CreateDefect.Client_SyncDate = DateTime.Now;
                     CreateDefect.TDefectDocNo = "Defect-" + data.DefectType + "-" + data.ProductId + "-" + data.ItemId + "/" +
-                                            DateTime.Now.ToString("dd/MM/yyyyHH:mm:ss.ffffff").Replace(" ", "");
+                                            DateTime.Now.ToString("yyyyMMdd-HHmm").Replace(" ", "");
                     CreateDefect.TDefectStatus = "001"; // หน้าจะเท่ากับ Open
                     CreateDefect.TDefectSubStatus = null;
                     CreateDefect.ProductId = data.ProductId;
@@ -293,13 +307,13 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.UpdateDate = null;
                     CreateDefect.Desciption = data.Description;
                     CreateDefect.DocOpenDate = DateTime.Now;
-                    CreateDefect.DocDueCloseDate = DateTime.Now.AddDays(14);
+                    CreateDefect.DocDueCloseDate = null; //DateTime.Now.AddDays(14);
                     CreateDefect.MechanicId = null;
                     CreateDefect.MechanicName = null;
                     CreateDefect.SellerId = null;
                     CreateDefect.SallerName = null;
-                    CreateDefect.DocReceiveUnitDate = DateTime.Now;
-                    CreateDefect.DocDueTransferDate = DateTime.Now;
+                    CreateDefect.DocReceiveUnitDate = null;
+                    CreateDefect.DocDueTransferDate = null;
                     CreateDefect.ContactID = null;
                     if (viewUnitCustomer != null)
                     {
@@ -366,8 +380,8 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.TaskMarkName = "DummyData";
                     tDefectDetail.FloorPlanSet = data.FloorPlanSet;
                     tDefectDetail.CustRoundAuditNo = 1;
-                    tDefectDetail.CustRoundAuditDate = DateTime.Now;
-                    tDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
+                    tDefectDetail.CustRoundAuditDate = null;//DateTime.Now;
+                    tDefectDetail.CustRoundAuditDueCloseDate = null;//DateTime.Now.AddDays(20);
                     tDefectDetail.IsServerLockRow = false;
                     tDefectDetail.TaskOpenDate = DateTime.Now;
                     tDefectDetail.TaskProcessDate = null;
@@ -423,6 +437,13 @@ namespace com.apthai.DefectAPI.Controllers
                         }
                     }
                     _transactionRepository.UpdateInActiveSignature(data.TDefectId);
+
+                    callTDefectCustRoundAuditLog auditLog = new callTDefectCustRoundAuditLog();
+                    auditLog.TDefectId = Convert.ToInt32(DefectID);
+                    auditLog.RoundAuditDate = DateTime.Now;
+                    auditLog.RoundAuditNo = 1;
+
+                    long insertAuditLog = _transactionRepository.InsertCustRoundAuditLog(auditLog);
                     return new
                     {
                         success = true,
@@ -654,6 +675,7 @@ Description = "Update วันที่ลูกค้าจะเข้าม�
                 callTDefect callTDefect = _masterRepository.GetCallTDefect_Sync(data.TDefectID);
                 callTDefect.DocIsReqUnitReceiveAttachFile = true;
                 callTDefect.UpdateDate = DateTime.Now;
+                callTDefect.DocReceiveUnitDate = DateTime.Now;
                 // --------------------------------------------------------------------
 
 
