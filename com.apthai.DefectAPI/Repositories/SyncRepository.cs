@@ -137,7 +137,7 @@ namespace com.apthai.DefectAPI.Repositories
             try
             {
                 var reportName = "";
-                
+
                 // V แนวสูง
                 // H แนวราบ
                 await UpdatePathUrlFile(model.TDefectId);
@@ -165,12 +165,12 @@ namespace com.apthai.DefectAPI.Repositories
 
                 if (dateCusSigBf != null)
                 {
-                    cusReDatetime = dateCusSigBf.Value.ToString("dd/MM/yyyy");
+                    cusBfDatetime = dateCusSigBf.Value.ToString("dd/MM/yyyy");
                 }
 
                 if (dateCusSigAf != null)
                 {
-                    cusBfDatetime = dateCusSigAf.Value.ToString("dd/MM/yyyy");
+                    cusAfDatetime = dateCusSigAf.Value.ToString("dd/MM/yyyy");
                 }
 
                 if (dateCusSigRe != null)
@@ -181,7 +181,7 @@ namespace com.apthai.DefectAPI.Repositories
 
                 string alternativeDate = "";
                 var indexCusRe = orderCusSignature.FindIndex(w => w.ResourceTagCode == "CUST-RECE");
-                if (indexCusRe != 0)
+                if (indexCusRe != 0 && indexCusRe != -1)
                 {
                     if (orderCusSignature[indexCusRe - 1].ResourceTagCode == "CUST-BF")
                     {
