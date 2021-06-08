@@ -1812,7 +1812,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     ProjectCode = data.ProjectCode,
                     UnitNo = data.UnitNo,
                     TDefectId = Int32.Parse(data.TDefectID),
-                    ProjectType = data.ProjectType
+                    ProjectType = data.ProjectType,
+                    SignatureType = callResourceDate.ResourceTagCode
                 })));
             }
 
@@ -2188,7 +2189,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     ProjectCode = data.ProjectCode,
                     UnitNo = data.UnitNo,
                     TDefectId = Int32.Parse(data.TDefectID),
-                    ProjectType = data.ProjectType
+                    ProjectType = data.ProjectType,
+                    SignatureType = callResourceDate.ResourceTagCode
                 })));
             }
             else
