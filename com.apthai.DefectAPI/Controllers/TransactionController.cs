@@ -740,9 +740,13 @@ Description = "Update วันที่ลูกค้าจะเข้าม�
                 DateTime? LastCloseDate = callTDefect.DocDueCloseDate;
                 callTDefect.CustRoundAuditDate_Last = LastCloseDate;
                 callTDefect.DocDueCloseDate = data.DocDueCloseDate;
+                List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailByTDefectIDList_Sync(callTDefect.TDefectId);
+                for (int i = 0; i < callTDefectDetails.Count(); i++)
+                {
+                    callTDefectDetails[i].CustRoundAuditDueCloseDate = data.DocDueCloseDate;
+                }
                 // --------------------------------------------------------------------
-
-
+                bool update = _transactionRepository.UpdateTdefectDetailList(callTDefectDetails);
                 var inserttdefectdetail = _transactionRepository.UpdateTdefect(callTDefect);
 
 
@@ -1278,7 +1282,9 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.TDefectDetailId = data.TDefectDetailId == "" ? 0 : Convert.ToInt32(data.TDefectDetailId);
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
+                callResourceDate.UserId = Convert.ToString(data.UserID);
                 callResourceDate.Active = true;
+                callResourceDate.TDefectId = Convert.ToInt32(data.TDefectID) ;
                 callResourceDate.StorageServerId = 1400;
                 callResourceDate.FullFilePath = resultMinio.Url;
                 callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
