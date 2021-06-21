@@ -171,13 +171,16 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.FloorPlan_X = 0;
                     tDefectDetail.FloorPlan_Y = 0;
                     tDefectDetail.TaskNo = taskNo;
-                    tDefectDetail.TaskMarkName = "DummyData";
+                    //tDefectDetail.TaskMarkName = "DummyData";
                     tDefectDetail.FloorPlanSet = data.DefectType == "V" ? "1" : data.FloorPlanSet;
 
                     if (LatestTxnDate.Date < Today.Date)
                     {
                         tDefectDetail.CustRoundAuditNo = LatestdefectDetail.CustRoundAuditNo + 1;
+                        callTDefect.CustRoundAuditDate_Last = LatestTxnDate.Date;
+                        callTDefect.CustRoundAuditNo_Rn = LatestdefectDetail.CustRoundAuditNo + 1; 
                         IncreaseRound = true;
+                        bool IncreaseRoundCalltDefectHeader = _transactionRepository.UpdateTdefect(callTDefect);
                     }
                     else
                         tDefectDetail.CustRoundAuditNo = 1;
@@ -298,7 +301,7 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.ProductId = data.ProductId;
                     CreateDefect.ItemId = data.ItemId;
                     CreateDefect.DeviceId = data.DeviceId;
-                    CreateDefect.CreateUserId = data.EmpCode;
+                    CreateDefect.CreateUserId = data.UserID;
                     CreateDefect.UpdateUserId = null;
                     CreateDefect.CustRoundAuditNo_Rn = 1;
                     CreateDefect.CustRoundAuditDate_Last = DateTime.Now;
@@ -532,7 +535,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callTDefectDetail callTDefectDetail = _masterRepository.GetcallTDefectDetailByDetailID_Sync(data.TDefectDetailID);
                 // --------------------------------------------------------------------
                 callTDefectDetail.TDefectDetailStatus = "003";
-
+                callTDefectDetail.TaskActualFinishDate = DateTime.Now;
                 var inserttdefectdetail = _transactionRepository.UpdateTdefectDetail(callTDefectDetail);
 
 
@@ -1283,6 +1286,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callResourceDate.ProjectNo = data.ProjectCode;
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.UserId = Convert.ToString(data.UserID);
+                callResourceDate.UpdateUserId = Convert.ToString(data.UserID); 
                 callResourceDate.Active = true;
                 callResourceDate.TDefectId = Convert.ToInt32(data.TDefectID) ;
                 callResourceDate.StorageServerId = 1400;
@@ -1452,6 +1456,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     callResourceDate.ProjectNo = data.ProjectCode;
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
+                    callResourceDate.UpdateUserId = Convert.ToString(data.UserID);
                     callResourceDate.StorageServerId = 1400;
                     callResourceDate.FullFilePath = resultMinio.Url;
                     callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
