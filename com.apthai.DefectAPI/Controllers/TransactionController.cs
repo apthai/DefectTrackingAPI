@@ -1460,6 +1460,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                     callResourceDate.StorageServerId = 1400;
                     callResourceDate.FullFilePath = resultMinio.Url;
                     callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
+
                     //TresourceData[i].FilePath = "data/uploads/" + yearPath + "/" + MonthPath + "/" + fileName;
                     //TresourceData[i].FileLength = size;
                     //TresourceData[i].CreatedDate = DateTime.Now;
