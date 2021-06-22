@@ -2113,16 +2113,16 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
             var pathUrlSig = "";
             var reusult = "";
             callResource callResourceDate = new callResource();
-            List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailStatusNotClodeByTDefectIDList_Sync(Convert.ToInt32(data.TDefectID));
-            if (callTDefectDetails.Count > 0)
-            {
-                return new
-                {
-                    success = false,
-                    data = callResourceDate,
-                    message = string.Format(" Upload File Fail Error : Cannot Sign if all Work didn't Close ")
-                };
-            }
+            //List<callTDefectDetail> callTDefectDetails = _masterRepository.GetcallTDefectDetailStatusNotClodeByTDefectIDList_Sync(Convert.ToInt32(data.TDefectID));
+            //if (callTDefectDetails.Count > 0)
+            //{
+            //    return new
+            //    {
+            //        success = false,
+            //        data = callResourceDate,
+            //        message = string.Format(" Upload File Fail Error : Cannot Sign if all Work didn't Close ")
+            //    };
+            //}
             minio = new MinioServices();
             if (data.Files != null)
             {
