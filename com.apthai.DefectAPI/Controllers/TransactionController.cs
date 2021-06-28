@@ -317,7 +317,7 @@ namespace com.apthai.DefectAPI.Controllers
                     CreateDefect.SallerName = null;
                     CreateDefect.DocReceiveUnitDate = null;
                     CreateDefect.DocDueTransferDate = null;
-                    CreateDefect.ContactID = null;
+                    CreateDefect.ContactID = viewUnitCustomer.ContactID;
                     if (viewUnitCustomer != null)
                     {
                         CreateDefect.ContactName = viewUnitCustomer.FirstName + "  " + viewUnitCustomer.LastName;
