@@ -177,7 +177,7 @@ namespace com.apthai.DefectAPI.Controllers
                     if (LatestTxnDate.Date < Today.Date)
                     {
                         tDefectDetail.CustRoundAuditNo = LatestdefectDetail.CustRoundAuditNo + 1;
-                        callTDefect.CustRoundAuditDate_Last = LatestTxnDate.Date;
+                        callTDefect.CustRoundAuditDate_Last = DateTime.Now;
                         callTDefect.CustRoundAuditNo_Rn = LatestdefectDetail.CustRoundAuditNo + 1; 
                         IncreaseRound = true;
                         bool IncreaseRoundCalltDefectHeader = _transactionRepository.UpdateTdefect(callTDefect);
@@ -185,7 +185,7 @@ namespace com.apthai.DefectAPI.Controllers
                     else
                         tDefectDetail.CustRoundAuditNo = 1;
 
-                    tDefectDetail.CustRoundAuditDate = null;//DateTime.Now;
+                    tDefectDetail.CustRoundAuditDate = DateTime.Now;
                     tDefectDetail.CustRoundAuditDueCloseDate = null;//DateTime.Now.AddDays(20);
                     tDefectDetail.IsServerLockRow = false;
                     tDefectDetail.TaskOpenDate = DateTime.Now;
@@ -383,7 +383,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.TaskMarkName = "DummyData";
                     tDefectDetail.FloorPlanSet = data.FloorPlanSet;
                     tDefectDetail.CustRoundAuditNo = 1;
-                    tDefectDetail.CustRoundAuditDate = null;//DateTime.Now;
+                    tDefectDetail.CustRoundAuditDate = DateTime.Now;
                     tDefectDetail.CustRoundAuditDueCloseDate = null;//DateTime.Now.AddDays(20);
                     tDefectDetail.IsServerLockRow = false;
                     tDefectDetail.TaskOpenDate = DateTime.Now;
@@ -482,8 +482,8 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callTDefectDetail.CallTypeId = data.CallTypeID; // 6
                 callTDefectDetail.CallAreaId = data.CallArea; // 116
                 callTDefectDetail.CallDescId = data.CallDescId;
-                callTDefectDetail.CallPointId = data.PointID; // 16
-                callTDefectDetail.CallSubPointId = data.Cate; // 17
+                callTDefectDetail.CallPointId = data.Cate; // 16
+                callTDefectDetail.CallSubPointId = data.PointID; // 17
                 callTDefectDetail.DeviceId = data.DeviceId;
                 callTDefectDetail.Tag = null;
                 callTDefectDetail.CreateUserId = data.UserID;
@@ -493,7 +493,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callTDefectDetail.FloorPlan_Y = 0;
                 callTDefectDetail.TaskMarkName = "DummyData";
                 callTDefectDetail.FloorPlanSet = data.FloorPlanSet;
-                callTDefectDetail.CustRoundAuditNo = 1;
+                callTDefectDetail.CustRoundAuditNo = callTDefectDetail.CustRoundAuditNo;
                 callTDefectDetail.CustRoundAuditDate = DateTime.Now;
                 callTDefectDetail.CustRoundAuditDueCloseDate = DateTime.Now.AddDays(20);
                 callTDefectDetail.IsServerLockRow = false;
