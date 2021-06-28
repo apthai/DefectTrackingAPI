@@ -487,6 +487,7 @@ Description = "Update DefectDetail ซ้อมงานเสร็จแล้
                 callTDefectDetail.DeviceId = data.DeviceId;
                 callTDefectDetail.Tag = null;
                 callTDefectDetail.CreateUserId = data.UserID;
+                callTDefectDetail.UpdateUserId = data.UserID;
                 callTDefectDetail.UpdateDate = DateTime.Now;
                 callTDefectDetail.FloorPlan_ImageId = null;
                 callTDefectDetail.FloorPlan_X = 0;
