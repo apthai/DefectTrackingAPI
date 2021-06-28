@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -381,7 +381,7 @@ namespace com.apthai.DefectAPI.Controllers
                     tDefectDetail.TaskNo = taskNo;
                     tDefectDetail.CreateDate = DateTime.Now;
                     tDefectDetail.TaskMarkName = "DummyData";
-                    tDefectDetail.FloorPlanSet = data.FloorPlanSet;
+                    tDefectDetail.FloorPlanSet = data.DefectType == "V" ? "1" : data.FloorPlanSet;
                     tDefectDetail.CustRoundAuditNo = 1;
                     tDefectDetail.CustRoundAuditDate = DateTime.Now;
                     tDefectDetail.CustRoundAuditDueCloseDate = null;//DateTime.Now.AddDays(20);
