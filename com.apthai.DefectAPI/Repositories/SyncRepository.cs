@@ -258,7 +258,7 @@ namespace com.apthai.DefectAPI.Repositories
                 using (HttpClient client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 1000);
-                    var urlReport = UtilsProvider.AppSetting.ReportURL;
+                    var urlReport = Environment.GetEnvironmentVariable("ReportURL") ?? UtilsProvider.AppSetting.ReportURL;
                     var reportKey = Environment.GetEnvironmentVariable("ReportKey") ?? UtilsProvider.AppSetting.ReportKey;
                     var Content = new StringContent(JsonConvert.SerializeObject(requestMode));
                     Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");

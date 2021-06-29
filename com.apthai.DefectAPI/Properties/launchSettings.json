@@ -43,6 +43,7 @@
       "launchUrl": "api/values",
       "environmentVariables": {
         "ReportKey": "PortalReportViewerKey2021",
+        "ReportURL": "http://192.168.0.209/ReportPortalViewer_API/api/CrystalReport/GenPDF",
         "DefaultAuthorizeConnection": "Data Source=192.168.0.41;Initial Catalog=db_AuthorizationCenter;User ID=sa;Password=P@ssw0rd; Application Name=ApiSyncAuth",
         "Minio_WithSSL": "Value",
         "DefaultSyncConnection": "Data Source=192.168.2.52;Initial Catalog=db_QIS_Sync;User ID=sa;Password=P@ssw0rd; Application Name=ApiSync",
