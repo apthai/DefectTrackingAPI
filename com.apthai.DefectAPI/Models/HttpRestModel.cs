@@ -41,7 +41,7 @@ namespace com.apthai.DefectAPI.HttpRestModel
         [Required]
         public string TDefectDetailId { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public DateTime CreateDate { get; set; }
         public string ProjectCode { get; set; }
         public string UnitNo { get; set; }

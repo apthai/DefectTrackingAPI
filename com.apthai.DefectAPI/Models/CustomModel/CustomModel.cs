@@ -85,7 +85,7 @@ namespace com.apthai.DefectAPI.CustomModel
         [Required]
         public string TDefectID { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public DateTime CreateDate { get; set; }
         public string ProjectCode { get; set; }
         public string UnitNo { get; set; }

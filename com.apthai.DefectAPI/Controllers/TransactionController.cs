@@ -1803,7 +1803,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.RowState = "Original";
                 callResourceDate.ResourceType = 1;
                 callResourceDate.ResourceTagSubCode = "1";
-                callResourceDate.UserId = Convert.ToString(data.UserID);
+                callResourceDate.UserId = data.UserID;
                 callResourceDate.ResourceMineType = data.Files.ContentType;
                 if (data.IsBF == true)
                 {
@@ -1894,7 +1894,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.RowState = "Original";
                 callResourceDate.ResourceType = 1;
                 callResourceDate.ResourceTagSubCode = "1";
-                callResourceDate.UserId = Convert.ToString(data.UserID);
+                callResourceDate.UserId = data.UserID;
                 if (data.IsBF == true)
                 {
                     callResourceDate.ResourceTagCode = "SAL-LC-BF";
@@ -2017,7 +2017,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.RowState = "Original";
                 callResourceDate.ResourceType = 1;
                 callResourceDate.ResourceTagSubCode = "1";
-                callResourceDate.UserId = Convert.ToString(data.UserID);
+                callResourceDate.UserId = data.UserID;
                 if (data.IsBF == true)
                 {
                     callResourceDate.ResourceTagCode = "CON-MGR-BF";
@@ -2158,7 +2158,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                 callResourceDate.SerialNo = data.UnitNo;
                 callResourceDate.Active = true;
                 callResourceDate.StorageServerId = 1400;
-                callResourceDate.UserId = Convert.ToString(data.UserID);
+                callResourceDate.UserId = data.UserID;
                 callResourceDate.FullFilePath = resultMinio.Url;
                 callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                 bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
@@ -2225,7 +2225,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     TDefectId = Int32.Parse(data.TDefectID),
                     ProjectType = data.ProjectType,
                     SignatureType = callResourceDate.ResourceTagCode,
-                    EmpCode = Convert.ToString(data.UserID)
+                    EmpCode = data.UserID
                 })));
             }
             else
@@ -2329,7 +2329,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.StorageServerId = 1400;
-                    callResourceDate.UserId = Convert.ToString(data.UserID);
+                    callResourceDate.UserId = data.UserID;
                     callResourceDate.FullFilePath = resultMinio.Url;
                     callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
@@ -2508,7 +2508,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.Active = true;
                     callResourceDate.FullFilePath = resultMinio.Url;
                     callResourceDate.StorageServerId = 1400;
-                    callResourceDate.UserId = Convert.ToString(data.UserID);
+                    callResourceDate.UserId = data.UserID;
                     callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
                 }
