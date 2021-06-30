@@ -1399,7 +1399,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string SAPProductID { get; set; }
         public string SAPProfitCenter { get; set; }
         public string SAPCostCenter { get; set; }
-        public bool isValueCondo { get; set; }
+        public bool? isValueCondo { get; set; }
         public string PType { get; set; }
         public string WaterBranchCode { get; set; }
         public string WaterStationCode { get; set; }
@@ -1544,124 +1544,241 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public bool? IsForeignUnit { get; set; }
     }
 
-    [Table("ICON_EntForms_Unit_Old")]
-    public partial class ICONEntFormsUnitOld
+    [Table("ICON_EntForms_Unit_Bak_20210127_1048")]
+    public partial class ICONEntFormsUnitBak202101271048
+    {
+        public string UnitNumber { get; set; }
+        public string ProductID { get; set; }
+        public string ModelID { get; set; }
+        public int? PhaseID { get; set; }
+        public int? SubPhaseID { get; set; }
+        public int? BlockID { get; set; }
+        public decimal AreaFromRE { get; set; }
+        public string TowerID { get; set; }
+        public int? FloorID { get; set; }
+        public string AssetType { get; set; }
+        public int? PlanUnitNumber { get; set; }
+        public int? Liability { get; set; }
+        public int? Principal { get; set; }
+        public string AddressNumber { get; set; }
+        public int? LandStatus { get; set; }
+        public int? LandStatusDate { get; set; }
+        public int? LandStatusNote { get; set; }
+        public int? EstimatePrice { get; set; }
+        public int? IncreasingArea { get; set; }
+        public int? ApproveDate { get; set; }
+        public int? QC5ApprovedDate { get; set; }
+        public int? QC6ApprovedDate { get; set; }
+        public int? FESTQC6ApprovedDate { get; set; }
+        public int? ConstructionStartDate { get; set; }
+        public int? ConstructionEndDate { get; set; }
+        public int? ConstructionExpectEndDate { get; set; }
+        public int? ConstructionRealStartDate { get; set; }
+        public int? WaterNumber { get; set; }
+        public int? ElectricNumber { get; set; }
+        public int? SuggestionPrice { get; set; }
+        public int? SuggestionDate { get; set; }
+        public int? ProductUnit { get; set; }
+        public int? Package { get; set; }
+        public int? Progress { get; set; }
+        public int? FMID { get; set; }
+        public int? SEID { get; set; }
+        public int? DoubleCheckDate { get; set; }
+        public int? CheckDate { get; set; }
+        public int? RePairDate { get; set; }
+        public int? WaterReceiveRequireDate { get; set; }
+        public int? WaterRequireWithDrawDate { get; set; }
+        public int? WaterAdvanceAmount { get; set; }
+        public int? WaterRealWithDrawAmount { get; set; }
+        public int? WaterRequireDate { get; set; }
+        public int? WaterInvoildDate { get; set; }
+        public int? WaterTransferDate { get; set; }
+        public int? WaterTransferDateCustomer { get; set; }
+        public int? WaterRemark { get; set; }
+        public int? ElectricReceiveRequireDate { get; set; }
+        public int? ElectricRequireWithdrawDate { get; set; }
+        public int? ElectricAdvanceAmount { get; set; }
+        public int? ElectricRealWithdrawAmount { get; set; }
+        public int? ElectricRequireDate { get; set; }
+        public int? ElectricInvoildDate { get; set; }
+        public int? ElectricTransferDate { get; set; }
+        public int? ElectricTransferDateCustomer { get; set; }
+        public int? ElectricRemark { get; set; }
+        public decimal AreaFromPFB { get; set; }
+        public int? Location { get; set; }
+        public string UnitStatus { get; set; }
+        public int? isDelete { get; set; }
+        public int? Remark { get; set; }
+        public int? HistoriesMemo { get; set; }
+        public int? hedgearea { get; set; }
+        public int? TitledeedNumber { get; set; }
+        public int? ApproveWaterAdvance { get; set; }
+        public int? ApproveWaterRealWith { get; set; }
+        public int? ApproveElectricAdvance { get; set; }
+        public int? ApproveElectricRealWith { get; set; }
+        public int? ClearWaterAdvanceDate { get; set; }
+        public int? ClearElectricAdvanceDate { get; set; }
+        public int? MeterWaterDate { get; set; }
+        public int? MeterElectricDate { get; set; }
+        public int? IsBOI { get; set; }
+        public int? PrerogativePrice { get; set; }
+        public int? PrerogativeBank { get; set; }
+        public string LandOfficeID { get; set; }
+        public int? CaditManagerID { get; set; }
+        public int? FenceArea { get; set; }
+        public int? HomeNoReceivedDate { get; set; }
+        public int? EstBuiltinLandPerMetre { get; set; }
+        public int? BuiltinLand { get; set; }
+        public int? ISEditUnit { get; set; }
+        public int? LGElectricStatus { get; set; }
+        public int? LGElectricNumber { get; set; }
+        public int? LGWaterStatus { get; set; }
+        public int? LGWaterNumber { get; set; }
+        public int? Parking { get; set; }
+        public int? ParkingIncrease { get; set; }
+        public int? LoanBankAmount { get; set; }
+        public int? UnitLoanAmount { get; set; }
+        public int? BuiltInArea { get; set; }
+        public int? CurvedsteelArea { get; set; }
+        public int? FactorArea { get; set; }
+        public double AirArea { get; set; }
+        public int? ParkingArea { get; set; }
+        public double VerandaArea { get; set; }
+        public int? WBSObject { get; set; }
+        public string WBSNumber { get; set; }
+        public int? ModuleBOQ { get; set; }
+        public int? UnitType { get; set; }
+        public int? isUpdate { get; set; }
+        public int? FirstFlag { get; set; }
+        public int? WBSStatus { get; set; }
+        public int? GLRaiseBatchID { get; set; }
+        public int? OldGLRaiseBatchID { get; set; }
+        public int? ConstructionModelID { get; set; }
+        public int? UnitID { get; set; }
+        public int? UnitNumber_Old { get; set; }
+        public string UnitLayoutType { get; set; }
+        public int? FloorPlanImage { get; set; }
+        public int? RoomPlanImage { get; set; }
+        public int? GLPreTransferBatchID { get; set; }
+    }
+
+    [Table("ICON_EntForms_Unit_New")]
+    public partial class ICONEntFormsUnitNew
     {
         [ExplicitKey]
         public string UnitNumber { get; set; }
         public string ProductID { get; set; }
         public string ModelID { get; set; }
-        public string PhaseID { get; set; }
-        public string SubPhaseID { get; set; }
-        public string BlockID { get; set; }
-        public decimal? AreaFromRE { get; set; }
+        public int? PhaseID { get; set; }
+        public int? SubPhaseID { get; set; }
+        public int? BlockID { get; set; }
+        public decimal AreaFromRE { get; set; }
         public string TowerID { get; set; }
-        public string FloorID { get; set; }
-        public int? AssetType { get; set; }
+        public int? FloorID { get; set; }
+        public string AssetType { get; set; }
         public int? PlanUnitNumber { get; set; }
-        public decimal? Liability { get; set; }
-        public decimal? Principal { get; set; }
+        public int? Liability { get; set; }
+        public int? Principal { get; set; }
         public string AddressNumber { get; set; }
         public int? LandStatus { get; set; }
-        public DateTime? LandStatusDate { get; set; }
-        public string LandStatusNote { get; set; }
-        public decimal? EstimatePrice { get; set; }
-        public decimal? IncreasingArea { get; set; }
-        public DateTime? ApproveDate { get; set; }
-        public DateTime? QC5ApprovedDate { get; set; }
-        public DateTime? QC6ApprovedDate { get; set; }
-        public DateTime? FESTQC6ApprovedDate { get; set; }
-        public DateTime? ConstructionStartDate { get; set; }
-        public DateTime? ConstructionEndDate { get; set; }
-        public DateTime? ConstructionExpectEndDate { get; set; }
-        public DateTime? ConstructionRealStartDate { get; set; }
-        public string WaterNumber { get; set; }
-        public string ElectricNumber { get; set; }
-        public decimal? SuggestionPrice { get; set; }
-        public DateTime? SuggestionDate { get; set; }
-        public string ProductUnit { get; set; }
-        public string Package { get; set; }
-        public string Progress { get; set; }
-        public string FMID { get; set; }
-        public string SEID { get; set; }
-        public DateTime? DoubleCheckDate { get; set; }
-        public DateTime? CheckDate { get; set; }
-        public DateTime? RePairDate { get; set; }
-        public DateTime? WaterReceiveRequireDate { get; set; }
-        public DateTime? WaterRequireWithDrawDate { get; set; }
-        public decimal? WaterAdvanceAmount { get; set; }
-        public decimal? WaterRealWithDrawAmount { get; set; }
-        public DateTime? WaterRequireDate { get; set; }
-        public DateTime? WaterInvoildDate { get; set; }
-        public DateTime? WaterTransferDate { get; set; }
-        public DateTime? WaterTransferDateCustomer { get; set; }
-        public string WaterRemark { get; set; }
-        public DateTime? ElectricReceiveRequireDate { get; set; }
-        public DateTime? ElectricRequireWithdrawDate { get; set; }
-        public decimal? ElectricAdvanceAmount { get; set; }
-        public decimal? ElectricRealWithdrawAmount { get; set; }
-        public DateTime? ElectricRequireDate { get; set; }
-        public DateTime? ElectricInvoildDate { get; set; }
-        public DateTime? ElectricTransferDate { get; set; }
-        public DateTime? ElectricTransferDateCustomer { get; set; }
-        public string ElectricRemark { get; set; }
-        public decimal? AreaFromPFB { get; set; }
-        public string Location { get; set; }
-        public int? UnitStatus { get; set; }
-        public bool? isDelete { get; set; }
-        public string Remark { get; set; }
-        public string HistoriesMemo { get; set; }
-        public decimal? hedgearea { get; set; }
-        public string TitledeedNumber { get; set; }
-        public bool? ApproveWaterAdvance { get; set; }
-        public bool? ApproveWaterRealWith { get; set; }
-        public bool? ApproveElectricAdvance { get; set; }
-        public bool? ApproveElectricRealWith { get; set; }
-        public DateTime? ClearWaterAdvanceDate { get; set; }
-        public DateTime? ClearElectricAdvanceDate { get; set; }
-        public DateTime? MeterWaterDate { get; set; }
-        public DateTime? MeterElectricDate { get; set; }
-        public bool? IsBOI { get; set; }
-        public decimal? PrerogativePrice { get; set; }
-        public string PrerogativeBank { get; set; }
+        public int? LandStatusDate { get; set; }
+        public int? LandStatusNote { get; set; }
+        public int? EstimatePrice { get; set; }
+        public int? IncreasingArea { get; set; }
+        public int? ApproveDate { get; set; }
+        public int? QC5ApprovedDate { get; set; }
+        public int? QC6ApprovedDate { get; set; }
+        public int? FESTQC6ApprovedDate { get; set; }
+        public int? ConstructionStartDate { get; set; }
+        public int? ConstructionEndDate { get; set; }
+        public int? ConstructionExpectEndDate { get; set; }
+        public int? ConstructionRealStartDate { get; set; }
+        public int? WaterNumber { get; set; }
+        public int? ElectricNumber { get; set; }
+        public int? SuggestionPrice { get; set; }
+        public int? SuggestionDate { get; set; }
+        public int? ProductUnit { get; set; }
+        public int? Package { get; set; }
+        public int? Progress { get; set; }
+        public int? FMID { get; set; }
+        public int? SEID { get; set; }
+        public int? DoubleCheckDate { get; set; }
+        public int? CheckDate { get; set; }
+        public int? RePairDate { get; set; }
+        public int? WaterReceiveRequireDate { get; set; }
+        public int? WaterRequireWithDrawDate { get; set; }
+        public int? WaterAdvanceAmount { get; set; }
+        public int? WaterRealWithDrawAmount { get; set; }
+        public int? WaterRequireDate { get; set; }
+        public int? WaterInvoildDate { get; set; }
+        public int? WaterTransferDate { get; set; }
+        public int? WaterTransferDateCustomer { get; set; }
+        public int? WaterRemark { get; set; }
+        public int? ElectricReceiveRequireDate { get; set; }
+        public int? ElectricRequireWithdrawDate { get; set; }
+        public int? ElectricAdvanceAmount { get; set; }
+        public int? ElectricRealWithdrawAmount { get; set; }
+        public int? ElectricRequireDate { get; set; }
+        public int? ElectricInvoildDate { get; set; }
+        public int? ElectricTransferDate { get; set; }
+        public int? ElectricTransferDateCustomer { get; set; }
+        public int? ElectricRemark { get; set; }
+        public decimal AreaFromPFB { get; set; }
+        public int? Location { get; set; }
+        public string UnitStatus { get; set; }
+        public int? isDelete { get; set; }
+        public int? Remark { get; set; }
+        public int? HistoriesMemo { get; set; }
+        public int? hedgearea { get; set; }
+        public int? TitledeedNumber { get; set; }
+        public int? ApproveWaterAdvance { get; set; }
+        public int? ApproveWaterRealWith { get; set; }
+        public int? ApproveElectricAdvance { get; set; }
+        public int? ApproveElectricRealWith { get; set; }
+        public int? ClearWaterAdvanceDate { get; set; }
+        public int? ClearElectricAdvanceDate { get; set; }
+        public int? MeterWaterDate { get; set; }
+        public int? MeterElectricDate { get; set; }
+        public int? IsBOI { get; set; }
+        public int? PrerogativePrice { get; set; }
+        public int? PrerogativeBank { get; set; }
         public string LandOfficeID { get; set; }
         public int? CaditManagerID { get; set; }
-        public double? FenceArea { get; set; }
+        public int? FenceArea { get; set; }
         public int? HomeNoReceivedDate { get; set; }
-        public decimal? EstBuiltinLandPerMetre { get; set; }
-        public double? BuiltinLand { get; set; }
-        public bool? ISEditUnit { get; set; }
-        public bool? LGElectricStatus { get; set; }
-        public string LGElectricNumber { get; set; }
-        public bool? LGWaterStatus { get; set; }
-        public string LGWaterNumber { get; set; }
+        public int? EstBuiltinLandPerMetre { get; set; }
+        public int? BuiltinLand { get; set; }
+        public int? ISEditUnit { get; set; }
+        public int? LGElectricStatus { get; set; }
+        public int? LGElectricNumber { get; set; }
+        public int? LGWaterStatus { get; set; }
+        public int? LGWaterNumber { get; set; }
         public int? Parking { get; set; }
         public int? ParkingIncrease { get; set; }
-        public decimal? LoanBankAmount { get; set; }
-        public decimal? UnitLoanAmount { get; set; }
-        public decimal? BuiltInArea { get; set; }
-        public decimal? CurvedsteelArea { get; set; }
-        public decimal? FactorArea { get; set; }
-        public decimal? AirArea { get; set; }
-        public decimal? ParkingArea { get; set; }
-        public decimal? VerandaArea { get; set; }
-        public string WBSObject { get; set; }
+        public int? LoanBankAmount { get; set; }
+        public int? UnitLoanAmount { get; set; }
+        public int? BuiltInArea { get; set; }
+        public int? CurvedsteelArea { get; set; }
+        public int? FactorArea { get; set; }
+        public double AirArea { get; set; }
+        public int? ParkingArea { get; set; }
+        public double VerandaArea { get; set; }
+        public int? WBSObject { get; set; }
         public string WBSNumber { get; set; }
-        public string ModuleBOQ { get; set; }
-        public string UnitType { get; set; }
-        public bool? isUpdate { get; set; }
-        public bool? FirstFlag { get; set; }
-        public string WBSStatus { get; set; }
-        public string GLRaiseBatchID { get; set; }
-        public string OldGLRaiseBatchID { get; set; }
-        public string ConstructionModelID { get; set; }
+        public int? ModuleBOQ { get; set; }
+        public int? UnitType { get; set; }
+        public int? isUpdate { get; set; }
+        public int? FirstFlag { get; set; }
+        public int? WBSStatus { get; set; }
+        public int? GLRaiseBatchID { get; set; }
+        public int? OldGLRaiseBatchID { get; set; }
+        public int? ConstructionModelID { get; set; }
         public int? UnitID { get; set; }
-        public string UnitNumber_Old { get; set; }
+        public int? UnitNumber_Old { get; set; }
         public string UnitLayoutType { get; set; }
-        public string FloorPlanImage { get; set; }
-        public string RoomPlanImage { get; set; }
-        public string GLPreTransferBatchID { get; set; }
-        public bool? IsForeignUnit { get; set; }
+        public int? FloorPlanImage { get; set; }
+        public int? RoomPlanImage { get; set; }
+        public int? GLPreTransferBatchID { get; set; }
     }
 
     [Table("Job")]
@@ -2169,38 +2286,6 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public int? M_SAP_CODE { get; set; }
     }
 
-    [Table("vw_Employee")]
-    public partial class vwEmployee
-    {
-        public string EmpID { get; set; }
-        public string TitleEN { get; set; }
-        public string NameEN { get; set; }
-        public string LastNameEN { get; set; }
-        public string TitleTH { get; set; }
-        public string NameTH { get; set; }
-        public string LastNameTH { get; set; }
-        public string NickName { get; set; }
-        public DateTime? BirthDate { get; set; }
-        public string EmpSex { get; set; }
-        public string PositionCode { get; set; }
-        public DateTime? HiringDate { get; set; }
-        public DateTime? ResignDate { get; set; }
-        public string CompanyCode { get; set; }
-        public string Branch { get; set; }
-        public string DivisionCode { get; set; }
-        public string DepartmentCode { get; set; }
-        public string SectionCode { get; set; }
-        public string UnitCode { get; set; }
-        public string Project { get; set; }
-        public string Email { get; set; }
-        public string PhoneExt { get; set; }
-        public string Status { get; set; }
-        public string MOBILE { get; set; }
-        public string CostCenter { get; set; }
-        public string LeaderName { get; set; }
-        public string Mobile1 { get; set; }
-    }
-
     [Table("vw_job_View_TempBlkCustomer")]
     public partial class vwjobViewTempBlkCustomer
     {
@@ -2272,7 +2357,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public int? Header { get; set; }
         public int? ContractAmount { get; set; }
         public int? DownAmount { get; set; }
-        public double? AreaFromPFB { get; set; }
+        public double AreaFromPFB { get; set; }
         public string TransferDate { get; set; }
         public int? CreditType { get; set; }
         public int? PercentBooking { get; set; }
@@ -2323,189 +2408,6 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string WBSNumber { get; set; }
     }
 
-    [Table("vw_User")]
-    public partial class vwUser
-    {
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string PositionName { get; set; }
-        public string Email { get; set; }
-        public string FullCodeName { get; set; }
-    }
-
-    [Table("vw_UserAll")]
-    public partial class vwUserAll
-    {
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string PositionName { get; set; }
-        public string Email { get; set; }
-        public string FullCodeName { get; set; }
-    }
-
-    [Table("vw_UserProject")]
-    public partial class vwUserProject
-    {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserGUID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public int ProjectID { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectWBS { get; set; }
-        public string ProjectName { get; set; }
-        public string BU { get; set; }
-        public string ProjectType { get; set; }
-        public int? CompanyID { get; set; }
-        public string CompanyCode { get; set; }
-        public string CompanySAPCode { get; set; }
-        public string CompanyName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string ProjectGroup { get; set; }
-        public string Remark { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string ProjectGroupName { get; set; }
-        public string PositionName { get; set; }
-    }
-
-    [Table("vw_UserProject_All")]
-    public partial class vwUserProjectAll
-    {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserGUID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public int ProjectID { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectWBS { get; set; }
-        public string ProjectName { get; set; }
-        public string BU { get; set; }
-        public string ProjectType { get; set; }
-        public int? CompanyID { get; set; }
-        public string CompanyCode { get; set; }
-        public string CompanySAPCode { get; set; }
-        public string CompanyName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string ProjectGroup { get; set; }
-        public string Remark { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string ProjectGroupName { get; set; }
-        public string PositionName { get; set; }
-    }
-
-    [Table("vw_UserRole")]
-    public partial class vwUserRole
-    {
-        public int? ID { get; set; }
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-    }
-
-    [Table("vw_UserRoleInProject")]
-    public partial class vwUserRoleInProject
-    {
-        public int ID { get; set; }
-        public int? UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserGUID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public int ProjectID { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectWBS { get; set; }
-        public string ProjectName { get; set; }
-        public string BU { get; set; }
-        public string ProjectType { get; set; }
-        public int? CompanyID { get; set; }
-        public string CompanyCode { get; set; }
-        public string CompanySAPCode { get; set; }
-        public string CompanyName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string ProjectGroup { get; set; }
-        public string Remark { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string ProjectGroupName { get; set; }
-        public string PositionName { get; set; }
-        public string ProjectRole { get; set; }
-        public int? PositionID { get; set; }
-        public string PositionCode { get; set; }
-        public int? CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public int? ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public int? DeletedBy { get; set; }
-        public DateTime? DeletedDate { get; set; }
-    }
-
-    [Table("vw_UserRoleProject")]
-    public partial class vwUserRoleProject
-    {
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string PositionName { get; set; }
-        public string Email { get; set; }
-        public string FullCodeName { get; set; }
-        public int? RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string ProjectCode { get; set; }
-    }
-
     [Table("vwCallDefectAPIDownloadUnit")]
     public partial class vwCallDefectAPIDownloadUnit
     {
@@ -2522,7 +2424,7 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string ModelHomeThai { get; set; }
         public string ModelHomeEng { get; set; }
         public string ModelLayoutType { get; set; }
-        public decimal? AreaFromRE { get; set; }
+        public double? AreaFromRE { get; set; }
         public string PhaseBuildingName { get; set; }
         public string Phase { get; set; }
         public string Tower { get; set; }
@@ -2532,8 +2434,8 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string LastName { get; set; }
         public string CustomerFullName { get; set; }
         public string ContactTel { get; set; }
-        public DateTime? TransferDueDate { get; set; }
-        public DateTime? TransferDate { get; set; }
+        public string TransferDueDate { get; set; }
+        public string TransferDate { get; set; }
         public string BookingNumber { get; set; }
         public string ContractNumber { get; set; }
         public int? SellerID { get; set; }
@@ -2927,366 +2829,5 @@ namespace com.apthai.DefectAPI.Model.DefectAPI
         public string Productname { get; set; }
         public string ProductBU { get; set; }
         public bool? IsFixit { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_Employee")]
-    public partial class ZRemoteDumpvwEmployee
-    {
-        public int? UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string Position { get; set; }
-        public string Devision { get; set; }
-        public string Department { get; set; }
-        public int AppCount { get; set; }
-        public int RoleCount { get; set; }
-        public int ProjectCount { get; set; }
-        public int? LeaderID { get; set; }
-        public string LeaderName { get; set; }
-        public int? PositionID { get; set; }
-        public int? DepartmentID { get; set; }
-        public int? DivisionID { get; set; }
-        public int? CompanyID { get; set; }
-        public string TitleEN { get; set; }
-        public string NameEN { get; set; }
-        public string LastNameEN { get; set; }
-        public string NameTH { get; set; }
-        public string TitleTH { get; set; }
-        public string LastNameTH { get; set; }
-        public string NickName { get; set; }
-        public DateTime? BirthDate { get; set; }
-        public string EmpSex { get; set; }
-        public DateTime? HiringDate { get; set; }
-        public DateTime? ResignDate { get; set; }
-        public string CompanyEN { get; set; }
-        public string CompanyTH { get; set; }
-        public string Group_Div { get; set; }
-        public string Branch { get; set; }
-        public string Section { get; set; }
-        public string Unit { get; set; }
-        public string Project { get; set; }
-        public string Expr1 { get; set; }
-        public string PhoneExt { get; set; }
-        public string Status { get; set; }
-        public string CostCenter { get; set; }
-        public string Mobile { get; set; }
-        public string Mobile1 { get; set; }
-        public string DivisionCode { get; set; }
-        public string DepartmentCode { get; set; }
-        public string SectionCode { get; set; }
-        public string UnitCode { get; set; }
-        public string CompanyCode { get; set; }
-        public string LeaderCode { get; set; }
-        public string PositionCode { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserAll")]
-    public partial class ZRemoteDumpvwUserAll
-    {
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string PositionName { get; set; }
-        public string Email { get; set; }
-        public string FullCodeName { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserHO")]
-    public partial class ZRemoteDumpvwUserHO
-    {
-        public int? ID { get; set; }
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserPM")]
-    public partial class ZRemoteDumpvwUserPM
-    {
-        public int? ID { get; set; }
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserProject")]
-    public partial class ZRemoteDumpvwUserProject
-    {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserGUID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public int ProjectID { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectWBS { get; set; }
-        public string ProjectName { get; set; }
-        public string BU { get; set; }
-        public string ProjectType { get; set; }
-        public int? CompanyID { get; set; }
-        public string CompanyCode { get; set; }
-        public string CompanySAPCode { get; set; }
-        public string CompanyName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string ProjectGroup { get; set; }
-        public string Remark { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string ProjectGroupName { get; set; }
-        public string PositionName { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserProject_ForQIS")]
-    public partial class ZRemoteDumpvwUserProjectForQI
-    {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserGUID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public int ProjectID { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectWBS { get; set; }
-        public string ProjectName { get; set; }
-        public string BU { get; set; }
-        public string ProjectType { get; set; }
-        public int? CompanyID { get; set; }
-        public string CompanyCode { get; set; }
-        public string CompanySAPCode { get; set; }
-        public string CompanyName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string ProjectGroup { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string ProjectGroupName { get; set; }
-        public string PositionName { get; set; }
-        public int? CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public int? ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserQA")]
-    public partial class ZRemoteDumpvwUserQA
-    {
-        public int? ID { get; set; }
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserQAAdmin")]
-    public partial class ZRemoteDumpvwUserQAAdmin
-    {
-        public int? ID { get; set; }
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserQALeader")]
-    public partial class ZRemoteDumpvwUserQALeader
-    {
-        public int? ID { get; set; }
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserRole")]
-    public partial class ZRemoteDumpvwUserRole
-    {
-        public int? ID { get; set; }
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserRoleInProject")]
-    public partial class ZRemoteDumpvwUserRoleInProject
-    {
-        public int ID { get; set; }
-        public int? UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserGUID { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public int ProjectID { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectWBS { get; set; }
-        public string ProjectName { get; set; }
-        public string BU { get; set; }
-        public string ProjectType { get; set; }
-        public int? CompanyID { get; set; }
-        public string CompanyCode { get; set; }
-        public string CompanySAPCode { get; set; }
-        public string CompanyName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string ProjectGroup { get; set; }
-        public string Remark { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string ProjectGroupName { get; set; }
-        public string PositionName { get; set; }
-        public string ProjectRole { get; set; }
-        public int? PositionID { get; set; }
-        public string PositionCode { get; set; }
-        public int? CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public int? ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public int? DeletedBy { get; set; }
-        public DateTime? DeletedDate { get; set; }
-    }
-
-    [Table("Z_RemoteDump_vw_UserSA")]
-    public partial class ZRemoteDumpvwUserSA
-    {
-        public int? ID { get; set; }
-        [ExplicitKey]
-        public int UserID { get; set; }
-        public string UserGUID { get; set; }
-        public string UserName { get; set; }
-        public string EmpCode { get; set; }
-        public string TitleName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PositionName { get; set; }
-        public int RoleID { get; set; }
-        public string RoleCode { get; set; }
-        public string RoleName { get; set; }
-        public string AssignType { get; set; }
-        public string SourceType { get; set; }
-        public string Remark { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
     }
 }
