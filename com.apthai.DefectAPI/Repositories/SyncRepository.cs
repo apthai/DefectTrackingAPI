@@ -315,6 +315,7 @@ namespace com.apthai.DefectAPI.Repositories
                     callResourcePDF.SerialNo = model.UnitNo;
                     callResourcePDF.Active = true;
                     callResourcePDF.FullFilePath = fullUrl;
+                    callResourcePDF.UserId = model.EmpCode;
                     callResourcePDF.ExpirePathDate = DateTime.Now.AddDays(6); ;
                     insertPDF = InsertCallResource(callResourcePDF);
 

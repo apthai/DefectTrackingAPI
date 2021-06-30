@@ -576,6 +576,7 @@ namespace com.apthai.DefectAPI.CustomModel
         public string UnitNo { get; set; }
         public string ProjectType { get; set; }
         public string SignatureType { get; set; }
+        public string EmpCode { get; set; }
     }
 
     public partial class FileUploadResult

@@ -239,6 +239,7 @@ namespace com.apthai.DefectAPI.Controllers
                             callResourceDate.ResourceGroupSet = null;
                             callResourceDate.ResourceGroupOrder = 0;
                             callResourceDate.StorageServerId = 1400;
+                            callResourceDate.UserId = Convert.ToString(data.UserID);
                             callResourceDate.TDefectDetailId = Convert.ToInt32(inserttdefectdetail);
                             callResourceDate.ProjectNo = data.ProductId;
                             callResourceDate.SerialNo = data.ItemId;
@@ -1831,7 +1832,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     UnitNo = data.UnitNo,
                     TDefectId = Int32.Parse(data.TDefectID),
                     ProjectType = data.ProjectType,
-                    SignatureType = callResourceDate.ResourceTagCode
+                    SignatureType = callResourceDate.ResourceTagCode,
+                    EmpCode = Convert.ToString(data.UserID)
                 })));
             }
 
@@ -2222,7 +2224,8 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     UnitNo = data.UnitNo,
                     TDefectId = Int32.Parse(data.TDefectID),
                     ProjectType = data.ProjectType,
-                    SignatureType = callResourceDate.ResourceTagCode
+                    SignatureType = callResourceDate.ResourceTagCode,
+                    EmpCode = Convert.ToString(data.UserID)
                 })));
             }
             else
@@ -2326,6 +2329,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
                     callResourceDate.SerialNo = data.UnitNo;
                     callResourceDate.Active = true;
                     callResourceDate.StorageServerId = 1400;
+                    callResourceDate.UserId = Convert.ToString(data.UserID);
                     callResourceDate.FullFilePath = resultMinio.Url;
                     callResourceDate.ExpirePathDate = DateTime.Now.AddDays(6);
                     bool InsertResult = _syncRepository.InsertCallResource(callResourceDate);
