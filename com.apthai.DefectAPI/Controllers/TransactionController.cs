@@ -458,7 +458,7 @@ namespace com.apthai.DefectAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error  " + ex );
             }
 
         }
