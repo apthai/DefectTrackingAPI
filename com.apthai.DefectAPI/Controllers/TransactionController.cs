@@ -458,7 +458,7 @@ namespace com.apthai.DefectAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error  " + ex );
+                return BadRequest(new { Message = ex });
             }
 
         }
@@ -2540,6 +2540,7 @@ Description = "ลบข้อมูล T_resource จาก Database ของ 
         {
             try
             {
+
                 //http://192.168.0.209/ReportPortalViewer_API/api/CrystalReport/GenPDF
                 var client = new HttpClient();
                 var Content = new StringContent(JsonConvert.SerializeObject(data));
